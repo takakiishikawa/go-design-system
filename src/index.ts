@@ -50,6 +50,7 @@ export * from "./components/ui/sonner";
 // Data
 export * from "./components/ui/table";
 export * from "./components/ui/calendar";
+export * from "./components/ui/chart";
 
 // Layout / Interactive
 export * from "./components/ui/accordion";

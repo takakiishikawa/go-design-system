@@ -6,6 +6,14 @@ export default defineConfig({
   dts: true,
   sourcemap: true,
   clean: true,
-  external: ["react", "react-dom"],
+  external: [
+    "react",
+    "react-dom",
+    "recharts",
+    "lucide-react",
+    "react-hook-form",
+    "zod",
+    "date-fns",
+  ],
   treeshake: true,
 });
