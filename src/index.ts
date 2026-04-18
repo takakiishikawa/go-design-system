@@ -64,6 +64,7 @@ export * from "./components/ui/aspect-ratio";
 // ============================================
 // Templates (Goシリーズ共通テンプレート)
 // ============================================
+// sidebar-01
 export {
   AppSidebar,
   AppSwitcher,
@@ -76,6 +77,20 @@ export type {
   NavItem,
   NavSubItem,
 } from "./templates/sidebar-01/app-sidebar";
+
+// dashboard-01
+export { SectionCards } from "./templates/dashboard-01/section-cards";
+export type { SectionCardsProps, KpiCard, CardTrend } from "./templates/dashboard-01/section-cards";
+export { ChartArea } from "./templates/dashboard-01/chart-area";
+export type { ChartAreaProps, TimeRangeOption } from "./templates/dashboard-01/chart-area";
+export { DataTable } from "./templates/dashboard-01/data-table";
+export type { DataTableProps } from "./templates/dashboard-01/data-table";
+export { DashboardPage } from "./templates/dashboard-01/dashboard-page";
+export type { DashboardPageProps } from "./templates/dashboard-01/dashboard-page";
+
+// login-01
+export { LoginPage } from "./templates/login-01/login-page";
+export type { LoginPageProps } from "./templates/login-01/login-page";
 
 // ============================================
 // Layout Components
