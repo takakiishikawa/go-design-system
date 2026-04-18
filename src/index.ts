@@ -64,7 +64,26 @@ export * from "./components/ui/aspect-ratio";
 // ============================================
 // Templates (Goシリーズ共通テンプレート)
 // ============================================
-// export * from "./templates/SomeTemplate";
+export {
+  AppSidebar,
+  AppSwitcher,
+  SearchForm,
+} from "./templates/sidebar-01/app-sidebar";
+export type {
+  AppSidebarProps,
+  AppSwitcherProps,
+  AppInfo,
+  NavItem,
+  NavSubItem,
+} from "./templates/sidebar-01/app-sidebar";
+
+// ============================================
+// Layout Components
+// ============================================
+export { AppLayout } from "./components/layout/app-layout";
+export type { AppLayoutProps } from "./components/layout/app-layout";
+export { PageHeader } from "./components/layout/page-header";
+export type { PageHeaderProps, BreadcrumbEntry } from "./components/layout/page-header";
 
 // ============================================
 // Hooks
