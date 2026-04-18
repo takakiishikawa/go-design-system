@@ -92,6 +92,20 @@ export type { DashboardPageProps } from "./templates/dashboard-01/dashboard-page
 export { LoginPage } from "./templates/login-01/login-page";
 export type { LoginPageProps } from "./templates/login-01/login-page";
 
+// concept-page
+export { ConceptPage } from "./templates/concept-page/concept-page";
+export type {
+  ConceptPageProps,
+  SectionProps,
+  MetricCardProps,
+} from "./templates/concept-page/concept-page";
+export { Section } from "./templates/concept-page/section";
+export { MetricCard } from "./templates/concept-page/metric-card";
+export { ProductLogicFlow } from "./templates/concept-page/product-logic-flow";
+export type { ProductLogicFlowProps, LogicStep } from "./templates/concept-page/product-logic-flow";
+export { ScopeColumn } from "./templates/concept-page/scope-column";
+export type { ScopeColumnProps } from "./templates/concept-page/scope-column";
+
 // ============================================
 // Layout Components
 // ============================================
