@@ -1,0 +1,80 @@
+/*
+ * globals.css — shadcn/ui CSS変数との橋渡し
+ *
+ * tokens.css の意味的トークン（--color-xxx）を
+ * shadcn/ui が期待する変数名（--background 等）にマッピングする。
+ *
+ * 各Goでの使い方:
+ *   import '@takaki/go-design-system/tokens.css'  // ← tokens + Tailwind directives
+ *   import '@takaki/go-design-system/globals.css' // ← shadcn bridge（任意）
+ *
+ * tokens.css の .dark が --color-xxx を上書きするため、
+ * globals.css の .dark も同じマッピングを書くだけでチェーンが成立する。
+ */
+
+:root {
+  /* --- Layout --- */
+  --background: var(--color-background);
+  --foreground: var(--color-text-primary);
+
+  /* --- Card / Popover --- */
+  --card: var(--color-surface);
+  --card-foreground: var(--color-text-primary);
+  --popover: var(--color-surface-elevated);
+  --popover-foreground: var(--color-text-primary);
+
+  /* --- Brand --- */
+  --primary: var(--color-primary);
+  --primary-foreground: var(--color-primary-text);
+
+  /* --- Neutral --- */
+  --secondary: var(--color-surface-subtle);
+  --secondary-foreground: var(--color-text-primary);
+  --muted: var(--color-surface-subtle);
+  --muted-foreground: var(--color-text-secondary);
+  --accent: var(--color-surface-subtle);
+  --accent-foreground: var(--color-text-primary);
+
+  /* --- Destructive --- */
+  --destructive: var(--color-danger);
+  --destructive-foreground: #ffffff;
+
+  /* --- Form / Interactive --- */
+  --border: var(--color-border-default);
+  --input: var(--color-border-default);
+  --ring: var(--color-primary);
+
+  /* --- Border radius alias (used by shadcn internals) --- */
+  --radius: var(--radius-md);
+}
+
+.dark {
+  /* tokens.css の .dark が --color-xxx を暗色値に上書き済みのため、
+     このマッピング定義はライトと同じで正しく機能する。 */
+  --background: var(--color-background);
+  --foreground: var(--color-text-primary);
+
+  --card: var(--color-surface);
+  --card-foreground: var(--color-text-primary);
+  --popover: var(--color-surface-elevated);
+  --popover-foreground: var(--color-text-primary);
+
+  --primary: var(--color-primary);
+  --primary-foreground: var(--color-primary-text);
+
+  --secondary: var(--color-surface-subtle);
+  --secondary-foreground: var(--color-text-primary);
+  --muted: var(--color-surface-subtle);
+  --muted-foreground: var(--color-text-secondary);
+  --accent: var(--color-surface-subtle);
+  --accent-foreground: var(--color-text-primary);
+
+  --destructive: var(--color-danger);
+  --destructive-foreground: #ffffff;
+
+  --border: var(--color-border-default);
+  --input: var(--color-border-default);
+  --ring: var(--color-primary);
+
+  --radius: var(--radius-md);
+}

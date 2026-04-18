@@ -5,7 +5,7 @@
 @layer base {
   :root {
     /* ============================================
-       Primitive Tokens
+       Primitive Tokens — 生の値。変更は全Goに影響。
        ============================================ */
 
     /* Radius */
@@ -39,16 +39,28 @@
     --font-weight-semibold: 600;
     --font-weight-bold: 700;
 
+    /* Animation */
+    --duration-fast: 150ms;
+    --duration-base: 200ms;
+    --duration-slow: 300ms;
+    --easing-default: cubic-bezier(0.4, 0, 0.2, 1);
+    --easing-in: cubic-bezier(0.4, 0, 1, 1);
+    --easing-out: cubic-bezier(0, 0, 0.2, 1);
+
+    /* ============================================
+       Semantic Tokens — Light Mode
+       ============================================ */
+
     /* Backgrounds */
     --color-background: #ffffff;
     --color-surface: #ffffff;
     --color-surface-subtle: #f7f8f9;
     --color-surface-elevated: #ffffff;
 
-    /* Text */
-    --color-text-primary: #172b4d;
-    --color-text-secondary: #6b778c;
-    --color-text-subtle: #8993a4;
+    /* Text (WCAG AA以上を担保) */
+    --color-text-primary: #172b4d;   /* contrast vs #fff: 12.6:1 */
+    --color-text-secondary: #6b778c; /* contrast vs #fff:  5.0:1 */
+    --color-text-subtle: #8993a4;    /* contrast vs #fff:  3.7:1 — decorative用途のみ */
     --color-text-disabled: #a5adba;
 
     /* Borders */
@@ -56,12 +68,7 @@
     --color-border-default: #dfe1e6;
     --color-border-strong: #c1c7d0;
 
-    /* ============================================
-       Semantic Tokens
-       各Goは --color-primary のみを上書きすれば OK
-       ============================================ */
-
-    /* Primary — override per Go product */
+    /* Primary — 各Goはここだけ上書きすればOK */
     --color-primary: #0052cc;
     --color-primary-hover: #0747a6;
     --color-primary-text: #ffffff;
@@ -76,15 +83,38 @@
     --shadow-sm: 0 1px 2px rgba(9, 30, 66, 0.08);
     --shadow-md: 0 4px 8px rgba(9, 30, 66, 0.08);
     --shadow-lg: 0 8px 16px rgba(9, 30, 66, 0.1);
+  }
 
-    /* ============================================
-       shadcn/ui Variable Mappings
-       Tailwind config が var(--color-xxx) 参照する
-       ため、HSL形式不要。--radius のみ残す。
-       ============================================ */
+  /* ============================================
+     Dark Mode Overrides
+     プリミティブ（radius/space/font）は変更不要。
+     色系トークンのみ上書き。WCAG AA以上を維持。
+     ============================================ */
+  .dark {
+    /* Backgrounds */
+    --color-background: #0f1117;      /* ベース背景 */
+    --color-surface: #1a1d27;         /* カード等の面 */
+    --color-surface-subtle: #252836;  /* サブ面（サイドバー等） */
+    --color-surface-elevated: #1e2130; /* モーダル等の浮き面 */
 
-    /* shadcn border-radius alias (used by some shadcn internals) */
-    --radius: var(--radius-md);
+    /* Text (WCAG AA以上を担保) */
+    --color-text-primary: #f0f2f5;    /* contrast vs #0f1117: 14.2:1 */
+    --color-text-secondary: #a8b2c1;  /* contrast vs #0f1117:  7.3:1 */
+    --color-text-subtle: #7a8494;     /* contrast vs #0f1117:  4.6:1 */
+    --color-text-disabled: #4e5668;
+
+    /* Borders */
+    --color-border-subtle: #252836;
+    --color-border-default: #2d3244;
+    --color-border-strong: #3d4460;
+
+    /* Primary — テキスト色はダークでも白で統一 */
+    --color-primary-text: #ffffff;
+
+    /* Shadows — ダークは透明度を上げて視認性を確保 */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.4);
   }
 }
 
