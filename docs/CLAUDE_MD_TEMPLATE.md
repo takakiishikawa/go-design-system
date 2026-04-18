@@ -1,0 +1,111 @@
+# CLAUDE.md
+
+このプロダクトは **Goシリーズ** の一員です。  
+Goシリーズ共通のデザインシステムは `@takaki/go-design-system` リポで管理されています。
+
+## 絶対に守るルール（最重要）
+
+### 1. UIコンポーネントは必ず @takaki/go-design-system から import する
+
+- ✅ 正しい：`import { Button, Card } from '@takaki/go-design-system'`
+- ❌ NG：独自に `components/ui/button.tsx` を作る
+- ❌ NG：shadcn/ui CLI で直接コンポーネントを追加する（このプロダクトには不要）
+
+### 2. 必要なコンポーネントがない場合
+
+独自に作らず、以下のいずれかを選ぶ：
+- 既存コンポーネントの組み合わせで実現できないか検討
+- どうしても必要な場合は、go-design-systemリポに追加する旨を明記して作業を止める
+
+独自実装は絶対にしない。
+
+### 3. デザイントークンの上書き禁止
+
+許可されている上書き：
+- `--color-primary`（このプロダクトのブランドカラー）
+- `--color-primary-hover`
+
+禁止されている上書き：
+- 色（上記以外全て）
+- 角丸（`--radius-*`）
+- フォントサイズ（`--text-*`）
+- 余白（`--space-*`）
+- シャドウ（`--shadow-*`）
+
+### 4. className の使用範囲
+
+許可：
+- レイアウト（`flex`, `grid`, `gap`, `justify-*`, `items-*`）
+- 配置（`margin`, `padding` でトークン値を使う場合）
+- レスポンシブ制御（`md:`, `lg:`）
+
+禁止：
+- 色の直接指定（`bg-red-500`, `text-blue-600` など）
+- 固定値の角丸（`rounded-lg` など、トークン経由で使う）
+- 独自のシャドウ
+- カスタムフォントサイズ
+
+### 5. アイコンは lucide-react に統一
+
+- ✅ `import { Zap } from 'lucide-react'`
+- ❌ 他のアイコンライブラリを追加しない
+
+### 6. レイアウトパターンはテンプレートから派生させる
+
+新規画面を作る時：
+- ダッシュボード系 → `DashboardPage` テンプレートから派生
+- サイドバー → `AppSidebar` をそのまま使用
+- 認証画面 → `LoginPage` テンプレート
+- コンセプト画面 → `ConceptPage` テンプレート
+
+ゼロからレイアウトを組まない。
+
+### 7. AppSwitcher の設定
+
+`AppSidebar` には `AppSwitcher` が組み込まれています。以下の設定を `app/layout.tsx` で行ってください：
+
+```tsx
+const apps = [
+  { name: 'NativeGo', url: 'https://native-go.vercel.app', color: '#E74C3C' },
+  { name: 'CareGo',   url: 'https://care-go.vercel.app',   color: '#22C55E' },
+  // ... 全Goを記述
+]
+
+<AppSidebar currentApp="NativeGo" apps={apps} />
+```
+
+## デザインシステムの更新への追従
+
+このプロダクトは `@takaki/go-design-system` に依存しており、デザインシステムの更新はVercelのBuild Commandで自動反映されます：
+
+```json
+// vercel.json
+{
+  "buildCommand": "npm update @takaki/go-design-system && npm run build"
+}
+```
+
+ローカル開発時に最新を取りに行きたい場合：
+
+```bash
+npm update @takaki/go-design-system
+```
+
+## このプロダクト固有のルール
+
+（各Goでカスタマイズする領域）
+
+- プロダクト名：`{PRODUCT_NAME}`
+- プライマリカラー：`{PRIMARY_COLOR}`
+- ドメイン：`{DOMAIN}`
+- データモデルの概要：`{DATA_MODEL}`
+- 外部連携：`{EXTERNAL_INTEGRATIONS}`
+
+## 作業時の判断基準
+
+1. 新しいUIが必要 → まず `@takaki/go-design-system` に該当コンポーネントがあるか確認
+2. ある → それを使う
+3. ない → 既存の組み合わせで実現できないか検討
+4. それも無理 → 作業を止めて、go-design-system 側への追加を提案
+
+独自実装は最後の手段であり、原則として行わない。
