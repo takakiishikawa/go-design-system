@@ -80,7 +80,8 @@ out
 
 # Nuxt.js build / generate output
 .nuxt
-dist
+# dist は go-design-system のビルド成果物として Git 管理する
+# !dist
 
 # Gatsby files
 .cache/
