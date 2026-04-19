@@ -76,34 +76,36 @@ const apps = [
 
 ## CSS の読み込み方（Tailwind v4 + Turbopack 必須）
 
-**⚠️ `layout.tsx` に CSS を直接 import してはいけない。** Turbopack が node_modules の CSS を PostCSS で処理しようとしてクラッシュする。
+**⚠️ CSS ファイルの `import` / `@import` は使わない。** Tailwind v4 + Turbopack では node_modules の CSS を `@import` すると PostCSS 処理が失敗する。
 
-**正しい方法：`app/globals.css` に `@import` で書く**
+**正しい方法：`DesignTokens` コンポーネントを `app/layout.tsx` の `<head>` に置く**
+
+```tsx
+// app/layout.tsx
+import './globals.css'
+import { DesignTokens } from '@takaki/go-design-system'
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="ja">
+      <head>
+        <DesignTokens
+          primaryColor="{PRIMARY_COLOR}"
+          primaryColorHover="{PRIMARY_COLOR_HOVER}"
+        />
+      </head>
+      <body>{children}</body>
+    </html>
+  )
+}
+```
+
+Tailwind がコンポーネントのクラス名をスキャンできるよう `app/globals.css` に `@source` を追加：
 
 ```css
 /* app/globals.css */
 @import "tailwindcss";
-@import "@takaki/go-design-system/tokens.css";
-@import "@takaki/go-design-system/globals.css";
-
-:root {
-  --color-primary: {PRIMARY_COLOR};
-  --color-primary-hover: {PRIMARY_COLOR_HOVER};
-}
-```
-
-```tsx
-/* app/layout.tsx — globals.css のみ import する */
-import './globals.css'
-```
-
-Tailwind がコンポーネントのクラス名をスキャンできるよう `@source` も追加：
-
-```css
-@import "tailwindcss";
 @source "../node_modules/@takaki/go-design-system/dist";
-@import "@takaki/go-design-system/tokens.css";
-@import "@takaki/go-design-system/globals.css";
 ```
 
 ## デザインシステムの更新への追従

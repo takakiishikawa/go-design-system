@@ -66,6 +66,10 @@ export * from "./components/ui/aspect-ratio";
 // New Components
 // ============================================
 
+// Design Tokens (CSS variable injection — Tailwind v4 + Turbopack 対応)
+export { DesignTokens } from "./components/ui/design-tokens";
+export type { DesignTokensProps } from "./components/ui/design-tokens";
+
 // Feedback / Status
 export * from "./components/ui/spinner";
 export * from "./components/ui/banner";
