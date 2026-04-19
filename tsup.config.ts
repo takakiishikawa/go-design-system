@@ -20,4 +20,5 @@ export default defineConfig({
     "react-dropzone",
   ],
   treeshake: true,
+  onSuccess: "node -e \"const fs=require('fs');fs.mkdirSync('dist/styles',{recursive:true});fs.copyFileSync('src/styles/tokens.css','dist/styles/tokens.css');fs.copyFileSync('src/styles/globals.css','dist/styles/globals.css');console.log('CSS files copied to dist/styles/')\"",
 });
