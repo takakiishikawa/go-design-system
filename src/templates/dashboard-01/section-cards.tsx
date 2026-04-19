@@ -55,27 +55,23 @@ export function SectionCards({ cards, className }: SectionCardsProps) {
     <div className={`*:data-[slot=card]:shadow-xs @xl/main:grid-cols-2 @5xl/main:grid-cols-4 grid grid-cols-1 gap-3 *:data-[slot=card]:bg-gradient-to-t *:data-[slot=card]:from-primary/5 *:data-[slot=card]:to-card dark:*:data-[slot=card]:bg-card ${className ?? ""}`}>
       {cards.map((card, i) => (
         <Card key={i} className="@container/card">
-          <CardHeader className="relative">
+          <CardHeader className="pb-2">
             <CardDescription>{card.title}</CardDescription>
             <CardTitle className="@[250px]/card:text-3xl text-2xl font-semibold tabular-nums">
               {card.value}
             </CardTitle>
-            {card.trend && (
-              <div className="absolute right-4 top-4">
-                <TrendBadge trend={card.trend} />
-              </div>
-            )}
-            {card.icon && !card.trend && (
-              <div className="absolute right-4 top-4 text-muted-foreground">
-                {card.icon}
-              </div>
-            )}
           </CardHeader>
-          {(card.description || card.progress !== undefined) && (
-            <CardFooter className="flex-col items-start gap-2 text-sm">
-              {card.description && (
-                <div className="line-clamp-2 flex gap-2 text-muted-foreground">
-                  {card.description}
+          {(card.description || card.progress !== undefined || card.trend || card.icon) && (
+            <CardFooter className="flex-col items-start gap-2 text-sm pt-0">
+              {(card.trend || card.description || card.icon) && (
+                <div className="flex w-full items-center justify-between gap-2">
+                  {card.description && (
+                    <span className="text-muted-foreground line-clamp-1">{card.description}</span>
+                  )}
+                  {card.trend && <TrendBadge trend={card.trend} />}
+                  {card.icon && !card.trend && (
+                    <span className="text-muted-foreground">{card.icon}</span>
+                  )}
                 </div>
               )}
               {card.progress !== undefined && (

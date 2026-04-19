@@ -53,10 +53,13 @@
      Semantic Tokens — Light Mode
      ============================================ */
 
-  /* Backgrounds */
-  --color-background: #f4f5f7;       /* Atlassian page bg — カードが白で浮き上がる */
+  /* Backgrounds
+     哲学: サーフェスは黒子、コンテンツが主役。
+     領域の区切りは whitespace と border のみ。背景色で主張しない。
+     例外的に surface-subtle は kanban列・グルーピング等の"sunken"用途のみ使用。 */
+  --color-background: #ffffff;
   --color-surface: #ffffff;
-  --color-surface-subtle: #f7f8f9;
+  --color-surface-subtle: #f7f8f9;   /* sunken 例外用 — 明確な目的がある時のみ */
   --color-surface-elevated: #ffffff;
 
   /* Text (WCAG AA以上を担保) */
@@ -99,13 +102,13 @@
      Sidebar Tokens (HSL形式 — shadcn sidebar.tsx が
      hsl(var(--sidebar-xxx)) で参照するため維持)
      ============================================ */
-  --sidebar-background: 220 16% 96%;    /* #f3f4f7 — Atlassian nav bg */
+  --sidebar-background: 0 0% 100%;      /* 白 — ボディと同じサーフェス */
   --sidebar-foreground: 215 25% 30%;    /* #384660 — 視認性の高いナビテキスト */
   --sidebar-primary: 215 25% 14%;       /* #1c2535 — アイコン等のダーク */
   --sidebar-primary-foreground: 0 0% 98%;
-  --sidebar-accent: 213 27% 84%;        /* #c5cedd — 背景との差7%→明確なhover */
+  --sidebar-accent: 220 13% 95%;        /* #eef0f4 — 白背景上の subtle hover */
   --sidebar-accent-foreground: 215 25% 14%; /* #1c2535 — コントラスト確保 */
-  --sidebar-border: 213 20% 87%;        /* #d2d7e0 — subtle border */
+  --sidebar-border: 220 13% 91%;        /* #e4e6eb — sidebar右枠 border */
   --sidebar-ring: 218 100% 40%;         /* #0052cc — フォーカスリング */
 }
 

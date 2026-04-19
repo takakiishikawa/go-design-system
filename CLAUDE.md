@@ -22,18 +22,29 @@
    - `tokens.css` の変更は全Goに影響するため慎重に
    - セマンティックトークン名の変更は既存の全Goのimportに影響する
    - プリミティブトークンの追加はOK、削除は慎重に
-   - 各Goで上書き可能なのは `--color-primary` と `--color-primary-hover` のみ
+   - 各Goで上書き可能なのは `--color-primary`, `--color-primary-hover`, `--color-secondary`, `--color-secondary-hover`
 
 5. **アクセシビリティ**
    - Radix UIベースのコンポーネントを改変しない
    - `aria-label`, `role` 等を削除しない
    - キーボード操作を壊さない
 
-## Goシリーズの設計思想
+## デザイン哲学：サーフェスは黒子、コンテンツが主役
+
+Atlassianの設計原則「UIの領域を差別化するには、色ではなく whitespace と border を使う」を踏襲。
+
+- **背景は基本白**（サイドバー・ボディ・カード、全て `#ffffff`）
+- **領域区切りは whitespace と border のみ**（背景色で区切らない）
+- **shadow は「浮き上がる要素」限定**（Dialog・Popover・Dropdown・Tooltip等のみ）
+- **色は「意味を伝える時」だけ使う**（CTA・ステータス・警告・リンク・アイコンアクセント）
+- **`--color-surface-subtle` は sunken 例外用**（kanban 列背景等、明確なグルーピングが必要な場面のみ）
+- ライトモードはこの哲学に従う。**ダークモードは多段サーフェス**で輝度差を使った elevation を維持する
+
+## Goシリーズの設計方針
 
 - 落ち着いた、情報密度に耐える、機能美のあるUI
 - 角丸は控えめ（3〜4px）
-- シャドウより border で境界を作る
+- shadcn/ui（New Yorkスタイル）をベースに、上記デザイン哲学に沿うようトークンで調整
 - ニュートラルカラーが主役
 - 4pxグリッドの余白
 - 見出しは semibold 優先
