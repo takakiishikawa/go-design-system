@@ -62,11 +62,16 @@ export default function TokensPage() {
       {/* Primary */}
       <section className="flex flex-col gap-3">
         <h2 className="text-base font-semibold text-foreground">プライマリカラー</h2>
-        <p className="text-xs text-muted-foreground">各Goで <code className="font-mono">--color-primary</code> を上書きすることで変更できます。</p>
+        <p className="text-xs text-muted-foreground">各Goで <code className="font-mono">--color-primary</code> と <code className="font-mono">--color-secondary</code> を上書きすることで変更できます。</p>
         <div className="flex flex-wrap gap-4">
           <ColorSwatch name="Primary" variable="--color-primary" />
           <ColorSwatch name="Primary Hover" variable="--color-primary-hover" />
+          <ColorSwatch name="Secondary" variable="--color-secondary" />
+          <ColorSwatch name="Secondary Hover" variable="--color-secondary-hover" />
         </div>
+        <p className="text-xs text-muted-foreground">
+          <code className="font-mono">DesignTokens</code> コンポーネントで <code className="font-mono">secondaryColor</code> props を渡すことで各Goのセカンダリカラーを設定できます。
+        </p>
         <Separator />
       </section>
 

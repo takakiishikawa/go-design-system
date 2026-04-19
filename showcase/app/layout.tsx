@@ -18,6 +18,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <DesignTokens
           primaryColor="#6366F1"
           primaryColorHover="#4f46e5"
+          secondaryColor="#8B5CF6"
+          secondaryColorHover="#7c3aed"
         />
       </head>
       <body>

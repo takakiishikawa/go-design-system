@@ -17,10 +17,13 @@ export function ColorSwitcher() {
             aria-label={`${p.name} カラーに切り替え`}
             className="relative flex size-5 items-center justify-center rounded-full transition-transform hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           >
-            <span
-              className="block size-4 rounded-full"
-              style={{ backgroundColor: p.color }}
-            />
+            {/* Split circle: left = primary, right = secondary */}
+            <span className="block size-4 overflow-hidden rounded-full">
+              <span className="flex h-full">
+                <span className="flex-1" style={{ backgroundColor: p.color }} />
+                <span className="flex-1" style={{ backgroundColor: p.secondary }} />
+              </span>
+            </span>
             {selected.name === p.name && (
               <span
                 className="pointer-events-none absolute inset-0 rounded-full"

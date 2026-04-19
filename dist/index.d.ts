@@ -591,6 +591,10 @@ interface DesignTokensProps {
     primaryColor?: string;
     /** ホバー時のプライマリカラー。省略時は primaryColor をそのまま使用 */
     primaryColorHover?: string;
+    /** セカンダリブランドカラー（例: "#F59E0B"） */
+    secondaryColor?: string;
+    /** ホバー時のセカンダリカラー。省略時は secondaryColor をそのまま使用 */
+    secondaryColorHover?: string;
 }
 /**
  * Goシリーズ共通デザイントークンを <style> タグとして注入するコンポーネント。
@@ -605,14 +609,19 @@ interface DesignTokensProps {
  *     return (
  *       <html lang="ja">
  *         <head>
- *           <DesignTokens primaryColor="#E74C3C" primaryColorHover="#C0392B" />
+ *           <DesignTokens
+ *             primaryColor="#E74C3C"
+ *             primaryColorHover="#C0392B"
+ *             secondaryColor="#F59E0B"
+ *             secondaryColorHover="#D97706"
+ *           />
  *         </head>
  *         <body>{children}</body>
  *       </html>
  *     )
  *   }
  */
-declare function DesignTokens({ primaryColor, primaryColorHover }: DesignTokensProps): react_jsx_runtime.JSX.Element;
+declare function DesignTokens({ primaryColor, primaryColorHover, secondaryColor, secondaryColorHover, }: DesignTokensProps): react_jsx_runtime.JSX.Element;
 
 declare const sizeMap$1: {
     readonly sm: 16;
