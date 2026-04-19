@@ -12,7 +12,8 @@
       "require": "./dist/index.js"
     },
     "./tokens.css": "./dist/styles/tokens.css",
-    "./globals.css": "./dist/styles/globals.css"
+    "./globals.css": "./dist/styles/globals.css",
+    "./theme.css": "./dist/styles/theme.css"
   },
   "files": [
     "dist",
