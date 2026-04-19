@@ -98,14 +98,14 @@ function cn(...inputs) {
   return tailwindMerge.twMerge(clsx.clsx(inputs));
 }
 var buttonVariants = classVarianceAuthority.cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground shadow hover:bg-primary/90",
-        destructive: "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
-        outline: "border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground",
-        secondary: "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
+        default: "bg-primary text-primary-foreground hover:bg-[var(--color-primary-hover)]",
+        destructive: "bg-destructive text-destructive-foreground hover:bg-[var(--color-danger)]",
+        outline: "border border-border bg-background hover:bg-accent hover:text-accent-foreground",
+        secondary: "bg-secondary text-secondary-foreground hover:bg-[var(--color-border-strong)]",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline"
       },
@@ -143,7 +143,7 @@ var Input = React19__namespace.forwardRef(
       {
         type,
         className: cn(
-          "flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
+          "flex h-9 w-full rounded-md border border-border bg-background px-3 py-1 text-sm text-foreground transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50",
           className
         ),
         ref,
@@ -175,7 +175,7 @@ var SelectTrigger = React19__namespace.forwardRef(({ className, children, ...pro
   {
     ref,
     className: cn(
-      "flex h-9 w-full items-center justify-between whitespace-nowrap rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-sm ring-offset-background data-[placeholder]:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1",
+      "flex h-9 w-full items-center justify-between whitespace-nowrap rounded-md border border-border bg-background px-3 py-2 text-sm data-[placeholder]:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1",
       className
     ),
     ...props,
@@ -217,7 +217,7 @@ var SelectContent = React19__namespace.forwardRef(({ className, children, positi
   {
     ref,
     className: cn(
-      "relative z-50 max-h-[var(--radix-select-content-available-height)] min-w-[8rem] overflow-y-auto overflow-x-hidden rounded-md border bg-popover text-popover-foreground shadow-md data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 origin-[var(--radix-select-content-transform-origin)]",
+      "relative z-50 max-h-[var(--radix-select-content-available-height)] min-w-[8rem] overflow-y-auto overflow-x-hidden rounded-md border border-border bg-popover text-popover-foreground shadow-sm data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 origin-[var(--radix-select-content-transform-origin)]",
       position === "popper" && "data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1",
       className
     ),
@@ -464,7 +464,7 @@ var Card = React19__namespace.forwardRef(({ className, ...props }, ref) => /* @_
   {
     ref,
     className: cn(
-      "rounded-xl border bg-card text-card-foreground shadow",
+      "rounded-lg border border-border bg-card text-card-foreground",
       className
     ),
     ...props
@@ -484,7 +484,7 @@ var CardTitle = React19__namespace.forwardRef(({ className, ...props }, ref) => 
   "div",
   {
     ref,
-    className: cn("font-semibold leading-none tracking-tight", className),
+    className: cn("font-semibold leading-snug", className),
     ...props
   }
 ));
@@ -510,14 +510,14 @@ var CardFooter = React19__namespace.forwardRef(({ className, ...props }, ref) =>
 ));
 CardFooter.displayName = "CardFooter";
 var badgeVariants = classVarianceAuthority.cva(
-  "inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
+  "inline-flex items-center rounded px-2 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-1",
   {
     variants: {
       variant: {
-        default: "border-transparent bg-primary text-primary-foreground shadow hover:bg-primary/80",
-        secondary: "border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        destructive: "border-transparent bg-destructive text-destructive-foreground shadow hover:bg-destructive/80",
-        outline: "text-foreground"
+        default: "border border-transparent bg-primary text-primary-foreground hover:bg-[var(--color-primary-hover)]",
+        secondary: "border border-transparent bg-secondary text-secondary-foreground hover:bg-accent",
+        destructive: "border border-transparent bg-destructive text-destructive-foreground hover:bg-[var(--color-danger)]",
+        outline: "border border-border text-foreground"
       }
     },
     defaultVariants: {
@@ -868,7 +868,7 @@ var Sidebar = React19__namespace.forwardRef(
   ({
     side = "left",
     variant = "sidebar",
-    collapsible = "offcanvas",
+    collapsible = "icon",
     className,
     children,
     ...props
@@ -1577,7 +1577,7 @@ var DropdownMenuSubContent = React19__namespace.forwardRef(({ className, ...prop
   {
     ref,
     className: cn(
-      "z-50 min-w-[8rem] overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-lg data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 origin-[var(--radix-dropdown-menu-content-transform-origin)]",
+      "z-50 min-w-[8rem] overflow-hidden rounded-md border border-border bg-popover p-1 text-popover-foreground shadow-sm data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 origin-[var(--radix-dropdown-menu-content-transform-origin)]",
       className
     ),
     ...props
@@ -1590,7 +1590,7 @@ var DropdownMenuContent = React19__namespace.forwardRef(({ className, sideOffset
     ref,
     sideOffset,
     className: cn(
-      "z-50 max-h-[var(--radix-dropdown-menu-content-available-height)] min-w-[8rem] overflow-y-auto overflow-x-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-md",
+      "z-50 max-h-[var(--radix-dropdown-menu-content-available-height)] min-w-[8rem] overflow-y-auto overflow-x-hidden rounded-md border border-border bg-popover p-1 text-popover-foreground shadow-sm",
       "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 origin-[var(--radix-dropdown-menu-content-transform-origin)]",
       className
     ),
@@ -1709,7 +1709,7 @@ var Menubar = React19__namespace.forwardRef(({ className, ...props }, ref) => /*
   {
     ref,
     className: cn(
-      "flex h-9 items-center space-x-1 rounded-md border bg-background p-1 shadow-sm",
+      "flex h-9 items-center space-x-1 rounded-md border border-border bg-background p-1",
       className
     ),
     ...props
@@ -1750,7 +1750,7 @@ var MenubarSubContent = React19__namespace.forwardRef(({ className, ...props }, 
   {
     ref,
     className: cn(
-      "z-50 min-w-[8rem] overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-lg data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 origin-[var(--radix-menubar-content-transform-origin)]",
+      "z-50 min-w-[8rem] overflow-hidden rounded-md border border-border bg-popover p-1 text-popover-foreground shadow-sm data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 origin-[var(--radix-menubar-content-transform-origin)]",
       className
     ),
     ...props
@@ -1766,7 +1766,7 @@ var MenubarContent = React19__namespace.forwardRef(
       alignOffset,
       sideOffset,
       className: cn(
-        "z-50 min-w-[12rem] overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-md data-[state=open]:animate-in data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 origin-[var(--radix-menubar-content-transform-origin)]",
+        "z-50 min-w-[12rem] overflow-hidden rounded-md border border-border bg-popover p-1 text-popover-foreground shadow-sm data-[state=open]:animate-in data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 origin-[var(--radix-menubar-content-transform-origin)]",
         className
       ),
       ...props
@@ -1881,7 +1881,7 @@ var DialogContent = React19__namespace.forwardRef(({ className, children, ...pro
     {
       ref,
       className: cn(
-        "fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border bg-background p-6 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-lg",
+        "fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border border-border bg-background p-6 shadow-md duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-lg",
         className
       ),
       ...props,
@@ -2228,7 +2228,7 @@ var PopoverContent = React19__namespace.forwardRef(({ className, align = "center
     align,
     sideOffset,
     className: cn(
-      "z-50 w-72 rounded-md border bg-popover p-4 text-popover-foreground shadow-md outline-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 origin-[var(--radix-popover-content-transform-origin)]",
+      "z-50 w-72 rounded-md border border-border bg-popover p-4 text-popover-foreground shadow-md outline-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 origin-[var(--radix-popover-content-transform-origin)]",
       className
     ),
     ...props
@@ -3011,7 +3011,7 @@ var ResizableHandle = ({
 var AspectRatio = AspectRatioPrimitive__namespace.Root;
 
 // src/components/ui/design-tokens-css.ts
-var TOKENS_CSS = '/* ============================================================\n   tokens.css \u2014 Go\u30B7\u30EA\u30FC\u30BA \u30C7\u30B6\u30A4\u30F3\u30C8\u30FC\u30AF\u30F3\n   \u7D14\u7C8B\u306ACSS\u5909\u6570\u5B9A\u7FA9\u306E\u307F\u3002@layer/@apply/@tailwind \u306F\u542B\u307E\u306A\u3044\u3002\n   Tailwind v3/v4 \u3069\u3061\u3089\u3068\u3082\u4E92\u63DB\u3002\n   \u5404Go\u306E layout.tsx \u3067\u6700\u521D\u306B import \u3059\u308B\u3053\u3068\u3002\n   ============================================================ */\n\n:root {\n  /* ============================================\n     Primitive Tokens \u2014 \u751F\u306E\u5024\u3002\u5909\u66F4\u306F\u5168Go\u306B\u5F71\u97FF\u3002\n     ============================================ */\n\n  /* Radius */\n  --radius-sm: 3px;\n  --radius-md: 4px;\n  --radius-lg: 6px;\n  --radius-full: 9999px;\n\n  /* Space (4px grid) */\n  --space-1: 4px;\n  --space-2: 8px;\n  --space-3: 12px;\n  --space-4: 16px;\n  --space-5: 20px;\n  --space-6: 24px;\n  --space-8: 32px;\n  --space-10: 40px;\n\n  /* Typography */\n  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;\n  --text-xs: 12px;\n  --text-sm: 14px;\n  --text-base: 16px;\n  --text-lg: 18px;\n  --text-xl: 20px;\n  --text-2xl: 24px;\n  --text-3xl: 32px;\n  --text-4xl: 40px;\n  --font-weight-regular: 400;\n  --font-weight-medium: 500;\n  --font-weight-semibold: 600;\n  --font-weight-bold: 700;\n\n  /* Animation */\n  --duration-fast: 150ms;\n  --duration-base: 200ms;\n  --duration-slow: 300ms;\n  --easing-default: cubic-bezier(0.4, 0, 0.2, 1);\n  --easing-in: cubic-bezier(0.4, 0, 1, 1);\n  --easing-out: cubic-bezier(0, 0, 0.2, 1);\n\n  /* ============================================\n     Semantic Tokens \u2014 Light Mode\n     ============================================ */\n\n  /* Backgrounds */\n  --color-background: #ffffff;\n  --color-surface: #ffffff;\n  --color-surface-subtle: #f7f8f9;\n  --color-surface-elevated: #ffffff;\n\n  /* Text (WCAG AA\u4EE5\u4E0A\u3092\u62C5\u4FDD) */\n  --color-text-primary: #172b4d;   /* contrast vs #fff: 12.6:1 */\n  --color-text-secondary: #6b778c; /* contrast vs #fff:  5.0:1 */\n  --color-text-subtle: #8993a4;    /* contrast vs #fff:  3.7:1 \u2014 decorative\u7528\u9014\u306E\u307F */\n  --color-text-disabled: #a5adba;\n\n  /* Borders */\n  --color-border-subtle: #ebecf0;\n  --color-border-default: #dfe1e6;\n  --color-border-strong: #c1c7d0;\n\n  /* Primary \u2014 \u5404Go\u306F\u3053\u3053\u3060\u3051\u4E0A\u66F8\u304D\u3059\u308C\u3070OK */\n  --color-primary: #0052cc;\n  --color-primary-hover: #0747a6;\n  --color-primary-text: #ffffff;\n\n  /* Status */\n  --color-success: #00875a;\n  --color-success-subtle: #e3fcef;\n  --color-warning: #ff8b00;\n  --color-warning-subtle: #fffae6;\n  --color-danger: #de350b;\n  --color-danger-subtle: #ffebe6;\n  --color-info: #0052cc;\n  --color-info-subtle: #deebff;\n\n  /* Shadows */\n  --shadow-sm: 0 1px 2px rgba(9, 30, 66, 0.08);\n  --shadow-md: 0 4px 8px rgba(9, 30, 66, 0.08);\n  --shadow-lg: 0 8px 16px rgba(9, 30, 66, 0.1);\n\n  /* ============================================\n     Sidebar Tokens (HSL\u5F62\u5F0F \u2014 shadcn sidebar.tsx \u304C\n     hsl(var(--sidebar-xxx)) \u3067\u53C2\u7167\u3059\u308B\u305F\u3081\u7DAD\u6301)\n     ============================================ */\n  --sidebar-background: 0 0% 98%;\n  --sidebar-foreground: 240 5.3% 26.1%;\n  --sidebar-primary: 240 5.9% 10%;\n  --sidebar-primary-foreground: 0 0% 98%;\n  --sidebar-accent: 240 4.8% 95.9%;\n  --sidebar-accent-foreground: 240 5.9% 10%;\n  --sidebar-border: 220 13% 91%;\n  --sidebar-ring: 217.2 91.2% 59.8%;\n}\n\n/* ============================================\n   Dark Mode Overrides\n   \u30D7\u30EA\u30DF\u30C6\u30A3\u30D6\uFF08radius/space/font\uFF09\u306F\u5909\u66F4\u4E0D\u8981\u3002\n   \u8272\u7CFB\u30C8\u30FC\u30AF\u30F3\u306E\u307F\u4E0A\u66F8\u304D\u3002WCAG AA\u4EE5\u4E0A\u3092\u7DAD\u6301\u3002\n   ============================================ */\n.dark {\n  /* Backgrounds */\n  --color-background: #0f1117;       /* \u30D9\u30FC\u30B9\u80CC\u666F */\n  --color-surface: #1a1d27;          /* \u30AB\u30FC\u30C9\u7B49\u306E\u9762 */\n  --color-surface-subtle: #252836;   /* \u30B5\u30D6\u9762\uFF08\u30B5\u30A4\u30C9\u30D0\u30FC\u7B49\uFF09 */\n  --color-surface-elevated: #1e2130; /* \u30E2\u30FC\u30C0\u30EB\u7B49\u306E\u6D6E\u304D\u9762 */\n\n  /* Text (WCAG AA\u4EE5\u4E0A\u3092\u62C5\u4FDD) */\n  --color-text-primary: #f0f2f5;    /* contrast vs #0f1117: 14.2:1 */\n  --color-text-secondary: #a8b2c1;  /* contrast vs #0f1117:  7.3:1 */\n  --color-text-subtle: #7a8494;     /* contrast vs #0f1117:  4.6:1 */\n  --color-text-disabled: #4e5668;\n\n  /* Borders */\n  --color-border-subtle: #252836;\n  --color-border-default: #2d3244;\n  --color-border-strong: #3d4460;\n\n  /* Primary \u2014 \u30C6\u30AD\u30B9\u30C8\u8272\u306F\u30C0\u30FC\u30AF\u3067\u3082\u767D\u3067\u7D71\u4E00 */\n  --color-primary-text: #ffffff;\n\n  /* Status subtle (dark) */\n  --color-success-subtle: #0a2e1a;\n  --color-warning-subtle: #2e1f00;\n  --color-danger-subtle: #2e0d00;\n  --color-info-subtle: #001a4d;\n\n  /* Shadows \u2014 \u30C0\u30FC\u30AF\u306F\u900F\u660E\u5EA6\u3092\u4E0A\u3052\u3066\u8996\u8A8D\u6027\u3092\u78BA\u4FDD */\n  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);\n  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.3);\n  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.4);\n\n  /* Sidebar \u2014 Dark */\n  --sidebar-background: 240 5.9% 10%;\n  --sidebar-foreground: 240 4.8% 95.9%;\n  --sidebar-primary: 224.3 76.3% 48%;\n  --sidebar-primary-foreground: 0 0% 100%;\n  --sidebar-accent: 240 3.7% 15.9%;\n  --sidebar-accent-foreground: 240 4.8% 95.9%;\n  --sidebar-border: 240 3.7% 15.9%;\n  --sidebar-ring: 217.2 91.2% 59.8%;\n}\n';
+var TOKENS_CSS = '/* ============================================================\n   tokens.css \u2014 Go\u30B7\u30EA\u30FC\u30BA \u30C7\u30B6\u30A4\u30F3\u30C8\u30FC\u30AF\u30F3\n   \u7D14\u7C8B\u306ACSS\u5909\u6570\u5B9A\u7FA9\u306E\u307F\u3002@layer/@apply/@tailwind \u306F\u542B\u307E\u306A\u3044\u3002\n   Tailwind v3/v4 \u3069\u3061\u3089\u3068\u3082\u4E92\u63DB\u3002\n   \u5404Go\u306E layout.tsx \u3067\u6700\u521D\u306B import \u3059\u308B\u3053\u3068\u3002\n   ============================================================ */\n\n:root {\n  /* ============================================\n     Primitive Tokens \u2014 \u751F\u306E\u5024\u3002\u5909\u66F4\u306F\u5168Go\u306B\u5F71\u97FF\u3002\n     ============================================ */\n\n  /* Radius */\n  --radius-sm: 3px;\n  --radius-md: 4px;\n  --radius-lg: 6px;\n  --radius-full: 9999px;\n\n  /* Space (4px grid) */\n  --space-1: 4px;\n  --space-2: 8px;\n  --space-3: 12px;\n  --space-4: 16px;\n  --space-5: 20px;\n  --space-6: 24px;\n  --space-8: 32px;\n  --space-10: 40px;\n\n  /* Typography */\n  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;\n  --text-xs: 12px;\n  --text-sm: 14px;\n  --text-base: 16px;\n  --text-lg: 18px;\n  --text-xl: 20px;\n  --text-2xl: 24px;\n  --text-3xl: 32px;\n  --text-4xl: 40px;\n  --font-weight-regular: 400;\n  --font-weight-medium: 500;\n  --font-weight-semibold: 600;\n  --font-weight-bold: 700;\n\n  /* Animation */\n  --duration-fast: 150ms;\n  --duration-base: 200ms;\n  --duration-slow: 300ms;\n  --easing-default: cubic-bezier(0.4, 0, 0.2, 1);\n  --easing-in: cubic-bezier(0.4, 0, 1, 1);\n  --easing-out: cubic-bezier(0, 0, 0.2, 1);\n\n  /* ============================================\n     Semantic Tokens \u2014 Light Mode\n     ============================================ */\n\n  /* Backgrounds */\n  --color-background: #f4f5f7;       /* Atlassian page bg \u2014 \u30AB\u30FC\u30C9\u304C\u767D\u3067\u6D6E\u304D\u4E0A\u304C\u308B */\n  --color-surface: #ffffff;\n  --color-surface-subtle: #f7f8f9;\n  --color-surface-elevated: #ffffff;\n\n  /* Text (WCAG AA\u4EE5\u4E0A\u3092\u62C5\u4FDD) */\n  --color-text-primary: #172b4d;   /* contrast vs #fff: 12.6:1 */\n  --color-text-secondary: #6b778c; /* contrast vs #fff:  5.0:1 */\n  --color-text-subtle: #8993a4;    /* contrast vs #fff:  3.7:1 \u2014 decorative\u7528\u9014\u306E\u307F */\n  --color-text-disabled: #a5adba;\n\n  /* Borders */\n  --color-border-subtle: #ebecf0;\n  --color-border-default: #dfe1e6;\n  --color-border-strong: #c1c7d0;\n\n  /* Primary \u2014 \u5404Go\u306F\u3053\u3053\u3060\u3051\u4E0A\u66F8\u304D\u3059\u308C\u3070OK */\n  --color-primary: #0052cc;\n  --color-primary-hover: #0747a6;\n  --color-primary-text: #ffffff;\n\n  /* Status */\n  --color-success: #00875a;\n  --color-success-subtle: #e3fcef;\n  --color-warning: #ff8b00;\n  --color-warning-subtle: #fffae6;\n  --color-danger: #de350b;\n  --color-danger-subtle: #ffebe6;\n  --color-info: #0052cc;\n  --color-info-subtle: #deebff;\n\n  /* Shadows */\n  --shadow-sm: 0 1px 2px rgba(9, 30, 66, 0.08);\n  --shadow-md: 0 4px 8px rgba(9, 30, 66, 0.08);\n  --shadow-lg: 0 8px 16px rgba(9, 30, 66, 0.1);\n\n  /* ============================================\n     Sidebar Tokens (HSL\u5F62\u5F0F \u2014 shadcn sidebar.tsx \u304C\n     hsl(var(--sidebar-xxx)) \u3067\u53C2\u7167\u3059\u308B\u305F\u3081\u7DAD\u6301)\n     ============================================ */\n  --sidebar-background: 0 0% 98%;\n  --sidebar-foreground: 240 5.3% 26.1%;\n  --sidebar-primary: 240 5.9% 10%;\n  --sidebar-primary-foreground: 0 0% 98%;\n  --sidebar-accent: 240 4.8% 95.9%;\n  --sidebar-accent-foreground: 240 5.9% 10%;\n  --sidebar-border: 220 13% 91%;\n  --sidebar-ring: 217.2 91.2% 59.8%;\n}\n\n/* ============================================\n   Dark Mode Overrides\n   \u30D7\u30EA\u30DF\u30C6\u30A3\u30D6\uFF08radius/space/font\uFF09\u306F\u5909\u66F4\u4E0D\u8981\u3002\n   \u8272\u7CFB\u30C8\u30FC\u30AF\u30F3\u306E\u307F\u4E0A\u66F8\u304D\u3002WCAG AA\u4EE5\u4E0A\u3092\u7DAD\u6301\u3002\n   ============================================ */\n.dark {\n  /* Backgrounds */\n  --color-background: #0f1117;       /* \u30D9\u30FC\u30B9\u80CC\u666F */\n  --color-surface: #1a1d27;          /* \u30AB\u30FC\u30C9\u7B49\u306E\u9762 */\n  --color-surface-subtle: #252836;   /* \u30B5\u30D6\u9762\uFF08\u30B5\u30A4\u30C9\u30D0\u30FC\u7B49\uFF09 */\n  --color-surface-elevated: #1e2130; /* \u30E2\u30FC\u30C0\u30EB\u7B49\u306E\u6D6E\u304D\u9762 */\n\n  /* Text (WCAG AA\u4EE5\u4E0A\u3092\u62C5\u4FDD) */\n  --color-text-primary: #f0f2f5;    /* contrast vs #0f1117: 14.2:1 */\n  --color-text-secondary: #a8b2c1;  /* contrast vs #0f1117:  7.3:1 */\n  --color-text-subtle: #7a8494;     /* contrast vs #0f1117:  4.6:1 */\n  --color-text-disabled: #4e5668;\n\n  /* Borders */\n  --color-border-subtle: #252836;\n  --color-border-default: #2d3244;\n  --color-border-strong: #3d4460;\n\n  /* Primary \u2014 \u30C6\u30AD\u30B9\u30C8\u8272\u306F\u30C0\u30FC\u30AF\u3067\u3082\u767D\u3067\u7D71\u4E00 */\n  --color-primary-text: #ffffff;\n\n  /* Status subtle (dark) */\n  --color-success-subtle: #0a2e1a;\n  --color-warning-subtle: #2e1f00;\n  --color-danger-subtle: #2e0d00;\n  --color-info-subtle: #001a4d;\n\n  /* Shadows \u2014 \u30C0\u30FC\u30AF\u306F\u900F\u660E\u5EA6\u3092\u4E0A\u3052\u3066\u8996\u8A8D\u6027\u3092\u78BA\u4FDD */\n  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);\n  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.3);\n  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.4);\n\n  /* Sidebar \u2014 Dark */\n  --sidebar-background: 240 5.9% 10%;\n  --sidebar-foreground: 240 4.8% 95.9%;\n  --sidebar-primary: 224.3 76.3% 48%;\n  --sidebar-primary-foreground: 0 0% 100%;\n  --sidebar-accent: 240 3.7% 15.9%;\n  --sidebar-accent-foreground: 240 4.8% 95.9%;\n  --sidebar-border: 240 3.7% 15.9%;\n  --sidebar-ring: 217.2 91.2% 59.8%;\n}\n';
 var GLOBALS_CSS = "/*\n * globals.css \u2014 shadcn/ui CSS\u5909\u6570\u3068\u306E\u6A4B\u6E21\u3057\n *\n * tokens.css \u306E\u610F\u5473\u7684\u30C8\u30FC\u30AF\u30F3\uFF08--color-xxx\uFF09\u3092\n * shadcn/ui \u304C\u671F\u5F85\u3059\u308B\u5909\u6570\u540D\uFF08--background \u7B49\uFF09\u306B\u30DE\u30C3\u30D4\u30F3\u30B0\u3059\u308B\u3002\n *\n * \u5404Go\u3067\u306E\u4F7F\u3044\u65B9:\n *   import '@takaki/go-design-system/tokens.css'  // \u2190 tokens + Tailwind directives\n *   import '@takaki/go-design-system/globals.css' // \u2190 shadcn bridge\uFF08\u4EFB\u610F\uFF09\n *\n * tokens.css \u306E .dark \u304C --color-xxx \u3092\u4E0A\u66F8\u304D\u3059\u308B\u305F\u3081\u3001\n * globals.css \u306E .dark \u3082\u540C\u3058\u30DE\u30C3\u30D4\u30F3\u30B0\u3092\u66F8\u304F\u3060\u3051\u3067\u30C1\u30A7\u30FC\u30F3\u304C\u6210\u7ACB\u3059\u308B\u3002\n */\n\n:root {\n  /* --- Layout --- */\n  --background: var(--color-background);\n  --foreground: var(--color-text-primary);\n\n  /* --- Card / Popover --- */\n  --card: var(--color-surface);\n  --card-foreground: var(--color-text-primary);\n  --popover: var(--color-surface-elevated);\n  --popover-foreground: var(--color-text-primary);\n\n  /* --- Brand --- */\n  --primary: var(--color-primary);\n  --primary-foreground: var(--color-primary-text);\n\n  /* --- Neutral --- */\n  --secondary: var(--color-surface-subtle);\n  --secondary-foreground: var(--color-text-primary);\n  --muted: var(--color-surface-subtle);\n  --muted-foreground: var(--color-text-secondary);\n  --accent: var(--color-surface-subtle);\n  --accent-foreground: var(--color-text-primary);\n\n  /* --- Destructive --- */\n  --destructive: var(--color-danger);\n  --destructive-foreground: #ffffff;\n\n  /* --- Form / Interactive --- */\n  --border: var(--color-border-default);\n  --input: var(--color-border-default);\n  --ring: var(--color-primary);\n\n  /* --- Border radius alias (used by shadcn internals) --- */\n  --radius: var(--radius-md);\n}\n\n.dark {\n  /* tokens.css \u306E .dark \u304C --color-xxx \u3092\u6697\u8272\u5024\u306B\u4E0A\u66F8\u304D\u6E08\u307F\u306E\u305F\u3081\u3001\n     \u3053\u306E\u30DE\u30C3\u30D4\u30F3\u30B0\u5B9A\u7FA9\u306F\u30E9\u30A4\u30C8\u3068\u540C\u3058\u3067\u6B63\u3057\u304F\u6A5F\u80FD\u3059\u308B\u3002 */\n  --background: var(--color-background);\n  --foreground: var(--color-text-primary);\n\n  --card: var(--color-surface);\n  --card-foreground: var(--color-text-primary);\n  --popover: var(--color-surface-elevated);\n  --popover-foreground: var(--color-text-primary);\n\n  --primary: var(--color-primary);\n  --primary-foreground: var(--color-primary-text);\n\n  --secondary: var(--color-surface-subtle);\n  --secondary-foreground: var(--color-text-primary);\n  --muted: var(--color-surface-subtle);\n  --muted-foreground: var(--color-text-secondary);\n  --accent: var(--color-surface-subtle);\n  --accent-foreground: var(--color-text-primary);\n\n  --destructive: var(--color-danger);\n  --destructive-foreground: #ffffff;\n\n  --border: var(--color-border-default);\n  --input: var(--color-border-default);\n  --ring: var(--color-primary);\n\n  --radius: var(--radius-md);\n}\n";
 function DesignTokens({ primaryColor, primaryColorHover }) {
   const overrideCSS = primaryColor ? `:root{--color-primary:${primaryColor};--color-primary-hover:${primaryColorHover ?? primaryColor};}` : "";
