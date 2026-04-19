@@ -74,6 +74,38 @@ const apps = [
 <AppSidebar currentApp="NativeGo" apps={apps} />
 ```
 
+## CSS の読み込み方（Tailwind v4 + Turbopack 必須）
+
+**⚠️ `layout.tsx` に CSS を直接 import してはいけない。** Turbopack が node_modules の CSS を PostCSS で処理しようとしてクラッシュする。
+
+**正しい方法：`app/globals.css` に `@import` で書く**
+
+```css
+/* app/globals.css */
+@import "tailwindcss";
+@import "@takaki/go-design-system/tokens.css";
+@import "@takaki/go-design-system/globals.css";
+
+:root {
+  --color-primary: {PRIMARY_COLOR};
+  --color-primary-hover: {PRIMARY_COLOR_HOVER};
+}
+```
+
+```tsx
+/* app/layout.tsx — globals.css のみ import する */
+import './globals.css'
+```
+
+Tailwind がコンポーネントのクラス名をスキャンできるよう `@source` も追加：
+
+```css
+@import "tailwindcss";
+@source "../node_modules/@takaki/go-design-system/dist";
+@import "@takaki/go-design-system/tokens.css";
+@import "@takaki/go-design-system/globals.css";
+```
+
 ## デザインシステムの更新への追従
 
 このプロダクトは `@takaki/go-design-system` に依存しており、デザインシステムの更新はVercelのBuild Commandで自動反映されます：
