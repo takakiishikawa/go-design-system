@@ -1,3 +1,4 @@
+"use client";
 'use strict';
 
 var React19 = require('react');
