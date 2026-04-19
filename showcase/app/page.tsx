@@ -32,11 +32,12 @@ export default function HomePage() {
       <div className="flex flex-col gap-3">
         <div className="flex items-center gap-2">
           <Layers className="size-6 text-primary" />
-          <h1 className="text-2xl font-bold text-foreground">go-design-system Showcase</h1>
+          <h1 className="text-2xl font-bold text-foreground">Go Design System</h1>
         </div>
         <p className="max-w-2xl text-base text-muted-foreground">
-          Goシリーズ（NativeGo / CareGo / KenyakuGo / TaskGo / CookGo / PhysicalGo）の
-          共通デザインシステムです。各Goに組み込む前にコンポーネント・テンプレート・トークンをここで確認できます。
+          NativeGo / CareGo / KenyakuGo / TaskGo / CookGo / PhysicalGo ——
+          Goシリーズ全プロダクトの共通デザインシステムです。
+          各プロダクトに組み込む前にコンポーネント・テンプレート・トークンをここで確認できます。
         </p>
         <div className="flex flex-wrap gap-2">
           <Badge variant="secondary">Next.js 16</Badge>
@@ -70,11 +71,11 @@ export default function HomePage() {
       {/* Usage guide */}
       <Card>
         <CardHeader>
-          <CardTitle className="text-base">各Goでの使い方</CardTitle>
+          <CardTitle className="text-base">各プロダクトでの使い方</CardTitle>
         </CardHeader>
         <CardContent className="flex flex-col gap-3">
           <p className="text-sm text-muted-foreground">
-            各Goプロダクトの <code className="rounded bg-surface-subtle px-1 py-0.5 text-xs font-mono">app/layout.tsx</code> で <code className="rounded bg-surface-subtle px-1 py-0.5 text-xs font-mono">DesignTokens</code> コンポーネントを使ってトークンを注入します。
+            各プロダクトの <code className="rounded bg-surface-subtle px-1 py-0.5 text-xs font-mono">app/layout.tsx</code> で <code className="rounded bg-surface-subtle px-1 py-0.5 text-xs font-mono">DesignTokens</code> コンポーネントを使ってトークンを注入します。
           </p>
           <pre className="overflow-x-auto rounded-md border border-border bg-surface-subtle p-4 text-xs">
 {`import { DesignTokens, AppLayout, AppSidebar } from '@takaki/go-design-system'

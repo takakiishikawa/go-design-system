@@ -94,14 +94,14 @@
      Sidebar Tokens (HSL形式 — shadcn sidebar.tsx が
      hsl(var(--sidebar-xxx)) で参照するため維持)
      ============================================ */
-  --sidebar-background: 0 0% 98%;
-  --sidebar-foreground: 240 5.3% 26.1%;
-  --sidebar-primary: 240 5.9% 10%;
+  --sidebar-background: 220 16% 96%;    /* #f3f4f7 — Atlassian nav bg */
+  --sidebar-foreground: 215 25% 30%;    /* #384660 — 視認性の高いナビテキスト */
+  --sidebar-primary: 215 25% 14%;       /* #1c2535 — アイコン等のダーク */
   --sidebar-primary-foreground: 0 0% 98%;
-  --sidebar-accent: 240 4.8% 95.9%;
-  --sidebar-accent-foreground: 240 5.9% 10%;
-  --sidebar-border: 220 13% 91%;
-  --sidebar-ring: 217.2 91.2% 59.8%;
+  --sidebar-accent: 213 27% 84%;        /* #c5cedd — 背景との差7%→明確なhover */
+  --sidebar-accent-foreground: 215 25% 14%; /* #1c2535 — コントラスト確保 */
+  --sidebar-border: 213 20% 87%;        /* #d2d7e0 — subtle border */
+  --sidebar-ring: 218 100% 40%;         /* #0052cc — フォーカスリング */
 }
 
 /* ============================================
@@ -142,12 +142,12 @@
   --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.4);
 
   /* Sidebar — Dark */
-  --sidebar-background: 240 5.9% 10%;
-  --sidebar-foreground: 240 4.8% 95.9%;
-  --sidebar-primary: 224.3 76.3% 48%;
+  --sidebar-background: 222 18% 11%;    /* #161d2d */
+  --sidebar-foreground: 215 20% 75%;    /* #abb5c8 */
+  --sidebar-primary: 218 100% 70%;      /* #6699ff */
   --sidebar-primary-foreground: 0 0% 100%;
-  --sidebar-accent: 240 3.7% 15.9%;
-  --sidebar-accent-foreground: 240 4.8% 95.9%;
-  --sidebar-border: 240 3.7% 15.9%;
-  --sidebar-ring: 217.2 91.2% 59.8%;
+  --sidebar-accent: 220 18% 18%;        /* #242e42 — dark hover */
+  --sidebar-accent-foreground: 215 20% 92%; /* #dfe3ec */
+  --sidebar-border: 220 18% 18%;        /* #242e42 */
+  --sidebar-ring: 218 100% 60%;         /* #3380ff */
 }

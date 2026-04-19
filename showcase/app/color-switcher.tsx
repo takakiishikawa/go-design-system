@@ -7,7 +7,7 @@ export function ColorSwitcher() {
 
   return (
     <div className="flex items-center gap-2">
-      <span className="hidden text-xs text-muted-foreground sm:block">カラー:</span>
+      <span className="hidden text-xs text-muted-foreground sm:block">プロダクト:</span>
       <div className="flex items-center gap-1">
         {PRODUCT_COLORS.map((p) => (
           <button

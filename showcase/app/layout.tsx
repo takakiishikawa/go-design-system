@@ -7,8 +7,8 @@ import { DynamicColor } from "./dynamic-color"
 import { ColorSwitcher } from "./color-switcher"
 
 export const metadata: Metadata = {
-  title: "go-design-system Showcase",
-  description: "Goシリーズ共通デザインシステムのコンポーネント・トークン・テンプレートを確認できるShowcaseサイト",
+  title: "Go Design System",
+  description: "NativeGo / CareGo / KenyakuGo / TaskGo / CookGo / PhysicalGo — Goシリーズ共通デザインシステム",
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
