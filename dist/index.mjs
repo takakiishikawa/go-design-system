@@ -545,7 +545,7 @@ function Skeleton({
     }
   );
 }
-var Progress = React19.forwardRef(({ className, value, ...props }, ref) => /* @__PURE__ */ jsx(
+var Progress = React19.forwardRef(({ className, value, indicatorClassName, ...props }, ref) => /* @__PURE__ */ jsx(
   ProgressPrimitive.Root,
   {
     ref,
@@ -557,7 +557,7 @@ var Progress = React19.forwardRef(({ className, value, ...props }, ref) => /* @_
     children: /* @__PURE__ */ jsx(
       ProgressPrimitive.Indicator,
       {
-        className: "h-full w-full flex-1 bg-primary transition-all",
+        className: cn("h-full w-full flex-1 bg-primary transition-all", indicatorClassName),
         style: { transform: `translateX(-${100 - (value || 0)}%)` }
       }
     )
@@ -4088,12 +4088,17 @@ function TrendIcon({ direction }) {
   if (direction === "down") return /* @__PURE__ */ jsx(TrendingDownIcon, { className: "size-3" });
   return /* @__PURE__ */ jsx(MinusIcon, { className: "size-3" });
 }
+var trendColors = {
+  up: "border-[color:var(--color-success)]/30 bg-[color:var(--color-success-subtle)] text-[color:var(--color-success)]",
+  down: "border-[color:var(--color-danger)]/30  bg-[color:var(--color-danger-subtle)]  text-[color:var(--color-danger)]",
+  neutral: "border-border bg-muted text-muted-foreground"
+};
 function TrendBadge({ trend }) {
   return /* @__PURE__ */ jsxs(
     Badge,
     {
       variant: "outline",
-      className: "flex gap-1 rounded-lg text-xs",
+      className: `flex gap-1 rounded-lg text-xs ${trendColors[trend.direction]}`,
       "aria-label": `\u5909\u5316: ${trend.value}`,
       children: [
         /* @__PURE__ */ jsx(TrendIcon, { direction: trend.direction }),
@@ -4103,20 +4108,37 @@ function TrendBadge({ trend }) {
   );
 }
 function SectionCards({ cards, className }) {
-  return /* @__PURE__ */ jsx("div", { className: `*:data-[slot=card]:shadow-xs @xl/main:grid-cols-2 @5xl/main:grid-cols-4 grid grid-cols-1 gap-3 *:data-[slot=card]:bg-gradient-to-t *:data-[slot=card]:from-primary/5 *:data-[slot=card]:to-card dark:*:data-[slot=card]:bg-card ${className ?? ""}`, children: cards.map((card, i) => /* @__PURE__ */ jsxs(Card, { className: "@container/card", children: [
-    /* @__PURE__ */ jsxs(CardHeader, { className: "pb-2", children: [
-      /* @__PURE__ */ jsx(CardDescription, { children: card.title }),
-      /* @__PURE__ */ jsx(CardTitle, { className: "@[250px]/card:text-3xl text-2xl font-semibold tabular-nums", children: card.value })
-    ] }),
-    (card.description || card.progress !== void 0 || card.trend || card.icon) && /* @__PURE__ */ jsxs(CardFooter, { className: "flex-col items-start gap-2 text-sm pt-0", children: [
-      (card.trend || card.description || card.icon) && /* @__PURE__ */ jsxs("div", { className: "flex w-full items-center justify-between gap-2", children: [
-        card.description && /* @__PURE__ */ jsx("span", { className: "text-muted-foreground line-clamp-1", children: card.description }),
-        card.trend && /* @__PURE__ */ jsx(TrendBadge, { trend: card.trend }),
-        card.icon && !card.trend && /* @__PURE__ */ jsx("span", { className: "text-muted-foreground", children: card.icon })
-      ] }),
-      card.progress !== void 0 && /* @__PURE__ */ jsx(Progress, { value: card.progress, className: "h-1.5 w-full" })
-    ] })
-  ] }, i)) });
+  return /* @__PURE__ */ jsx("div", { className: `*:data-[slot=card]:shadow-xs @xl/main:grid-cols-2 @5xl/main:grid-cols-4 grid grid-cols-1 gap-3 *:data-[slot=card]:bg-gradient-to-t *:data-[slot=card]:from-primary/5 *:data-[slot=card]:to-card dark:*:data-[slot=card]:bg-card ${className ?? ""}`, children: cards.map((card, i) => {
+    const achieved = card.progress !== void 0 && card.progress >= 100;
+    return /* @__PURE__ */ jsxs(
+      Card,
+      {
+        className: `@container/card${achieved ? " border-[color:var(--color-success)]/40 from-[color:var(--color-success)]/5" : ""}`,
+        children: [
+          /* @__PURE__ */ jsxs(CardHeader, { className: "pb-2", children: [
+            /* @__PURE__ */ jsx(CardDescription, { children: card.title }),
+            /* @__PURE__ */ jsx(CardTitle, { className: "@[250px]/card:text-3xl text-2xl font-semibold tabular-nums", children: card.value })
+          ] }),
+          (card.description || card.progress !== void 0 || card.trend || card.icon) && /* @__PURE__ */ jsxs(CardFooter, { className: "flex-col items-start gap-2 text-sm pt-0", children: [
+            (card.trend || card.description || card.icon) && /* @__PURE__ */ jsxs("div", { className: "flex w-full items-center justify-between gap-2", children: [
+              card.description && /* @__PURE__ */ jsx("span", { className: "text-muted-foreground line-clamp-1", children: card.description }),
+              card.trend && /* @__PURE__ */ jsx(TrendBadge, { trend: card.trend }),
+              card.icon && !card.trend && /* @__PURE__ */ jsx("span", { className: "text-muted-foreground", children: card.icon })
+            ] }),
+            card.progress !== void 0 && /* @__PURE__ */ jsx(
+              Progress,
+              {
+                value: Math.min(card.progress, 100),
+                className: `h-1.5 w-full${achieved ? " bg-[color:var(--color-success)]/20" : ""}`,
+                indicatorClassName: achieved ? "bg-[color:var(--color-success)]" : void 0
+              }
+            )
+          ] })
+        ]
+      },
+      i
+    );
+  }) });
 }
 var DEFAULT_TIME_RANGES = [
   { label: "\u904E\u53BB90\u65E5", value: "90d", daysBack: 90 },
