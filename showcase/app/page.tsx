@@ -14,7 +14,7 @@ const sections = [
     title: "コンポーネント",
     description: "shadcn/ui ベースの UI コンポーネント + Goシリーズ独自コンポーネント",
     href: "/components/button",
-    count: "13コンポーネント",
+    count: "15コンポーネント",
   },
   {
     icon: FileText,

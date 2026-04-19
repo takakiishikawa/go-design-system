@@ -33,6 +33,8 @@ const COMPONENT_ITEMS = [
   { title: "Table",            url: "/components/table" },
   { title: "Date Picker",      url: "/components/date-picker" },
   { title: "Chart Area",       url: "/components/chart-area" },
+  { title: "Combobox",         url: "/components/combobox" },
+  { title: "Timeline",         url: "/components/timeline" },
 ]
 
 const TEMPLATE_ITEMS = [

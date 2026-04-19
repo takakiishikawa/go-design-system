@@ -158,7 +158,7 @@ var Textarea = React19__namespace.forwardRef(({ className, ...props }, ref) => {
     "textarea",
     {
       className: cn(
-        "flex min-h-[60px] w-full rounded-md border border-input bg-transparent px-3 py-2 text-base shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
+        "flex min-h-[60px] w-full rounded-md border border-border bg-background px-3 py-2 text-base placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
         className
       ),
       ref,
@@ -279,7 +279,7 @@ var Checkbox = React19__namespace.forwardRef(({ className, ...props }, ref) => /
   {
     ref,
     className: cn(
-      "grid place-content-center peer h-4 w-4 shrink-0 rounded-sm border border-primary shadow focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground",
+      "grid place-content-center peer h-4 w-4 shrink-0 rounded-sm border border-border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:border-primary data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground",
       className
     ),
     ...props,
@@ -310,7 +310,7 @@ var RadioGroupItem = React19__namespace.forwardRef(({ className, ...props }, ref
     {
       ref,
       className: cn(
-        "aspect-square h-4 w-4 rounded-full border border-primary text-primary shadow focus:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50",
+        "aspect-square h-4 w-4 rounded-full border border-border text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:border-primary",
         className
       ),
       ...props,
@@ -323,7 +323,7 @@ var Switch = React19__namespace.forwardRef(({ className, ...props }, ref) => /* 
   SwitchPrimitives__namespace.Root,
   {
     className: cn(
-      "peer inline-flex h-5 w-9 shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=unchecked]:bg-input",
+      "peer inline-flex h-5 w-9 shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=unchecked]:bg-input",
       className
     ),
     ...props,
@@ -332,7 +332,7 @@ var Switch = React19__namespace.forwardRef(({ className, ...props }, ref) => /* 
       SwitchPrimitives__namespace.Thumb,
       {
         className: cn(
-          "pointer-events-none block h-4 w-4 rounded-full bg-background shadow-lg ring-0 transition-transform data-[state=checked]:translate-x-4 data-[state=unchecked]:translate-x-0"
+          "pointer-events-none block h-4 w-4 rounded-full bg-background ring-0 transition-transform data-[state=checked]:translate-x-4 data-[state=unchecked]:translate-x-0"
         )
       }
     )
@@ -1960,7 +1960,7 @@ Command.displayName = cmdk.Command.displayName;
 var CommandDialog = ({ children, ...props }) => {
   return /* @__PURE__ */ jsxRuntime.jsx(Dialog, { ...props, children: /* @__PURE__ */ jsxRuntime.jsx(DialogContent, { className: "overflow-hidden p-0", children: /* @__PURE__ */ jsxRuntime.jsx(Command, { className: "[&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-muted-foreground [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[cmdk-group]]:px-2 [&_[cmdk-input-wrapper]_svg]:h-5 [&_[cmdk-input-wrapper]_svg]:w-5 [&_[cmdk-input]]:h-12 [&_[cmdk-item]]:px-2 [&_[cmdk-item]]:py-3 [&_[cmdk-item]_svg]:h-5 [&_[cmdk-item]_svg]:w-5", children }) }) });
 };
-var CommandInput = React19__namespace.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsxRuntime.jsxs("div", { className: "flex items-center border-b px-3", "cmdk-input-wrapper": "", children: [
+var CommandInput = React19__namespace.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsxRuntime.jsxs("div", { className: "flex items-center border-b border-border px-3", "cmdk-input-wrapper": "", children: [
   /* @__PURE__ */ jsxRuntime.jsx(lucideReact.Search, { className: "mr-2 h-4 w-4 shrink-0 opacity-50" }),
   /* @__PURE__ */ jsxRuntime.jsx(
     cmdk.Command.Input,
@@ -2244,7 +2244,7 @@ var HoverCardContent = React19__namespace.forwardRef(({ className, align = "cent
     align,
     sideOffset,
     className: cn(
-      "z-50 w-64 rounded-md border bg-popover p-4 text-popover-foreground shadow-md outline-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 origin-[var(--radix-hover-card-content-transform-origin)]",
+      "z-50 w-64 rounded-md border border-border bg-popover p-4 text-popover-foreground shadow-sm outline-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 origin-[var(--radix-hover-card-content-transform-origin)]",
       className
     ),
     ...props
@@ -2377,7 +2377,7 @@ var Table = React19__namespace.forwardRef(({ className, ...props }, ref) => /* @
   }
 ) }));
 Table.displayName = "Table";
-var TableHeader = React19__namespace.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsxRuntime.jsx("thead", { ref, className: cn("[&_tr]:border-b", className), ...props }));
+var TableHeader = React19__namespace.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsxRuntime.jsx("thead", { ref, className: cn("[&_tr]:border-b [&_tr]:border-border", className), ...props }));
 TableHeader.displayName = "TableHeader";
 var TableBody = React19__namespace.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsxRuntime.jsx(
   "tbody",
@@ -2393,7 +2393,7 @@ var TableFooter = React19__namespace.forwardRef(({ className, ...props }, ref) =
   {
     ref,
     className: cn(
-      "border-t bg-muted/50 font-medium [&>tr]:last:border-b-0",
+      "border-t border-border bg-muted/50 font-medium [&>tr]:last:border-b-0",
       className
     ),
     ...props
@@ -2405,7 +2405,7 @@ var TableRow = React19__namespace.forwardRef(({ className, ...props }, ref) => /
   {
     ref,
     className: cn(
-      "border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted",
+      "border-b border-border transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted",
       className
     ),
     ...props
@@ -2727,7 +2727,7 @@ var ChartTooltipContent = React19__namespace.forwardRef(
       {
         ref,
         className: cn(
-          "grid min-w-[8rem] items-start gap-1.5 rounded-lg border border-border/50 bg-background px-2.5 py-1.5 text-xs shadow-xl",
+          "grid min-w-[8rem] items-start gap-1.5 rounded-lg border border-border bg-background px-2.5 py-1.5 text-xs shadow-sm",
           className
         ),
         children: [
@@ -2923,7 +2923,7 @@ var toggleVariants = classVarianceAuthority.cva(
     variants: {
       variant: {
         default: "bg-transparent",
-        outline: "border border-input bg-transparent shadow-sm hover:bg-accent hover:text-accent-foreground"
+        outline: "border border-border bg-background hover:bg-accent hover:text-accent-foreground"
       },
       size: {
         default: "h-9 px-2 min-w-9",
@@ -3814,6 +3814,97 @@ function TagGroup({ wrap = true, className, children, ...props }) {
       children
     }
   );
+}
+function Combobox({
+  options,
+  value,
+  onValueChange,
+  placeholder = "\u9078\u629E\u3057\u3066\u304F\u3060\u3055\u3044",
+  searchPlaceholder = "\u691C\u7D22...",
+  emptyText = "\u898B\u3064\u304B\u308A\u307E\u305B\u3093",
+  disabled,
+  className
+}) {
+  const [open, setOpen] = React19__namespace.useState(false);
+  const selected = options.find((opt) => opt.value === value);
+  return /* @__PURE__ */ jsxRuntime.jsxs(Popover, { open, onOpenChange: setOpen, children: [
+    /* @__PURE__ */ jsxRuntime.jsx(PopoverTrigger, { asChild: true, children: /* @__PURE__ */ jsxRuntime.jsxs(
+      Button,
+      {
+        variant: "outline",
+        role: "combobox",
+        "aria-expanded": open,
+        disabled,
+        className: cn("w-full justify-between font-normal", className),
+        children: [
+          /* @__PURE__ */ jsxRuntime.jsx("span", { className: cn("truncate", !selected && "text-muted-foreground"), children: selected ? selected.label : placeholder }),
+          /* @__PURE__ */ jsxRuntime.jsx(lucideReact.ChevronsUpDown, { className: "ml-2 size-4 shrink-0 opacity-50" })
+        ]
+      }
+    ) }),
+    /* @__PURE__ */ jsxRuntime.jsx(PopoverContent, { className: "w-[var(--radix-popover-trigger-width)] p-0", align: "start", children: /* @__PURE__ */ jsxRuntime.jsxs(Command, { children: [
+      /* @__PURE__ */ jsxRuntime.jsx(CommandInput, { placeholder: searchPlaceholder }),
+      /* @__PURE__ */ jsxRuntime.jsxs(CommandList, { children: [
+        /* @__PURE__ */ jsxRuntime.jsx(CommandEmpty, { children: emptyText }),
+        /* @__PURE__ */ jsxRuntime.jsx(CommandGroup, { children: options.map((opt) => /* @__PURE__ */ jsxRuntime.jsxs(
+          CommandItem,
+          {
+            value: opt.value,
+            onSelect: (current) => {
+              onValueChange?.(current === value ? "" : current);
+              setOpen(false);
+            },
+            children: [
+              /* @__PURE__ */ jsxRuntime.jsx(
+                lucideReact.Check,
+                {
+                  className: cn(
+                    "mr-2 size-4",
+                    value === opt.value ? "opacity-100" : "opacity-0"
+                  )
+                }
+              ),
+              opt.label
+            ]
+          },
+          opt.value
+        )) })
+      ] })
+    ] }) })
+  ] });
+}
+var variantDotClass = {
+  default: "bg-border",
+  success: "bg-green-500",
+  warning: "bg-yellow-500",
+  error: "bg-destructive"
+};
+function Timeline({ items, className }) {
+  return /* @__PURE__ */ jsxRuntime.jsx("ol", { className: cn("flex flex-col", className), children: items.map((item, i) => /* @__PURE__ */ jsxRuntime.jsxs("li", { className: "relative flex gap-4 pb-6 last:pb-0", children: [
+    i < items.length - 1 && /* @__PURE__ */ jsxRuntime.jsx(
+      "span",
+      {
+        className: "absolute left-[11px] top-6 h-full w-px bg-border",
+        "aria-hidden": true
+      }
+    ),
+    /* @__PURE__ */ jsxRuntime.jsx("div", { className: "relative z-10 mt-0.5 flex size-6 shrink-0 items-center justify-center", children: item.icon ? /* @__PURE__ */ jsxRuntime.jsx("span", { className: "flex size-6 items-center justify-center rounded-full border border-border bg-background text-muted-foreground", children: item.icon }) : /* @__PURE__ */ jsxRuntime.jsx(
+      "span",
+      {
+        className: cn(
+          "size-2.5 rounded-full",
+          variantDotClass[item.variant ?? "default"]
+        )
+      }
+    ) }),
+    /* @__PURE__ */ jsxRuntime.jsxs("div", { className: "flex min-w-0 flex-1 flex-col gap-0.5", children: [
+      /* @__PURE__ */ jsxRuntime.jsxs("div", { className: "flex flex-wrap items-baseline justify-between gap-x-2", children: [
+        /* @__PURE__ */ jsxRuntime.jsx("span", { className: "text-sm font-medium text-foreground", children: item.title }),
+        item.timestamp && /* @__PURE__ */ jsxRuntime.jsx("time", { className: "shrink-0 text-xs text-muted-foreground", children: item.timestamp })
+      ] }),
+      item.description && /* @__PURE__ */ jsxRuntime.jsx("p", { className: "text-sm text-muted-foreground", children: item.description })
+    ] })
+  ] }, item.id ?? i)) });
 }
 function DndProvider({ items, onReorder, children }) {
   const sensors = core.useSensors(
@@ -4937,6 +5028,7 @@ exports.Checkbox = Checkbox;
 exports.Collapsible = Collapsible;
 exports.CollapsibleContent = CollapsibleContent2;
 exports.CollapsibleTrigger = CollapsibleTrigger2;
+exports.Combobox = Combobox;
 exports.Command = Command;
 exports.CommandDialog = CommandDialog;
 exports.CommandEmpty = CommandEmpty;
@@ -5127,6 +5219,7 @@ exports.Tag = Tag;
 exports.TagGroup = TagGroup;
 exports.Text = Text;
 exports.Textarea = Textarea;
+exports.Timeline = Timeline;
 exports.Toaster = Toaster;
 exports.Toggle = Toggle;
 exports.ToggleGroup = ToggleGroup;

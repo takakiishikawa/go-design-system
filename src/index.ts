@@ -95,6 +95,12 @@ export * from "./components/ui/section";
 // Tags
 export * from "./components/ui/tag";
 
+// Combobox (searchable select)
+export * from "./components/ui/combobox";
+
+// Timeline
+export * from "./components/ui/timeline";
+
 // Drag & Drop
 export {
   DndProvider,
