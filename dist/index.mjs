@@ -3861,7 +3861,8 @@ function SearchForm({
 function AppSwitcher({
   currentApp,
   apps,
-  onNavigate
+  onNavigate,
+  placement = "top"
 }) {
   const current = apps.find((a) => a.name === currentApp) ?? apps[0];
   function handleSelect(url) {
@@ -3893,7 +3894,7 @@ function AppSwitcher({
       {
         className: "w-[var(--radix-dropdown-menu-trigger-width)] min-w-52",
         align: "start",
-        side: "top",
+        side: placement === "bottom" ? "bottom" : "top",
         sideOffset: 4,
         children: [
           /* @__PURE__ */ jsx(DropdownMenuLabel, { className: "text-xs text-muted-foreground", children: "Go\u30B7\u30EA\u30FC\u30BA" }),
@@ -4000,7 +4001,10 @@ function SectionCards({ cards }) {
       card.trend && /* @__PURE__ */ jsx("div", { className: "absolute right-4 top-4", children: /* @__PURE__ */ jsx(TrendBadge, { trend: card.trend }) }),
       card.icon && !card.trend && /* @__PURE__ */ jsx("div", { className: "absolute right-4 top-4 text-muted-foreground", children: card.icon })
     ] }),
-    card.description && /* @__PURE__ */ jsx(CardFooter, { className: "flex-col items-start gap-1 text-sm", children: /* @__PURE__ */ jsx("div", { className: "line-clamp-2 flex gap-2 text-muted-foreground", children: card.description }) })
+    (card.description || card.progress !== void 0) && /* @__PURE__ */ jsxs(CardFooter, { className: "flex-col items-start gap-2 text-sm", children: [
+      card.description && /* @__PURE__ */ jsx("div", { className: "line-clamp-2 flex gap-2 text-muted-foreground", children: card.description }),
+      card.progress !== void 0 && /* @__PURE__ */ jsx(Progress, { value: card.progress, className: "h-1.5 w-full" })
+    ] })
   ] }, i)) });
 }
 var DEFAULT_TIME_RANGES = [
@@ -4783,7 +4787,7 @@ function AppLayout({
           /* @__PURE__ */ jsx("div", { className: "flex flex-1 items-center", children: header })
         ] })
       ] }),
-      /* @__PURE__ */ jsx("main", { className: "flex flex-1 flex-col gap-4 p-4", children })
+      /* @__PURE__ */ jsx("main", { className: "@container/main flex flex-1 flex-col gap-4 p-4", children })
     ] })
   ] });
 }

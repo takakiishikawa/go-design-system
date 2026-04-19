@@ -9,6 +9,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
+import { Progress } from "@/components/ui/progress"
 
 export interface CardTrend {
   value: string
@@ -19,6 +20,8 @@ export interface KpiCard {
   title: string
   value: string | number
   description?: string
+  /** 0–100 の達成率。指定時は description の下にプログレスバーを表示 */
+  progress?: number
   trend?: CardTrend
   icon?: React.ReactNode
 }
@@ -67,11 +70,16 @@ export function SectionCards({ cards }: SectionCardsProps) {
               </div>
             )}
           </CardHeader>
-          {card.description && (
-            <CardFooter className="flex-col items-start gap-1 text-sm">
-              <div className="line-clamp-2 flex gap-2 text-muted-foreground">
-                {card.description}
-              </div>
+          {(card.description || card.progress !== undefined) && (
+            <CardFooter className="flex-col items-start gap-2 text-sm">
+              {card.description && (
+                <div className="line-clamp-2 flex gap-2 text-muted-foreground">
+                  {card.description}
+                </div>
+              )}
+              {card.progress !== undefined && (
+                <Progress value={card.progress} className="h-1.5 w-full" />
+              )}
             </CardFooter>
           )}
         </Card>

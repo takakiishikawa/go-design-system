@@ -872,6 +872,8 @@ interface AppSwitcherProps {
     apps: AppInfo[];
     /** 遷移処理を外から注入。省略時は window.location.href を使用 */
     onNavigate?: (url: string) => void;
+    /** ドロップダウンの開く方向。"top"(default) はフッター用、"bottom" はヘッダー用 */
+    placement?: "top" | "bottom";
 }
 interface AppSidebarProps extends React$1.ComponentProps<typeof Sidebar> {
     currentApp: string;
@@ -884,7 +886,7 @@ interface AppSidebarProps extends React$1.ComponentProps<typeof Sidebar> {
 declare function SearchForm({ placeholder, ...props }: React$1.ComponentProps<"form"> & {
     placeholder?: string;
 }): react_jsx_runtime.JSX.Element;
-declare function AppSwitcher({ currentApp, apps, onNavigate, }: AppSwitcherProps): react_jsx_runtime.JSX.Element;
+declare function AppSwitcher({ currentApp, apps, onNavigate, placement, }: AppSwitcherProps): react_jsx_runtime.JSX.Element;
 declare function AppSidebar({ currentApp, apps, navItems, logo, searchPlaceholder, onNavigate, ...props }: AppSidebarProps): react_jsx_runtime.JSX.Element;
 
 interface CardTrend {
@@ -895,6 +897,8 @@ interface KpiCard {
     title: string;
     value: string | number;
     description?: string;
+    /** 0–100 の達成率。指定時は description の下にプログレスバーを表示 */
+    progress?: number;
     trend?: CardTrend;
     icon?: React$1.ReactNode;
 }

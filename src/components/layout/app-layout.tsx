@@ -38,7 +38,7 @@ export function AppLayout({
         </header>
 
         {/* メインコンテンツ */}
-        <main className="flex flex-1 flex-col gap-4 p-4">{children}</main>
+        <main className="@container/main flex flex-1 flex-col gap-4 p-4">{children}</main>
       </SidebarInset>
     </SidebarProvider>
   )

@@ -57,6 +57,8 @@ export interface AppSwitcherProps {
   apps: AppInfo[]
   /** 遷移処理を外から注入。省略時は window.location.href を使用 */
   onNavigate?: (url: string) => void
+  /** ドロップダウンの開く方向。"top"(default) はフッター用、"bottom" はヘッダー用 */
+  placement?: "top" | "bottom"
 }
 
 export interface AppSidebarProps extends React.ComponentProps<typeof Sidebar> {
@@ -117,6 +119,7 @@ export function AppSwitcher({
   currentApp,
   apps,
   onNavigate,
+  placement = "top",
 }: AppSwitcherProps) {
   const current = apps.find((a) => a.name === currentApp) ?? apps[0]
 
@@ -152,7 +155,7 @@ export function AppSwitcher({
           <DropdownMenuContent
             className="w-[var(--radix-dropdown-menu-trigger-width)] min-w-52"
             align="start"
-            side="top"
+            side={placement === "bottom" ? "bottom" : "top"}
             sideOffset={4}
           >
             <DropdownMenuLabel className="text-xs text-muted-foreground">
