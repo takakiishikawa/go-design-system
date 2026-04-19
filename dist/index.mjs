@@ -4084,8 +4084,8 @@ function TrendBadge({ trend }) {
     }
   );
 }
-function SectionCards({ cards }) {
-  return /* @__PURE__ */ jsx("div", { className: "*:data-[slot=card]:shadow-xs @xl/main:grid-cols-2 @5xl/main:grid-cols-4 grid grid-cols-1 gap-4 px-4 *:data-[slot=card]:bg-gradient-to-t *:data-[slot=card]:from-primary/5 *:data-[slot=card]:to-card dark:*:data-[slot=card]:bg-card lg:px-6", children: cards.map((card, i) => /* @__PURE__ */ jsxs(Card, { className: "@container/card", children: [
+function SectionCards({ cards, className }) {
+  return /* @__PURE__ */ jsx("div", { className: `*:data-[slot=card]:shadow-xs @xl/main:grid-cols-2 @5xl/main:grid-cols-4 grid grid-cols-1 gap-3 *:data-[slot=card]:bg-gradient-to-t *:data-[slot=card]:from-primary/5 *:data-[slot=card]:to-card dark:*:data-[slot=card]:bg-card ${className ?? ""}`, children: cards.map((card, i) => /* @__PURE__ */ jsxs(Card, { className: "@container/card", children: [
     /* @__PURE__ */ jsxs(CardHeader, { className: "relative", children: [
       /* @__PURE__ */ jsx(CardDescription, { children: card.title }),
       /* @__PURE__ */ jsx(CardTitle, { className: "@[250px]/card:text-3xl text-2xl font-semibold tabular-nums", children: card.value }),

@@ -28,6 +28,7 @@ export interface KpiCard {
 
 export interface SectionCardsProps {
   cards: KpiCard[]
+  className?: string
 }
 
 function TrendIcon({ direction }: { direction: CardTrend["direction"] }) {
@@ -49,9 +50,9 @@ function TrendBadge({ trend }: { trend: CardTrend }) {
   )
 }
 
-export function SectionCards({ cards }: SectionCardsProps) {
+export function SectionCards({ cards, className }: SectionCardsProps) {
   return (
-    <div className="*:data-[slot=card]:shadow-xs @xl/main:grid-cols-2 @5xl/main:grid-cols-4 grid grid-cols-1 gap-4 px-4 *:data-[slot=card]:bg-gradient-to-t *:data-[slot=card]:from-primary/5 *:data-[slot=card]:to-card dark:*:data-[slot=card]:bg-card lg:px-6">
+    <div className={`*:data-[slot=card]:shadow-xs @xl/main:grid-cols-2 @5xl/main:grid-cols-4 grid grid-cols-1 gap-3 *:data-[slot=card]:bg-gradient-to-t *:data-[slot=card]:from-primary/5 *:data-[slot=card]:to-card dark:*:data-[slot=card]:bg-card ${className ?? ""}`}>
       {cards.map((card, i) => (
         <Card key={i} className="@container/card">
           <CardHeader className="relative">

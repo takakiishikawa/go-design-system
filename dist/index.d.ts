@@ -934,8 +934,9 @@ interface KpiCard {
 }
 interface SectionCardsProps {
     cards: KpiCard[];
+    className?: string;
 }
-declare function SectionCards({ cards }: SectionCardsProps): react_jsx_runtime.JSX.Element;
+declare function SectionCards({ cards, className }: SectionCardsProps): react_jsx_runtime.JSX.Element;
 
 interface TimeRangeOption {
     label: string;
