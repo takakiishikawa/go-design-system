@@ -150,7 +150,7 @@ export function AppSwitcher({
           </DropdownMenuTrigger>
 
           <DropdownMenuContent
-            className="w-[--radix-dropdown-menu-trigger-width] min-w-52"
+            className="w-[var(--radix-dropdown-menu-trigger-width)] min-w-52"
             align="start"
             side="top"
             sideOffset={4}
