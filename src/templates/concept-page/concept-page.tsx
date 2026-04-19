@@ -39,8 +39,6 @@ export interface ConceptPageProps {
   }>
 }
 
-// 再エクスポート（使う側が型を import しやすいよう）
-export type { SectionProps } from "./section"
 export type { MetricCardProps } from "./metric-card"
 
 // ---------------------------------------------------------------------------

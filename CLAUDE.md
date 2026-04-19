@@ -10,6 +10,7 @@
 
 2. **peerDependenciesで管理されているライブラリをdependenciesに移動しない**
    - `react`, `react-dom`, `tailwindcss`, `react-hook-form`, `zod`, `recharts`, `date-fns`, `lucide-react`
+   - `@dnd-kit/core`, `@dnd-kit/sortable`, `@dnd-kit/utilities`, `react-dropzone`
 
 3. **コンポーネント追加時**
    - shadcn/uiに既存のコンポーネントがある場合は必ずそれを使う（`npx shadcn@2 add <name>`）
@@ -58,6 +59,8 @@
 - react-hook-form + zod（フォーム）
 - date-fns（日付）
 - Tailwind CSS
+- @dnd-kit/core + @dnd-kit/sortable（ドラッグ&ドロップ）
+- react-dropzone（ファイルアップロード）
 
 新しい外部ライブラリを追加する前に、既存で代替できないか必ず確認。
 

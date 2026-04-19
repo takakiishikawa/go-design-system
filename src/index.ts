@@ -36,6 +36,7 @@ export * from "./components/ui/navigation-menu";
 export * from "./components/ui/dropdown-menu";
 export * from "./components/ui/menubar";
 export * from "./components/ui/command";
+export * from "./components/ui/pagination";
 
 // Overlay / Dialog
 export * from "./components/ui/dialog";
@@ -62,8 +63,50 @@ export * from "./components/ui/resizable";
 export * from "./components/ui/aspect-ratio";
 
 // ============================================
+// New Components
+// ============================================
+
+// Feedback / Status
+export * from "./components/ui/spinner";
+export * from "./components/ui/banner";
+export * from "./components/ui/empty-state";
+
+// Input
+export * from "./components/ui/date-picker";
+export * from "./components/ui/inline-edit";
+export * from "./components/ui/file-upload";
+
+// Typography
+export * from "./components/ui/typography";
+
+// Progress
+export * from "./components/ui/progress-circular";
+
+// Navigation / Steps
+export * from "./components/ui/stepper";
+
+// Layout
+export * from "./components/ui/section";
+
+// Tags
+export * from "./components/ui/tag";
+
+// Drag & Drop
+export {
+  DndProvider,
+  SortableItem,
+  DragHandle,
+} from "./components/dnd";
+export type {
+  DndProviderProps,
+  SortableItemProps,
+  DragHandleProps,
+} from "./components/dnd";
+
+// ============================================
 // Templates (Goシリーズ共通テンプレート)
 // ============================================
+
 // sidebar-01
 export {
   AppSidebar,
@@ -92,19 +135,30 @@ export type { DashboardPageProps } from "./templates/dashboard-01/dashboard-page
 export { LoginPage } from "./templates/login-01/login-page";
 export type { LoginPageProps } from "./templates/login-01/login-page";
 
-// concept-page
+// concept-page (Section is private to concept-page; use UI Section from components/ui/section)
 export { ConceptPage } from "./templates/concept-page/concept-page";
 export type {
   ConceptPageProps,
-  SectionProps,
   MetricCardProps,
 } from "./templates/concept-page/concept-page";
-export { Section } from "./templates/concept-page/section";
 export { MetricCard } from "./templates/concept-page/metric-card";
 export { ProductLogicFlow } from "./templates/concept-page/product-logic-flow";
 export type { ProductLogicFlowProps, LogicStep } from "./templates/concept-page/product-logic-flow";
 export { ScopeColumn } from "./templates/concept-page/scope-column";
 export type { ScopeColumnProps } from "./templates/concept-page/scope-column";
+
+// settings-page
+export {
+  SettingsPage,
+  SettingsGroup,
+  SettingsItem,
+} from "./templates/settings-page";
+export type {
+  SettingsPageProps,
+  SettingsGroupProps,
+  SettingsItemProps,
+  SettingsSection,
+} from "./templates/settings-page";
 
 // ============================================
 // Layout Components

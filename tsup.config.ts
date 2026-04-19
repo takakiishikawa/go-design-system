@@ -14,6 +14,10 @@ export default defineConfig({
     "react-hook-form",
     "zod",
     "date-fns",
+    "@dnd-kit/core",
+    "@dnd-kit/sortable",
+    "@dnd-kit/utilities",
+    "react-dropzone",
   ],
   treeshake: true,
 });
