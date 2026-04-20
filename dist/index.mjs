@@ -1303,37 +1303,27 @@ var SidebarMenuSubButton = React19.forwardRef(({ asChild = false, size = "md", i
   );
 });
 SidebarMenuSubButton.displayName = "SidebarMenuSubButton";
-var TabsVariantContext = React19.createContext("default");
 var Tabs = TabsPrimitive.Root;
-var TabsList = React19.forwardRef(({ className, variant = "default", children, ...props }, ref) => /* @__PURE__ */ jsx(TabsVariantContext.Provider, { value: variant, children: /* @__PURE__ */ jsx(
+var TabsList = React19.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx(
   TabsPrimitive.List,
   {
     ref,
+    className: cn("flex border-b border-border bg-transparent", className),
+    ...props
+  }
+));
+TabsList.displayName = TabsPrimitive.List.displayName;
+var TabsTrigger = React19.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx(
+  TabsPrimitive.Trigger,
+  {
+    ref,
     className: cn(
-      variant === "default" && "inline-flex h-9 items-center justify-center rounded-lg border border-border bg-muted p-1 text-muted-foreground",
-      variant === "underline" && "flex border-b border-border bg-transparent",
+      "relative -mb-px border-b-2 border-transparent px-4 pb-2.5 pt-1 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 data-[state=active]:border-primary data-[state=active]:text-foreground",
       className
     ),
-    ...props,
-    children
+    ...props
   }
-) }));
-TabsList.displayName = TabsPrimitive.List.displayName;
-var TabsTrigger = React19.forwardRef(({ className, ...props }, ref) => {
-  const variant = React19.useContext(TabsVariantContext);
-  return /* @__PURE__ */ jsx(
-    TabsPrimitive.Trigger,
-    {
-      ref,
-      className: cn(
-        variant === "default" && "inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-card data-[state=active]:text-foreground data-[state=active]:shadow-sm",
-        variant === "underline" && "relative -mb-px border-b-2 border-transparent px-4 pb-2.5 pt-1 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 data-[state=active]:border-primary data-[state=active]:text-foreground",
-        className
-      ),
-      ...props
-    }
-  );
-});
+));
 TabsTrigger.displayName = TabsPrimitive.Trigger.displayName;
 var TabsContent = React19.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx(
   TabsPrimitive.Content,

@@ -209,12 +209,8 @@ declare const SidebarMenuSubButton: React$1.ForwardRefExoticComponent<Omit<React
     isActive?: boolean;
 }, "ref"> & React$1.RefAttributes<HTMLAnchorElement>>;
 
-type TabsVariant = "default" | "underline";
 declare const Tabs: React$1.ForwardRefExoticComponent<TabsPrimitive.TabsProps & React$1.RefAttributes<HTMLDivElement>>;
-interface TabsListProps extends React$1.ComponentPropsWithoutRef<typeof TabsPrimitive.List> {
-    variant?: TabsVariant;
-}
-declare const TabsList: React$1.ForwardRefExoticComponent<TabsListProps & React$1.RefAttributes<HTMLDivElement>>;
+declare const TabsList: React$1.ForwardRefExoticComponent<Omit<TabsPrimitive.TabsListProps & React$1.RefAttributes<HTMLDivElement>, "ref"> & React$1.RefAttributes<HTMLDivElement>>;
 declare const TabsTrigger: React$1.ForwardRefExoticComponent<Omit<TabsPrimitive.TabsTriggerProps & React$1.RefAttributes<HTMLButtonElement>, "ref"> & React$1.RefAttributes<HTMLButtonElement>>;
 declare const TabsContent: React$1.ForwardRefExoticComponent<Omit<TabsPrimitive.TabsContentProps & React$1.RefAttributes<HTMLDivElement>, "ref"> & React$1.RefAttributes<HTMLDivElement>>;
 
