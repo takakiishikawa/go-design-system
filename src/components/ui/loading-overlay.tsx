@@ -33,3 +33,4 @@ export function LoadingOverlay({
     </div>
   )
 }
+LoadingOverlay.displayName = "LoadingOverlay"

@@ -614,24 +614,8 @@ interface DesignTokensProps {
  * Tailwind v4 + Turbopack 環境では CSS ファイルを node_modules から
  * @import すると PostCSS エラーが発生するため、このコンポーネントを使う。
  *
- * 使い方（app/layout.tsx）:
- *   import { DesignTokens } from '@takaki/go-design-system'
- *
- *   export default function RootLayout({ children }) {
- *     return (
- *       <html lang="ja">
- *         <head>
- *           <DesignTokens
- *             primaryColor="#E74C3C"
- *             primaryColorHover="#C0392B"
- *             secondaryColor="#F59E0B"
- *             secondaryColorHover="#D97706"
- *           />
- *         </head>
- *         <body>{children}</body>
- *       </html>
- *     )
- *   }
+ * 使い方（app/layout.tsx の <head> 内）:
+ *   <DesignTokens primaryColor="#0052CC" primaryColorHover="#0747A6" />
  */
 declare function DesignTokens({ primaryColor, primaryColorHover }: DesignTokensProps): react_jsx_runtime.JSX.Element;
 
@@ -757,7 +741,7 @@ interface NumberInputProps {
     className?: string;
     onChange?: (value: number) => void;
 }
-declare function NumberInput({ value: controlledValue, defaultValue, min, max, step, disabled, className, onChange, }: NumberInputProps): react_jsx_runtime.JSX.Element;
+declare const NumberInput: React$1.ForwardRefExoticComponent<NumberInputProps & React$1.RefAttributes<HTMLInputElement>>;
 
 interface SearchInputProps extends Omit<React$1.ComponentProps<"input">, "type" | "onChange"> {
     value?: string;
@@ -782,6 +766,9 @@ interface MultiSelectProps {
     onChange?: (value: string[]) => void;
 }
 declare function MultiSelect({ options, value: controlledValue, defaultValue, placeholder, disabled, className, onChange, }: MultiSelectProps): react_jsx_runtime.JSX.Element;
+declare namespace MultiSelect {
+    var displayName: string;
+}
 
 interface ConfirmDialogProps {
     trigger: React$1.ReactNode;
@@ -793,6 +780,9 @@ interface ConfirmDialogProps {
     onConfirm: () => void | Promise<void>;
 }
 declare function ConfirmDialog({ trigger, title, description, confirmLabel, cancelLabel, variant, onConfirm, }: ConfirmDialogProps): react_jsx_runtime.JSX.Element;
+declare namespace ConfirmDialog {
+    var displayName: string;
+}
 
 interface LoadingOverlayProps {
     loading: boolean;
@@ -801,6 +791,9 @@ interface LoadingOverlayProps {
     className?: string;
 }
 declare function LoadingOverlay({ loading, children, label, className, }: LoadingOverlayProps): react_jsx_runtime.JSX.Element;
+declare namespace LoadingOverlay {
+    var displayName: string;
+}
 
 interface HeadingProps extends React$1.HTMLAttributes<HTMLHeadingElement> {
     level?: 1 | 2 | 3 | 4 | 5 | 6;

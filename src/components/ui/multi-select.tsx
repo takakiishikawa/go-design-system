@@ -3,6 +3,7 @@
 import * as React from "react"
 import { X, ChevronDown } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { useControlledState } from "@/hooks/use-controlled-state"
 
 export type MultiSelectOption = {
   value: string
@@ -28,17 +29,15 @@ export function MultiSelect({
   className,
   onChange,
 }: MultiSelectProps) {
-  const isControlled = controlledValue !== undefined
-  const [internalValue, setInternalValue] = React.useState<string[]>(defaultValue)
+  const [selected, setInternalSelected] = useControlledState(controlledValue, defaultValue)
   const [open, setOpen] = React.useState(false)
   const containerRef = React.useRef<HTMLDivElement>(null)
-  const selected = isControlled ? controlledValue : internalValue
 
   function toggle(optionValue: string) {
     const next = selected.includes(optionValue)
       ? selected.filter((v) => v !== optionValue)
       : [...selected, optionValue]
-    if (!isControlled) setInternalValue(next)
+    setInternalSelected(next)
     onChange?.(next)
   }
 
@@ -147,3 +146,4 @@ export function MultiSelect({
     </div>
   )
 }
+MultiSelect.displayName = "MultiSelect"

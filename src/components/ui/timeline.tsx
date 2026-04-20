@@ -17,8 +17,8 @@ export interface TimelineProps {
 
 const variantDotClass: Record<NonNullable<TimelineItem["variant"]>, string> = {
   default: "bg-border",
-  success: "bg-green-500",
-  warning: "bg-yellow-500",
+  success: "bg-[color:var(--color-success)]",
+  warning: "bg-[color:var(--color-warning)]",
   error: "bg-destructive",
 }
 

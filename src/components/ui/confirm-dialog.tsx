@@ -14,6 +14,7 @@ import {
 } from "./alert-dialog"
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "./button"
+import { Spinner } from "./spinner"
 
 export interface ConfirmDialogProps {
   trigger: React.ReactNode
@@ -34,8 +35,22 @@ export function ConfirmDialog({
   variant = "default",
   onConfirm,
 }: ConfirmDialogProps) {
+  const [open, setOpen] = React.useState(false)
+  const [loading, setLoading] = React.useState(false)
+
+  async function handleConfirm(e: React.MouseEvent) {
+    e.preventDefault()
+    setLoading(true)
+    try {
+      await onConfirm()
+      setOpen(false)
+    } finally {
+      setLoading(false)
+    }
+  }
+
   return (
-    <AlertDialog>
+    <AlertDialog open={open} onOpenChange={setOpen}>
       <AlertDialogTrigger asChild>{trigger}</AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
@@ -45,17 +60,26 @@ export function ConfirmDialog({
           )}
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel>{cancelLabel}</AlertDialogCancel>
+          <AlertDialogCancel disabled={loading}>{cancelLabel}</AlertDialogCancel>
           <AlertDialogAction
             className={cn(
               variant === "destructive" && buttonVariants({ variant: "destructive" })
             )}
-            onClick={onConfirm}
+            disabled={loading}
+            onClick={handleConfirm}
           >
-            {confirmLabel}
+            {loading ? (
+              <span className="flex items-center gap-2">
+                <Spinner size="sm" />
+                {confirmLabel}
+              </span>
+            ) : (
+              confirmLabel
+            )}
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
   )
 }
+ConfirmDialog.displayName = "ConfirmDialog"

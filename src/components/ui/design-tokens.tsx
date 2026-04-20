@@ -14,24 +14,8 @@ export interface DesignTokensProps {
  * Tailwind v4 + Turbopack 環境では CSS ファイルを node_modules から
  * @import すると PostCSS エラーが発生するため、このコンポーネントを使う。
  *
- * 使い方（app/layout.tsx）:
- *   import { DesignTokens } from '@takaki/go-design-system'
- *
- *   export default function RootLayout({ children }) {
- *     return (
- *       <html lang="ja">
- *         <head>
- *           <DesignTokens
- *             primaryColor="#E74C3C"
- *             primaryColorHover="#C0392B"
- *             secondaryColor="#F59E0B"
- *             secondaryColorHover="#D97706"
- *           />
- *         </head>
- *         <body>{children}</body>
- *       </html>
- *     )
- *   }
+ * 使い方（app/layout.tsx の <head> 内）:
+ *   <DesignTokens primaryColor="#0052CC" primaryColorHover="#0747A6" />
  */
 export function DesignTokens({ primaryColor, primaryColorHover }: DesignTokensProps) {
   const overrideCSS = primaryColor

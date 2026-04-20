@@ -3,6 +3,7 @@
 import * as React from "react"
 import { Search, X } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { useControlledState } from "@/hooks/use-controlled-state"
 
 export interface SearchInputProps
   extends Omit<React.ComponentProps<"input">, "type" | "onChange"> {
@@ -14,7 +15,7 @@ export interface SearchInputProps
 }
 
 export const SearchInput = React.forwardRef<HTMLInputElement, SearchInputProps>(
-  (
+  function SearchInput(
     {
       value: controlledValue,
       defaultValue = "",
@@ -25,18 +26,16 @@ export const SearchInput = React.forwardRef<HTMLInputElement, SearchInputProps>(
       ...props
     },
     ref
-  ) => {
-    const isControlled = controlledValue !== undefined
-    const [internalValue, setInternalValue] = React.useState(defaultValue)
-    const value = isControlled ? controlledValue : internalValue
+  ) {
+    const [value, setInternalValue] = useControlledState(controlledValue, defaultValue)
 
     function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-      if (!isControlled) setInternalValue(e.target.value)
+      setInternalValue(e.target.value)
       onValueChange?.(e.target.value)
     }
 
     function handleClear() {
-      if (!isControlled) setInternalValue("")
+      setInternalValue("")
       onValueChange?.("")
       onClear?.()
     }

@@ -6,7 +6,7 @@ import { clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import { jsx, jsxs, Fragment } from 'react/jsx-runtime';
 import * as SelectPrimitive from '@radix-ui/react-select';
-import { ChevronDown, ChevronUp, Check, Circle, X, PanelLeft, ChevronRight, Search, MoreHorizontal, ChevronLeft, ChevronLeftIcon, ChevronRightIcon, ChevronDownIcon, GripVertical, Loader2, CalendarIcon, Upload, FileVideo, Minus, Plus, TrendingUp, TrendingDown, ChevronsUpDown, SearchIcon, ChevronsLeftIcon, ChevronsRightIcon, ArrowRight, AlertCircle, AlertTriangle, CheckCircle2, Info, CheckIcon, XIcon, ArrowRightIcon, ArrowDownIcon, TrendingUpIcon, TrendingDownIcon, MinusIcon } from 'lucide-react';
+import { ChevronDown, ChevronUp, Check, Circle, X, PanelLeft, ChevronRight, Search, Minus, Plus, MoreHorizontal, ChevronLeft, ChevronLeftIcon, ChevronRightIcon, ChevronDownIcon, GripVertical, Loader2, CalendarIcon, Upload, FileVideo, TrendingUp, TrendingDown, ChevronsUpDown, SearchIcon, ChevronsLeftIcon, ChevronsRightIcon, ArrowRight, AlertCircle, AlertTriangle, CheckCircle2, Info, CheckIcon, XIcon, ArrowRightIcon, ArrowDownIcon, TrendingUpIcon, TrendingDownIcon, MinusIcon } from 'lucide-react';
 export { FileImage, FileVideo } from 'lucide-react';
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
 import * as RadioGroupPrimitive from '@radix-ui/react-radio-group';
@@ -3448,78 +3448,93 @@ function FileUpload({
     ] }, i)) })
   ] });
 }
-function NumberInput({
-  value: controlledValue,
-  defaultValue = 0,
-  min = -Infinity,
-  max = Infinity,
-  step = 1,
-  disabled = false,
-  className,
-  onChange
-}) {
-  const isControlled = controlledValue !== void 0;
+function useControlledState(controlledValue, defaultValue) {
   const [internalValue, setInternalValue] = React19.useState(defaultValue);
-  const value = isControlled ? controlledValue : internalValue;
-  function update(next) {
-    const clamped = Math.min(max, Math.max(min, next));
-    if (!isControlled) setInternalValue(clamped);
-    onChange?.(clamped);
-  }
-  function handleInputChange(e) {
-    const parsed = parseFloat(e.target.value);
-    if (!isNaN(parsed)) update(parsed);
-  }
-  return /* @__PURE__ */ jsxs(
-    "div",
-    {
-      className: cn(
-        "inline-flex h-9 items-center rounded-md border border-border bg-background",
-        disabled && "cursor-not-allowed opacity-50",
-        className
-      ),
-      children: [
-        /* @__PURE__ */ jsx(
-          "button",
-          {
-            type: "button",
-            "aria-label": "\u6E1B\u3089\u3059",
-            disabled: disabled || value <= min,
-            onClick: () => update(value - step),
-            className: "flex h-full w-8 items-center justify-center text-muted-foreground transition-colors hover:text-foreground disabled:pointer-events-none",
-            children: /* @__PURE__ */ jsx(Minus, { className: "size-3.5" })
-          }
-        ),
-        /* @__PURE__ */ jsx(
-          "input",
-          {
-            type: "number",
-            value,
-            min,
-            max,
-            step,
-            disabled,
-            onChange: handleInputChange,
-            className: "w-12 bg-transparent text-center text-sm text-foreground focus:outline-none [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
-          }
-        ),
-        /* @__PURE__ */ jsx(
-          "button",
-          {
-            type: "button",
-            "aria-label": "\u5897\u3084\u3059",
-            disabled: disabled || value >= max,
-            onClick: () => update(value + step),
-            className: "flex h-full w-8 items-center justify-center text-muted-foreground transition-colors hover:text-foreground disabled:pointer-events-none",
-            children: /* @__PURE__ */ jsx(Plus, { className: "size-3.5" })
-          }
-        )
-      ]
-    }
+  const value = controlledValue !== void 0 ? controlledValue : internalValue;
+  const setValue = React19.useCallback(
+    (next) => {
+      if (controlledValue === void 0) {
+        setInternalValue(next);
+      }
+    },
+    [controlledValue]
   );
+  return [value, setValue];
 }
+var NumberInput = React19.forwardRef(
+  function NumberInput2({
+    value: controlledValue,
+    defaultValue = 0,
+    min = -Infinity,
+    max = Infinity,
+    step = 1,
+    disabled = false,
+    className,
+    onChange
+  }, ref) {
+    const [value, setInternalValue] = useControlledState(controlledValue, defaultValue);
+    function update(next) {
+      const clamped = Math.min(max, Math.max(min, next));
+      setInternalValue(clamped);
+      onChange?.(clamped);
+    }
+    function handleInputChange(e) {
+      const parsed = parseFloat(e.target.value);
+      if (!isNaN(parsed)) update(parsed);
+    }
+    return /* @__PURE__ */ jsxs(
+      "div",
+      {
+        className: cn(
+          "inline-flex h-9 items-center rounded-md border border-border bg-background",
+          disabled && "cursor-not-allowed opacity-50",
+          className
+        ),
+        children: [
+          /* @__PURE__ */ jsx(
+            "button",
+            {
+              type: "button",
+              "aria-label": "\u6E1B\u3089\u3059",
+              disabled: disabled || value <= min,
+              onClick: () => update(value - step),
+              className: "flex h-full w-8 items-center justify-center text-muted-foreground transition-colors hover:text-foreground disabled:pointer-events-none",
+              children: /* @__PURE__ */ jsx(Minus, { className: "size-3.5" })
+            }
+          ),
+          /* @__PURE__ */ jsx(
+            "input",
+            {
+              ref,
+              type: "number",
+              value,
+              min,
+              max,
+              step,
+              disabled,
+              onChange: handleInputChange,
+              className: "w-12 bg-transparent text-center text-sm text-foreground focus:outline-none [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+            }
+          ),
+          /* @__PURE__ */ jsx(
+            "button",
+            {
+              type: "button",
+              "aria-label": "\u5897\u3084\u3059",
+              disabled: disabled || value >= max,
+              onClick: () => update(value + step),
+              className: "flex h-full w-8 items-center justify-center text-muted-foreground transition-colors hover:text-foreground disabled:pointer-events-none",
+              children: /* @__PURE__ */ jsx(Plus, { className: "size-3.5" })
+            }
+          )
+        ]
+      }
+    );
+  }
+);
+NumberInput.displayName = "NumberInput";
 var SearchInput = React19.forwardRef(
-  ({
+  function SearchInput2({
     value: controlledValue,
     defaultValue = "",
     onValueChange,
@@ -3527,16 +3542,14 @@ var SearchInput = React19.forwardRef(
     className,
     containerClassName,
     ...props
-  }, ref) => {
-    const isControlled = controlledValue !== void 0;
-    const [internalValue, setInternalValue] = React19.useState(defaultValue);
-    const value = isControlled ? controlledValue : internalValue;
+  }, ref) {
+    const [value, setInternalValue] = useControlledState(controlledValue, defaultValue);
     function handleChange(e) {
-      if (!isControlled) setInternalValue(e.target.value);
+      setInternalValue(e.target.value);
       onValueChange?.(e.target.value);
     }
     function handleClear() {
-      if (!isControlled) setInternalValue("");
+      setInternalValue("");
       onValueChange?.("");
       onClear?.();
     }
@@ -3579,14 +3592,12 @@ function MultiSelect({
   className,
   onChange
 }) {
-  const isControlled = controlledValue !== void 0;
-  const [internalValue, setInternalValue] = React19.useState(defaultValue);
+  const [selected, setInternalSelected] = useControlledState(controlledValue, defaultValue);
   const [open, setOpen] = React19.useState(false);
   const containerRef = React19.useRef(null);
-  const selected = isControlled ? controlledValue : internalValue;
   function toggle(optionValue) {
     const next = selected.includes(optionValue) ? selected.filter((v) => v !== optionValue) : [...selected, optionValue];
-    if (!isControlled) setInternalValue(next);
+    setInternalSelected(next);
     onChange?.(next);
   }
   function remove(optionValue, e) {
@@ -3698,6 +3709,7 @@ function MultiSelect({
     )
   ] });
 }
+MultiSelect.displayName = "MultiSelect";
 function ConfirmDialog({
   trigger,
   title,
@@ -3707,7 +3719,19 @@ function ConfirmDialog({
   variant = "default",
   onConfirm
 }) {
-  return /* @__PURE__ */ jsxs(AlertDialog, { children: [
+  const [open, setOpen] = React19.useState(false);
+  const [loading, setLoading] = React19.useState(false);
+  async function handleConfirm(e) {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      await onConfirm();
+      setOpen(false);
+    } finally {
+      setLoading(false);
+    }
+  }
+  return /* @__PURE__ */ jsxs(AlertDialog, { open, onOpenChange: setOpen, children: [
     /* @__PURE__ */ jsx(AlertDialogTrigger, { asChild: true, children: trigger }),
     /* @__PURE__ */ jsxs(AlertDialogContent, { children: [
       /* @__PURE__ */ jsxs(AlertDialogHeader, { children: [
@@ -3715,21 +3739,26 @@ function ConfirmDialog({
         description && /* @__PURE__ */ jsx(AlertDialogDescription, { children: description })
       ] }),
       /* @__PURE__ */ jsxs(AlertDialogFooter, { children: [
-        /* @__PURE__ */ jsx(AlertDialogCancel, { children: cancelLabel }),
+        /* @__PURE__ */ jsx(AlertDialogCancel, { disabled: loading, children: cancelLabel }),
         /* @__PURE__ */ jsx(
           AlertDialogAction,
           {
             className: cn(
               variant === "destructive" && buttonVariants({ variant: "destructive" })
             ),
-            onClick: onConfirm,
-            children: confirmLabel
+            disabled: loading,
+            onClick: handleConfirm,
+            children: loading ? /* @__PURE__ */ jsxs("span", { className: "flex items-center gap-2", children: [
+              /* @__PURE__ */ jsx(Spinner, { size: "sm" }),
+              confirmLabel
+            ] }) : confirmLabel
           }
         )
       ] })
     ] })
   ] });
 }
+ConfirmDialog.displayName = "ConfirmDialog";
 function LoadingOverlay({
   loading,
   children,
@@ -3752,6 +3781,7 @@ function LoadingOverlay({
     )
   ] });
 }
+LoadingOverlay.displayName = "LoadingOverlay";
 var headingStyles = {
   1: "scroll-m-20 text-4xl font-bold tracking-tight",
   2: "scroll-m-20 text-3xl font-semibold tracking-tight",
@@ -4147,8 +4177,8 @@ function Combobox({
 }
 var variantDotClass = {
   default: "bg-border",
-  success: "bg-green-500",
-  warning: "bg-yellow-500",
+  success: "bg-[color:var(--color-success)]",
+  warning: "bg-[color:var(--color-warning)]",
   error: "bg-destructive"
 };
 function Timeline({ items, className }) {
