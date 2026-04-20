@@ -154,14 +154,3 @@
   --sidebar-border: 220 18% 18%;        /* #242e42 */
   --sidebar-ring: 218 100% 60%;         /* #3380ff */
 }
-
-/* ============================================================
-   Sidebar — アクティブアイテムスタイル
-   Tailwind スキャンに依存せず常に注入される。
-   ============================================================ */
-[data-sidebar="menu-button"][data-active="true"],
-[data-sidebar="menu-sub-button"][data-active="true"] {
-  background-color: color-mix(in srgb, var(--color-primary) 12%, transparent);
-  color: var(--color-primary);
-  font-weight: 500;
-}
