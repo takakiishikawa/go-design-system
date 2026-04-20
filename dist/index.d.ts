@@ -1190,8 +1190,10 @@ interface AppLayoutProps {
     children: React$1.ReactNode;
     /** SidebarProvider の defaultOpen（デフォルト: true） */
     defaultOpen?: boolean;
+    /** main 要素に追加するクラス（デフォルト: "gap-4 p-4"） */
+    mainClassName?: string;
 }
-declare function AppLayout({ sidebar, header, children, defaultOpen, }: AppLayoutProps): react_jsx_runtime.JSX.Element;
+declare function AppLayout({ sidebar, header, children, defaultOpen, mainClassName, }: AppLayoutProps): react_jsx_runtime.JSX.Element;
 
 interface BreadcrumbEntry {
     label: string;

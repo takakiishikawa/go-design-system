@@ -5244,7 +5244,8 @@ function AppLayout({
   sidebar,
   header,
   children,
-  defaultOpen = true
+  defaultOpen = true,
+  mainClassName
 }) {
   return /* @__PURE__ */ jsxs(SidebarProvider, { defaultOpen, children: [
     sidebar,
@@ -5256,7 +5257,7 @@ function AppLayout({
           /* @__PURE__ */ jsx("div", { className: "flex flex-1 items-center", children: header })
         ] })
       ] }),
-      /* @__PURE__ */ jsx("main", { className: "@container/main flex flex-1 flex-col gap-4 p-4", children })
+      /* @__PURE__ */ jsx("main", { className: cn("@container/main flex flex-1 flex-col", mainClassName ?? "gap-4 p-4"), children })
     ] })
   ] });
 }
