@@ -40,6 +40,12 @@
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
 
+  /* --- Status colors for Tailwind utilities (bg-warning, text-success, etc.) --- */
+  --color-warning: var(--warning);
+  --color-warning-subtle: var(--warning-subtle);
+  --color-success: var(--success);
+  --color-success-subtle: var(--success-subtle);
+
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);

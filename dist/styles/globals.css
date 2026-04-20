@@ -39,6 +39,12 @@
   --destructive: var(--color-danger);
   --destructive-foreground: #ffffff;
 
+  /* --- Status --- */
+  --warning: var(--color-warning);
+  --warning-subtle: var(--color-warning-subtle);
+  --success: var(--color-success);
+  --success-subtle: var(--color-success-subtle);
+
   /* --- Form / Interactive --- */
   --border: var(--color-border-default);
   --input: var(--color-border-default);
@@ -71,6 +77,11 @@
 
   --destructive: var(--color-danger);
   --destructive-foreground: #ffffff;
+
+  --warning: var(--color-warning);
+  --warning-subtle: var(--color-warning-subtle);
+  --success: var(--color-success);
+  --success-subtle: var(--color-success-subtle);
 
   --border: var(--color-border-default);
   --input: var(--color-border-default);
