@@ -129,7 +129,6 @@ export type {
 export {
   AppSidebar,
   AppSwitcher,
-  SearchForm,
 } from "./templates/sidebar-01/app-sidebar";
 export type {
   AppSidebarProps,

@@ -23,6 +23,7 @@ const COMPONENT_ITEMS = [
   { title: "Button",           url: "/components/button" },
   { title: "Card",             url: "/components/card" },
   { title: "Badge",            url: "/components/badge" },
+  { title: "Tag",              url: "/components/tag" },
   { title: "Banner",           url: "/components/banner" },
   { title: "Spinner",          url: "/components/spinner" },
   { title: "Empty State",      url: "/components/empty-state" },
@@ -90,7 +91,6 @@ export function ShowcaseSidebar() {
       currentApp="Go Design System"
       apps={APPS}
       navItems={navItems}
-      searchPlaceholder="コンポーネントを検索..."
     />
   )
 }

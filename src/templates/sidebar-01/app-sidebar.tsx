@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Check, ChevronsUpDown, Search } from "lucide-react"
+import { Check, ChevronsUpDown } from "lucide-react"
 
 import {
   DropdownMenu,
@@ -11,16 +11,13 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { Label } from "@/components/ui/label"
 import {
   Sidebar,
   SidebarContent,
-  SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
   SidebarHeader,
-  SidebarInput,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
@@ -66,7 +63,6 @@ export interface AppSidebarProps extends React.ComponentProps<typeof Sidebar> {
   apps: AppInfo[]
   navItems: NavItem[]
   logo?: React.ReactNode
-  searchPlaceholder?: string
   onNavigate?: (url: string) => void
 }
 
@@ -81,33 +77,6 @@ function ColorDot({ color, size = 8 }: { color: string; size?: number }) {
       style={{ width: size, height: size, backgroundColor: color }}
       aria-hidden
     />
-  )
-}
-
-// ---------------------------------------------------------------------------
-// SearchForm
-// ---------------------------------------------------------------------------
-
-export function SearchForm({
-  placeholder = "Search...",
-  ...props
-}: React.ComponentProps<"form"> & { placeholder?: string }) {
-  return (
-    <form {...props}>
-      <SidebarGroup className="py-0">
-        <SidebarGroupContent className="relative">
-          <Label htmlFor="sidebar-search" className="sr-only">
-            Search
-          </Label>
-          <SidebarInput
-            id="sidebar-search"
-            placeholder={placeholder}
-            className="pl-8"
-          />
-          <Search className="pointer-events-none absolute left-2 top-1/2 size-4 -translate-y-1/2 select-none opacity-50" />
-        </SidebarGroupContent>
-      </SidebarGroup>
-    </form>
   )
 }
 
@@ -191,35 +160,33 @@ export function AppSidebar({
   apps,
   navItems,
   logo,
-  searchPlaceholder,
   onNavigate,
   ...props
 }: AppSidebarProps) {
   return (
     <Sidebar {...props}>
-      {/* ヘッダー：ロゴ + 検索 */}
       <SidebarHeader>
         {logo && (
           <div className="flex items-center gap-2 px-2 py-1">{logo}</div>
         )}
-        <SearchForm placeholder={searchPlaceholder} />
+        <AppSwitcher
+          currentApp={currentApp}
+          apps={apps}
+          onNavigate={onNavigate}
+          placement="bottom"
+        />
       </SidebarHeader>
 
-      {/* メインナビ */}
       <SidebarContent>
         {navItems.map((section) =>
           section.items ? (
-            // グループ付きナビ（セクション見出し + サブ項目）
             <SidebarGroup key={section.title}>
               <SidebarGroupLabel>{section.title}</SidebarGroupLabel>
               <SidebarGroupContent>
                 <SidebarMenu>
                   {section.items.map((item) => (
                     <SidebarMenuItem key={item.title}>
-                      <SidebarMenuButton
-                        asChild
-                        isActive={item.isActive}
-                      >
+                      <SidebarMenuButton asChild isActive={item.isActive}>
                         <a href={item.url}>{item.title}</a>
                       </SidebarMenuButton>
                     </SidebarMenuItem>
@@ -228,7 +195,6 @@ export function AppSidebar({
               </SidebarGroupContent>
             </SidebarGroup>
           ) : (
-            // フラットなナビ項目
             <SidebarGroup key={section.title}>
               <SidebarGroupContent>
                 <SidebarMenu>
@@ -236,9 +202,7 @@ export function AppSidebar({
                     <SidebarMenuButton
                       asChild
                       isActive={section.isActive}
-                      className={cn(
-                        section.icon && "gap-2"
-                      )}
+                      className={cn(section.icon && "gap-2")}
                     >
                       <a href={section.url}>
                         {section.icon && (
@@ -254,15 +218,6 @@ export function AppSidebar({
           )
         )}
       </SidebarContent>
-
-      {/* フッター：アプリ切り替え */}
-      <SidebarFooter>
-        <AppSwitcher
-          currentApp={currentApp}
-          apps={apps}
-          onNavigate={onNavigate}
-        />
-      </SidebarFooter>
 
       <SidebarRail />
     </Sidebar>

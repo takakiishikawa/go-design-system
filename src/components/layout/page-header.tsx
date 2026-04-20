@@ -7,7 +7,6 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
-import { Separator } from "@/components/ui/separator"
 
 export interface BreadcrumbEntry {
   label: string
@@ -80,7 +79,6 @@ export function PageHeader({
         )}
       </div>
 
-      <Separator className="mt-2" style={{ marginTop: "var(--space-2)" }} />
     </div>
   )
 }

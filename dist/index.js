@@ -4313,23 +4313,6 @@ function ColorDot({ color, size = 8 }) {
     }
   );
 }
-function SearchForm({
-  placeholder = "Search...",
-  ...props
-}) {
-  return /* @__PURE__ */ jsxRuntime.jsx("form", { ...props, children: /* @__PURE__ */ jsxRuntime.jsx(SidebarGroup, { className: "py-0", children: /* @__PURE__ */ jsxRuntime.jsxs(SidebarGroupContent, { className: "relative", children: [
-    /* @__PURE__ */ jsxRuntime.jsx(Label2, { htmlFor: "sidebar-search", className: "sr-only", children: "Search" }),
-    /* @__PURE__ */ jsxRuntime.jsx(
-      SidebarInput,
-      {
-        id: "sidebar-search",
-        placeholder,
-        className: "pl-8"
-      }
-    ),
-    /* @__PURE__ */ jsxRuntime.jsx(lucideReact.Search, { className: "pointer-events-none absolute left-2 top-1/2 size-4 -translate-y-1/2 select-none opacity-50" })
-  ] }) }) });
-}
 function AppSwitcher({
   currentApp,
   apps,
@@ -4394,54 +4377,38 @@ function AppSidebar({
   apps,
   navItems,
   logo,
-  searchPlaceholder,
   onNavigate,
   ...props
 }) {
   return /* @__PURE__ */ jsxRuntime.jsxs(Sidebar, { ...props, children: [
     /* @__PURE__ */ jsxRuntime.jsxs(SidebarHeader, { children: [
       logo && /* @__PURE__ */ jsxRuntime.jsx("div", { className: "flex items-center gap-2 px-2 py-1", children: logo }),
-      /* @__PURE__ */ jsxRuntime.jsx(SearchForm, { placeholder: searchPlaceholder })
+      /* @__PURE__ */ jsxRuntime.jsx(
+        AppSwitcher,
+        {
+          currentApp,
+          apps,
+          onNavigate,
+          placement: "bottom"
+        }
+      )
     ] }),
     /* @__PURE__ */ jsxRuntime.jsx(SidebarContent, { children: navItems.map(
-      (section) => section.items ? (
-        // グループ付きナビ（セクション見出し + サブ項目）
-        /* @__PURE__ */ jsxRuntime.jsxs(SidebarGroup, { children: [
-          /* @__PURE__ */ jsxRuntime.jsx(SidebarGroupLabel, { children: section.title }),
-          /* @__PURE__ */ jsxRuntime.jsx(SidebarGroupContent, { children: /* @__PURE__ */ jsxRuntime.jsx(SidebarMenu, { children: section.items.map((item) => /* @__PURE__ */ jsxRuntime.jsx(SidebarMenuItem, { children: /* @__PURE__ */ jsxRuntime.jsx(
-            SidebarMenuButton,
-            {
-              asChild: true,
-              isActive: item.isActive,
-              children: /* @__PURE__ */ jsxRuntime.jsx("a", { href: item.url, children: item.title })
-            }
-          ) }, item.title)) }) })
-        ] }, section.title)
-      ) : (
-        // フラットなナビ項目
-        /* @__PURE__ */ jsxRuntime.jsx(SidebarGroup, { children: /* @__PURE__ */ jsxRuntime.jsx(SidebarGroupContent, { children: /* @__PURE__ */ jsxRuntime.jsx(SidebarMenu, { children: /* @__PURE__ */ jsxRuntime.jsx(SidebarMenuItem, { children: /* @__PURE__ */ jsxRuntime.jsx(
-          SidebarMenuButton,
-          {
-            asChild: true,
-            isActive: section.isActive,
-            className: cn(
-              section.icon && "gap-2"
-            ),
-            children: /* @__PURE__ */ jsxRuntime.jsxs("a", { href: section.url, children: [
-              section.icon && /* @__PURE__ */ jsxRuntime.jsx(section.icon, { className: "size-4 shrink-0" }),
-              section.title
-            ] })
-          }
-        ) }) }) }) }, section.title)
-      )
-    ) }),
-    /* @__PURE__ */ jsxRuntime.jsx(SidebarFooter, { children: /* @__PURE__ */ jsxRuntime.jsx(
-      AppSwitcher,
-      {
-        currentApp,
-        apps,
-        onNavigate
-      }
+      (section) => section.items ? /* @__PURE__ */ jsxRuntime.jsxs(SidebarGroup, { children: [
+        /* @__PURE__ */ jsxRuntime.jsx(SidebarGroupLabel, { children: section.title }),
+        /* @__PURE__ */ jsxRuntime.jsx(SidebarGroupContent, { children: /* @__PURE__ */ jsxRuntime.jsx(SidebarMenu, { children: section.items.map((item) => /* @__PURE__ */ jsxRuntime.jsx(SidebarMenuItem, { children: /* @__PURE__ */ jsxRuntime.jsx(SidebarMenuButton, { asChild: true, isActive: item.isActive, children: /* @__PURE__ */ jsxRuntime.jsx("a", { href: item.url, children: item.title }) }) }, item.title)) }) })
+      ] }, section.title) : /* @__PURE__ */ jsxRuntime.jsx(SidebarGroup, { children: /* @__PURE__ */ jsxRuntime.jsx(SidebarGroupContent, { children: /* @__PURE__ */ jsxRuntime.jsx(SidebarMenu, { children: /* @__PURE__ */ jsxRuntime.jsx(SidebarMenuItem, { children: /* @__PURE__ */ jsxRuntime.jsx(
+        SidebarMenuButton,
+        {
+          asChild: true,
+          isActive: section.isActive,
+          className: cn(section.icon && "gap-2"),
+          children: /* @__PURE__ */ jsxRuntime.jsxs("a", { href: section.url, children: [
+            section.icon && /* @__PURE__ */ jsxRuntime.jsx(section.icon, { className: "size-4 shrink-0" }),
+            section.title
+          ] })
+        }
+      ) }) }) }) }, section.title)
     ) }),
     /* @__PURE__ */ jsxRuntime.jsx(SidebarRail, {})
   ] });
@@ -5330,8 +5297,7 @@ function PageHeader({
         )
       ] }),
       actions && /* @__PURE__ */ jsxRuntime.jsx("div", { className: "flex shrink-0 items-center gap-2", children: actions })
-    ] }),
-    /* @__PURE__ */ jsxRuntime.jsx(Separator2, { className: "mt-2", style: { marginTop: "var(--space-2)" } })
+    ] })
   ] });
 }
 
@@ -5521,7 +5487,6 @@ exports.ResizablePanelGroup = ResizablePanelGroup;
 exports.ScopeColumn = ScopeColumn;
 exports.ScrollArea = ScrollArea;
 exports.ScrollBar = ScrollBar;
-exports.SearchForm = SearchForm;
 exports.SearchInput = SearchInput;
 exports.Section = Section;
 exports.SectionCards = SectionCards;

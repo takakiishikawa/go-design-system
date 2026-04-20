@@ -4268,23 +4268,6 @@ function ColorDot({ color, size = 8 }) {
     }
   );
 }
-function SearchForm({
-  placeholder = "Search...",
-  ...props
-}) {
-  return /* @__PURE__ */ jsx("form", { ...props, children: /* @__PURE__ */ jsx(SidebarGroup, { className: "py-0", children: /* @__PURE__ */ jsxs(SidebarGroupContent, { className: "relative", children: [
-    /* @__PURE__ */ jsx(Label2, { htmlFor: "sidebar-search", className: "sr-only", children: "Search" }),
-    /* @__PURE__ */ jsx(
-      SidebarInput,
-      {
-        id: "sidebar-search",
-        placeholder,
-        className: "pl-8"
-      }
-    ),
-    /* @__PURE__ */ jsx(Search, { className: "pointer-events-none absolute left-2 top-1/2 size-4 -translate-y-1/2 select-none opacity-50" })
-  ] }) }) });
-}
 function AppSwitcher({
   currentApp,
   apps,
@@ -4349,54 +4332,38 @@ function AppSidebar({
   apps,
   navItems,
   logo,
-  searchPlaceholder,
   onNavigate,
   ...props
 }) {
   return /* @__PURE__ */ jsxs(Sidebar, { ...props, children: [
     /* @__PURE__ */ jsxs(SidebarHeader, { children: [
       logo && /* @__PURE__ */ jsx("div", { className: "flex items-center gap-2 px-2 py-1", children: logo }),
-      /* @__PURE__ */ jsx(SearchForm, { placeholder: searchPlaceholder })
+      /* @__PURE__ */ jsx(
+        AppSwitcher,
+        {
+          currentApp,
+          apps,
+          onNavigate,
+          placement: "bottom"
+        }
+      )
     ] }),
     /* @__PURE__ */ jsx(SidebarContent, { children: navItems.map(
-      (section) => section.items ? (
-        // グループ付きナビ（セクション見出し + サブ項目）
-        /* @__PURE__ */ jsxs(SidebarGroup, { children: [
-          /* @__PURE__ */ jsx(SidebarGroupLabel, { children: section.title }),
-          /* @__PURE__ */ jsx(SidebarGroupContent, { children: /* @__PURE__ */ jsx(SidebarMenu, { children: section.items.map((item) => /* @__PURE__ */ jsx(SidebarMenuItem, { children: /* @__PURE__ */ jsx(
-            SidebarMenuButton,
-            {
-              asChild: true,
-              isActive: item.isActive,
-              children: /* @__PURE__ */ jsx("a", { href: item.url, children: item.title })
-            }
-          ) }, item.title)) }) })
-        ] }, section.title)
-      ) : (
-        // フラットなナビ項目
-        /* @__PURE__ */ jsx(SidebarGroup, { children: /* @__PURE__ */ jsx(SidebarGroupContent, { children: /* @__PURE__ */ jsx(SidebarMenu, { children: /* @__PURE__ */ jsx(SidebarMenuItem, { children: /* @__PURE__ */ jsx(
-          SidebarMenuButton,
-          {
-            asChild: true,
-            isActive: section.isActive,
-            className: cn(
-              section.icon && "gap-2"
-            ),
-            children: /* @__PURE__ */ jsxs("a", { href: section.url, children: [
-              section.icon && /* @__PURE__ */ jsx(section.icon, { className: "size-4 shrink-0" }),
-              section.title
-            ] })
-          }
-        ) }) }) }) }, section.title)
-      )
-    ) }),
-    /* @__PURE__ */ jsx(SidebarFooter, { children: /* @__PURE__ */ jsx(
-      AppSwitcher,
-      {
-        currentApp,
-        apps,
-        onNavigate
-      }
+      (section) => section.items ? /* @__PURE__ */ jsxs(SidebarGroup, { children: [
+        /* @__PURE__ */ jsx(SidebarGroupLabel, { children: section.title }),
+        /* @__PURE__ */ jsx(SidebarGroupContent, { children: /* @__PURE__ */ jsx(SidebarMenu, { children: section.items.map((item) => /* @__PURE__ */ jsx(SidebarMenuItem, { children: /* @__PURE__ */ jsx(SidebarMenuButton, { asChild: true, isActive: item.isActive, children: /* @__PURE__ */ jsx("a", { href: item.url, children: item.title }) }) }, item.title)) }) })
+      ] }, section.title) : /* @__PURE__ */ jsx(SidebarGroup, { children: /* @__PURE__ */ jsx(SidebarGroupContent, { children: /* @__PURE__ */ jsx(SidebarMenu, { children: /* @__PURE__ */ jsx(SidebarMenuItem, { children: /* @__PURE__ */ jsx(
+        SidebarMenuButton,
+        {
+          asChild: true,
+          isActive: section.isActive,
+          className: cn(section.icon && "gap-2"),
+          children: /* @__PURE__ */ jsxs("a", { href: section.url, children: [
+            section.icon && /* @__PURE__ */ jsx(section.icon, { className: "size-4 shrink-0" }),
+            section.title
+          ] })
+        }
+      ) }) }) }) }, section.title)
     ) }),
     /* @__PURE__ */ jsx(SidebarRail, {})
   ] });
@@ -5285,11 +5252,10 @@ function PageHeader({
         )
       ] }),
       actions && /* @__PURE__ */ jsx("div", { className: "flex shrink-0 items-center gap-2", children: actions })
-    ] }),
-    /* @__PURE__ */ jsx(Separator2, { className: "mt-2", style: { marginTop: "var(--space-2)" } })
+    ] })
   ] });
 }
 
-export { Accordion, AccordionContent, AccordionItem, AccordionTrigger, Alert, AlertDescription, AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogOverlay, AlertDialogPortal, AlertDialogTitle, AlertDialogTrigger, AlertTitle, AppLayout, AppSidebar, AppSwitcher, AspectRatio, Avatar, AvatarFallback, AvatarImage, Badge, Banner, Breadcrumb, BreadcrumbEllipsis, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator, Button, Calendar, CalendarDayButton, Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle, ChartArea, ChartContainer, ChartLegend, ChartLegendContent, ChartStyle, ChartTooltip, ChartTooltipContent, Checkbox, Collapsible, CollapsibleContent2 as CollapsibleContent, CollapsibleTrigger2 as CollapsibleTrigger, Combobox, Command, CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList, CommandSeparator, CommandShortcut, ConceptPage, ConfirmDialog, DashboardPage, DataTable, DatePicker, DateRangePicker, DesignTokens, Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogOverlay, DialogPortal, DialogTitle, DialogTrigger, DndProvider, DragHandle, Drawer, DrawerClose, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, DrawerOverlay, DrawerPortal, DrawerTitle, DrawerTrigger, DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuPortal, DropdownMenuRadioGroup, DropdownMenuRadioItem, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuSub, DropdownMenuSubContent, DropdownMenuSubTrigger, DropdownMenuTrigger, EmptyState, FileUpload, Form, FormActions, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage, Heading, HoverCard, HoverCardContent, HoverCardTrigger, InlineEdit, Input, Label2 as Label, LoadingOverlay, LoginPage, Menubar, MenubarCheckboxItem, MenubarContent, MenubarGroup, MenubarItem, MenubarLabel, MenubarMenu, MenubarPortal, MenubarRadioGroup, MenubarRadioItem, MenubarSeparator, MenubarShortcut, MenubarSub, MenubarSubContent, MenubarSubTrigger, MenubarTrigger, MetricCard, MetricText, MultiSelect, NavigationMenu, NavigationMenuContent, NavigationMenuIndicator, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger, NavigationMenuViewport, NumberInput, PageHeader, Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious, Popover, PopoverAnchor, PopoverContent, PopoverTrigger, ProductLogicFlow, Progress, ProgressCircular, RadioGroup, RadioGroupItem, ResizableHandle, ResizablePanel, ResizablePanelGroup, ScopeColumn, ScrollArea, ScrollBar, SearchForm, SearchInput, Section, SectionCards, Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectScrollDownButton, SelectScrollUpButton, SelectSeparator, SelectTrigger, SelectValue, Separator2 as Separator, SettingsGroup, SettingsItem, SettingsPage, Sheet, SheetClose, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetOverlay, SheetPortal, SheetTitle, SheetTrigger, Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupAction, SidebarGroupContent, SidebarGroupLabel, SidebarHeader, SidebarInput, SidebarInset, SidebarMenu, SidebarMenuAction, SidebarMenuBadge, SidebarMenuButton, SidebarMenuItem, SidebarMenuSkeleton, SidebarMenuSub, SidebarMenuSubButton, SidebarMenuSubItem, SidebarProvider, SidebarRail, SidebarSeparator, SidebarTrigger, Skeleton, Slider, SortableItem, Spinner, Stepper, Switch, Table, TableBody, TableCaption, TableCell, TableFooter, TableHead, TableHeader, TableRow, Tabs, TabsContent, TabsList, TabsTrigger, Tag, TagGroup, Text, Textarea, Timeline, Toaster, Toggle, ToggleGroup, ToggleGroupItem, Tooltip, TooltipContent, TooltipProvider, TooltipTrigger, badgeVariants, buttonVariants, cn, navigationMenuTriggerStyle, toggleVariants, useFormField, useIsMobile, useSidebar };
+export { Accordion, AccordionContent, AccordionItem, AccordionTrigger, Alert, AlertDescription, AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogOverlay, AlertDialogPortal, AlertDialogTitle, AlertDialogTrigger, AlertTitle, AppLayout, AppSidebar, AppSwitcher, AspectRatio, Avatar, AvatarFallback, AvatarImage, Badge, Banner, Breadcrumb, BreadcrumbEllipsis, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator, Button, Calendar, CalendarDayButton, Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle, ChartArea, ChartContainer, ChartLegend, ChartLegendContent, ChartStyle, ChartTooltip, ChartTooltipContent, Checkbox, Collapsible, CollapsibleContent2 as CollapsibleContent, CollapsibleTrigger2 as CollapsibleTrigger, Combobox, Command, CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList, CommandSeparator, CommandShortcut, ConceptPage, ConfirmDialog, DashboardPage, DataTable, DatePicker, DateRangePicker, DesignTokens, Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogOverlay, DialogPortal, DialogTitle, DialogTrigger, DndProvider, DragHandle, Drawer, DrawerClose, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, DrawerOverlay, DrawerPortal, DrawerTitle, DrawerTrigger, DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuPortal, DropdownMenuRadioGroup, DropdownMenuRadioItem, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuSub, DropdownMenuSubContent, DropdownMenuSubTrigger, DropdownMenuTrigger, EmptyState, FileUpload, Form, FormActions, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage, Heading, HoverCard, HoverCardContent, HoverCardTrigger, InlineEdit, Input, Label2 as Label, LoadingOverlay, LoginPage, Menubar, MenubarCheckboxItem, MenubarContent, MenubarGroup, MenubarItem, MenubarLabel, MenubarMenu, MenubarPortal, MenubarRadioGroup, MenubarRadioItem, MenubarSeparator, MenubarShortcut, MenubarSub, MenubarSubContent, MenubarSubTrigger, MenubarTrigger, MetricCard, MetricText, MultiSelect, NavigationMenu, NavigationMenuContent, NavigationMenuIndicator, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger, NavigationMenuViewport, NumberInput, PageHeader, Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious, Popover, PopoverAnchor, PopoverContent, PopoverTrigger, ProductLogicFlow, Progress, ProgressCircular, RadioGroup, RadioGroupItem, ResizableHandle, ResizablePanel, ResizablePanelGroup, ScopeColumn, ScrollArea, ScrollBar, SearchInput, Section, SectionCards, Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectScrollDownButton, SelectScrollUpButton, SelectSeparator, SelectTrigger, SelectValue, Separator2 as Separator, SettingsGroup, SettingsItem, SettingsPage, Sheet, SheetClose, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetOverlay, SheetPortal, SheetTitle, SheetTrigger, Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupAction, SidebarGroupContent, SidebarGroupLabel, SidebarHeader, SidebarInput, SidebarInset, SidebarMenu, SidebarMenuAction, SidebarMenuBadge, SidebarMenuButton, SidebarMenuItem, SidebarMenuSkeleton, SidebarMenuSub, SidebarMenuSubButton, SidebarMenuSubItem, SidebarProvider, SidebarRail, SidebarSeparator, SidebarTrigger, Skeleton, Slider, SortableItem, Spinner, Stepper, Switch, Table, TableBody, TableCaption, TableCell, TableFooter, TableHead, TableHeader, TableRow, Tabs, TabsContent, TabsList, TabsTrigger, Tag, TagGroup, Text, Textarea, Timeline, Toaster, Toggle, ToggleGroup, ToggleGroupItem, Tooltip, TooltipContent, TooltipProvider, TooltipTrigger, badgeVariants, buttonVariants, cn, navigationMenuTriggerStyle, toggleVariants, useFormField, useIsMobile, useSidebar };
 //# sourceMappingURL=index.mjs.map
 //# sourceMappingURL=index.mjs.map
