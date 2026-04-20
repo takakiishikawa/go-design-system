@@ -31,7 +31,7 @@ export function ColorSwitcher() {
         ))}
       </div>
       <span
-        className="hidden rounded px-1.5 py-0.5 text-xs font-medium text-white sm:block"
+        className="hidden rounded px-1.5 py-0.5 text-xs font-medium text-primary-foreground sm:block"
         style={{ backgroundColor: selected.color }}
       >
         {selected.name}

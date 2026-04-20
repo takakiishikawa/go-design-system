@@ -15,7 +15,7 @@ function Trend({ value, up }: { value: string; up: boolean }) {
   const Icon = up ? TrendingUp : TrendingDown
   return (
     <span
-      className={`inline-flex items-center gap-0.5 text-xs font-medium ${up ? "text-green-600" : "text-destructive"}`}
+      className={`inline-flex items-center gap-0.5 text-xs font-medium ${up ? "text-[color:var(--color-success)]" : "text-destructive"}`}
     >
       <Icon className="size-3" />
       {value}
@@ -117,7 +117,7 @@ export default function CardPage() {
               <Card className="h-full transition-colors group-hover:border-[var(--color-primary)] group-hover:bg-surface-subtle">
                 <CardHeader className="pb-2">
                   <div
-                    className="mb-2 flex size-9 items-center justify-center rounded-md text-white"
+                    className="mb-2 flex size-9 items-center justify-center rounded-md text-primary-foreground"
                     style={{ backgroundColor: "var(--color-primary)" }}
                   >
                     <item.icon className="size-4" />
@@ -176,8 +176,8 @@ export default function CardPage() {
           {[
             { color: "var(--color-primary)",   label: "情報",   text: "新機能がリリースされました。詳細はリリースノートをご確認ください。" },
             { color: "var(--color-info)", label: "ヒント", text: "情報カラーを使ったアクセントで視覚的な差別化ができます。" },
-            { color: "#00875a",                label: "成功",   text: "データのエクスポートが完了しました。" },
-            { color: "#de350b",                label: "エラー", text: "接続に失敗しました。ネットワーク設定を確認してください。" },
+            { color: "var(--color-success)",   label: "成功",   text: "データのエクスポートが完了しました。" },
+            { color: "var(--color-danger)",    label: "エラー", text: "接続に失敗しました。ネットワーク設定を確認してください。" },
           ].map((item) => (
             <Card
               key={item.label}
@@ -260,8 +260,8 @@ export default function CardPage() {
                       <Star
                         key={i}
                         className="size-3.5"
-                        style={{ color: i < r.rating ? "#F59E0B" : undefined }}
-                        fill={i < r.rating ? "#F59E0B" : "none"}
+                        style={{ color: i < r.rating ? "var(--color-warning)" : undefined }}
+                        fill={i < r.rating ? "var(--color-warning)" : "none"}
                       />
                     ))}
                   </div>
@@ -294,7 +294,7 @@ export default function CardPage() {
               name: "スタンダード",
               price: "¥1,980/月",
               color: "var(--color-primary)",
-              fg: "#fff",
+              fg: "var(--color-primary-text)",
               features: ["無制限プロジェクト", "10GBストレージ", "優先サポート"],
               cta: "今すぐ申し込む",
               variant: "default" as const,
@@ -333,7 +333,7 @@ export default function CardPage() {
                   className="w-full text-xs"
                   style={
                     plan.variant === "default"
-                      ? { backgroundColor: "var(--color-primary)", color: "#fff" }
+                      ? { backgroundColor: "var(--color-primary)", color: "var(--color-primary-text)" }
                       : undefined
                   }
                   variant={plan.variant}

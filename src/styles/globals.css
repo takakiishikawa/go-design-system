@@ -44,6 +44,10 @@
   --warning-subtle: var(--color-warning-subtle);
   --success: var(--color-success);
   --success-subtle: var(--color-success-subtle);
+  --danger: var(--color-danger);
+  --danger-subtle: var(--color-danger-subtle);
+  --info: var(--color-info);
+  --info-subtle: var(--color-info-subtle);
 
   /* --- Form / Interactive --- */
   --border: var(--color-border-default);
@@ -82,6 +86,10 @@
   --warning-subtle: var(--color-warning-subtle);
   --success: var(--color-success);
   --success-subtle: var(--color-success-subtle);
+  --danger: var(--color-danger);
+  --danger-subtle: var(--color-danger-subtle);
+  --info: var(--color-info);
+  --info-subtle: var(--color-info-subtle);
 
   --border: var(--color-border-default);
   --input: var(--color-border-default);

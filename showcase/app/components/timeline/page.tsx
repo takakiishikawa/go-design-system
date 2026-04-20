@@ -39,14 +39,14 @@ const WITH_ICONS = [
     title: "デプロイ完了",
     description: "本番環境へのデプロイが成功しました。",
     timestamp: "今日 10:00",
-    icon: <CheckCircle className="size-3 text-green-600" />,
+    icon: <CheckCircle className="size-3 text-[color:var(--color-success)]" />,
   },
   {
     id: "2",
     title: "ビルド実行中",
     description: "CI パイプラインが実行されています。",
     timestamp: "今日 09:55",
-    icon: <Clock className="size-3 text-yellow-600" />,
+    icon: <Clock className="size-3 text-[color:var(--color-warning)]" />,
   },
   {
     id: "3",
