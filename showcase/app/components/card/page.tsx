@@ -151,7 +151,7 @@ export default function CardPage() {
               {/* Image placeholder */}
               <div
                 className="h-32 w-full"
-                style={{ background: "linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%)" }}
+                style={{ background: "linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-hover) 100%)" }}
               />
               <CardHeader className="pb-1 pt-3">
                 <Badge variant="secondary" className="w-fit text-xs">{item.tag}</Badge>
@@ -175,7 +175,7 @@ export default function CardPage() {
         <div className="flex w-full max-w-md flex-col gap-2">
           {[
             { color: "var(--color-primary)",   label: "情報",   text: "新機能がリリースされました。詳細はリリースノートをご確認ください。" },
-            { color: "var(--color-secondary)", label: "ヒント", text: "セカンダリカラーを使ったアクセントで視覚的な差別化ができます。" },
+            { color: "var(--color-info)", label: "ヒント", text: "情報カラーを使ったアクセントで視覚的な差別化ができます。" },
             { color: "#00875a",                label: "成功",   text: "データのエクスポートが完了しました。" },
             { color: "#de350b",                label: "エラー", text: "接続に失敗しました。ネットワーク設定を確認してください。" },
           ].map((item) => (
@@ -278,7 +278,7 @@ export default function CardPage() {
       {/* ---------------------------------------------------------------- */}
       {/* 9. Action card with secondary color                               */}
       {/* ---------------------------------------------------------------- */}
-      <DemoSection title="プランカード（セカンダリカラー活用）">
+      <DemoSection title="プランカード">
         <div className="grid w-full grid-cols-1 gap-3 sm:grid-cols-3">
           {[
             {
@@ -302,11 +302,11 @@ export default function CardPage() {
             {
               name: "プレミアム",
               price: "¥4,980/月",
-              color: "var(--color-secondary)",
+              color: "#334155",
               fg: "#fff",
               features: ["無制限プロジェクト", "100GBストレージ", "専任サポート"],
               cta: "お問い合わせ",
-              variant: "secondary" as const,
+              variant: "outline" as const,
             },
           ].map((plan) => (
             <Card key={plan.name} className="flex flex-col overflow-hidden">
@@ -334,11 +334,9 @@ export default function CardPage() {
                   style={
                     plan.variant === "default"
                       ? { backgroundColor: "var(--color-primary)", color: "#fff" }
-                      : plan.variant === "secondary"
-                      ? { backgroundColor: "var(--color-secondary)", color: "#fff" }
                       : undefined
                   }
-                  variant={plan.variant === "secondary" ? "outline" : plan.variant}
+                  variant={plan.variant}
                 >
                   {plan.cta}
                 </Button>

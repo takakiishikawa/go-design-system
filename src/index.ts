@@ -80,6 +80,13 @@ export * from "./components/ui/empty-state";
 export * from "./components/ui/date-picker";
 export * from "./components/ui/inline-edit";
 export * from "./components/ui/file-upload";
+export * from "./components/ui/number-input";
+export * from "./components/ui/search-input";
+export * from "./components/ui/multi-select";
+
+// Overlay / Feedback
+export * from "./components/ui/confirm-dialog";
+export * from "./components/ui/loading-overlay";
 
 // Typography
 export * from "./components/ui/typography";

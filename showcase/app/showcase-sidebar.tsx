@@ -11,7 +11,7 @@ import {
 
 const APPS = [
   { name: "Go Design System", url: "/",                                    color: "#6366F1" },
-  { name: "NativeGo",         url: "https://native-go.vercel.app",         color: "#E74C3C" },
+  { name: "NativeGo",         url: "https://native-go.vercel.app",         color: "#0052CC" },
   { name: "CareGo",           url: "https://care-go.vercel.app",           color: "#22C55E" },
   { name: "KenyakuGo",        url: "https://kenyaku-go.vercel.app",        color: "#F59E0B" },
   { name: "TaskGo",           url: "https://task-go.vercel.app",           color: "#6366F1" },
@@ -35,6 +35,11 @@ const COMPONENT_ITEMS = [
   { title: "Chart Area",       url: "/components/chart-area" },
   { title: "Combobox",         url: "/components/combobox" },
   { title: "Timeline",         url: "/components/timeline" },
+  { title: "Confirm Dialog",   url: "/components/confirm-dialog" },
+  { title: "Number Input",     url: "/components/number-input" },
+  { title: "Search Input",     url: "/components/search-input" },
+  { title: "Loading Overlay",  url: "/components/loading-overlay" },
+  { title: "Multi Select",     url: "/components/multi-select" },
 ]
 
 const TEMPLATE_ITEMS = [

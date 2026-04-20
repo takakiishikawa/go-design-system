@@ -22,7 +22,7 @@
    - `tokens.css` の変更は全Goに影響するため慎重に
    - セマンティックトークン名の変更は既存の全Goのimportに影響する
    - プリミティブトークンの追加はOK、削除は慎重に
-   - 各Goで上書き可能なのは `--color-primary`, `--color-primary-hover`, `--color-secondary`, `--color-secondary-hover`
+   - 各Goで上書き可能なのは `--color-primary` と `--color-primary-hover` のみ（セカンダリカラーは廃止）
 
 5. **アクセシビリティ**
    - Radix UIベースのコンポーネントを改変しない
@@ -74,6 +74,34 @@ Atlassianの設計原則「UIの領域を差別化するには、色ではなく
 - react-dropzone（ファイルアップロード）
 
 新しい外部ライブラリを追加する前に、既存で代替できないか必ず確認。
+
+## Banner と Alert の使い分け
+
+- **Alert**（`<Alert>`）: ページ内のインラインフィードバック。フォームバリデーション結果・操作の結果通知など、コンテンツ中に埋め込む
+- **Banner**（`<Banner>`）: ページ上部または全体に関わるシステム通知。メンテナンス告知・機能リリース案内・重要なアカウント警告など、全ページで表示すべき情報
+- `variant` は共通: `default` / `info` / `success` / `warning` / `destructive`
+- **ルール**: 1アクションに対してどちらか1つだけ使う。BannerとAlertを同時に同じ意味で使わない
+
+## `--color-surface-subtle` の使用ガイドライン
+
+`--color-surface-subtle`（`#f7f8f9`）は「sunken」表現専用。以下の場合のみ使う:
+
+- kanbanボード等の列背景（カード群をグループとして認識させる）
+- テーブルのストライプ行（`tr:nth-child(even)`）
+- コードブロック・引用ブロック背景
+- フォームの「読み取り専用」フィールド背景
+
+**使ってはいけない場面**:
+- サイドバー・ヘッダー・ボディの背景（白を維持する）
+- カードの背景（白を維持する）
+- 通常の区切り（borderを使う）
+
+## フォームレイアウト規約
+
+- `FormLayout` > `FormSection` > `FormRow` > `FormField` の階層で構成
+- `FormActions` は `<form>` の末尾に配置。Cancel を左、Submit を右
+- モーダル内フォームも同じ規約。DialogFooter と FormActions を混在させない
+- ラベルはフィールドの上（`flex-col`）、インラインラベルは使わない
 
 ## 作業の進め方
 

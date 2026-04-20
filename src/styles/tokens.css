@@ -78,11 +78,6 @@
   --color-primary-hover: #0747a6;
   --color-primary-text: #ffffff;
 
-  /* Secondary — 各Goで任意に上書き可能 */
-  --color-secondary: #6554c0;
-  --color-secondary-hover: #5243aa;
-  --color-secondary-text: #ffffff;
-
   /* Status */
   --color-success: #00875a;
   --color-success-subtle: #e3fcef;
@@ -137,10 +132,6 @@
 
   /* Primary — テキスト色はダークでも白で統一 */
   --color-primary-text: #ffffff;
-
-  /* Secondary (dark) */
-  --color-secondary: #8777d9;
-  --color-secondary-hover: #998dd9;
 
   /* Status subtle (dark) */
   --color-success-subtle: #0a2e1a;

@@ -2,14 +2,10 @@ import * as React from "react"
 import { TOKENS_CSS, GLOBALS_CSS } from "./design-tokens-css"
 
 export interface DesignTokensProps {
-  /** このGoのプライマリカラー（例: "#E74C3C"） */
+  /** このGoのプライマリカラー（例: "#0052CC"） */
   primaryColor?: string
   /** ホバー時のプライマリカラー。省略時は primaryColor をそのまま使用 */
   primaryColorHover?: string
-  /** セカンダリブランドカラー（例: "#F59E0B"） */
-  secondaryColor?: string
-  /** ホバー時のセカンダリカラー。省略時は secondaryColor をそのまま使用 */
-  secondaryColorHover?: string
 }
 
 /**
@@ -37,26 +33,10 @@ export interface DesignTokensProps {
  *     )
  *   }
  */
-export function DesignTokens({
-  primaryColor,
-  primaryColorHover,
-  secondaryColor,
-  secondaryColorHover,
-}: DesignTokensProps) {
-  const parts: string[] = []
-  if (primaryColor) {
-    parts.push(
-      `--color-primary:${primaryColor};`,
-      `--color-primary-hover:${primaryColorHover ?? primaryColor};`,
-    )
-  }
-  if (secondaryColor) {
-    parts.push(
-      `--color-secondary:${secondaryColor};`,
-      `--color-secondary-hover:${secondaryColorHover ?? secondaryColor};`,
-    )
-  }
-  const overrideCSS = parts.length ? `:root{${parts.join("")}}` : ""
+export function DesignTokens({ primaryColor, primaryColorHover }: DesignTokensProps) {
+  const overrideCSS = primaryColor
+    ? `:root{--color-primary:${primaryColor};--color-primary-hover:${primaryColorHover ?? primaryColor};}`
+    : ""
 
   return (
     <>

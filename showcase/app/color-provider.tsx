@@ -6,18 +6,16 @@ export type ProductColor = {
   name: string
   color: string
   hover: string
-  secondary: string
-  secondaryHover: string
 }
 
 export const PRODUCT_COLORS: ProductColor[] = [
-  { name: "Go Design System", color: "#6366F1", hover: "#4f46e5", secondary: "#8B5CF6", secondaryHover: "#7c3aed" },
-  { name: "NativeGo",         color: "#E74C3C", hover: "#C0392B", secondary: "#F59E0B", secondaryHover: "#D97706" },
-  { name: "CareGo",           color: "#22C55E", hover: "#16a34a", secondary: "#06B6D4", secondaryHover: "#0891b2" },
-  { name: "KenyakuGo",        color: "#F59E0B", hover: "#D97706", secondary: "#10B981", secondaryHover: "#059669" },
-  { name: "TaskGo",           color: "#6366F1", hover: "#4f46e5", secondary: "#EC4899", secondaryHover: "#db2777" },
-  { name: "CookGo",           color: "#10B981", hover: "#059669", secondary: "#F97316", secondaryHover: "#ea6600" },
-  { name: "PhysicalGo",       color: "#3B82F6", hover: "#2563EB", secondary: "#14B8A6", secondaryHover: "#0d9488" },
+  { name: "Go Design System", color: "#6366F1", hover: "#4f46e5" },
+  { name: "NativeGo",         color: "#0052CC", hover: "#0747A6" },
+  { name: "CareGo",           color: "#22C55E", hover: "#16a34a" },
+  { name: "KenyakuGo",        color: "#F59E0B", hover: "#D97706" },
+  { name: "TaskGo",           color: "#6366F1", hover: "#4f46e5" },
+  { name: "CookGo",           color: "#10B981", hover: "#059669" },
+  { name: "PhysicalGo",       color: "#3B82F6", hover: "#2563EB" },
 ]
 
 const STORAGE_KEY = "go-ds-primary-color"
