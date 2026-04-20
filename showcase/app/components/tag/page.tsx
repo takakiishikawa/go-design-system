@@ -1,3 +1,5 @@
+"use client"
+
 import { Tag, TagGroup } from "@takaki/go-design-system"
 import { PageHeader, DemoSection } from "@/app/ui/demo-section"
 
