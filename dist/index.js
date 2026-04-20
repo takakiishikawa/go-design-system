@@ -459,6 +459,12 @@ var FormMessage = React19__namespace.forwardRef(({ className, children, ...props
   );
 });
 FormMessage.displayName = "FormMessage";
+function FormActions({
+  className,
+  children
+}) {
+  return /* @__PURE__ */ jsxRuntime.jsx("div", { className: cn("flex items-center justify-end gap-3 pt-2", className), children });
+}
 var Card = React19__namespace.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsxRuntime.jsx(
   "div",
   {
@@ -590,7 +596,7 @@ function Skeleton({
     }
   );
 }
-var Progress = React19__namespace.forwardRef(({ className, value, indicatorClassName, ...props }, ref) => /* @__PURE__ */ jsxRuntime.jsx(
+var Progress = React19__namespace.forwardRef(({ className, value, indicatorStyle, ...props }, ref) => /* @__PURE__ */ jsxRuntime.jsx(
   ProgressPrimitive__namespace.Root,
   {
     ref,
@@ -602,8 +608,8 @@ var Progress = React19__namespace.forwardRef(({ className, value, indicatorClass
     children: /* @__PURE__ */ jsxRuntime.jsx(
       ProgressPrimitive__namespace.Indicator,
       {
-        className: cn("h-full w-full flex-1 bg-primary transition-all", indicatorClassName),
-        style: { transform: `translateX(-${100 - (value || 0)}%)` }
+        className: "h-full w-full flex-1 bg-primary transition-all",
+        style: { transform: `translateX(-${100 - (value || 0)}%)`, ...indicatorStyle }
       }
     )
   }
@@ -1343,30 +1349,37 @@ var SidebarMenuSubButton = React19__namespace.forwardRef(({ asChild = false, siz
   );
 });
 SidebarMenuSubButton.displayName = "SidebarMenuSubButton";
+var TabsVariantContext = React19__namespace.createContext("default");
 var Tabs = TabsPrimitive__namespace.Root;
-var TabsList = React19__namespace.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsxRuntime.jsx(
+var TabsList = React19__namespace.forwardRef(({ className, variant = "default", children, ...props }, ref) => /* @__PURE__ */ jsxRuntime.jsx(TabsVariantContext.Provider, { value: variant, children: /* @__PURE__ */ jsxRuntime.jsx(
   TabsPrimitive__namespace.List,
   {
     ref,
     className: cn(
-      "inline-flex h-9 items-center justify-center rounded-lg border border-border bg-muted p-1 text-muted-foreground",
+      variant === "default" && "inline-flex h-9 items-center justify-center rounded-lg border border-border bg-muted p-1 text-muted-foreground",
+      variant === "underline" && "flex border-b border-border bg-transparent",
       className
     ),
-    ...props
+    ...props,
+    children
   }
-));
+) }));
 TabsList.displayName = TabsPrimitive__namespace.List.displayName;
-var TabsTrigger = React19__namespace.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsxRuntime.jsx(
-  TabsPrimitive__namespace.Trigger,
-  {
-    ref,
-    className: cn(
-      "inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-card data-[state=active]:text-foreground data-[state=active]:shadow-sm",
-      className
-    ),
-    ...props
-  }
-));
+var TabsTrigger = React19__namespace.forwardRef(({ className, ...props }, ref) => {
+  const variant = React19__namespace.useContext(TabsVariantContext);
+  return /* @__PURE__ */ jsxRuntime.jsx(
+    TabsPrimitive__namespace.Trigger,
+    {
+      ref,
+      className: cn(
+        variant === "default" && "inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-card data-[state=active]:text-foreground data-[state=active]:shadow-sm",
+        variant === "underline" && "relative -mb-px border-b-2 border-transparent px-4 pb-2.5 pt-1 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 data-[state=active]:border-primary data-[state=active]:text-foreground",
+        className
+      ),
+      ...props
+    }
+  );
+});
 TabsTrigger.displayName = TabsPrimitive__namespace.Trigger.displayName;
 var TabsContent = React19__namespace.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsxRuntime.jsx(
   TabsPrimitive__namespace.Content,
@@ -4133,9 +4146,9 @@ function TrendIcon({ direction }) {
   if (direction === "down") return /* @__PURE__ */ jsxRuntime.jsx(lucideReact.TrendingDownIcon, { className: "size-3" });
   return /* @__PURE__ */ jsxRuntime.jsx(lucideReact.MinusIcon, { className: "size-3" });
 }
-var trendColors = {
+var trendStyles = {
   up: "border-[color:var(--color-success)]/30 bg-[color:var(--color-success-subtle)] text-[color:var(--color-success)]",
-  down: "border-[color:var(--color-danger)]/30  bg-[color:var(--color-danger-subtle)]  text-[color:var(--color-danger)]",
+  down: "border-[color:var(--color-danger)]/30 bg-[color:var(--color-danger-subtle)] text-[color:var(--color-danger)]",
   neutral: "border-border bg-muted text-muted-foreground"
 };
 function TrendBadge({ trend }) {
@@ -4143,7 +4156,7 @@ function TrendBadge({ trend }) {
     Badge,
     {
       variant: "outline",
-      className: `flex gap-1 rounded-lg text-xs ${trendColors[trend.direction]}`,
+      className: `flex gap-1 rounded-lg text-xs ${trendStyles[trend.direction]}`,
       "aria-label": `\u5909\u5316: ${trend.value}`,
       children: [
         /* @__PURE__ */ jsxRuntime.jsx(TrendIcon, { direction: trend.direction }),
@@ -4154,28 +4167,35 @@ function TrendBadge({ trend }) {
 }
 function SectionCards({ cards, className }) {
   return /* @__PURE__ */ jsxRuntime.jsx("div", { className: `*:data-[slot=card]:shadow-xs @xl/main:grid-cols-2 @5xl/main:grid-cols-4 grid grid-cols-1 gap-3 *:data-[slot=card]:bg-gradient-to-t *:data-[slot=card]:from-primary/5 *:data-[slot=card]:to-card dark:*:data-[slot=card]:bg-card ${className ?? ""}`, children: cards.map((card, i) => {
-    const achieved = card.progress !== void 0 && card.progress >= 100;
+    const rawProgress = card.progress;
+    const achieved = rawProgress !== void 0 && rawProgress >= 100;
+    const displayProgress = rawProgress !== void 0 ? Math.min(rawProgress, 100) : void 0;
+    const successColor = "var(--color-success)";
+    const progressIndicatorStyle = achieved ? { backgroundColor: successColor } : void 0;
+    const progressTrackStyle = achieved ? { backgroundColor: `color-mix(in srgb, ${successColor} 20%, transparent)` } : void 0;
     return /* @__PURE__ */ jsxRuntime.jsxs(
       Card,
       {
-        className: `@container/card${achieved ? " border-[color:var(--color-success)]/40 from-[color:var(--color-success)]/5" : ""}`,
+        className: "@container/card",
+        style: achieved ? { borderColor: `color-mix(in srgb, ${successColor} 40%, transparent)` } : void 0,
         children: [
           /* @__PURE__ */ jsxRuntime.jsxs(CardHeader, { className: "pb-2", children: [
             /* @__PURE__ */ jsxRuntime.jsx(CardDescription, { children: card.title }),
             /* @__PURE__ */ jsxRuntime.jsx(CardTitle, { className: "@[250px]/card:text-3xl text-2xl font-semibold tabular-nums", children: card.value })
           ] }),
-          (card.description || card.progress !== void 0 || card.trend || card.icon) && /* @__PURE__ */ jsxRuntime.jsxs(CardFooter, { className: "flex-col items-start gap-2 text-sm pt-0", children: [
+          (card.description || rawProgress !== void 0 || card.trend || card.icon) && /* @__PURE__ */ jsxRuntime.jsxs(CardFooter, { className: "flex-col items-start gap-2 text-sm pt-0", children: [
             (card.trend || card.description || card.icon) && /* @__PURE__ */ jsxRuntime.jsxs("div", { className: "flex w-full items-center justify-between gap-2", children: [
               card.description && /* @__PURE__ */ jsxRuntime.jsx("span", { className: "text-muted-foreground line-clamp-1", children: card.description }),
               card.trend && /* @__PURE__ */ jsxRuntime.jsx(TrendBadge, { trend: card.trend }),
               card.icon && !card.trend && /* @__PURE__ */ jsxRuntime.jsx("span", { className: "text-muted-foreground", children: card.icon })
             ] }),
-            card.progress !== void 0 && /* @__PURE__ */ jsxRuntime.jsx(
+            displayProgress !== void 0 && /* @__PURE__ */ jsxRuntime.jsx(
               Progress,
               {
-                value: Math.min(card.progress, 100),
-                className: `h-1.5 w-full${achieved ? " bg-[color:var(--color-success)]/20" : ""}`,
-                indicatorClassName: achieved ? "bg-[color:var(--color-success)]" : void 0
+                value: displayProgress,
+                className: "h-1.5 w-full",
+                style: progressTrackStyle,
+                indicatorStyle: progressIndicatorStyle
               }
             )
           ] })
@@ -4805,9 +4825,10 @@ function ConceptPage({
   scope,
   productLogic,
   resultMetric,
-  behaviorMetrics
+  behaviorMetrics,
+  className
 }) {
-  return /* @__PURE__ */ jsxRuntime.jsx("div", { className: "mx-auto w-full max-w-4xl px-4 py-10 md:px-8 md:py-14", children: /* @__PURE__ */ jsxRuntime.jsxs("div", { className: "flex flex-col gap-10", children: [
+  return /* @__PURE__ */ jsxRuntime.jsx("div", { className: cn("mx-auto w-full max-w-4xl px-4 py-10 md:px-8 md:py-14", className), children: /* @__PURE__ */ jsxRuntime.jsxs("div", { className: "flex flex-col gap-10", children: [
     /* @__PURE__ */ jsxRuntime.jsxs("header", { className: "flex flex-col gap-4", children: [
       /* @__PURE__ */ jsxRuntime.jsxs("div", { className: "flex items-center gap-3", children: [
         productLogo && /* @__PURE__ */ jsxRuntime.jsx(
@@ -5126,6 +5147,7 @@ exports.DropdownMenuTrigger = DropdownMenuTrigger;
 exports.EmptyState = EmptyState;
 exports.FileUpload = FileUpload;
 exports.Form = Form;
+exports.FormActions = FormActions;
 exports.FormControl = FormControl;
 exports.FormDescription = FormDescription;
 exports.FormField = FormField;

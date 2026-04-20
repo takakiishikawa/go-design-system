@@ -20,7 +20,7 @@ export interface KpiCard {
   title: string
   value: string | number
   description?: string
-  /** 0–100 の達成率。指定時は description の下にプログレスバーを表示 */
+  /** 0–100 の達成率。指定時は progress bar を表示。100超えも受け付ける(表示は max 100) */
   progress?: number
   trend?: CardTrend
   icon?: React.ReactNode
@@ -37,9 +37,9 @@ function TrendIcon({ direction }: { direction: CardTrend["direction"] }) {
   return <MinusIcon className="size-3" />
 }
 
-const trendColors: Record<CardTrend["direction"], string> = {
+const trendStyles: Record<CardTrend["direction"], string> = {
   up:      "border-[color:var(--color-success)]/30 bg-[color:var(--color-success-subtle)] text-[color:var(--color-success)]",
-  down:    "border-[color:var(--color-danger)]/30  bg-[color:var(--color-danger-subtle)]  text-[color:var(--color-danger)]",
+  down:    "border-[color:var(--color-danger)]/30 bg-[color:var(--color-danger-subtle)] text-[color:var(--color-danger)]",
   neutral: "border-border bg-muted text-muted-foreground",
 }
 
@@ -47,7 +47,7 @@ function TrendBadge({ trend }: { trend: CardTrend }) {
   return (
     <Badge
       variant="outline"
-      className={`flex gap-1 rounded-lg text-xs ${trendColors[trend.direction]}`}
+      className={`flex gap-1 rounded-lg text-xs ${trendStyles[trend.direction]}`}
       aria-label={`変化: ${trend.value}`}
     >
       <TrendIcon direction={trend.direction} />
@@ -60,11 +60,23 @@ export function SectionCards({ cards, className }: SectionCardsProps) {
   return (
     <div className={`*:data-[slot=card]:shadow-xs @xl/main:grid-cols-2 @5xl/main:grid-cols-4 grid grid-cols-1 gap-3 *:data-[slot=card]:bg-gradient-to-t *:data-[slot=card]:from-primary/5 *:data-[slot=card]:to-card dark:*:data-[slot=card]:bg-card ${className ?? ""}`}>
       {cards.map((card, i) => {
-        const achieved = card.progress !== undefined && card.progress >= 100
+        const rawProgress = card.progress
+        const achieved = rawProgress !== undefined && rawProgress >= 100
+        const displayProgress = rawProgress !== undefined ? Math.min(rawProgress, 100) : undefined
+
+        const successColor = "var(--color-success)"
+        const progressIndicatorStyle: React.CSSProperties | undefined = achieved
+          ? { backgroundColor: successColor }
+          : undefined
+        const progressTrackStyle: React.CSSProperties | undefined = achieved
+          ? { backgroundColor: `color-mix(in srgb, ${successColor} 20%, transparent)` }
+          : undefined
+
         return (
           <Card
             key={i}
-            className={`@container/card${achieved ? " border-[color:var(--color-success)]/40 from-[color:var(--color-success)]/5" : ""}`}
+            className="@container/card"
+            style={achieved ? { borderColor: `color-mix(in srgb, ${successColor} 40%, transparent)` } : undefined}
           >
             <CardHeader className="pb-2">
               <CardDescription>{card.title}</CardDescription>
@@ -72,7 +84,7 @@ export function SectionCards({ cards, className }: SectionCardsProps) {
                 {card.value}
               </CardTitle>
             </CardHeader>
-            {(card.description || card.progress !== undefined || card.trend || card.icon) && (
+            {(card.description || rawProgress !== undefined || card.trend || card.icon) && (
               <CardFooter className="flex-col items-start gap-2 text-sm pt-0">
                 {(card.trend || card.description || card.icon) && (
                   <div className="flex w-full items-center justify-between gap-2">
@@ -85,11 +97,12 @@ export function SectionCards({ cards, className }: SectionCardsProps) {
                     )}
                   </div>
                 )}
-                {card.progress !== undefined && (
+                {displayProgress !== undefined && (
                   <Progress
-                    value={Math.min(card.progress, 100)}
-                    className={`h-1.5 w-full${achieved ? " bg-[color:var(--color-success)]/20" : ""}`}
-                    indicatorClassName={achieved ? "bg-[color:var(--color-success)]" : undefined}
+                    value={displayProgress}
+                    className="h-1.5 w-full"
+                    style={progressTrackStyle}
+                    indicatorStyle={progressIndicatorStyle}
                   />
                 )}
               </CardFooter>

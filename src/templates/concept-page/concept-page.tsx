@@ -1,5 +1,6 @@
 import * as React from "react"
 
+import { cn } from "@/lib/utils"
 import { Section } from "./section"
 import { ScopeColumn } from "./scope-column"
 import { ProductLogicFlow, type LogicStep } from "./product-logic-flow"
@@ -14,6 +15,7 @@ export interface ConceptPageProps {
   productLogo?: React.ReactNode
   /** 一言説明（例: "家計を守るツール"） */
   tagline: string
+  className?: string
   /** コアメッセージ（1〜2文） */
   coreMessage: string
   /** コアバリュー */
@@ -55,9 +57,10 @@ export function ConceptPage({
   productLogic,
   resultMetric,
   behaviorMetrics,
+  className,
 }: ConceptPageProps) {
   return (
-    <div className="mx-auto w-full max-w-4xl px-4 py-10 md:px-8 md:py-14">
+    <div className={cn("mx-auto w-full max-w-4xl px-4 py-10 md:px-8 md:py-14", className)}>
       <div className="flex flex-col gap-10">
 
         {/* ── Hero ───────────────────────────────────────────── */}

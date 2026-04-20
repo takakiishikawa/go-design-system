@@ -414,6 +414,12 @@ var FormMessage = React19.forwardRef(({ className, children, ...props }, ref) =>
   );
 });
 FormMessage.displayName = "FormMessage";
+function FormActions({
+  className,
+  children
+}) {
+  return /* @__PURE__ */ jsx("div", { className: cn("flex items-center justify-end gap-3 pt-2", className), children });
+}
 var Card = React19.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx(
   "div",
   {
@@ -545,7 +551,7 @@ function Skeleton({
     }
   );
 }
-var Progress = React19.forwardRef(({ className, value, indicatorClassName, ...props }, ref) => /* @__PURE__ */ jsx(
+var Progress = React19.forwardRef(({ className, value, indicatorStyle, ...props }, ref) => /* @__PURE__ */ jsx(
   ProgressPrimitive.Root,
   {
     ref,
@@ -557,8 +563,8 @@ var Progress = React19.forwardRef(({ className, value, indicatorClassName, ...pr
     children: /* @__PURE__ */ jsx(
       ProgressPrimitive.Indicator,
       {
-        className: cn("h-full w-full flex-1 bg-primary transition-all", indicatorClassName),
-        style: { transform: `translateX(-${100 - (value || 0)}%)` }
+        className: "h-full w-full flex-1 bg-primary transition-all",
+        style: { transform: `translateX(-${100 - (value || 0)}%)`, ...indicatorStyle }
       }
     )
   }
@@ -1298,30 +1304,37 @@ var SidebarMenuSubButton = React19.forwardRef(({ asChild = false, size = "md", i
   );
 });
 SidebarMenuSubButton.displayName = "SidebarMenuSubButton";
+var TabsVariantContext = React19.createContext("default");
 var Tabs = TabsPrimitive.Root;
-var TabsList = React19.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx(
+var TabsList = React19.forwardRef(({ className, variant = "default", children, ...props }, ref) => /* @__PURE__ */ jsx(TabsVariantContext.Provider, { value: variant, children: /* @__PURE__ */ jsx(
   TabsPrimitive.List,
   {
     ref,
     className: cn(
-      "inline-flex h-9 items-center justify-center rounded-lg border border-border bg-muted p-1 text-muted-foreground",
+      variant === "default" && "inline-flex h-9 items-center justify-center rounded-lg border border-border bg-muted p-1 text-muted-foreground",
+      variant === "underline" && "flex border-b border-border bg-transparent",
       className
     ),
-    ...props
+    ...props,
+    children
   }
-));
+) }));
 TabsList.displayName = TabsPrimitive.List.displayName;
-var TabsTrigger = React19.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx(
-  TabsPrimitive.Trigger,
-  {
-    ref,
-    className: cn(
-      "inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-card data-[state=active]:text-foreground data-[state=active]:shadow-sm",
-      className
-    ),
-    ...props
-  }
-));
+var TabsTrigger = React19.forwardRef(({ className, ...props }, ref) => {
+  const variant = React19.useContext(TabsVariantContext);
+  return /* @__PURE__ */ jsx(
+    TabsPrimitive.Trigger,
+    {
+      ref,
+      className: cn(
+        variant === "default" && "inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-card data-[state=active]:text-foreground data-[state=active]:shadow-sm",
+        variant === "underline" && "relative -mb-px border-b-2 border-transparent px-4 pb-2.5 pt-1 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 data-[state=active]:border-primary data-[state=active]:text-foreground",
+        className
+      ),
+      ...props
+    }
+  );
+});
 TabsTrigger.displayName = TabsPrimitive.Trigger.displayName;
 var TabsContent = React19.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx(
   TabsPrimitive.Content,
@@ -4088,9 +4101,9 @@ function TrendIcon({ direction }) {
   if (direction === "down") return /* @__PURE__ */ jsx(TrendingDownIcon, { className: "size-3" });
   return /* @__PURE__ */ jsx(MinusIcon, { className: "size-3" });
 }
-var trendColors = {
+var trendStyles = {
   up: "border-[color:var(--color-success)]/30 bg-[color:var(--color-success-subtle)] text-[color:var(--color-success)]",
-  down: "border-[color:var(--color-danger)]/30  bg-[color:var(--color-danger-subtle)]  text-[color:var(--color-danger)]",
+  down: "border-[color:var(--color-danger)]/30 bg-[color:var(--color-danger-subtle)] text-[color:var(--color-danger)]",
   neutral: "border-border bg-muted text-muted-foreground"
 };
 function TrendBadge({ trend }) {
@@ -4098,7 +4111,7 @@ function TrendBadge({ trend }) {
     Badge,
     {
       variant: "outline",
-      className: `flex gap-1 rounded-lg text-xs ${trendColors[trend.direction]}`,
+      className: `flex gap-1 rounded-lg text-xs ${trendStyles[trend.direction]}`,
       "aria-label": `\u5909\u5316: ${trend.value}`,
       children: [
         /* @__PURE__ */ jsx(TrendIcon, { direction: trend.direction }),
@@ -4109,28 +4122,35 @@ function TrendBadge({ trend }) {
 }
 function SectionCards({ cards, className }) {
   return /* @__PURE__ */ jsx("div", { className: `*:data-[slot=card]:shadow-xs @xl/main:grid-cols-2 @5xl/main:grid-cols-4 grid grid-cols-1 gap-3 *:data-[slot=card]:bg-gradient-to-t *:data-[slot=card]:from-primary/5 *:data-[slot=card]:to-card dark:*:data-[slot=card]:bg-card ${className ?? ""}`, children: cards.map((card, i) => {
-    const achieved = card.progress !== void 0 && card.progress >= 100;
+    const rawProgress = card.progress;
+    const achieved = rawProgress !== void 0 && rawProgress >= 100;
+    const displayProgress = rawProgress !== void 0 ? Math.min(rawProgress, 100) : void 0;
+    const successColor = "var(--color-success)";
+    const progressIndicatorStyle = achieved ? { backgroundColor: successColor } : void 0;
+    const progressTrackStyle = achieved ? { backgroundColor: `color-mix(in srgb, ${successColor} 20%, transparent)` } : void 0;
     return /* @__PURE__ */ jsxs(
       Card,
       {
-        className: `@container/card${achieved ? " border-[color:var(--color-success)]/40 from-[color:var(--color-success)]/5" : ""}`,
+        className: "@container/card",
+        style: achieved ? { borderColor: `color-mix(in srgb, ${successColor} 40%, transparent)` } : void 0,
         children: [
           /* @__PURE__ */ jsxs(CardHeader, { className: "pb-2", children: [
             /* @__PURE__ */ jsx(CardDescription, { children: card.title }),
             /* @__PURE__ */ jsx(CardTitle, { className: "@[250px]/card:text-3xl text-2xl font-semibold tabular-nums", children: card.value })
           ] }),
-          (card.description || card.progress !== void 0 || card.trend || card.icon) && /* @__PURE__ */ jsxs(CardFooter, { className: "flex-col items-start gap-2 text-sm pt-0", children: [
+          (card.description || rawProgress !== void 0 || card.trend || card.icon) && /* @__PURE__ */ jsxs(CardFooter, { className: "flex-col items-start gap-2 text-sm pt-0", children: [
             (card.trend || card.description || card.icon) && /* @__PURE__ */ jsxs("div", { className: "flex w-full items-center justify-between gap-2", children: [
               card.description && /* @__PURE__ */ jsx("span", { className: "text-muted-foreground line-clamp-1", children: card.description }),
               card.trend && /* @__PURE__ */ jsx(TrendBadge, { trend: card.trend }),
               card.icon && !card.trend && /* @__PURE__ */ jsx("span", { className: "text-muted-foreground", children: card.icon })
             ] }),
-            card.progress !== void 0 && /* @__PURE__ */ jsx(
+            displayProgress !== void 0 && /* @__PURE__ */ jsx(
               Progress,
               {
-                value: Math.min(card.progress, 100),
-                className: `h-1.5 w-full${achieved ? " bg-[color:var(--color-success)]/20" : ""}`,
-                indicatorClassName: achieved ? "bg-[color:var(--color-success)]" : void 0
+                value: displayProgress,
+                className: "h-1.5 w-full",
+                style: progressTrackStyle,
+                indicatorStyle: progressIndicatorStyle
               }
             )
           ] })
@@ -4760,9 +4780,10 @@ function ConceptPage({
   scope,
   productLogic,
   resultMetric,
-  behaviorMetrics
+  behaviorMetrics,
+  className
 }) {
-  return /* @__PURE__ */ jsx("div", { className: "mx-auto w-full max-w-4xl px-4 py-10 md:px-8 md:py-14", children: /* @__PURE__ */ jsxs("div", { className: "flex flex-col gap-10", children: [
+  return /* @__PURE__ */ jsx("div", { className: cn("mx-auto w-full max-w-4xl px-4 py-10 md:px-8 md:py-14", className), children: /* @__PURE__ */ jsxs("div", { className: "flex flex-col gap-10", children: [
     /* @__PURE__ */ jsxs("header", { className: "flex flex-col gap-4", children: [
       /* @__PURE__ */ jsxs("div", { className: "flex items-center gap-3", children: [
         productLogo && /* @__PURE__ */ jsx(
@@ -4963,6 +4984,6 @@ function PageHeader({
   ] });
 }
 
-export { Accordion, AccordionContent, AccordionItem, AccordionTrigger, Alert, AlertDescription, AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogOverlay, AlertDialogPortal, AlertDialogTitle, AlertDialogTrigger, AlertTitle, AppLayout, AppSidebar, AppSwitcher, AspectRatio, Avatar, AvatarFallback, AvatarImage, Badge, Banner, Breadcrumb, BreadcrumbEllipsis, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator, Button, Calendar, CalendarDayButton, Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle, ChartArea, ChartContainer, ChartLegend, ChartLegendContent, ChartStyle, ChartTooltip, ChartTooltipContent, Checkbox, Collapsible, CollapsibleContent2 as CollapsibleContent, CollapsibleTrigger2 as CollapsibleTrigger, Combobox, Command, CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList, CommandSeparator, CommandShortcut, ConceptPage, DashboardPage, DataTable, DatePicker, DateRangePicker, DesignTokens, Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogOverlay, DialogPortal, DialogTitle, DialogTrigger, DndProvider, DragHandle, Drawer, DrawerClose, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, DrawerOverlay, DrawerPortal, DrawerTitle, DrawerTrigger, DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuPortal, DropdownMenuRadioGroup, DropdownMenuRadioItem, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuSub, DropdownMenuSubContent, DropdownMenuSubTrigger, DropdownMenuTrigger, EmptyState, FileUpload, Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage, Heading, HoverCard, HoverCardContent, HoverCardTrigger, InlineEdit, Input, Label2 as Label, LoginPage, Menubar, MenubarCheckboxItem, MenubarContent, MenubarGroup, MenubarItem, MenubarLabel, MenubarMenu, MenubarPortal, MenubarRadioGroup, MenubarRadioItem, MenubarSeparator, MenubarShortcut, MenubarSub, MenubarSubContent, MenubarSubTrigger, MenubarTrigger, MetricCard, MetricText, NavigationMenu, NavigationMenuContent, NavigationMenuIndicator, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger, NavigationMenuViewport, PageHeader, Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious, Popover, PopoverAnchor, PopoverContent, PopoverTrigger, ProductLogicFlow, Progress, ProgressCircular, RadioGroup, RadioGroupItem, ResizableHandle, ResizablePanel, ResizablePanelGroup, ScopeColumn, ScrollArea, ScrollBar, SearchForm, Section, SectionCards, Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectScrollDownButton, SelectScrollUpButton, SelectSeparator, SelectTrigger, SelectValue, Separator2 as Separator, SettingsGroup, SettingsItem, SettingsPage, Sheet, SheetClose, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetOverlay, SheetPortal, SheetTitle, SheetTrigger, Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupAction, SidebarGroupContent, SidebarGroupLabel, SidebarHeader, SidebarInput, SidebarInset, SidebarMenu, SidebarMenuAction, SidebarMenuBadge, SidebarMenuButton, SidebarMenuItem, SidebarMenuSkeleton, SidebarMenuSub, SidebarMenuSubButton, SidebarMenuSubItem, SidebarProvider, SidebarRail, SidebarSeparator, SidebarTrigger, Skeleton, Slider, SortableItem, Spinner, Stepper, Switch, Table, TableBody, TableCaption, TableCell, TableFooter, TableHead, TableHeader, TableRow, Tabs, TabsContent, TabsList, TabsTrigger, Tag, TagGroup, Text, Textarea, Timeline, Toaster, Toggle, ToggleGroup, ToggleGroupItem, Tooltip, TooltipContent, TooltipProvider, TooltipTrigger, badgeVariants, buttonVariants, cn, navigationMenuTriggerStyle, toggleVariants, useFormField, useIsMobile, useSidebar };
+export { Accordion, AccordionContent, AccordionItem, AccordionTrigger, Alert, AlertDescription, AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogOverlay, AlertDialogPortal, AlertDialogTitle, AlertDialogTrigger, AlertTitle, AppLayout, AppSidebar, AppSwitcher, AspectRatio, Avatar, AvatarFallback, AvatarImage, Badge, Banner, Breadcrumb, BreadcrumbEllipsis, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator, Button, Calendar, CalendarDayButton, Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle, ChartArea, ChartContainer, ChartLegend, ChartLegendContent, ChartStyle, ChartTooltip, ChartTooltipContent, Checkbox, Collapsible, CollapsibleContent2 as CollapsibleContent, CollapsibleTrigger2 as CollapsibleTrigger, Combobox, Command, CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList, CommandSeparator, CommandShortcut, ConceptPage, DashboardPage, DataTable, DatePicker, DateRangePicker, DesignTokens, Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogOverlay, DialogPortal, DialogTitle, DialogTrigger, DndProvider, DragHandle, Drawer, DrawerClose, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, DrawerOverlay, DrawerPortal, DrawerTitle, DrawerTrigger, DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuPortal, DropdownMenuRadioGroup, DropdownMenuRadioItem, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuSub, DropdownMenuSubContent, DropdownMenuSubTrigger, DropdownMenuTrigger, EmptyState, FileUpload, Form, FormActions, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage, Heading, HoverCard, HoverCardContent, HoverCardTrigger, InlineEdit, Input, Label2 as Label, LoginPage, Menubar, MenubarCheckboxItem, MenubarContent, MenubarGroup, MenubarItem, MenubarLabel, MenubarMenu, MenubarPortal, MenubarRadioGroup, MenubarRadioItem, MenubarSeparator, MenubarShortcut, MenubarSub, MenubarSubContent, MenubarSubTrigger, MenubarTrigger, MetricCard, MetricText, NavigationMenu, NavigationMenuContent, NavigationMenuIndicator, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger, NavigationMenuViewport, PageHeader, Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious, Popover, PopoverAnchor, PopoverContent, PopoverTrigger, ProductLogicFlow, Progress, ProgressCircular, RadioGroup, RadioGroupItem, ResizableHandle, ResizablePanel, ResizablePanelGroup, ScopeColumn, ScrollArea, ScrollBar, SearchForm, Section, SectionCards, Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectScrollDownButton, SelectScrollUpButton, SelectSeparator, SelectTrigger, SelectValue, Separator2 as Separator, SettingsGroup, SettingsItem, SettingsPage, Sheet, SheetClose, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetOverlay, SheetPortal, SheetTitle, SheetTrigger, Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupAction, SidebarGroupContent, SidebarGroupLabel, SidebarHeader, SidebarInput, SidebarInset, SidebarMenu, SidebarMenuAction, SidebarMenuBadge, SidebarMenuButton, SidebarMenuItem, SidebarMenuSkeleton, SidebarMenuSub, SidebarMenuSubButton, SidebarMenuSubItem, SidebarProvider, SidebarRail, SidebarSeparator, SidebarTrigger, Skeleton, Slider, SortableItem, Spinner, Stepper, Switch, Table, TableBody, TableCaption, TableCell, TableFooter, TableHead, TableHeader, TableRow, Tabs, TabsContent, TabsList, TabsTrigger, Tag, TagGroup, Text, Textarea, Timeline, Toaster, Toggle, ToggleGroup, ToggleGroupItem, Tooltip, TooltipContent, TooltipProvider, TooltipTrigger, badgeVariants, buttonVariants, cn, navigationMenuTriggerStyle, toggleVariants, useFormField, useIsMobile, useSidebar };
 //# sourceMappingURL=index.mjs.map
 //# sourceMappingURL=index.mjs.map

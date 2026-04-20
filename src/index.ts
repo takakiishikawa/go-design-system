@@ -18,6 +18,7 @@ export * from "./components/ui/switch";
 export * from "./components/ui/slider";
 export * from "./components/ui/label";
 export * from "./components/ui/form";
+export { FormActions } from "./components/ui/form-actions";
 
 // Display
 export * from "./components/ui/card";
