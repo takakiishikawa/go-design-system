@@ -50,6 +50,8 @@ export interface DataTableProps<TData> {
   pageSizeOptions?: number[]
   /** 空時のメッセージ */
   emptyMessage?: string
+  /** 行クリック時のコールバック。指定すると行が cursor-pointer になる */
+  onRowClick?: (row: TData) => void
 }
 
 export function DataTable<TData>({
@@ -59,6 +61,7 @@ export function DataTable<TData>({
   pageSize = 10,
   pageSizeOptions = [10, 20, 50],
   emptyMessage = "データがありません",
+  onRowClick,
 }: DataTableProps<TData>) {
   const [sorting, setSorting] = React.useState<SortingState>([])
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
@@ -137,6 +140,8 @@ export function DataTable<TData>({
                 <TableRow
                   key={row.id}
                   data-state={row.getIsSelected() ? "selected" : undefined}
+                  onClick={onRowClick ? () => onRowClick(row.original) : undefined}
+                  className={onRowClick ? "cursor-pointer hover:bg-muted/50 active:bg-muted transition-colors" : undefined}
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>

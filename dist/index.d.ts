@@ -1050,8 +1050,10 @@ interface DataTableProps<TData> {
     pageSizeOptions?: number[];
     /** 空時のメッセージ */
     emptyMessage?: string;
+    /** 行クリック時のコールバック。指定すると行が cursor-pointer になる */
+    onRowClick?: (row: TData) => void;
 }
-declare function DataTable<TData>({ columns, data, searchable, pageSize, pageSizeOptions, emptyMessage, }: DataTableProps<TData>): react_jsx_runtime.JSX.Element;
+declare function DataTable<TData>({ columns, data, searchable, pageSize, pageSizeOptions, emptyMessage, onRowClick, }: DataTableProps<TData>): react_jsx_runtime.JSX.Element;
 
 interface DashboardPageProps {
     /** KPIカード群 */

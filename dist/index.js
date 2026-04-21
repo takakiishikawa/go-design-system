@@ -4605,7 +4605,8 @@ function DataTable({
   searchable = false,
   pageSize = 10,
   pageSizeOptions = [10, 20, 50],
-  emptyMessage = "\u30C7\u30FC\u30BF\u304C\u3042\u308A\u307E\u305B\u3093"
+  emptyMessage = "\u30C7\u30FC\u30BF\u304C\u3042\u308A\u307E\u305B\u3093",
+  onRowClick
 }) {
   const [sorting, setSorting] = React19__namespace.useState([]);
   const [columnFilters, setColumnFilters] = React19__namespace.useState([]);
@@ -4654,6 +4655,8 @@ function DataTable({
         TableRow,
         {
           "data-state": row.getIsSelected() ? "selected" : void 0,
+          onClick: onRowClick ? () => onRowClick(row.original) : void 0,
+          className: onRowClick ? "cursor-pointer hover:bg-muted/50 active:bg-muted transition-colors" : void 0,
           children: row.getVisibleCells().map((cell) => /* @__PURE__ */ jsxRuntime.jsx(TableCell, { children: reactTable.flexRender(cell.column.columnDef.cell, cell.getContext()) }, cell.id))
         },
         row.id
