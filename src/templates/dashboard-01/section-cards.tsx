@@ -24,6 +24,8 @@ export interface KpiCard {
   progress?: number
   trend?: CardTrend
   icon?: React.ReactNode
+  /** カード右上に表示するアクション（編集ボタン等） */
+  actions?: React.ReactNode
 }
 
 export interface SectionCardsProps {
@@ -75,9 +77,14 @@ export function SectionCards({ cards, className }: SectionCardsProps) {
         return (
           <Card
             key={i}
-            className="@container/card"
+            className="@container/card relative"
             style={achieved ? { borderColor: `color-mix(in srgb, ${successColor} 40%, transparent)` } : undefined}
           >
+            {card.actions && (
+              <div className="absolute top-2 right-2 z-10">
+                {card.actions}
+              </div>
+            )}
             <CardHeader className="pb-2">
               <CardDescription>{card.title}</CardDescription>
               <CardTitle className="@[250px]/card:text-3xl text-2xl font-semibold tabular-nums">

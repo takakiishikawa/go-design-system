@@ -13,7 +13,7 @@ export function FormActions({
   children: React.ReactNode
 }) {
   return (
-    <div className={cn("flex items-center justify-end gap-3 pt-2", className)}>
+    <div className={cn("flex items-center justify-end gap-3 pt-6", className)}>
       {children}
     </div>
   )

@@ -992,6 +992,8 @@ interface KpiCard {
     progress?: number;
     trend?: CardTrend;
     icon?: React$1.ReactNode;
+    /** カード右上に表示するアクション（編集ボタン等） */
+    actions?: React$1.ReactNode;
 }
 interface SectionCardsProps {
     cards: KpiCard[];

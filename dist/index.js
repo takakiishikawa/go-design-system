@@ -98,7 +98,7 @@ function cn(...inputs) {
   return tailwindMerge.twMerge(clsx.clsx(inputs));
 }
 var buttonVariants = classVarianceAuthority.cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 active:scale-[0.97] active:brightness-90 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
@@ -463,7 +463,7 @@ function FormActions({
   className,
   children
 }) {
-  return /* @__PURE__ */ jsxRuntime.jsx("div", { className: cn("flex items-center justify-end gap-3 pt-2", className), children });
+  return /* @__PURE__ */ jsxRuntime.jsx("div", { className: cn("flex items-center justify-end gap-3 pt-6", className), children });
 }
 var Card = React19__namespace.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsxRuntime.jsx(
   "div",
@@ -4448,9 +4448,10 @@ function SectionCards({ cards, className }) {
     return /* @__PURE__ */ jsxRuntime.jsxs(
       Card,
       {
-        className: "@container/card",
+        className: "@container/card relative",
         style: achieved ? { borderColor: `color-mix(in srgb, ${successColor} 40%, transparent)` } : void 0,
         children: [
+          card.actions && /* @__PURE__ */ jsxRuntime.jsx("div", { className: "absolute top-2 right-2 z-10", children: card.actions }),
           /* @__PURE__ */ jsxRuntime.jsxs(CardHeader, { className: "pb-2", children: [
             /* @__PURE__ */ jsxRuntime.jsx(CardDescription, { children: card.title }),
             /* @__PURE__ */ jsxRuntime.jsx(CardTitle, { className: "@[250px]/card:text-3xl text-2xl font-semibold tabular-nums", children: card.value })
