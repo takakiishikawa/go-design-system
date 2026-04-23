@@ -1,5 +1,12 @@
-import { Tabs, TabsContent, TabsList, TabsTrigger, Card, CardContent } from "@takaki/go-design-system"
-import { PageHeader, DemoSection } from "@/app/ui/demo-section"
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+  Card,
+  CardContent,
+} from "@takaki/go-design-system";
+import { PageHeader, DemoSection } from "@/app/ui/demo-section";
 
 export default function TabsPage() {
   return (
@@ -18,13 +25,25 @@ export default function TabsPage() {
             <TabsTrigger value="settings">設定</TabsTrigger>
           </TabsList>
           <TabsContent value="overview">
-            <Card><CardContent className="pt-4 text-sm text-muted-foreground">概要コンテンツ</CardContent></Card>
+            <Card>
+              <CardContent className="pt-4 text-sm text-muted-foreground">
+                概要コンテンツ
+              </CardContent>
+            </Card>
           </TabsContent>
           <TabsContent value="activity">
-            <Card><CardContent className="pt-4 text-sm text-muted-foreground">アクティビティログ</CardContent></Card>
+            <Card>
+              <CardContent className="pt-4 text-sm text-muted-foreground">
+                アクティビティログ
+              </CardContent>
+            </Card>
           </TabsContent>
           <TabsContent value="settings">
-            <Card><CardContent className="pt-4 text-sm text-muted-foreground">設定フォーム</CardContent></Card>
+            <Card>
+              <CardContent className="pt-4 text-sm text-muted-foreground">
+                設定フォーム
+              </CardContent>
+            </Card>
           </TabsContent>
         </Tabs>
       </DemoSection>
@@ -34,16 +53,26 @@ export default function TabsPage() {
           <TabsList>
             <TabsTrigger value="tab1">タブ1</TabsTrigger>
             <TabsTrigger value="tab2">タブ2</TabsTrigger>
-            <TabsTrigger value="tab3" disabled>無効タブ</TabsTrigger>
+            <TabsTrigger value="tab3" disabled>
+              無効タブ
+            </TabsTrigger>
           </TabsList>
           <TabsContent value="tab1">
-            <Card><CardContent className="pt-4 text-sm text-muted-foreground">タブ1のコンテンツ</CardContent></Card>
+            <Card>
+              <CardContent className="pt-4 text-sm text-muted-foreground">
+                タブ1のコンテンツ
+              </CardContent>
+            </Card>
           </TabsContent>
           <TabsContent value="tab2">
-            <Card><CardContent className="pt-4 text-sm text-muted-foreground">タブ2のコンテンツ</CardContent></Card>
+            <Card>
+              <CardContent className="pt-4 text-sm text-muted-foreground">
+                タブ2のコンテンツ
+              </CardContent>
+            </Card>
           </TabsContent>
         </Tabs>
       </DemoSection>
     </div>
-  )
+  );
 }

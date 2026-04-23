@@ -1,21 +1,25 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { cn } from "@/lib/utils"
-import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
-import { Separator } from "@/components/ui/separator"
+import * as React from "react";
+import { cn } from "@/lib/utils";
+import {
+  SidebarInset,
+  SidebarProvider,
+  SidebarTrigger,
+} from "@/components/ui/sidebar";
+import { Separator } from "@/components/ui/separator";
 
 export interface AppLayoutProps {
   /** AppSidebar を渡す */
-  sidebar: React.ReactNode
+  sidebar: React.ReactNode;
   /** 任意のヘッダー（PageHeader 等） */
-  header?: React.ReactNode
+  header?: React.ReactNode;
   /** メインコンテンツ */
-  children: React.ReactNode
+  children: React.ReactNode;
   /** SidebarProvider の defaultOpen（デフォルト: true） */
-  defaultOpen?: boolean
+  defaultOpen?: boolean;
   /** main 要素に追加するクラス（デフォルト: "gap-4 p-4"） */
-  mainClassName?: string
+  mainClassName?: string;
 }
 
 export function AppLayout({
@@ -42,8 +46,15 @@ export function AppLayout({
         </header>
 
         {/* メインコンテンツ */}
-        <main className={cn("@container/main flex flex-1 flex-col", mainClassName ?? "gap-4 p-4")}>{children}</main>
+        <main
+          className={cn(
+            "@container/main flex flex-1 flex-col",
+            mainClassName ?? "gap-4 p-4",
+          )}
+        >
+          {children}
+        </main>
       </SidebarInset>
     </SidebarProvider>
-  )
+  );
 }

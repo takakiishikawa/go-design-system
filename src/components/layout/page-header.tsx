@@ -1,4 +1,4 @@
-import * as React from "react"
+import * as React from "react";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -6,19 +6,19 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"
+} from "@/components/ui/breadcrumb";
 
 export interface BreadcrumbEntry {
-  label: string
-  href?: string
+  label: string;
+  href?: string;
 }
 
 export interface PageHeaderProps {
-  title: string
-  description?: string
+  title: string;
+  description?: string;
   /** 右側に配置するアクションボタン群 */
-  actions?: React.ReactNode
-  breadcrumbs?: BreadcrumbEntry[]
+  actions?: React.ReactNode;
+  breadcrumbs?: BreadcrumbEntry[];
 }
 
 export function PageHeader({
@@ -34,7 +34,7 @@ export function PageHeader({
         <Breadcrumb>
           <BreadcrumbList>
             {breadcrumbs.map((crumb, i) => {
-              const isLast = i === breadcrumbs.length - 1
+              const isLast = i === breadcrumbs.length - 1;
               return (
                 <React.Fragment key={i}>
                   {i > 0 && <BreadcrumbSeparator />}
@@ -48,7 +48,7 @@ export function PageHeader({
                     )}
                   </BreadcrumbItem>
                 </React.Fragment>
-              )
+              );
             })}
           </BreadcrumbList>
         </Breadcrumb>
@@ -59,7 +59,10 @@ export function PageHeader({
         <div className="flex flex-col gap-1 min-w-0">
           <h1
             className="text-2xl font-semibold leading-tight text-foreground truncate"
-            style={{ fontSize: "var(--text-2xl)", fontWeight: "var(--font-weight-semibold)" }}
+            style={{
+              fontSize: "var(--text-2xl)",
+              fontWeight: "var(--font-weight-semibold)",
+            }}
           >
             {title}
           </h1>
@@ -78,7 +81,6 @@ export function PageHeader({
           <div className="flex shrink-0 items-center gap-2">{actions}</div>
         )}
       </div>
-
     </div>
-  )
+  );
 }

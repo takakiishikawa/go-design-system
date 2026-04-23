@@ -1,16 +1,16 @@
-import { ChartArea } from "@takaki/go-design-system"
-import { PageHeader, DemoSection } from "@/app/ui/demo-section"
+import { ChartArea } from "@takaki/go-design-system";
+import { PageHeader, DemoSection } from "@/app/ui/demo-section";
 
 const MONTHLY_DATA = Array.from({ length: 12 }, (_, i) => ({
   month: `${i + 1}月`,
   revenue: Math.floor(Math.random() * 500000 + 800000),
   users: Math.floor(Math.random() * 200 + 800),
-}))
+}));
 
 const CHART_CONFIG = {
   revenue: { label: "売上", color: "hsl(var(--sidebar-primary))" },
   users: { label: "ユーザー数", color: "hsl(var(--sidebar-ring))" },
-}
+};
 
 export default function ChartAreaPage() {
   return (
@@ -49,5 +49,5 @@ export default function ChartAreaPage() {
         </div>
       </DemoSection>
     </div>
-  )
+  );
 }

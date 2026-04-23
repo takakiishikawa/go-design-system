@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { Combobox, Label } from "@takaki/go-design-system"
-import { PageHeader, DemoSection } from "@/app/ui/demo-section"
+import * as React from "react";
+import { Combobox, Label } from "@takaki/go-design-system";
+import { PageHeader, DemoSection } from "@/app/ui/demo-section";
 
 const FRUITS = [
   { value: "apple", label: "りんご" },
@@ -11,7 +11,7 @@ const FRUITS = [
   { value: "grape", label: "ぶどう" },
   { value: "strawberry", label: "いちご" },
   { value: "watermelon", label: "すいか" },
-]
+];
 
 const PREFECTURES = [
   { value: "tokyo", label: "東京都" },
@@ -22,11 +22,11 @@ const PREFECTURES = [
   { value: "hokkaido", label: "北海道" },
   { value: "kyoto", label: "京都府" },
   { value: "hyogo", label: "兵庫県" },
-]
+];
 
 export default function ComboboxPage() {
-  const [fruit, setFruit] = React.useState("")
-  const [prefecture, setPrefecture] = React.useState("")
+  const [fruit, setFruit] = React.useState("");
+  const [prefecture, setPrefecture] = React.useState("");
 
   return (
     <div className="flex flex-col gap-6 py-4">
@@ -46,7 +46,9 @@ export default function ComboboxPage() {
             placeholder="くだものを選択"
             searchPlaceholder="検索..."
           />
-          {fruit && <p className="text-xs text-muted-foreground">選択: {fruit}</p>}
+          {fruit && (
+            <p className="text-xs text-muted-foreground">選択: {fruit}</p>
+          )}
         </div>
       </DemoSection>
 
@@ -67,13 +69,9 @@ export default function ComboboxPage() {
       <DemoSection title="無効">
         <div className="flex w-64 flex-col gap-1.5">
           <Label>選択不可</Label>
-          <Combobox
-            options={FRUITS}
-            disabled
-            placeholder="変更不可"
-          />
+          <Combobox options={FRUITS} disabled placeholder="変更不可" />
         </div>
       </DemoSection>
     </div>
-  )
+  );
 }

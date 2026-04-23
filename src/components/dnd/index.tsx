@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import * as React from "react"
+import * as React from "react";
 import {
   DndContext,
   closestCenter,
@@ -9,25 +9,25 @@ import {
   useSensor,
   useSensors,
   type DragEndEvent,
-} from "@dnd-kit/core"
+} from "@dnd-kit/core";
 import {
   SortableContext,
   sortableKeyboardCoordinates,
   verticalListSortingStrategy,
   useSortable,
-} from "@dnd-kit/sortable"
-import { CSS } from "@dnd-kit/utilities"
-import { GripVertical } from "lucide-react"
-import { cn } from "@/lib/utils"
+} from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
+import { GripVertical } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 // ---------------------------------------------------------------------------
 // DndProvider
 // ---------------------------------------------------------------------------
 
 export interface DndProviderProps {
-  items: string[]
-  onReorder: (items: string[]) => void
-  children: React.ReactNode
+  items: string[];
+  onReorder: (items: string[]) => void;
+  children: React.ReactNode;
 }
 
 export function DndProvider({ items, onReorder, children }: DndProviderProps) {
@@ -35,30 +35,34 @@ export function DndProvider({ items, onReorder, children }: DndProviderProps) {
     useSensor(PointerSensor),
     useSensor(KeyboardSensor, {
       coordinateGetter: sortableKeyboardCoordinates,
-    })
-  )
+    }),
+  );
 
   function handleDragEnd(event: DragEndEvent) {
-    const { active, over } = event
-    if (!over || active.id === over.id) return
+    const { active, over } = event;
+    if (!over || active.id === over.id) return;
 
-    const oldIndex = items.indexOf(String(active.id))
-    const newIndex = items.indexOf(String(over.id))
-    if (oldIndex === -1 || newIndex === -1) return
+    const oldIndex = items.indexOf(String(active.id));
+    const newIndex = items.indexOf(String(over.id));
+    if (oldIndex === -1 || newIndex === -1) return;
 
-    const next = [...items]
-    next.splice(oldIndex, 1)
-    next.splice(newIndex, 0, String(active.id))
-    onReorder(next)
+    const next = [...items];
+    next.splice(oldIndex, 1);
+    next.splice(newIndex, 0, String(active.id));
+    onReorder(next);
   }
 
   return (
-    <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
+    <DndContext
+      sensors={sensors}
+      collisionDetection={closestCenter}
+      onDragEnd={handleDragEnd}
+    >
       <SortableContext items={items} strategy={verticalListSortingStrategy}>
         {children}
       </SortableContext>
     </DndContext>
-  )
+  );
 }
 
 // ---------------------------------------------------------------------------
@@ -66,9 +70,9 @@ export function DndProvider({ items, onReorder, children }: DndProviderProps) {
 // ---------------------------------------------------------------------------
 
 export interface SortableItemProps {
-  id: string
-  children: React.ReactNode
-  className?: string
+  id: string;
+  children: React.ReactNode;
+  className?: string;
 }
 
 export function SortableItem({ id, children, className }: SortableItemProps) {
@@ -79,13 +83,13 @@ export function SortableItem({ id, children, className }: SortableItemProps) {
     transform,
     transition,
     isDragging,
-  } = useSortable({ id })
+  } = useSortable({ id });
 
   const style: React.CSSProperties = {
     transform: CSS.Transform.toString(transform),
     transition,
     opacity: isDragging ? 0.5 : 1,
-  }
+  };
 
   return (
     <div
@@ -97,7 +101,7 @@ export function SortableItem({ id, children, className }: SortableItemProps) {
     >
       {children}
     </div>
-  )
+  );
 }
 
 // ---------------------------------------------------------------------------
@@ -113,11 +117,11 @@ export function DragHandle({ className, ...props }: DragHandleProps) {
       aria-label="ドラッグして並び替え"
       className={cn(
         "flex cursor-grab items-center justify-center rounded p-1 text-muted-foreground hover:bg-surface-subtle hover:text-foreground active:cursor-grabbing",
-        className
+        className,
       )}
       {...props}
     >
       <GripVertical className="size-4" />
     </button>
-  )
+  );
 }

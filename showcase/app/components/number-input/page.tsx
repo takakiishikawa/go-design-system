@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { NumberInput } from "@takaki/go-design-system"
-import { PageHeader, DemoSection } from "@/app/ui/demo-section"
+import { useState } from "react";
+import { NumberInput } from "@takaki/go-design-system";
+import { PageHeader, DemoSection } from "@/app/ui/demo-section";
 
 export default function NumberInputPage() {
-  const [value, setValue] = useState(5)
+  const [value, setValue] = useState(5);
 
   return (
     <div className="flex flex-col gap-6 py-4">
@@ -39,5 +39,5 @@ export default function NumberInputPage() {
         <NumberInput defaultValue={3} disabled />
       </DemoSection>
     </div>
-  )
+  );
 }

@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { SearchInput } from "@takaki/go-design-system"
-import { PageHeader, DemoSection } from "@/app/ui/demo-section"
+import { useState } from "react";
+import { SearchInput } from "@takaki/go-design-system";
+import { PageHeader, DemoSection } from "@/app/ui/demo-section";
 
 export default function SearchInputPage() {
-  const [value, setValue] = useState("")
+  const [value, setValue] = useState("");
 
   return (
     <div className="flex flex-col gap-6 py-4">
@@ -37,5 +37,5 @@ export default function SearchInputPage() {
         <SearchInput placeholder="検索..." disabled className="w-64" />
       </DemoSection>
     </div>
-  )
+  );
 }

@@ -1,9 +1,15 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { X, AlertCircle, CheckCircle2, Info, AlertTriangle } from "lucide-react"
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
+import * as React from "react";
+import {
+  X,
+  AlertCircle,
+  CheckCircle2,
+  Info,
+  AlertTriangle,
+} from "lucide-react";
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 
 const variantConfig = {
   default: {
@@ -11,33 +17,43 @@ const variantConfig = {
     icon: <Info className="size-4 shrink-0" />,
   },
   info: {
-    container: "bg-[color:var(--color-info-subtle)] border-[color:var(--color-info)] text-foreground",
+    container:
+      "bg-[color:var(--color-info-subtle)] border-[color:var(--color-info)] text-foreground",
     icon: <Info className="size-4 shrink-0 text-[color:var(--color-info)]" />,
   },
   success: {
-    container: "bg-[color:var(--color-success-subtle)] border-[color:var(--color-success)] text-foreground",
-    icon: <CheckCircle2 className="size-4 shrink-0 text-[color:var(--color-success)]" />,
+    container:
+      "bg-[color:var(--color-success-subtle)] border-[color:var(--color-success)] text-foreground",
+    icon: (
+      <CheckCircle2 className="size-4 shrink-0 text-[color:var(--color-success)]" />
+    ),
   },
   warning: {
-    container: "bg-[color:var(--color-warning-subtle)] border-[color:var(--color-warning)] text-foreground",
-    icon: <AlertTriangle className="size-4 shrink-0 text-[color:var(--color-warning)]" />,
+    container:
+      "bg-[color:var(--color-warning-subtle)] border-[color:var(--color-warning)] text-foreground",
+    icon: (
+      <AlertTriangle className="size-4 shrink-0 text-[color:var(--color-warning)]" />
+    ),
   },
   danger: {
-    container: "bg-[color:var(--color-danger-subtle)] border-[color:var(--color-danger)] text-foreground",
-    icon: <AlertCircle className="size-4 shrink-0 text-[color:var(--color-danger)]" />,
+    container:
+      "bg-[color:var(--color-danger-subtle)] border-[color:var(--color-danger)] text-foreground",
+    icon: (
+      <AlertCircle className="size-4 shrink-0 text-[color:var(--color-danger)]" />
+    ),
   },
-} as const
+} as const;
 
 export interface BannerProps extends React.HTMLAttributes<HTMLDivElement> {
-  variant?: keyof typeof variantConfig
-  title?: string
-  description?: string
+  variant?: keyof typeof variantConfig;
+  title?: string;
+  description?: string;
   action?: {
-    label: string
-    onClick: () => void
-  }
-  dismissible?: boolean
-  onDismiss?: () => void
+    label: string;
+    onClick: () => void;
+  };
+  dismissible?: boolean;
+  onDismiss?: () => void;
 }
 
 export function Banner({
@@ -51,15 +67,15 @@ export function Banner({
   children,
   ...props
 }: BannerProps) {
-  const [visible, setVisible] = React.useState(true)
+  const [visible, setVisible] = React.useState(true);
 
-  if (!visible) return null
+  if (!visible) return null;
 
-  const config = variantConfig[variant]
+  const config = variantConfig[variant];
 
   function handleDismiss() {
-    setVisible(false)
-    onDismiss?.()
+    setVisible(false);
+    onDismiss?.();
   }
 
   return (
@@ -68,15 +84,13 @@ export function Banner({
       className={cn(
         "flex items-start gap-3 rounded-md border px-4 py-3",
         config.container,
-        className
+        className,
       )}
       {...props}
     >
       <span className="mt-0.5">{config.icon}</span>
       <div className="flex flex-1 flex-col gap-1">
-        {title && (
-          <p className="text-sm font-medium leading-tight">{title}</p>
-        )}
+        {title && <p className="text-sm font-medium leading-tight">{title}</p>}
         {description && (
           <p className="text-sm text-muted-foreground">{description}</p>
         )}
@@ -103,5 +117,5 @@ export function Banner({
         </button>
       )}
     </div>
-  )
+  );
 }

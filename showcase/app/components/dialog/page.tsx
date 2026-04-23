@@ -1,12 +1,19 @@
-"use client"
+"use client";
 
 import {
-  Button, Dialog, DialogContent, DialogDescription, DialogFooter,
-  DialogHeader, DialogTitle, DialogTrigger,
-  Input, Label,
-} from "@takaki/go-design-system"
-import { PageHeader, DemoSection } from "@/app/ui/demo-section"
-import { Trash2 } from "lucide-react"
+  Button,
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  Input,
+  Label,
+} from "@takaki/go-design-system";
+import { PageHeader, DemoSection } from "@/app/ui/demo-section";
+import { Trash2 } from "lucide-react";
 
 export default function DialogPage() {
   return (
@@ -56,7 +63,11 @@ export default function DialogPage() {
               </div>
               <div className="flex flex-col gap-1.5">
                 <Label htmlFor="invite-email">メールアドレス</Label>
-                <Input id="invite-email" type="email" placeholder="yamada@example.com" />
+                <Input
+                  id="invite-email"
+                  type="email"
+                  placeholder="yamada@example.com"
+                />
               </div>
             </div>
             <DialogFooter>
@@ -71,7 +82,8 @@ export default function DialogPage() {
         <Dialog>
           <DialogTrigger asChild>
             <Button variant="destructive">
-              <Trash2 className="mr-2 size-4" />削除
+              <Trash2 className="mr-2 size-4" />
+              削除
             </Button>
           </DialogTrigger>
           <DialogContent>
@@ -89,5 +101,5 @@ export default function DialogPage() {
         </Dialog>
       </DemoSection>
     </div>
-  )
+  );
 }

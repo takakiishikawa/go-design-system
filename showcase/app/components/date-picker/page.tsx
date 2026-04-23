@@ -1,13 +1,13 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { DatePicker, DateRangePicker } from "@takaki/go-design-system"
-import type { DateRange } from "@takaki/go-design-system"
-import { PageHeader, DemoSection } from "@/app/ui/demo-section"
+import { useState } from "react";
+import { DatePicker, DateRangePicker } from "@takaki/go-design-system";
+import type { DateRange } from "@takaki/go-design-system";
+import { PageHeader, DemoSection } from "@/app/ui/demo-section";
 
 export default function DatePickerPage() {
-  const [single, setSingle] = useState<Date | undefined>()
-  const [range, setRange] = useState<DateRange | undefined>()
+  const [single, setSingle] = useState<Date | undefined>();
+  const [range, setRange] = useState<DateRange | undefined>();
 
   return (
     <div className="flex flex-col gap-6 py-4">
@@ -21,7 +21,9 @@ export default function DatePickerPage() {
         <div className="flex flex-col gap-2">
           <DatePicker value={single} onChange={setSingle} />
           {single && (
-            <p className="text-xs text-muted-foreground">選択: {single.toLocaleDateString("ja-JP")}</p>
+            <p className="text-xs text-muted-foreground">
+              選択: {single.toLocaleDateString("ja-JP")}
+            </p>
           )}
         </div>
       </DemoSection>
@@ -42,5 +44,5 @@ export default function DatePickerPage() {
         <DatePicker disabled placeholder="選択不可" />
       </DemoSection>
     </div>
-  )
+  );
 }

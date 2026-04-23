@@ -1,33 +1,33 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { format } from "date-fns"
-import { ja } from "date-fns/locale"
-import { CalendarIcon } from "lucide-react"
-import type { DateRange } from "react-day-picker"
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
-import { Calendar } from "@/components/ui/calendar"
+import * as React from "react";
+import { format } from "date-fns";
+import { ja } from "date-fns/locale";
+import { CalendarIcon } from "lucide-react";
+import type { DateRange } from "react-day-picker";
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover"
+} from "@/components/ui/popover";
 
 // ---------------------------------------------------------------------------
 // DatePicker (single)
 // ---------------------------------------------------------------------------
 
 export interface DatePickerProps {
-  value?: Date
-  onChange?: (date: Date | undefined) => void
-  placeholder?: string
-  disabled?: boolean
-  className?: string
+  value?: Date;
+  onChange?: (date: Date | undefined) => void;
+  placeholder?: string;
+  disabled?: boolean;
+  className?: string;
   /** Dates to disable in the calendar */
-  disabledDates?: (date: Date) => boolean
-  fromDate?: Date
-  toDate?: Date
+  disabledDates?: (date: Date) => boolean;
+  fromDate?: Date;
+  toDate?: Date;
 }
 
 export function DatePicker({
@@ -40,11 +40,11 @@ export function DatePicker({
   fromDate,
   toDate,
 }: DatePickerProps) {
-  const [open, setOpen] = React.useState(false)
+  const [open, setOpen] = React.useState(false);
 
   function handleSelect(date: Date | undefined) {
-    onChange?.(date)
-    setOpen(false)
+    onChange?.(date);
+    setOpen(false);
   }
 
   return (
@@ -56,7 +56,7 @@ export function DatePicker({
           className={cn(
             "w-[240px] justify-start text-left font-normal",
             !value && "text-muted-foreground",
-            className
+            className,
           )}
         >
           <CalendarIcon className="mr-2 size-4" />
@@ -76,7 +76,7 @@ export function DatePicker({
         />
       </PopoverContent>
     </Popover>
-  )
+  );
 }
 
 // ---------------------------------------------------------------------------
@@ -84,14 +84,14 @@ export function DatePicker({
 // ---------------------------------------------------------------------------
 
 export interface DateRangePickerProps {
-  value?: DateRange
-  onChange?: (range: DateRange | undefined) => void
-  placeholder?: string
-  disabled?: boolean
-  className?: string
-  disabledDates?: (date: Date) => boolean
-  fromDate?: Date
-  toDate?: Date
+  value?: DateRange;
+  onChange?: (range: DateRange | undefined) => void;
+  placeholder?: string;
+  disabled?: boolean;
+  className?: string;
+  disabledDates?: (date: Date) => boolean;
+  fromDate?: Date;
+  toDate?: Date;
 }
 
 export function DateRangePicker({
@@ -104,12 +104,12 @@ export function DateRangePicker({
   fromDate,
   toDate,
 }: DateRangePickerProps) {
-  const [open, setOpen] = React.useState(false)
+  const [open, setOpen] = React.useState(false);
 
   function formatRange(range: DateRange | undefined) {
-    if (!range?.from) return placeholder
-    if (!range.to) return format(range.from, "yyyy年M月d日", { locale: ja })
-    return `${format(range.from, "yyyy年M月d日", { locale: ja })} 〜 ${format(range.to, "M月d日", { locale: ja })}`
+    if (!range?.from) return placeholder;
+    if (!range.to) return format(range.from, "yyyy年M月d日", { locale: ja });
+    return `${format(range.from, "yyyy年M月d日", { locale: ja })} 〜 ${format(range.to, "M月d日", { locale: ja })}`;
   }
 
   return (
@@ -121,7 +121,7 @@ export function DateRangePicker({
           className={cn(
             "w-[300px] justify-start text-left font-normal",
             !value?.from && "text-muted-foreground",
-            className
+            className,
           )}
         >
           <CalendarIcon className="mr-2 size-4" />
@@ -142,7 +142,7 @@ export function DateRangePicker({
         />
       </PopoverContent>
     </Popover>
-  )
+  );
 }
 
-export type { DateRange }
+export type { DateRange };

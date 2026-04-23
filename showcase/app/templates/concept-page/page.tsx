@@ -1,12 +1,13 @@
-import { ConceptPage } from "@takaki/go-design-system"
-import { Zap } from "lucide-react"
+import { ConceptPage } from "@takaki/go-design-system";
+import { Zap } from "lucide-react";
 
 export default function ConceptPageDemo() {
   return (
     <div className="flex flex-col gap-4">
       <div className="rounded-md border border-primary/30 bg-primary/5 px-4 py-2">
         <p className="text-xs text-primary font-medium">
-          テンプレートプレビュー — <code>ConceptPage</code> コンポーネントのダミーデータ表示
+          テンプレートプレビュー — <code>ConceptPage</code>{" "}
+          コンポーネントのダミーデータ表示
         </p>
       </div>
       <ConceptPage
@@ -31,24 +32,51 @@ export default function ConceptPageDemo() {
         }}
         productLogic={{
           steps: [
-            { title: "単語インプット", description: "1日10単語を3分でインプット" },
-            { title: "スペースド復習", description: "忘却曲線に基づく最適タイミングで復習" },
-            { title: "定着確認", description: "文脈の中で単語を使う問題で定着確認" },
-            { title: "継続フィードバック", description: "ストリークと進捗で継続意欲を高める" },
+            {
+              title: "単語インプット",
+              description: "1日10単語を3分でインプット",
+            },
+            {
+              title: "スペースド復習",
+              description: "忘却曲線に基づく最適タイミングで復習",
+            },
+            {
+              title: "定着確認",
+              description: "文脈の中で単語を使う問題で定着確認",
+            },
+            {
+              title: "継続フィードバック",
+              description: "ストリークと進捗で継続意欲を高める",
+            },
           ],
           outcome: "3ヶ月で1,000語の実用語彙を習得",
         }}
         resultMetric={{
           title: "90日後の語彙定着率",
-          description: "学習開始から90日後に、学習した単語の80%以上を正確に使えるユーザーの割合が70%以上",
+          description:
+            "学習開始から90日後に、学習した単語の80%以上を正確に使えるユーザーの割合が70%以上",
         }}
         behaviorMetrics={[
-          { title: "デイリーアクティブ率", description: "7日間連続でアプリを起動したユーザーの割合 > 40%" },
-          { title: "復習完了率", description: "通知を受け取ったユーザーのうち当日中に復習を完了した割合 > 60%" },
-          { title: "30日継続率", description: "初回インストールから30日後もアクティブなユーザーの割合 > 30%" },
-          { title: "平均学習時間", description: "1日あたりの平均学習時間 > 5分" },
+          {
+            title: "デイリーアクティブ率",
+            description: "7日間連続でアプリを起動したユーザーの割合 > 40%",
+          },
+          {
+            title: "復習完了率",
+            description:
+              "通知を受け取ったユーザーのうち当日中に復習を完了した割合 > 60%",
+          },
+          {
+            title: "30日継続率",
+            description:
+              "初回インストールから30日後もアクティブなユーザーの割合 > 30%",
+          },
+          {
+            title: "平均学習時間",
+            description: "1日あたりの平均学習時間 > 5分",
+          },
         ]}
       />
     </div>
-  )
+  );
 }
