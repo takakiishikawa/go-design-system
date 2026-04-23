@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { Check, ChevronsUpDown } from "lucide-react"
+import * as React from "react";
+import { Check, ChevronsUpDown } from "lucide-react";
 
 import {
   DropdownMenu,
@@ -10,7 +10,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "@/components/ui/dropdown-menu";
 import {
   Sidebar,
   SidebarContent,
@@ -22,48 +22,48 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarRail,
-} from "@/components/ui/sidebar"
-import { cn } from "@/lib/utils"
+} from "@/components/ui/sidebar";
+import { cn } from "@/lib/utils";
 
 // ---------------------------------------------------------------------------
 // Types
 // ---------------------------------------------------------------------------
 
 export interface AppInfo {
-  name: string
-  url: string
-  color: string
+  name: string;
+  url: string;
+  color: string;
 }
 
 export interface NavSubItem {
-  title: string
-  url: string
-  isActive?: boolean
+  title: string;
+  url: string;
+  isActive?: boolean;
 }
 
 export interface NavItem {
-  title: string
-  url: string
-  icon?: React.ElementType
-  isActive?: boolean
-  items?: NavSubItem[]
+  title: string;
+  url: string;
+  icon?: React.ElementType;
+  isActive?: boolean;
+  items?: NavSubItem[];
 }
 
 export interface AppSwitcherProps {
-  currentApp: string
-  apps: AppInfo[]
+  currentApp: string;
+  apps: AppInfo[];
   /** 遷移処理を外から注入。省略時は window.location.href を使用 */
-  onNavigate?: (url: string) => void
+  onNavigate?: (url: string) => void;
   /** ドロップダウンの開く方向。"top"(default) はフッター用、"bottom" はヘッダー用 */
-  placement?: "top" | "bottom"
+  placement?: "top" | "bottom";
 }
 
 export interface AppSidebarProps extends React.ComponentProps<typeof Sidebar> {
-  currentApp: string
-  apps: AppInfo[]
-  navItems: NavItem[]
-  logo?: React.ReactNode
-  onNavigate?: (url: string) => void
+  currentApp: string;
+  apps: AppInfo[];
+  navItems: NavItem[];
+  logo?: React.ReactNode;
+  onNavigate?: (url: string) => void;
 }
 
 // ---------------------------------------------------------------------------
@@ -77,7 +77,7 @@ function ColorDot({ color, size = 8 }: { color: string; size?: number }) {
       style={{ width: size, height: size, backgroundColor: color }}
       aria-hidden
     />
-  )
+  );
 }
 
 // ---------------------------------------------------------------------------
@@ -90,13 +90,13 @@ export function AppSwitcher({
   onNavigate,
   placement = "top",
 }: AppSwitcherProps) {
-  const current = apps.find((a) => a.name === currentApp) ?? apps[0]
+  const current = apps.find((a) => a.name === currentApp) ?? apps[0];
 
   function handleSelect(url: string) {
     if (onNavigate) {
-      onNavigate(url)
+      onNavigate(url);
     } else {
-      window.location.href = url
+      window.location.href = url;
     }
   }
 
@@ -148,7 +148,7 @@ export function AppSwitcher({
         </DropdownMenu>
       </SidebarMenuItem>
     </SidebarMenu>
-  )
+  );
 }
 
 // ---------------------------------------------------------------------------
@@ -215,11 +215,11 @@ export function AppSidebar({
                 </SidebarMenu>
               </SidebarGroupContent>
             </SidebarGroup>
-          )
+          ),
         )}
       </SidebarContent>
 
       <SidebarRail />
     </Sidebar>
-  )
+  );
 }

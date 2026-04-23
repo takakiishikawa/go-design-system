@@ -1,12 +1,12 @@
-import * as React from "react"
-import { cn } from "@/lib/utils"
-import { Spinner } from "./spinner"
+import * as React from "react";
+import { cn } from "@/lib/utils";
+import { Spinner } from "./spinner";
 
 export interface LoadingOverlayProps {
-  loading: boolean
-  children: React.ReactNode
-  label?: string
-  className?: string
+  loading: boolean;
+  children: React.ReactNode;
+  label?: string;
+  className?: string;
 }
 
 export function LoadingOverlay({
@@ -25,12 +25,10 @@ export function LoadingOverlay({
           aria-label={label}
         >
           <Spinner size="md" color="primary" />
-          {label && (
-            <p className="text-xs text-muted-foreground">{label}</p>
-          )}
+          {label && <p className="text-xs text-muted-foreground">{label}</p>}
         </div>
       )}
     </div>
-  )
+  );
 }
-LoadingOverlay.displayName = "LoadingOverlay"
+LoadingOverlay.displayName = "LoadingOverlay";

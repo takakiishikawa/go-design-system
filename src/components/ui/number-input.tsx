@@ -1,19 +1,19 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { Minus, Plus } from "lucide-react"
-import { cn } from "@/lib/utils"
-import { useControlledState } from "@/hooks/use-controlled-state"
+import * as React from "react";
+import { Minus, Plus } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { useControlledState } from "@/hooks/use-controlled-state";
 
 export interface NumberInputProps {
-  value?: number
-  defaultValue?: number
-  min?: number
-  max?: number
-  step?: number
-  disabled?: boolean
-  className?: string
-  onChange?: (value: number) => void
+  value?: number;
+  defaultValue?: number;
+  min?: number;
+  max?: number;
+  step?: number;
+  disabled?: boolean;
+  className?: string;
+  onChange?: (value: number) => void;
 }
 
 export const NumberInput = React.forwardRef<HTMLInputElement, NumberInputProps>(
@@ -28,19 +28,22 @@ export const NumberInput = React.forwardRef<HTMLInputElement, NumberInputProps>(
       className,
       onChange,
     },
-    ref
+    ref,
   ) {
-    const [value, setInternalValue] = useControlledState(controlledValue, defaultValue)
+    const [value, setInternalValue] = useControlledState(
+      controlledValue,
+      defaultValue,
+    );
 
     function update(next: number) {
-      const clamped = Math.min(max, Math.max(min, next))
-      setInternalValue(clamped)
-      onChange?.(clamped)
+      const clamped = Math.min(max, Math.max(min, next));
+      setInternalValue(clamped);
+      onChange?.(clamped);
     }
 
     function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
-      const parsed = parseFloat(e.target.value)
-      if (!isNaN(parsed)) update(parsed)
+      const parsed = parseFloat(e.target.value);
+      if (!isNaN(parsed)) update(parsed);
     }
 
     return (
@@ -48,7 +51,7 @@ export const NumberInput = React.forwardRef<HTMLInputElement, NumberInputProps>(
         className={cn(
           "inline-flex h-9 items-center rounded-md border border-border bg-background",
           disabled && "cursor-not-allowed opacity-50",
-          className
+          className,
         )}
       >
         <button
@@ -81,7 +84,7 @@ export const NumberInput = React.forwardRef<HTMLInputElement, NumberInputProps>(
           <Plus className="size-3.5" />
         </button>
       </div>
-    )
-  }
-)
-NumberInput.displayName = "NumberInput"
+    );
+  },
+);
+NumberInput.displayName = "NumberInput";

@@ -1,29 +1,38 @@
-import { Badge, Card, CardContent, CardHeader, CardTitle } from "@takaki/go-design-system"
-import { Layers, Palette, FileText, Package } from "lucide-react"
+import {
+  Badge,
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@takaki/go-design-system";
+import { Layers, Palette, FileText, Package } from "lucide-react";
 
 const sections = [
   {
     icon: Palette,
     title: "デザイントークン",
-    description: "カラー・スペーシング・角丸・フォントなど、Goシリーズ共通のデザイン変数一覧",
+    description:
+      "カラー・スペーシング・角丸・フォントなど、Goシリーズ共通のデザイン変数一覧",
     href: "/tokens",
     count: "tokens.css",
   },
   {
     icon: Package,
     title: "コンポーネント",
-    description: "shadcn/ui ベースの UI コンポーネント + Goシリーズ独自コンポーネント",
+    description:
+      "shadcn/ui ベースの UI コンポーネント + Goシリーズ独自コンポーネント",
     href: "/components/button",
     count: "15コンポーネント",
   },
   {
     icon: FileText,
     title: "テンプレート",
-    description: "DashboardPage / ConceptPage / SettingsPage / LoginPage の実装例",
+    description:
+      "DashboardPage / ConceptPage / SettingsPage / LoginPage の実装例",
     href: "/templates/dashboard-page",
     count: "4テンプレート",
   },
-]
+];
 
 export default function HomePage() {
   return (
@@ -32,7 +41,9 @@ export default function HomePage() {
       <div className="flex flex-col gap-3">
         <div className="flex items-center gap-2">
           <Layers className="size-6 text-primary" />
-          <h1 className="text-2xl font-bold text-foreground">Go Design System</h1>
+          <h1 className="text-2xl font-bold text-foreground">
+            Go Design System
+          </h1>
         </div>
         <p className="max-w-2xl text-base text-muted-foreground">
           NativeGo / CareGo / KenyakuGo / TaskGo / CookGo / PhysicalGo ——
@@ -61,7 +72,9 @@ export default function HomePage() {
               </CardHeader>
               <CardContent className="flex flex-col gap-2">
                 <p className="text-sm text-muted-foreground">{s.description}</p>
-                <span className="text-xs font-medium text-primary">{s.count}</span>
+                <span className="text-xs font-medium text-primary">
+                  {s.count}
+                </span>
               </CardContent>
             </Card>
           </a>
@@ -75,10 +88,18 @@ export default function HomePage() {
         </CardHeader>
         <CardContent className="flex flex-col gap-3">
           <p className="text-sm text-muted-foreground">
-            各プロダクトの <code className="rounded bg-surface-subtle px-1 py-0.5 text-xs font-mono">app/layout.tsx</code> で <code className="rounded bg-surface-subtle px-1 py-0.5 text-xs font-mono">DesignTokens</code> コンポーネントを使ってトークンを注入します。
+            各プロダクトの{" "}
+            <code className="rounded bg-surface-subtle px-1 py-0.5 text-xs font-mono">
+              app/layout.tsx
+            </code>{" "}
+            で{" "}
+            <code className="rounded bg-surface-subtle px-1 py-0.5 text-xs font-mono">
+              DesignTokens
+            </code>{" "}
+            コンポーネントを使ってトークンを注入します。
           </p>
           <pre className="overflow-x-auto rounded-md border border-border bg-surface-subtle p-4 text-xs">
-{`import { DesignTokens, AppLayout, AppSidebar } from '@takaki/go-design-system'
+            {`import { DesignTokens, AppLayout, AppSidebar } from '@takaki/go-design-system'
 
 export default function RootLayout({ children }) {
   return (
@@ -98,5 +119,5 @@ export default function RootLayout({ children }) {
         </CardContent>
       </Card>
     </div>
-  )
+  );
 }

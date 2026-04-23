@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import * as React from "react"
+import * as React from "react";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -11,19 +11,19 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "./alert-dialog"
-import { cn } from "@/lib/utils"
-import { buttonVariants } from "./button"
-import { Spinner } from "./spinner"
+} from "./alert-dialog";
+import { cn } from "@/lib/utils";
+import { buttonVariants } from "./button";
+import { Spinner } from "./spinner";
 
 export interface ConfirmDialogProps {
-  trigger: React.ReactNode
-  title: string
-  description?: string
-  confirmLabel?: string
-  cancelLabel?: string
-  variant?: "default" | "destructive"
-  onConfirm: () => void | Promise<void>
+  trigger: React.ReactNode;
+  title: string;
+  description?: string;
+  confirmLabel?: string;
+  cancelLabel?: string;
+  variant?: "default" | "destructive";
+  onConfirm: () => void | Promise<void>;
 }
 
 export function ConfirmDialog({
@@ -35,17 +35,17 @@ export function ConfirmDialog({
   variant = "default",
   onConfirm,
 }: ConfirmDialogProps) {
-  const [open, setOpen] = React.useState(false)
-  const [loading, setLoading] = React.useState(false)
+  const [open, setOpen] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
 
   async function handleConfirm(e: React.MouseEvent) {
-    e.preventDefault()
-    setLoading(true)
+    e.preventDefault();
+    setLoading(true);
     try {
-      await onConfirm()
-      setOpen(false)
+      await onConfirm();
+      setOpen(false);
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
   }
 
@@ -60,10 +60,13 @@ export function ConfirmDialog({
           )}
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel disabled={loading}>{cancelLabel}</AlertDialogCancel>
+          <AlertDialogCancel disabled={loading}>
+            {cancelLabel}
+          </AlertDialogCancel>
           <AlertDialogAction
             className={cn(
-              variant === "destructive" && buttonVariants({ variant: "destructive" })
+              variant === "destructive" &&
+                buttonVariants({ variant: "destructive" }),
             )}
             disabled={loading}
             onClick={handleConfirm}
@@ -80,6 +83,6 @@ export function ConfirmDialog({
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
-  )
+  );
 }
-ConfirmDialog.displayName = "ConfirmDialog"
+ConfirmDialog.displayName = "ConfirmDialog";

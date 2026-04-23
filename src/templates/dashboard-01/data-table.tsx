@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import * as React from "react"
+import * as React from "react";
 import {
   type ColumnDef,
   type ColumnFiltersState,
@@ -12,25 +12,25 @@ import {
   getPaginationRowModel,
   getSortedRowModel,
   useReactTable,
-} from "@tanstack/react-table"
+} from "@tanstack/react-table";
 import {
   ChevronLeftIcon,
   ChevronRightIcon,
   ChevronsLeftIcon,
   ChevronsRightIcon,
   SearchIcon,
-} from "lucide-react"
+} from "lucide-react";
 
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
+} from "@/components/ui/select";
 import {
   Table,
   TableBody,
@@ -38,20 +38,20 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table"
+} from "@/components/ui/table";
 
 export interface DataTableProps<TData> {
-  columns: ColumnDef<TData>[]
-  data: TData[]
+  columns: ColumnDef<TData>[];
+  data: TData[];
   /** 検索ボックスを表示し、指定したカラム ID でフィルタリング */
-  searchable?: boolean | { columnId: string; placeholder?: string }
-  pageSize?: number
+  searchable?: boolean | { columnId: string; placeholder?: string };
+  pageSize?: number;
   /** ページサイズ選択肢（省略時: [10, 20, 50]） */
-  pageSizeOptions?: number[]
+  pageSizeOptions?: number[];
   /** 空時のメッセージ */
-  emptyMessage?: string
+  emptyMessage?: string;
   /** 行クリック時のコールバック。指定すると行が cursor-pointer になる */
-  onRowClick?: (row: TData) => void
+  onRowClick?: (row: TData) => void;
 }
 
 export function DataTable<TData>({
@@ -63,18 +63,23 @@ export function DataTable<TData>({
   emptyMessage = "データがありません",
   onRowClick,
 }: DataTableProps<TData>) {
-  const [sorting, setSorting] = React.useState<SortingState>([])
-  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
-  const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({})
+  const [sorting, setSorting] = React.useState<SortingState>([]);
+  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
+    [],
+  );
+  const [columnVisibility, setColumnVisibility] =
+    React.useState<VisibilityState>({});
   const [pagination, setPagination] = React.useState({
     pageIndex: 0,
     pageSize,
-  })
+  });
 
   const searchColumnId =
-    typeof searchable === "object" ? searchable.columnId : undefined
+    typeof searchable === "object" ? searchable.columnId : undefined;
   const searchPlaceholder =
-    typeof searchable === "object" ? (searchable.placeholder ?? "検索...") : "検索..."
+    typeof searchable === "object"
+      ? (searchable.placeholder ?? "検索...")
+      : "検索...";
 
   const table = useReactTable({
     data,
@@ -88,11 +93,11 @@ export function DataTable<TData>({
     getFilteredRowModel: getFilteredRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     getSortedRowModel: getSortedRowModel(),
-  })
+  });
 
   const searchValue = searchColumnId
-    ? (table.getColumn(searchColumnId)?.getFilterValue() as string) ?? ""
-    : ""
+    ? ((table.getColumn(searchColumnId)?.getFilterValue() as string) ?? "")
+    : "";
 
   return (
     <div className="flex flex-col gap-4">
@@ -127,7 +132,7 @@ export function DataTable<TData>({
                       ? null
                       : flexRender(
                           header.column.columnDef.header,
-                          header.getContext()
+                          header.getContext(),
                         )}
                   </TableHead>
                 ))}
@@ -140,12 +145,21 @@ export function DataTable<TData>({
                 <TableRow
                   key={row.id}
                   data-state={row.getIsSelected() ? "selected" : undefined}
-                  onClick={onRowClick ? () => onRowClick(row.original) : undefined}
-                  className={onRowClick ? "cursor-pointer hover:bg-muted/50 active:bg-muted transition-colors" : undefined}
+                  onClick={
+                    onRowClick ? () => onRowClick(row.original) : undefined
+                  }
+                  className={
+                    onRowClick
+                      ? "cursor-pointer hover:bg-muted/50 active:bg-muted transition-colors"
+                      : undefined
+                  }
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>
-                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext(),
+                      )}
                     </TableCell>
                   ))}
                 </TableRow>
@@ -175,7 +189,7 @@ export function DataTable<TData>({
           {Math.min(
             (table.getState().pagination.pageIndex + 1) *
               table.getState().pagination.pageSize,
-            table.getFilteredRowModel().rows.length
+            table.getFilteredRowModel().rows.length,
           )}{" "}
           件を表示
         </div>
@@ -183,7 +197,10 @@ export function DataTable<TData>({
         <div className="ml-auto flex items-center gap-4">
           {/* ページサイズ選択 */}
           <div className="hidden items-center gap-2 lg:flex">
-            <Label htmlFor="page-size" className="text-sm font-medium whitespace-nowrap">
+            <Label
+              htmlFor="page-size"
+              className="text-sm font-medium whitespace-nowrap"
+            >
               表示件数
             </Label>
             <Select
@@ -254,5 +271,5 @@ export function DataTable<TData>({
         </div>
       </div>
     </div>
-  )
+  );
 }

@@ -1,26 +1,26 @@
-import * as React from "react"
-import { cn } from "@/lib/utils"
+import * as React from "react";
+import { cn } from "@/lib/utils";
 
 const sizeMap = {
   sm: 32,
   md: 48,
   lg: 64,
   xl: 96,
-} as const
+} as const;
 
 const colorMap = {
   primary: "var(--color-primary)",
   success: "var(--color-success)",
   warning: "var(--color-warning)",
   danger: "var(--color-danger)",
-} as const
+} as const;
 
 export interface ProgressCircularProps extends React.SVGAttributes<SVGSVGElement> {
-  value: number
-  size?: keyof typeof sizeMap
-  color?: keyof typeof colorMap
-  showLabel?: boolean
-  strokeWidth?: number
+  value: number;
+  size?: keyof typeof sizeMap;
+  color?: keyof typeof colorMap;
+  showLabel?: boolean;
+  strokeWidth?: number;
 }
 
 export function ProgressCircular({
@@ -32,18 +32,21 @@ export function ProgressCircular({
   className,
   ...props
 }: ProgressCircularProps) {
-  const px = sizeMap[size]
-  const sw = strokeWidth ?? Math.max(2, Math.round(px * 0.1))
-  const radius = (px - sw) / 2
-  const circumference = 2 * Math.PI * radius
-  const clampedValue = Math.min(100, Math.max(0, value))
-  const offset = circumference - (clampedValue / 100) * circumference
-  const center = px / 2
-  const strokeColor = colorMap[color]
-  const fontSize = px * 0.22
+  const px = sizeMap[size];
+  const sw = strokeWidth ?? Math.max(2, Math.round(px * 0.1));
+  const radius = (px - sw) / 2;
+  const circumference = 2 * Math.PI * radius;
+  const clampedValue = Math.min(100, Math.max(0, value));
+  const offset = circumference - (clampedValue / 100) * circumference;
+  const center = px / 2;
+  const strokeColor = colorMap[color];
+  const fontSize = px * 0.22;
 
   return (
-    <div className="relative inline-flex items-center justify-center" style={{ width: px, height: px }}>
+    <div
+      className="relative inline-flex items-center justify-center"
+      style={{ width: px, height: px }}
+    >
       <svg
         width={px}
         height={px}
@@ -86,5 +89,5 @@ export function ProgressCircular({
         </span>
       )}
     </div>
-  )
+  );
 }

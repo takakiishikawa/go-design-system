@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import { EmptyState } from "@takaki/go-design-system"
-import { PageHeader, DemoSection } from "@/app/ui/demo-section"
-import { FileText, Search, Inbox, Users } from "lucide-react"
+import { EmptyState } from "@takaki/go-design-system";
+import { PageHeader, DemoSection } from "@/app/ui/demo-section";
+import { FileText, Search, Inbox, Users } from "lucide-react";
 
 export default function EmptyStatePage() {
   return (
@@ -30,7 +30,11 @@ export default function EmptyStatePage() {
             icon={<Search className="size-6" />}
             title="検索結果が見つかりません"
             description="別のキーワードで検索してみてください。"
-            action={{ label: "検索をリセット", onClick: () => {}, variant: "outline" }}
+            action={{
+              label: "検索をリセット",
+              onClick: () => {},
+              variant: "outline",
+            }}
           />
         </div>
       </DemoSection>
@@ -57,5 +61,5 @@ export default function EmptyStatePage() {
         </div>
       </DemoSection>
     </div>
-  )
+  );
 }

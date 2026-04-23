@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import { Button, ConfirmDialog } from "@takaki/go-design-system"
-import { PageHeader, DemoSection } from "@/app/ui/demo-section"
+import { Button, ConfirmDialog } from "@takaki/go-design-system";
+import { PageHeader, DemoSection } from "@/app/ui/demo-section";
 
 export default function ConfirmDialogPage() {
   return (
@@ -14,7 +14,11 @@ export default function ConfirmDialogPage() {
 
       <DemoSection title="デフォルト">
         <ConfirmDialog
-          trigger={<Button variant="outline" size="sm">削除</Button>}
+          trigger={
+            <Button variant="outline" size="sm">
+              削除
+            </Button>
+          }
           title="本当に削除しますか？"
           description="この操作は取り消せません。データは完全に削除されます。"
           confirmLabel="削除する"
@@ -25,7 +29,11 @@ export default function ConfirmDialogPage() {
 
       <DemoSection title="variant=destructive">
         <ConfirmDialog
-          trigger={<Button variant="destructive" size="sm">アカウント削除</Button>}
+          trigger={
+            <Button variant="destructive" size="sm">
+              アカウント削除
+            </Button>
+          }
           title="アカウントを削除しますか？"
           description="すべてのデータが失われます。この操作は元に戻せません。"
           confirmLabel="削除する"
@@ -43,5 +51,5 @@ export default function ConfirmDialogPage() {
         />
       </DemoSection>
     </div>
-  )
+  );
 }

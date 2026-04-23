@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import { Tag, TagGroup } from "@takaki/go-design-system"
-import { PageHeader, DemoSection } from "@/app/ui/demo-section"
+import { Tag, TagGroup } from "@takaki/go-design-system";
+import { PageHeader, DemoSection } from "@/app/ui/demo-section";
 
 export default function TagPage() {
   return (
@@ -25,9 +25,15 @@ export default function TagPage() {
 
       <DemoSection title="removable">
         <TagGroup>
-          <Tag color="primary" removable onRemove={() => {}}>プライマリ</Tag>
-          <Tag color="success" removable onRemove={() => {}}>成功</Tag>
-          <Tag color="warning" removable onRemove={() => {}}>警告</Tag>
+          <Tag color="primary" removable onRemove={() => {}}>
+            プライマリ
+          </Tag>
+          <Tag color="success" removable onRemove={() => {}}>
+            成功
+          </Tag>
+          <Tag color="warning" removable onRemove={() => {}}>
+            警告
+          </Tag>
         </TagGroup>
       </DemoSection>
 
@@ -44,12 +50,44 @@ export default function TagPage() {
 
       <DemoSection title="カスタムカラー（style prop）">
         <TagGroup>
-          <Tag style={{ backgroundColor: "#dcfce7", color: "#15803d", borderColor: "transparent" }}>食費</Tag>
-          <Tag style={{ backgroundColor: "#dbeafe", color: "#1d4ed8", borderColor: "transparent" }}>固定費</Tag>
-          <Tag style={{ backgroundColor: "#f3e8ff", color: "#7e22ce", borderColor: "transparent" }}>マッサージ</Tag>
-          <Tag style={{ backgroundColor: "#ffedd5", color: "#c2410c", borderColor: "transparent" }}>エンタメ</Tag>
+          <Tag
+            style={{
+              backgroundColor: "#dcfce7",
+              color: "#15803d",
+              borderColor: "transparent",
+            }}
+          >
+            食費
+          </Tag>
+          <Tag
+            style={{
+              backgroundColor: "#dbeafe",
+              color: "#1d4ed8",
+              borderColor: "transparent",
+            }}
+          >
+            固定費
+          </Tag>
+          <Tag
+            style={{
+              backgroundColor: "#f3e8ff",
+              color: "#7e22ce",
+              borderColor: "transparent",
+            }}
+          >
+            マッサージ
+          </Tag>
+          <Tag
+            style={{
+              backgroundColor: "#ffedd5",
+              color: "#c2410c",
+              borderColor: "transparent",
+            }}
+          >
+            エンタメ
+          </Tag>
         </TagGroup>
       </DemoSection>
     </div>
-  )
+  );
 }

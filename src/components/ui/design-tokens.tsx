@@ -1,11 +1,11 @@
-import * as React from "react"
-import { TOKENS_CSS, GLOBALS_CSS } from "./design-tokens-css"
+import * as React from "react";
+import { TOKENS_CSS, GLOBALS_CSS } from "./design-tokens-css";
 
 export interface DesignTokensProps {
   /** このGoのプライマリカラー（例: "#0052CC"） */
-  primaryColor?: string
+  primaryColor?: string;
   /** ホバー時のプライマリカラー。省略時は primaryColor をそのまま使用 */
-  primaryColorHover?: string
+  primaryColorHover?: string;
 }
 
 /**
@@ -17,16 +17,21 @@ export interface DesignTokensProps {
  * 使い方（app/layout.tsx の <head> 内）:
  *   <DesignTokens primaryColor="#0052CC" primaryColorHover="#0747A6" />
  */
-export function DesignTokens({ primaryColor, primaryColorHover }: DesignTokensProps) {
+export function DesignTokens({
+  primaryColor,
+  primaryColorHover,
+}: DesignTokensProps) {
   const overrideCSS = primaryColor
     ? `:root{--color-primary:${primaryColor};--color-primary-hover:${primaryColorHover ?? primaryColor};}`
-    : ""
+    : "";
 
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: TOKENS_CSS }} />
       <style dangerouslySetInnerHTML={{ __html: GLOBALS_CSS }} />
-      {overrideCSS && <style dangerouslySetInnerHTML={{ __html: overrideCSS }} />}
+      {overrideCSS && (
+        <style dangerouslySetInnerHTML={{ __html: overrideCSS }} />
+      )}
     </>
-  )
+  );
 }

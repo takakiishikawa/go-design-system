@@ -1,13 +1,15 @@
-"use client"
+"use client";
 
-import { PRODUCT_COLORS, useColor } from "./color-provider"
+import { PRODUCT_COLORS, useColor } from "./color-provider";
 
 export function ColorSwitcher() {
-  const { selected, setSelected } = useColor()
+  const { selected, setSelected } = useColor();
 
   return (
     <div className="flex items-center gap-2">
-      <span className="hidden text-xs text-muted-foreground sm:block">プロダクト:</span>
+      <span className="hidden text-xs text-muted-foreground sm:block">
+        プロダクト:
+      </span>
       <div className="flex items-center gap-1">
         {PRODUCT_COLORS.map((p) => (
           <button
@@ -37,5 +39,5 @@ export function ColorSwitcher() {
         {selected.name}
       </span>
     </div>
-  )
+  );
 }

@@ -1,9 +1,14 @@
-"use client"
+"use client";
 
 import {
-  Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Label,
-} from "@takaki/go-design-system"
-import { PageHeader, DemoSection } from "@/app/ui/demo-section"
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+  Label,
+} from "@takaki/go-design-system";
+import { PageHeader, DemoSection } from "@/app/ui/demo-section";
 
 export default function SelectPage() {
   return (
@@ -62,5 +67,5 @@ export default function SelectPage() {
         </div>
       </DemoSection>
     </div>
-  )
+  );
 }

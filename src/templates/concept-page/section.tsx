@@ -1,17 +1,25 @@
-import * as React from "react"
-import { cn } from "@/lib/utils"
+import * as React from "react";
+import { cn } from "@/lib/utils";
 
 export interface SectionProps {
-  title: string
-  description?: string
-  children: React.ReactNode
-  className?: string
+  title: string;
+  description?: string;
+  children: React.ReactNode;
+  className?: string;
 }
 
-export function Section({ title, description, children, className }: SectionProps) {
+export function Section({
+  title,
+  description,
+  children,
+  className,
+}: SectionProps) {
   return (
     <section
-      className={cn("flex flex-col gap-4 border-t border-border pt-8", className)}
+      className={cn(
+        "flex flex-col gap-4 border-t border-border pt-8",
+        className,
+      )}
     >
       <div className="flex flex-col gap-1">
         <h2
@@ -26,7 +34,10 @@ export function Section({ title, description, children, className }: SectionProp
         {description && (
           <p
             className="text-muted-foreground"
-            style={{ fontSize: "var(--text-sm)", color: "var(--color-text-secondary)" }}
+            style={{
+              fontSize: "var(--text-sm)",
+              color: "var(--color-text-secondary)",
+            }}
           >
             {description}
           </p>
@@ -34,5 +45,5 @@ export function Section({ title, description, children, className }: SectionProp
       </div>
       {children}
     </section>
-  )
+  );
 }

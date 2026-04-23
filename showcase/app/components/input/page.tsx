@@ -1,6 +1,6 @@
-import { Input, Textarea, Label } from "@takaki/go-design-system"
-import { PageHeader, DemoSection } from "@/app/ui/demo-section"
-import { Search, Mail } from "lucide-react"
+import { Input, Textarea, Label } from "@takaki/go-design-system";
+import { PageHeader, DemoSection } from "@/app/ui/demo-section";
+import { Search, Mail } from "lucide-react";
 
 export default function InputPage() {
   return (
@@ -59,9 +59,13 @@ export default function InputPage() {
       <DemoSection title="Textarea">
         <div className="flex w-80 flex-col gap-1.5">
           <Label htmlFor="ta">コメント</Label>
-          <Textarea id="ta" placeholder="自由にコメントを入力してください..." rows={4} />
+          <Textarea
+            id="ta"
+            placeholder="自由にコメントを入力してください..."
+            rows={4}
+          />
         </div>
       </DemoSection>
     </div>
-  )
+  );
 }

@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { MultiSelect } from "@takaki/go-design-system"
-import { PageHeader, DemoSection } from "@/app/ui/demo-section"
+import { useState } from "react";
+import { MultiSelect } from "@takaki/go-design-system";
+import { PageHeader, DemoSection } from "@/app/ui/demo-section";
 
 const FRUITS = [
   { value: "apple", label: "りんご" },
@@ -11,7 +11,7 @@ const FRUITS = [
   { value: "grape", label: "ぶどう" },
   { value: "kiwi", label: "キウイ" },
   { value: "mango", label: "マンゴー" },
-]
+];
 
 const CATEGORIES = [
   { value: "food", label: "食品・飲料" },
@@ -19,10 +19,10 @@ const CATEGORIES = [
   { value: "electronics", label: "家電・電子機器" },
   { value: "health", label: "健康・美容" },
   { value: "sports", label: "スポーツ・アウトドア" },
-]
+];
 
 export default function MultiSelectPage() {
-  const [selected, setSelected] = useState<string[]>([])
+  const [selected, setSelected] = useState<string[]>([]);
 
   return (
     <div className="flex flex-col gap-6 py-4">
@@ -33,7 +33,11 @@ export default function MultiSelectPage() {
       />
 
       <DemoSection title="デフォルト">
-        <MultiSelect options={FRUITS} placeholder="フルーツを選択" className="w-80" />
+        <MultiSelect
+          options={FRUITS}
+          placeholder="フルーツを選択"
+          className="w-80"
+        />
       </DemoSection>
 
       <DemoSection title="制御コンポーネント">
@@ -60,8 +64,13 @@ export default function MultiSelectPage() {
       </DemoSection>
 
       <DemoSection title="disabled">
-        <MultiSelect options={FRUITS} defaultValue={["banana"]} disabled className="w-80" />
+        <MultiSelect
+          options={FRUITS}
+          defaultValue={["banana"]}
+          disabled
+          className="w-80"
+        />
       </DemoSection>
     </div>
-  )
+  );
 }

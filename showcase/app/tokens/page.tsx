@@ -1,13 +1,17 @@
-import { Separator } from "@takaki/go-design-system"
+import { Separator } from "@takaki/go-design-system";
 
 interface ColorSwatchProps {
-  name: string
-  variable: string
-  value?: string
-  textClass?: string
+  name: string;
+  variable: string;
+  value?: string;
+  textClass?: string;
 }
 
-function ColorSwatch({ name, variable, textClass = "text-white" }: ColorSwatchProps) {
+function ColorSwatch({
+  name,
+  variable,
+  textClass = "text-white",
+}: ColorSwatchProps) {
   return (
     <div className="flex flex-col gap-1">
       <div
@@ -18,7 +22,7 @@ function ColorSwatch({ name, variable, textClass = "text-white" }: ColorSwatchPr
       </div>
       <p className="text-xs text-muted-foreground">{name}</p>
     </div>
-  )
+  );
 }
 
 function SpaceSwatch({ token, px }: { token: string; px: string }) {
@@ -33,7 +37,7 @@ function SpaceSwatch({ token, px }: { token: string; px: string }) {
         <p className="text-xs text-muted-foreground">{px}</p>
       </div>
     </div>
-  )
+  );
 }
 
 function RadiusSwatch({ token, label }: { token: string; label: string }) {
@@ -46,7 +50,7 @@ function RadiusSwatch({ token, label }: { token: string; label: string }) {
       <p className="text-xs font-mono text-foreground">{token}</p>
       <p className="text-xs text-muted-foreground">{label}</p>
     </div>
-  )
+  );
 }
 
 export default function TokensPage() {
@@ -55,14 +59,24 @@ export default function TokensPage() {
       <div>
         <h1 className="text-xl font-bold text-foreground">デザイントークン</h1>
         <p className="mt-1 text-sm text-muted-foreground">
-          Goシリーズ共通の CSS カスタムプロパティ一覧。<code className="rounded bg-surface-subtle px-1 font-mono text-xs">tokens.css</code> で定義されています。
+          Goシリーズ共通の CSS カスタムプロパティ一覧。
+          <code className="rounded bg-surface-subtle px-1 font-mono text-xs">
+            tokens.css
+          </code>{" "}
+          で定義されています。
         </p>
       </div>
 
       {/* Primary */}
       <section className="flex flex-col gap-3">
-        <h2 className="text-base font-semibold text-foreground">プライマリカラー</h2>
-        <p className="text-xs text-muted-foreground">各Goで <code className="font-mono">primaryColor</code> props を <code className="font-mono">DesignTokens</code> コンポーネントに渡すことで上書きできます。</p>
+        <h2 className="text-base font-semibold text-foreground">
+          プライマリカラー
+        </h2>
+        <p className="text-xs text-muted-foreground">
+          各Goで <code className="font-mono">primaryColor</code> props を{" "}
+          <code className="font-mono">DesignTokens</code>{" "}
+          コンポーネントに渡すことで上書きできます。
+        </p>
         <div className="flex flex-wrap gap-4">
           <ColorSwatch name="Primary" variable="--color-primary" />
           <ColorSwatch name="Primary Hover" variable="--color-primary-hover" />
@@ -72,37 +86,78 @@ export default function TokensPage() {
 
       {/* Semantic colors */}
       <section className="flex flex-col gap-3">
-        <h2 className="text-base font-semibold text-foreground">セマンティックカラー</h2>
+        <h2 className="text-base font-semibold text-foreground">
+          セマンティックカラー
+        </h2>
         <div className="flex flex-wrap gap-4">
-          <ColorSwatch name="Background" variable="--color-background" textClass="text-foreground" />
-          <ColorSwatch name="Surface" variable="--color-surface" textClass="text-foreground" />
-          <ColorSwatch name="Surface Subtle" variable="--color-surface-subtle" textClass="text-foreground" />
+          <ColorSwatch
+            name="Background"
+            variable="--color-background"
+            textClass="text-foreground"
+          />
+          <ColorSwatch
+            name="Surface"
+            variable="--color-surface"
+            textClass="text-foreground"
+          />
+          <ColorSwatch
+            name="Surface Subtle"
+            variable="--color-surface-subtle"
+            textClass="text-foreground"
+          />
           <ColorSwatch name="Text Primary" variable="--color-text-primary" />
-          <ColorSwatch name="Text Secondary" variable="--color-text-secondary" />
-          <ColorSwatch name="Border Default" variable="--color-border-default" textClass="text-foreground" />
+          <ColorSwatch
+            name="Text Secondary"
+            variable="--color-text-secondary"
+          />
+          <ColorSwatch
+            name="Border Default"
+            variable="--color-border-default"
+            textClass="text-foreground"
+          />
         </div>
         <Separator />
       </section>
 
       {/* Status colors */}
       <section className="flex flex-col gap-3">
-        <h2 className="text-base font-semibold text-foreground">ステータスカラー</h2>
+        <h2 className="text-base font-semibold text-foreground">
+          ステータスカラー
+        </h2>
         <div className="flex flex-wrap gap-4">
           <ColorSwatch name="Success" variable="--color-success" />
-          <ColorSwatch name="Success Subtle" variable="--color-success-subtle" textClass="text-foreground" />
+          <ColorSwatch
+            name="Success Subtle"
+            variable="--color-success-subtle"
+            textClass="text-foreground"
+          />
           <ColorSwatch name="Warning" variable="--color-warning" />
-          <ColorSwatch name="Warning Subtle" variable="--color-warning-subtle" textClass="text-foreground" />
+          <ColorSwatch
+            name="Warning Subtle"
+            variable="--color-warning-subtle"
+            textClass="text-foreground"
+          />
           <ColorSwatch name="Danger" variable="--color-danger" />
-          <ColorSwatch name="Danger Subtle" variable="--color-danger-subtle" textClass="text-foreground" />
+          <ColorSwatch
+            name="Danger Subtle"
+            variable="--color-danger-subtle"
+            textClass="text-foreground"
+          />
           <ColorSwatch name="Info" variable="--color-info" />
-          <ColorSwatch name="Info Subtle" variable="--color-info-subtle" textClass="text-foreground" />
+          <ColorSwatch
+            name="Info Subtle"
+            variable="--color-info-subtle"
+            textClass="text-foreground"
+          />
         </div>
         <Separator />
       </section>
 
       {/* Spacing */}
       <section className="flex flex-col gap-3">
-        <h2 className="text-base font-semibold text-foreground">スペーシング（4px グリッド）</h2>
+        <h2 className="text-base font-semibold text-foreground">
+          スペーシング（4px グリッド）
+        </h2>
         <div className="flex flex-col gap-2">
           <SpaceSwatch token="--space-1" px="4px" />
           <SpaceSwatch token="--space-2" px="8px" />
@@ -118,7 +173,9 @@ export default function TokensPage() {
 
       {/* Border radius */}
       <section className="flex flex-col gap-3">
-        <h2 className="text-base font-semibold text-foreground">角丸（控えめなデザイン）</h2>
+        <h2 className="text-base font-semibold text-foreground">
+          角丸（控えめなデザイン）
+        </h2>
         <div className="flex flex-wrap gap-6">
           <RadiusSwatch token="--radius-sm" label="3px" />
           <RadiusSwatch token="--radius-md" label="4px" />
@@ -130,15 +187,25 @@ export default function TokensPage() {
 
       {/* Typography */}
       <section className="flex flex-col gap-4">
-        <h2 className="text-base font-semibold text-foreground">タイポグラフィ</h2>
+        <h2 className="text-base font-semibold text-foreground">
+          タイポグラフィ
+        </h2>
         <div className="flex flex-col gap-3">
           {[
             { token: "--text-xs", size: "12px", label: "xs — ラベル・補足" },
             { token: "--text-sm", size: "14px", label: "sm — 本文小" },
             { token: "--text-base", size: "16px", label: "base — 本文" },
             { token: "--text-lg", size: "18px", label: "lg — 強調テキスト" },
-            { token: "--text-xl", size: "20px", label: "xl — セクション見出し" },
-            { token: "--text-2xl", size: "24px", label: "2xl — ページ見出し小" },
+            {
+              token: "--text-xl",
+              size: "20px",
+              label: "xl — セクション見出し",
+            },
+            {
+              token: "--text-2xl",
+              size: "24px",
+              label: "2xl — ページ見出し小",
+            },
             { token: "--text-3xl", size: "32px", label: "3xl — ページ見出し" },
             { token: "--text-4xl", size: "40px", label: "4xl — Hero" },
           ].map(({ token, size, label }) => (
@@ -150,13 +217,17 @@ export default function TokensPage() {
                 あABCabc
               </span>
               <div>
-                <span className="text-xs font-mono text-muted-foreground">{token}</span>
-                <span className="ml-2 text-xs text-muted-foreground">({size}) — {label}</span>
+                <span className="text-xs font-mono text-muted-foreground">
+                  {token}
+                </span>
+                <span className="ml-2 text-xs text-muted-foreground">
+                  ({size}) — {label}
+                </span>
               </div>
             </div>
           ))}
         </div>
       </section>
     </div>
-  )
+  );
 }

@@ -1,15 +1,15 @@
-"use client"
+"use client";
 
-import * as React from "react"
+import * as React from "react";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
+} from "@/components/ui/card";
 
 // lucide-react に Google アイコンがないため inline SVG で実装
 function GoogleIcon({ className }: { className?: string }) {
@@ -37,20 +37,20 @@ function GoogleIcon({ className }: { className?: string }) {
         fill="#EA4335"
       />
     </svg>
-  )
+  );
 }
 
 export interface LoginPageProps {
   /** プロダクト名（例: "NativeGo"） */
-  productName: string
+  productName: string;
   /** ロゴコンポーネント */
-  productLogo?: React.ReactNode
+  productLogo?: React.ReactNode;
   /** キャッチコピー（例: "ネイティブ英語学習を加速する"） */
-  tagline?: string
+  tagline?: string;
   /** Google OAuth 開始関数 */
-  onGoogleSignIn: () => void | Promise<void>
+  onGoogleSignIn: () => void | Promise<void>;
   /** ローディング中フラグ */
-  isLoading?: boolean
+  isLoading?: boolean;
 }
 
 export function LoginPage({
@@ -60,18 +60,18 @@ export function LoginPage({
   onGoogleSignIn,
   isLoading = false,
 }: LoginPageProps) {
-  const [pending, setPending] = React.useState(false)
+  const [pending, setPending] = React.useState(false);
 
   async function handleSignIn() {
-    setPending(true)
+    setPending(true);
     try {
-      await onGoogleSignIn()
+      await onGoogleSignIn();
     } finally {
-      setPending(false)
+      setPending(false);
     }
   }
 
-  const loading = isLoading || pending
+  const loading = isLoading || pending;
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background p-4">
@@ -142,5 +142,5 @@ export function LoginPage({
         </CardContent>
       </Card>
     </div>
-  )
+  );
 }

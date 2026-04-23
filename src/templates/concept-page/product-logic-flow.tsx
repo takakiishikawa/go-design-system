@@ -1,15 +1,15 @@
-import * as React from "react"
-import { ArrowRightIcon, ArrowDownIcon, ArrowRight } from "lucide-react"
-import { cn } from "@/lib/utils"
+import * as React from "react";
+import { ArrowRightIcon, ArrowDownIcon, ArrowRight } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export interface LogicStep {
-  title: string
-  description: string
+  title: string;
+  description: string;
 }
 
 export interface ProductLogicFlowProps {
-  steps: LogicStep[]
-  outcome: string
+  steps: LogicStep[];
+  outcome: string;
 }
 
 function StepCard({
@@ -17,11 +17,11 @@ function StepCard({
   index,
   total,
 }: {
-  step: LogicStep
-  index: number
-  total: number
+  step: LogicStep;
+  index: number;
+  total: number;
 }) {
-  const isLast = index === total - 1
+  const isLast = index === total - 1;
   return (
     <>
       {/* カード */}
@@ -49,7 +49,10 @@ function StepCard({
         </div>
         <p
           className="text-muted-foreground leading-relaxed"
-          style={{ fontSize: "var(--text-xs)", color: "var(--color-text-secondary)" }}
+          style={{
+            fontSize: "var(--text-xs)",
+            color: "var(--color-text-secondary)",
+          }}
         >
           {step.description}
         </p>
@@ -69,7 +72,7 @@ function StepCard({
         </>
       )}
     </>
-  )
+  );
 }
 
 export function ProductLogicFlow({ steps, outcome }: ProductLogicFlowProps) {
@@ -93,7 +96,8 @@ export function ProductLogicFlow({ steps, outcome }: ProductLogicFlowProps) {
           className="flex-1 rounded-lg border px-4 py-3 font-semibold text-foreground"
           style={{
             borderColor: "var(--color-primary)",
-            backgroundColor: "color-mix(in srgb, var(--color-primary) 6%, transparent)",
+            backgroundColor:
+              "color-mix(in srgb, var(--color-primary) 6%, transparent)",
             fontSize: "var(--text-base)",
             fontWeight: "var(--font-weight-semibold)",
           }}
@@ -102,5 +106,5 @@ export function ProductLogicFlow({ steps, outcome }: ProductLogicFlowProps) {
         </div>
       </div>
     </div>
-  )
+  );
 }

@@ -1,5 +1,5 @@
-import { Spinner } from "@takaki/go-design-system"
-import { PageHeader, DemoSection } from "@/app/ui/demo-section"
+import { Spinner } from "@takaki/go-design-system";
+import { PageHeader, DemoSection } from "@/app/ui/demo-section";
 
 export default function SpinnerPage() {
   return (
@@ -48,10 +48,12 @@ export default function SpinnerPage() {
         <div className="flex h-32 w-full items-center justify-center rounded-lg border border-border bg-surface-subtle">
           <div className="flex flex-col items-center gap-2">
             <Spinner size="lg" color="primary" />
-            <p className="text-sm text-muted-foreground">データを読み込み中...</p>
+            <p className="text-sm text-muted-foreground">
+              データを読み込み中...
+            </p>
           </div>
         </div>
       </DemoSection>
     </div>
-  )
+  );
 }

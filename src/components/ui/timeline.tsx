@@ -1,18 +1,18 @@
-import * as React from "react"
-import { cn } from "@/lib/utils"
+import * as React from "react";
+import { cn } from "@/lib/utils";
 
 export interface TimelineItem {
-  id?: string
-  title: string
-  description?: React.ReactNode
-  timestamp?: string
-  icon?: React.ReactNode
-  variant?: "default" | "success" | "warning" | "error"
+  id?: string;
+  title: string;
+  description?: React.ReactNode;
+  timestamp?: string;
+  icon?: React.ReactNode;
+  variant?: "default" | "success" | "warning" | "error";
 }
 
 export interface TimelineProps {
-  items: TimelineItem[]
-  className?: string
+  items: TimelineItem[];
+  className?: string;
 }
 
 const variantDotClass: Record<NonNullable<TimelineItem["variant"]>, string> = {
@@ -20,7 +20,7 @@ const variantDotClass: Record<NonNullable<TimelineItem["variant"]>, string> = {
   success: "bg-[color:var(--color-success)]",
   warning: "bg-[color:var(--color-warning)]",
   error: "bg-destructive",
-}
+};
 
 export function Timeline({ items, className }: TimelineProps) {
   return (
@@ -44,7 +44,7 @@ export function Timeline({ items, className }: TimelineProps) {
               <span
                 className={cn(
                   "size-2.5 rounded-full",
-                  variantDotClass[item.variant ?? "default"]
+                  variantDotClass[item.variant ?? "default"],
                 )}
               />
             )}
@@ -62,11 +62,13 @@ export function Timeline({ items, className }: TimelineProps) {
               )}
             </div>
             {item.description && (
-              <p className="text-sm text-muted-foreground">{item.description}</p>
+              <p className="text-sm text-muted-foreground">
+                {item.description}
+              </p>
             )}
           </div>
         </li>
       ))}
     </ol>
-  )
+  );
 }

@@ -1,5 +1,5 @@
-import { Badge } from "@takaki/go-design-system"
-import { PageHeader, DemoSection } from "@/app/ui/demo-section"
+import { Badge } from "@takaki/go-design-system";
+import { PageHeader, DemoSection } from "@/app/ui/demo-section";
 
 export default function BadgePage() {
   return (
@@ -25,5 +25,5 @@ export default function BadgePage() {
         <Badge variant="secondary">12</Badge>
       </DemoSection>
     </div>
-  )
+  );
 }

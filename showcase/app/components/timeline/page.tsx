@@ -1,6 +1,6 @@
-import { Timeline } from "@takaki/go-design-system"
-import { PageHeader, DemoSection } from "@/app/ui/demo-section"
-import { CheckCircle, AlertCircle, Clock } from "lucide-react"
+import { Timeline } from "@takaki/go-design-system";
+import { PageHeader, DemoSection } from "@/app/ui/demo-section";
+import { CheckCircle, AlertCircle, Clock } from "lucide-react";
 
 const ACTIVITY = [
   {
@@ -31,7 +31,7 @@ const ACTIVITY = [
     timestamp: "14:20",
     variant: "error" as const,
   },
-]
+];
 
 const WITH_ICONS = [
   {
@@ -55,7 +55,7 @@ const WITH_ICONS = [
     timestamp: "今日 09:40",
     icon: <AlertCircle className="size-3 text-destructive" />,
   },
-]
+];
 
 export default function TimelinePage() {
   return (
@@ -78,5 +78,5 @@ export default function TimelinePage() {
         </div>
       </DemoSection>
     </div>
-  )
+  );
 }

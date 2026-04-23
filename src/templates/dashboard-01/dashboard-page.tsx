@@ -1,27 +1,27 @@
-import * as React from "react"
-import type { ColumnDef } from "@tanstack/react-table"
+import * as React from "react";
+import type { ColumnDef } from "@tanstack/react-table";
 
-import { SectionCards, type SectionCardsProps } from "./section-cards"
-import { ChartArea, type ChartAreaProps } from "./chart-area"
-import { DataTable } from "./data-table"
+import { SectionCards, type SectionCardsProps } from "./section-cards";
+import { ChartArea, type ChartAreaProps } from "./chart-area";
+import { DataTable } from "./data-table";
 
 export interface DashboardPageProps {
   /** KPIカード群 */
-  cards?: SectionCardsProps["cards"]
+  cards?: SectionCardsProps["cards"];
   /** エリアチャートの設定 */
-  chart?: ChartAreaProps
+  chart?: ChartAreaProps;
   /** データテーブルの設定 */
   table?: {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    columns: ColumnDef<any>[]
+    columns: ColumnDef<any>[];
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    data: any[]
-    searchable?: boolean | { columnId: string; placeholder?: string }
-    pageSize?: number
-    emptyMessage?: string
-  }
+    data: any[];
+    searchable?: boolean | { columnId: string; placeholder?: string };
+    pageSize?: number;
+    emptyMessage?: string;
+  };
   /** ページ固有のカスタムセクションを自由に追加 */
-  children?: React.ReactNode
+  children?: React.ReactNode;
 }
 
 export function DashboardPage({
@@ -58,5 +58,5 @@ export function DashboardPage({
       {/* カスタムセクション */}
       {children && <div className="px-4 lg:px-6">{children}</div>}
     </div>
-  )
+  );
 }

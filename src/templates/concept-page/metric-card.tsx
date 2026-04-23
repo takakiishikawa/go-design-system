@@ -1,22 +1,27 @@
-import * as React from "react"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { cn } from "@/lib/utils"
+import * as React from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
 
 export interface MetricCardProps {
-  title: string
-  description: string
+  title: string;
+  description: string;
   /** KGI の場合 true —— primary border でハイライト */
-  isPrimary?: boolean
-  className?: string
+  isPrimary?: boolean;
+  className?: string;
 }
 
-export function MetricCard({ title, description, isPrimary = false, className }: MetricCardProps) {
+export function MetricCard({
+  title,
+  description,
+  isPrimary = false,
+  className,
+}: MetricCardProps) {
   return (
     <Card
       className={cn(
         "transition-shadow",
         isPrimary && "border-primary shadow-md",
-        className
+        className,
       )}
       style={
         isPrimary
@@ -31,12 +36,14 @@ export function MetricCard({ title, description, isPrimary = false, className }:
         <CardTitle
           className={cn(
             "leading-snug",
-            isPrimary ? "text-primary" : "text-foreground"
+            isPrimary ? "text-primary" : "text-foreground",
           )}
           style={{
             fontSize: isPrimary ? "var(--text-lg)" : "var(--text-base)",
             fontWeight: "var(--font-weight-semibold)",
-            color: isPrimary ? "var(--color-primary)" : "var(--color-text-primary)",
+            color: isPrimary
+              ? "var(--color-primary)"
+              : "var(--color-text-primary)",
           }}
         >
           {title}
@@ -54,5 +61,5 @@ export function MetricCard({ title, description, isPrimary = false, className }:
         </p>
       </CardContent>
     </Card>
-  )
+  );
 }

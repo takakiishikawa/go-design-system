@@ -1,23 +1,30 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { cn } from "@/lib/utils"
-import { Separator } from "@/components/ui/separator"
+import * as React from "react";
+import { cn } from "@/lib/utils";
+import { Separator } from "@/components/ui/separator";
 
 // ---------------------------------------------------------------------------
 // SettingsItem
 // ---------------------------------------------------------------------------
 
 export interface SettingsItemProps {
-  label: string
-  description?: string
-  control: React.ReactNode
-  className?: string
+  label: string;
+  description?: string;
+  control: React.ReactNode;
+  className?: string;
 }
 
-export function SettingsItem({ label, description, control, className }: SettingsItemProps) {
+export function SettingsItem({
+  label,
+  description,
+  control,
+  className,
+}: SettingsItemProps) {
   return (
-    <div className={cn("flex items-center justify-between gap-4 py-4", className)}>
+    <div
+      className={cn("flex items-center justify-between gap-4 py-4", className)}
+    >
       <div className="flex flex-col gap-0.5">
         <p className="text-sm font-medium text-foreground">{label}</p>
         {description && (
@@ -26,7 +33,7 @@ export function SettingsItem({ label, description, control, className }: Setting
       </div>
       <div className="shrink-0">{control}</div>
     </div>
-  )
+  );
 }
 
 // ---------------------------------------------------------------------------
@@ -34,13 +41,18 @@ export function SettingsItem({ label, description, control, className }: Setting
 // ---------------------------------------------------------------------------
 
 export interface SettingsGroupProps {
-  title: string
-  description?: string
-  children: React.ReactNode
-  className?: string
+  title: string;
+  description?: string;
+  children: React.ReactNode;
+  className?: string;
 }
 
-export function SettingsGroup({ title, description, children, className }: SettingsGroupProps) {
+export function SettingsGroup({
+  title,
+  description,
+  children,
+  className,
+}: SettingsGroupProps) {
   return (
     <div className={cn("flex flex-col", className)}>
       <div className="mb-2">
@@ -57,7 +69,7 @@ export function SettingsGroup({ title, description, children, className }: Setti
         ))}
       </div>
     </div>
-  )
+  );
 }
 
 // ---------------------------------------------------------------------------
@@ -65,17 +77,17 @@ export function SettingsGroup({ title, description, children, className }: Setti
 // ---------------------------------------------------------------------------
 
 export interface SettingsSection {
-  id: string
-  label: string
-  icon?: React.ReactNode
-  content: React.ReactNode
+  id: string;
+  label: string;
+  icon?: React.ReactNode;
+  content: React.ReactNode;
 }
 
 export interface SettingsPageProps {
-  sections: SettingsSection[]
-  defaultSection?: string
-  title?: string
-  className?: string
+  sections: SettingsSection[];
+  defaultSection?: string;
+  title?: string;
+  className?: string;
 }
 
 export function SettingsPage({
@@ -85,12 +97,14 @@ export function SettingsPage({
   className,
 }: SettingsPageProps) {
   const [activeId, setActiveId] = React.useState(
-    defaultSection ?? sections[0]?.id
-  )
-  const activeSection = sections.find((s) => s.id === activeId) ?? sections[0]
+    defaultSection ?? sections[0]?.id,
+  );
+  const activeSection = sections.find((s) => s.id === activeId) ?? sections[0];
 
   return (
-    <div className={cn("mx-auto w-full max-w-5xl px-4 py-8 md:px-8", className)}>
+    <div
+      className={cn("mx-auto w-full max-w-5xl px-4 py-8 md:px-8", className)}
+    >
       <h1 className="mb-6 text-2xl font-bold text-foreground">{title}</h1>
       <div className="flex gap-8">
         {/* Sidebar nav */}
@@ -105,7 +119,7 @@ export function SettingsPage({
                     "flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm transition-colors",
                     activeId === s.id
                       ? "bg-surface-subtle font-medium text-foreground"
-                      : "text-muted-foreground hover:bg-surface-subtle hover:text-foreground"
+                      : "text-muted-foreground hover:bg-surface-subtle hover:text-foreground",
                   )}
                 >
                   {s.icon && <span className="shrink-0">{s.icon}</span>}
@@ -127,7 +141,7 @@ export function SettingsPage({
                 "flex shrink-0 items-center gap-1.5 rounded-md px-3 py-1.5 text-sm transition-colors",
                 activeId === s.id
                   ? "bg-surface-subtle font-medium text-foreground"
-                  : "text-muted-foreground hover:bg-surface-subtle"
+                  : "text-muted-foreground hover:bg-surface-subtle",
               )}
             >
               {s.icon}
@@ -146,5 +160,5 @@ export function SettingsPage({
         </div>
       </div>
     </div>
-  )
+  );
 }

@@ -1,20 +1,58 @@
 import {
-  Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow, Badge,
-} from "@takaki/go-design-system"
-import { PageHeader, DemoSection } from "@/app/ui/demo-section"
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+  Badge,
+} from "@takaki/go-design-system";
+import { PageHeader, DemoSection } from "@/app/ui/demo-section";
 
 const INVOICES = [
-  { id: "INV-001", customer: "山田太郎", amount: "¥24,000", status: "支払済", date: "2024-01-15" },
-  { id: "INV-002", customer: "佐藤花子", amount: "¥18,500", status: "未払い", date: "2024-01-18" },
-  { id: "INV-003", customer: "鈴木一郎", amount: "¥32,000", status: "支払済", date: "2024-01-20" },
-  { id: "INV-004", customer: "田中美咲", amount: "¥9,800", status: "期限超過", date: "2024-01-10" },
-  { id: "INV-005", customer: "高橋健司", amount: "¥55,000", status: "支払済", date: "2024-01-22" },
-]
+  {
+    id: "INV-001",
+    customer: "山田太郎",
+    amount: "¥24,000",
+    status: "支払済",
+    date: "2024-01-15",
+  },
+  {
+    id: "INV-002",
+    customer: "佐藤花子",
+    amount: "¥18,500",
+    status: "未払い",
+    date: "2024-01-18",
+  },
+  {
+    id: "INV-003",
+    customer: "鈴木一郎",
+    amount: "¥32,000",
+    status: "支払済",
+    date: "2024-01-20",
+  },
+  {
+    id: "INV-004",
+    customer: "田中美咲",
+    amount: "¥9,800",
+    status: "期限超過",
+    date: "2024-01-10",
+  },
+  {
+    id: "INV-005",
+    customer: "高橋健司",
+    amount: "¥55,000",
+    status: "支払済",
+    date: "2024-01-22",
+  },
+];
 
 function StatusBadge({ status }: { status: string }) {
-  if (status === "支払済") return <Badge variant="default">{status}</Badge>
-  if (status === "期限超過") return <Badge variant="destructive">{status}</Badge>
-  return <Badge variant="outline">{status}</Badge>
+  if (status === "支払済") return <Badge variant="default">{status}</Badge>;
+  if (status === "期限超過")
+    return <Badge variant="destructive">{status}</Badge>;
+  return <Badge variant="outline">{status}</Badge>;
 }
 
 export default function TablePage() {
@@ -45,8 +83,12 @@ export default function TablePage() {
                   <TableCell className="font-mono text-xs">{inv.id}</TableCell>
                   <TableCell>{inv.customer}</TableCell>
                   <TableCell className="tabular-nums">{inv.amount}</TableCell>
-                  <TableCell><StatusBadge status={inv.status} /></TableCell>
-                  <TableCell className="text-muted-foreground">{inv.date}</TableCell>
+                  <TableCell>
+                    <StatusBadge status={inv.status} />
+                  </TableCell>
+                  <TableCell className="text-muted-foreground">
+                    {inv.date}
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>
@@ -54,5 +96,5 @@ export default function TablePage() {
         </div>
       </DemoSection>
     </div>
-  )
+  );
 }
