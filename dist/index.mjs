@@ -323,7 +323,9 @@ var Label2 = React19.forwardRef(({ className, ...props }, ref) => /* @__PURE__ *
 ));
 Label2.displayName = LabelPrimitive.Root.displayName;
 var Form = FormProvider;
-var FormFieldContext = React19.createContext(null);
+var FormFieldContext = React19.createContext(
+  null
+);
 var FormField = ({
   ...props
 }) => {
@@ -564,7 +566,10 @@ var Progress = React19.forwardRef(({ className, value, indicatorStyle, ...props 
       ProgressPrimitive.Indicator,
       {
         className: "h-full w-full flex-1 bg-primary transition-all",
-        style: { transform: `translateX(-${100 - (value || 0)}%)`, ...indicatorStyle }
+        style: {
+          transform: `translateX(-${100 - (value || 0)}%)`,
+          ...indicatorStyle
+        }
       }
     )
   }
@@ -614,7 +619,9 @@ var AlertDescription = React19.forwardRef(({ className, ...props }, ref) => /* @
 AlertDescription.displayName = "AlertDescription";
 var MOBILE_BREAKPOINT = 768;
 function useIsMobile() {
-  const [isMobile, setIsMobile] = React19.useState(void 0);
+  const [isMobile, setIsMobile] = React19.useState(
+    void 0
+  );
   React19.useEffect(() => {
     const mql = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT - 1}px)`);
     const onChange = () => {
@@ -803,7 +810,15 @@ var SidebarProvider = React19.forwardRef(
         setOpenMobile,
         toggleSidebar
       }),
-      [state, open, setOpen, isMobile, openMobile, setOpenMobile, toggleSidebar]
+      [
+        state,
+        open,
+        setOpen,
+        isMobile,
+        openMobile,
+        setOpenMobile,
+        toggleSidebar
+      ]
     );
     return /* @__PURE__ */ jsx(SidebarContext.Provider, { value: contextValue, children: /* @__PURE__ */ jsx(TooltipProvider, { delayDuration: 0, children: /* @__PURE__ */ jsx(
       "div",
@@ -1917,20 +1932,27 @@ Command.displayName = Command$1.displayName;
 var CommandDialog = ({ children, ...props }) => {
   return /* @__PURE__ */ jsx(Dialog, { ...props, children: /* @__PURE__ */ jsx(DialogContent, { className: "overflow-hidden p-0", children: /* @__PURE__ */ jsx(Command, { className: "[&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-muted-foreground [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[cmdk-group]]:px-2 [&_[cmdk-input-wrapper]_svg]:h-5 [&_[cmdk-input-wrapper]_svg]:w-5 [&_[cmdk-input]]:h-12 [&_[cmdk-item]]:px-2 [&_[cmdk-item]]:py-3 [&_[cmdk-item]_svg]:h-5 [&_[cmdk-item]_svg]:w-5", children }) }) });
 };
-var CommandInput = React19.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsxs("div", { className: "flex items-center border-b border-border px-3", "cmdk-input-wrapper": "", children: [
-  /* @__PURE__ */ jsx(Search, { className: "mr-2 h-4 w-4 shrink-0 opacity-50" }),
-  /* @__PURE__ */ jsx(
-    Command$1.Input,
-    {
-      ref,
-      className: cn(
-        "flex h-10 w-full rounded-md bg-transparent py-3 text-sm outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50",
-        className
-      ),
-      ...props
-    }
-  )
-] }));
+var CommandInput = React19.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsxs(
+  "div",
+  {
+    className: "flex items-center border-b border-border px-3",
+    "cmdk-input-wrapper": "",
+    children: [
+      /* @__PURE__ */ jsx(Search, { className: "mr-2 h-4 w-4 shrink-0 opacity-50" }),
+      /* @__PURE__ */ jsx(
+        Command$1.Input,
+        {
+          ref,
+          className: cn(
+            "flex h-10 w-full rounded-md bg-transparent py-3 text-sm outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50",
+            className
+          ),
+          ...props
+        }
+      )
+    ]
+  }
+));
 CommandInput.displayName = Command$1.Input.displayName;
 var CommandList = React19.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx(
   Command$1.List,
@@ -2334,7 +2356,14 @@ var Table = React19.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */
   }
 ) }));
 Table.displayName = "Table";
-var TableHeader = React19.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx("thead", { ref, className: cn("[&_tr]:border-b [&_tr]:border-border", className), ...props }));
+var TableHeader = React19.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx(
+  "thead",
+  {
+    ref,
+    className: cn("[&_tr]:border-b [&_tr]:border-border", className),
+    ...props
+  }
+));
 TableHeader.displayName = "TableHeader";
 var TableBody = React19.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx(
   "tbody",
@@ -2968,9 +2997,12 @@ var ResizableHandle = ({
 var AspectRatio = AspectRatioPrimitive.Root;
 
 // src/components/ui/design-tokens-css.ts
-var TOKENS_CSS = '/* ============================================================\n   tokens.css \u2014 Go\u30B7\u30EA\u30FC\u30BA \u30C7\u30B6\u30A4\u30F3\u30C8\u30FC\u30AF\u30F3\n   \u7D14\u7C8B\u306ACSS\u5909\u6570\u5B9A\u7FA9\u306E\u307F\u3002@layer/@apply/@tailwind \u306F\u542B\u307E\u306A\u3044\u3002\n   Tailwind v3/v4 \u3069\u3061\u3089\u3068\u3082\u4E92\u63DB\u3002\n   \u5404Go\u306E layout.tsx \u3067\u6700\u521D\u306B import \u3059\u308B\u3053\u3068\u3002\n   ============================================================ */\n\n:root {\n  /* ============================================\n     Primitive Tokens \u2014 \u751F\u306E\u5024\u3002\u5909\u66F4\u306F\u5168Go\u306B\u5F71\u97FF\u3002\n     ============================================ */\n\n  /* Radius */\n  --radius-sm: 3px;\n  --radius-md: 4px;\n  --radius-lg: 6px;\n  --radius-full: 9999px;\n\n  /* Space (4px grid) */\n  --space-1: 4px;\n  --space-2: 8px;\n  --space-3: 12px;\n  --space-4: 16px;\n  --space-5: 20px;\n  --space-6: 24px;\n  --space-8: 32px;\n  --space-10: 40px;\n\n  /* Typography */\n  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;\n  --text-xs: 12px;\n  --text-sm: 14px;\n  --text-base: 16px;\n  --text-lg: 18px;\n  --text-xl: 20px;\n  --text-2xl: 24px;\n  --text-3xl: 32px;\n  --text-4xl: 40px;\n  --font-weight-regular: 400;\n  --font-weight-medium: 500;\n  --font-weight-semibold: 600;\n  --font-weight-bold: 700;\n\n  /* Animation */\n  --duration-fast: 150ms;\n  --duration-base: 200ms;\n  --duration-slow: 300ms;\n  --easing-default: cubic-bezier(0.4, 0, 0.2, 1);\n  --easing-in: cubic-bezier(0.4, 0, 1, 1);\n  --easing-out: cubic-bezier(0, 0, 0.2, 1);\n\n  /* ============================================\n     Semantic Tokens \u2014 Light Mode\n     ============================================ */\n\n  /* Backgrounds\n     \u54F2\u5B66: \u30B5\u30FC\u30D5\u30A7\u30B9\u306F\u9ED2\u5B50\u3001\u30B3\u30F3\u30C6\u30F3\u30C4\u304C\u4E3B\u5F79\u3002\n     \u9818\u57DF\u306E\u533A\u5207\u308A\u306F whitespace \u3068 border \u306E\u307F\u3002\u80CC\u666F\u8272\u3067\u4E3B\u5F35\u3057\u306A\u3044\u3002\n     \u4F8B\u5916\u7684\u306B surface-subtle \u306F kanban\u5217\u30FB\u30B0\u30EB\u30FC\u30D4\u30F3\u30B0\u7B49\u306E"sunken"\u7528\u9014\u306E\u307F\u4F7F\u7528\u3002 */\n  --color-background: #ffffff;\n  --color-surface: #ffffff;\n  --color-surface-subtle: #f7f8f9;   /* sunken \u4F8B\u5916\u7528 \u2014 \u660E\u78BA\u306A\u76EE\u7684\u304C\u3042\u308B\u6642\u306E\u307F */\n  --color-surface-elevated: #ffffff;\n\n  /* Text (WCAG AA\u4EE5\u4E0A\u3092\u62C5\u4FDD) */\n  --color-text-primary: #172b4d;   /* contrast vs #fff: 12.6:1 */\n  --color-text-secondary: #6b778c; /* contrast vs #fff:  5.0:1 */\n  --color-text-subtle: #8993a4;    /* contrast vs #fff:  3.7:1 \u2014 decorative\u7528\u9014\u306E\u307F */\n  --color-text-disabled: #a5adba;\n\n  /* Borders */\n  --color-border-subtle: #ebecf0;\n  --color-border-default: #dfe1e6;\n  --color-border-strong: #c1c7d0;\n\n  /* Primary \u2014 \u5404Go\u306F\u3053\u3053\u3060\u3051\u4E0A\u66F8\u304D\u3059\u308C\u3070OK */\n  --color-primary: #0052cc;\n  --color-primary-hover: #0747a6;\n  --color-primary-text: #ffffff;\n\n  /* Status */\n  --color-success: #00875a;\n  --color-success-subtle: #e3fcef;\n  --color-warning: #ff8b00;\n  --color-warning-subtle: #fffae6;\n  --color-danger: #de350b;\n  --color-danger-subtle: #ffebe6;\n  --color-info: #0052cc;\n  --color-info-subtle: #deebff;\n\n  /* Shadows */\n  --shadow-sm: 0 1px 2px rgba(9, 30, 66, 0.08);\n  --shadow-md: 0 4px 8px rgba(9, 30, 66, 0.08);\n  --shadow-lg: 0 8px 16px rgba(9, 30, 66, 0.1);\n\n  /* ============================================\n     Sidebar Tokens (HSL\u5F62\u5F0F \u2014 shadcn sidebar.tsx \u304C\n     hsl(var(--sidebar-xxx)) \u3067\u53C2\u7167\u3059\u308B\u305F\u3081\u7DAD\u6301)\n     ============================================ */\n  --sidebar-background: 0 0% 100%;      /* \u767D \u2014 \u30DC\u30C7\u30A3\u3068\u540C\u3058\u30B5\u30FC\u30D5\u30A7\u30B9 */\n  --sidebar-foreground: 215 25% 30%;    /* #384660 \u2014 \u8996\u8A8D\u6027\u306E\u9AD8\u3044\u30CA\u30D3\u30C6\u30AD\u30B9\u30C8 */\n  --sidebar-primary: 215 25% 14%;       /* #1c2535 \u2014 \u30A2\u30A4\u30B3\u30F3\u7B49\u306E\u30C0\u30FC\u30AF */\n  --sidebar-primary-foreground: 0 0% 98%;\n  --sidebar-accent: 220 13% 95%;        /* #eef0f4 \u2014 \u767D\u80CC\u666F\u4E0A\u306E subtle hover */\n  --sidebar-accent-foreground: 215 25% 14%; /* #1c2535 \u2014 \u30B3\u30F3\u30C8\u30E9\u30B9\u30C8\u78BA\u4FDD */\n  --sidebar-border: 220 13% 91%;        /* #e4e6eb \u2014 sidebar\u53F3\u67A0 border */\n  --sidebar-ring: 218 100% 40%;         /* #0052cc \u2014 \u30D5\u30A9\u30FC\u30AB\u30B9\u30EA\u30F3\u30B0 */\n}\n\n/* ============================================\n   Dark Mode Overrides\n   \u30D7\u30EA\u30DF\u30C6\u30A3\u30D6\uFF08radius/space/font\uFF09\u306F\u5909\u66F4\u4E0D\u8981\u3002\n   \u8272\u7CFB\u30C8\u30FC\u30AF\u30F3\u306E\u307F\u4E0A\u66F8\u304D\u3002WCAG AA\u4EE5\u4E0A\u3092\u7DAD\u6301\u3002\n   ============================================ */\n.dark {\n  /* Backgrounds */\n  --color-background: #0f1117;       /* \u30D9\u30FC\u30B9\u80CC\u666F */\n  --color-surface: #1a1d27;          /* \u30AB\u30FC\u30C9\u7B49\u306E\u9762 */\n  --color-surface-subtle: #252836;   /* \u30B5\u30D6\u9762\uFF08\u30B5\u30A4\u30C9\u30D0\u30FC\u7B49\uFF09 */\n  --color-surface-elevated: #1e2130; /* \u30E2\u30FC\u30C0\u30EB\u7B49\u306E\u6D6E\u304D\u9762 */\n\n  /* Text (WCAG AA\u4EE5\u4E0A\u3092\u62C5\u4FDD) */\n  --color-text-primary: #f0f2f5;    /* contrast vs #0f1117: 14.2:1 */\n  --color-text-secondary: #a8b2c1;  /* contrast vs #0f1117:  7.3:1 */\n  --color-text-subtle: #7a8494;     /* contrast vs #0f1117:  4.6:1 */\n  --color-text-disabled: #4e5668;\n\n  /* Borders */\n  --color-border-subtle: #252836;\n  --color-border-default: #2d3244;\n  --color-border-strong: #3d4460;\n\n  /* Primary \u2014 \u30C6\u30AD\u30B9\u30C8\u8272\u306F\u30C0\u30FC\u30AF\u3067\u3082\u767D\u3067\u7D71\u4E00 */\n  --color-primary-text: #ffffff;\n\n  /* Status subtle (dark) */\n  --color-success-subtle: #0a2e1a;\n  --color-warning-subtle: #2e1f00;\n  --color-danger-subtle: #2e0d00;\n  --color-info-subtle: #001a4d;\n\n  /* Shadows \u2014 \u30C0\u30FC\u30AF\u306F\u900F\u660E\u5EA6\u3092\u4E0A\u3052\u3066\u8996\u8A8D\u6027\u3092\u78BA\u4FDD */\n  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);\n  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.3);\n  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.4);\n\n  /* Sidebar \u2014 Dark */\n  --sidebar-background: 222 18% 11%;    /* #161d2d */\n  --sidebar-foreground: 215 20% 75%;    /* #abb5c8 */\n  --sidebar-primary: 218 100% 70%;      /* #6699ff */\n  --sidebar-primary-foreground: 0 0% 100%;\n  --sidebar-accent: 220 18% 18%;        /* #242e42 \u2014 dark hover */\n  --sidebar-accent-foreground: 215 20% 92%; /* #dfe3ec */\n  --sidebar-border: 220 18% 18%;        /* #242e42 */\n  --sidebar-ring: 218 100% 60%;         /* #3380ff */\n}\n';
+var TOKENS_CSS = '/* ============================================================\n   tokens.css \u2014 Go\u30B7\u30EA\u30FC\u30BA \u30C7\u30B6\u30A4\u30F3\u30C8\u30FC\u30AF\u30F3\n   \u7D14\u7C8B\u306ACSS\u5909\u6570\u5B9A\u7FA9\u306E\u307F\u3002@layer/@apply/@tailwind \u306F\u542B\u307E\u306A\u3044\u3002\n   Tailwind v3/v4 \u3069\u3061\u3089\u3068\u3082\u4E92\u63DB\u3002\n   \u5404Go\u306E layout.tsx \u3067\u6700\u521D\u306B import \u3059\u308B\u3053\u3068\u3002\n   ============================================================ */\n\n:root {\n  /* ============================================\n     Primitive Tokens \u2014 \u751F\u306E\u5024\u3002\u5909\u66F4\u306F\u5168Go\u306B\u5F71\u97FF\u3002\n     ============================================ */\n\n  /* Radius */\n  --radius-sm: 3px;\n  --radius-md: 4px;\n  --radius-lg: 6px;\n  --radius-full: 9999px;\n\n  /* Space (4px grid) */\n  --space-1: 4px;\n  --space-2: 8px;\n  --space-3: 12px;\n  --space-4: 16px;\n  --space-5: 20px;\n  --space-6: 24px;\n  --space-8: 32px;\n  --space-10: 40px;\n\n  /* Typography */\n  --font-sans:\n    "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;\n  --text-xs: 12px;\n  --text-sm: 14px;\n  --text-base: 16px;\n  --text-lg: 18px;\n  --text-xl: 20px;\n  --text-2xl: 24px;\n  --text-3xl: 32px;\n  --text-4xl: 40px;\n  --font-weight-regular: 400;\n  --font-weight-medium: 500;\n  --font-weight-semibold: 600;\n  --font-weight-bold: 700;\n\n  /* Animation */\n  --duration-fast: 150ms;\n  --duration-base: 200ms;\n  --duration-slow: 300ms;\n  --easing-default: cubic-bezier(0.4, 0, 0.2, 1);\n  --easing-in: cubic-bezier(0.4, 0, 1, 1);\n  --easing-out: cubic-bezier(0, 0, 0.2, 1);\n\n  /* ============================================\n     Semantic Tokens \u2014 Light Mode\n     ============================================ */\n\n  /* Backgrounds\n     \u54F2\u5B66: \u30B5\u30FC\u30D5\u30A7\u30B9\u306F\u9ED2\u5B50\u3001\u30B3\u30F3\u30C6\u30F3\u30C4\u304C\u4E3B\u5F79\u3002\n     \u9818\u57DF\u306E\u533A\u5207\u308A\u306F whitespace \u3068 border \u306E\u307F\u3002\u80CC\u666F\u8272\u3067\u4E3B\u5F35\u3057\u306A\u3044\u3002\n     \u4F8B\u5916\u7684\u306B surface-subtle \u306F kanban\u5217\u30FB\u30B0\u30EB\u30FC\u30D4\u30F3\u30B0\u7B49\u306E"sunken"\u7528\u9014\u306E\u307F\u4F7F\u7528\u3002 */\n  --color-background: #ffffff;\n  --color-surface: #ffffff;\n  --color-surface-subtle: #f7f8f9; /* sunken \u4F8B\u5916\u7528 \u2014 \u660E\u78BA\u306A\u76EE\u7684\u304C\u3042\u308B\u6642\u306E\u307F */\n  --color-surface-elevated: #ffffff;\n\n  /* Text (WCAG AA\u4EE5\u4E0A\u3092\u62C5\u4FDD) */\n  --color-text-primary: #172b4d; /* contrast vs #fff: 12.6:1 */\n  --color-text-secondary: #6b778c; /* contrast vs #fff:  5.0:1 */\n  --color-text-subtle: #8993a4; /* contrast vs #fff:  3.7:1 \u2014 decorative\u7528\u9014\u306E\u307F */\n  --color-text-disabled: #a5adba;\n\n  /* Borders */\n  --color-border-subtle: #ebecf0;\n  --color-border-default: #dfe1e6;\n  --color-border-strong: #c1c7d0;\n\n  /* Primary \u2014 \u5404Go\u306F\u3053\u3053\u3060\u3051\u4E0A\u66F8\u304D\u3059\u308C\u3070OK */\n  --color-primary: #0052cc;\n  --color-primary-hover: #0747a6;\n  --color-primary-text: #ffffff;\n\n  /* Status */\n  --color-success: #00875a;\n  --color-success-subtle: #e3fcef;\n  --color-warning: #ff8b00;\n  --color-warning-subtle: #fffae6;\n  --color-danger: #de350b;\n  --color-danger-subtle: #ffebe6;\n  --color-info: #0052cc;\n  --color-info-subtle: #deebff;\n\n  /* Shadows */\n  --shadow-sm: 0 1px 2px rgba(9, 30, 66, 0.08);\n  --shadow-md: 0 4px 8px rgba(9, 30, 66, 0.08);\n  --shadow-lg: 0 8px 16px rgba(9, 30, 66, 0.1);\n\n  /* ============================================\n     Sidebar Tokens (HSL\u5F62\u5F0F \u2014 shadcn sidebar.tsx \u304C\n     hsl(var(--sidebar-xxx)) \u3067\u53C2\u7167\u3059\u308B\u305F\u3081\u7DAD\u6301)\n     ============================================ */\n  --sidebar-background: 0 0% 100%; /* \u767D \u2014 \u30DC\u30C7\u30A3\u3068\u540C\u3058\u30B5\u30FC\u30D5\u30A7\u30B9 */\n  --sidebar-foreground: 215 25% 30%; /* #384660 \u2014 \u8996\u8A8D\u6027\u306E\u9AD8\u3044\u30CA\u30D3\u30C6\u30AD\u30B9\u30C8 */\n  --sidebar-primary: 215 25% 14%; /* #1c2535 \u2014 \u30A2\u30A4\u30B3\u30F3\u7B49\u306E\u30C0\u30FC\u30AF */\n  --sidebar-primary-foreground: 0 0% 98%;\n  --sidebar-accent: 220 13% 95%; /* #eef0f4 \u2014 \u767D\u80CC\u666F\u4E0A\u306E subtle hover */\n  --sidebar-accent-foreground: 215 25% 14%; /* #1c2535 \u2014 \u30B3\u30F3\u30C8\u30E9\u30B9\u30C8\u78BA\u4FDD */\n  --sidebar-border: 220 13% 91%; /* #e4e6eb \u2014 sidebar\u53F3\u67A0 border */\n  --sidebar-ring: 218 100% 40%; /* #0052cc \u2014 \u30D5\u30A9\u30FC\u30AB\u30B9\u30EA\u30F3\u30B0 */\n}\n\n/* ============================================\n   Dark Mode Overrides\n   \u30D7\u30EA\u30DF\u30C6\u30A3\u30D6\uFF08radius/space/font\uFF09\u306F\u5909\u66F4\u4E0D\u8981\u3002\n   \u8272\u7CFB\u30C8\u30FC\u30AF\u30F3\u306E\u307F\u4E0A\u66F8\u304D\u3002WCAG AA\u4EE5\u4E0A\u3092\u7DAD\u6301\u3002\n   ============================================ */\n.dark {\n  /* Backgrounds */\n  --color-background: #0f1117; /* \u30D9\u30FC\u30B9\u80CC\u666F */\n  --color-surface: #1a1d27; /* \u30AB\u30FC\u30C9\u7B49\u306E\u9762 */\n  --color-surface-subtle: #252836; /* \u30B5\u30D6\u9762\uFF08\u30B5\u30A4\u30C9\u30D0\u30FC\u7B49\uFF09 */\n  --color-surface-elevated: #1e2130; /* \u30E2\u30FC\u30C0\u30EB\u7B49\u306E\u6D6E\u304D\u9762 */\n\n  /* Text (WCAG AA\u4EE5\u4E0A\u3092\u62C5\u4FDD) */\n  --color-text-primary: #f0f2f5; /* contrast vs #0f1117: 14.2:1 */\n  --color-text-secondary: #a8b2c1; /* contrast vs #0f1117:  7.3:1 */\n  --color-text-subtle: #7a8494; /* contrast vs #0f1117:  4.6:1 */\n  --color-text-disabled: #4e5668;\n\n  /* Borders */\n  --color-border-subtle: #252836;\n  --color-border-default: #2d3244;\n  --color-border-strong: #3d4460;\n\n  /* Primary \u2014 \u30C6\u30AD\u30B9\u30C8\u8272\u306F\u30C0\u30FC\u30AF\u3067\u3082\u767D\u3067\u7D71\u4E00 */\n  --color-primary-text: #ffffff;\n\n  /* Status subtle (dark) */\n  --color-success-subtle: #0a2e1a;\n  --color-warning-subtle: #2e1f00;\n  --color-danger-subtle: #2e0d00;\n  --color-info-subtle: #001a4d;\n\n  /* Shadows \u2014 \u30C0\u30FC\u30AF\u306F\u900F\u660E\u5EA6\u3092\u4E0A\u3052\u3066\u8996\u8A8D\u6027\u3092\u78BA\u4FDD */\n  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);\n  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.3);\n  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.4);\n\n  /* Sidebar \u2014 Dark */\n  --sidebar-background: 222 18% 11%; /* #161d2d */\n  --sidebar-foreground: 215 20% 75%; /* #abb5c8 */\n  --sidebar-primary: 218 100% 70%; /* #6699ff */\n  --sidebar-primary-foreground: 0 0% 100%;\n  --sidebar-accent: 220 18% 18%; /* #242e42 \u2014 dark hover */\n  --sidebar-accent-foreground: 215 20% 92%; /* #dfe3ec */\n  --sidebar-border: 220 18% 18%; /* #242e42 */\n  --sidebar-ring: 218 100% 60%; /* #3380ff */\n}\n';
 var GLOBALS_CSS = "/*\n * globals.css \u2014 shadcn/ui CSS\u5909\u6570\u3068\u306E\u6A4B\u6E21\u3057\n *\n * tokens.css \u306E\u610F\u5473\u7684\u30C8\u30FC\u30AF\u30F3\uFF08--color-xxx\uFF09\u3092\n * shadcn/ui \u304C\u671F\u5F85\u3059\u308B\u5909\u6570\u540D\uFF08--background \u7B49\uFF09\u306B\u30DE\u30C3\u30D4\u30F3\u30B0\u3059\u308B\u3002\n *\n * \u5404Go\u3067\u306E\u4F7F\u3044\u65B9:\n *   import '@takaki/go-design-system/tokens.css'  // \u2190 tokens + Tailwind directives\n *   import '@takaki/go-design-system/globals.css' // \u2190 shadcn bridge\uFF08\u4EFB\u610F\uFF09\n *\n * tokens.css \u306E .dark \u304C --color-xxx \u3092\u4E0A\u66F8\u304D\u3059\u308B\u305F\u3081\u3001\n * globals.css \u306E .dark \u3082\u540C\u3058\u30DE\u30C3\u30D4\u30F3\u30B0\u3092\u66F8\u304F\u3060\u3051\u3067\u30C1\u30A7\u30FC\u30F3\u304C\u6210\u7ACB\u3059\u308B\u3002\n */\n\n:root {\n  /* --- Layout --- */\n  --background: var(--color-background);\n  --foreground: var(--color-text-primary);\n\n  /* --- Card / Popover --- */\n  --card: var(--color-surface);\n  --card-foreground: var(--color-text-primary);\n  --popover: var(--color-surface-elevated);\n  --popover-foreground: var(--color-text-primary);\n\n  /* --- Brand --- */\n  --primary: var(--color-primary);\n  --primary-foreground: var(--color-primary-text);\n\n  /* --- Neutral --- */\n  --secondary: var(--color-surface-subtle);\n  --secondary-foreground: var(--color-text-primary);\n  --muted: var(--color-surface-subtle);\n  --muted-foreground: var(--color-text-secondary);\n  --accent: var(--color-surface-subtle);\n  --accent-foreground: var(--color-text-primary);\n\n  /* --- Destructive --- */\n  --destructive: var(--color-danger);\n  --destructive-foreground: #ffffff;\n\n  /* --- Status --- */\n  --warning: var(--color-warning);\n  --warning-subtle: var(--color-warning-subtle);\n  --success: var(--color-success);\n  --success-subtle: var(--color-success-subtle);\n  --danger: var(--color-danger);\n  --danger-subtle: var(--color-danger-subtle);\n  --info: var(--color-info);\n  --info-subtle: var(--color-info-subtle);\n\n  /* --- Form / Interactive --- */\n  --border: var(--color-border-default);\n  --input: var(--color-border-default);\n  --ring: var(--color-primary);\n\n  /* --- Border radius alias (used by shadcn internals) --- */\n  --radius: var(--radius-md);\n}\n\n.dark {\n  /* tokens.css \u306E .dark \u304C --color-xxx \u3092\u6697\u8272\u5024\u306B\u4E0A\u66F8\u304D\u6E08\u307F\u306E\u305F\u3081\u3001\n     \u3053\u306E\u30DE\u30C3\u30D4\u30F3\u30B0\u5B9A\u7FA9\u306F\u30E9\u30A4\u30C8\u3068\u540C\u3058\u3067\u6B63\u3057\u304F\u6A5F\u80FD\u3059\u308B\u3002 */\n  --background: var(--color-background);\n  --foreground: var(--color-text-primary);\n\n  --card: var(--color-surface);\n  --card-foreground: var(--color-text-primary);\n  --popover: var(--color-surface-elevated);\n  --popover-foreground: var(--color-text-primary);\n\n  --primary: var(--color-primary);\n  --primary-foreground: var(--color-primary-text);\n\n  --secondary: var(--color-surface-subtle);\n  --secondary-foreground: var(--color-text-primary);\n  --muted: var(--color-surface-subtle);\n  --muted-foreground: var(--color-text-secondary);\n  --accent: var(--color-surface-subtle);\n  --accent-foreground: var(--color-text-primary);\n\n  --destructive: var(--color-danger);\n  --destructive-foreground: #ffffff;\n\n  --warning: var(--color-warning);\n  --warning-subtle: var(--color-warning-subtle);\n  --success: var(--color-success);\n  --success-subtle: var(--color-success-subtle);\n  --danger: var(--color-danger);\n  --danger-subtle: var(--color-danger-subtle);\n  --info: var(--color-info);\n  --info-subtle: var(--color-info-subtle);\n\n  --border: var(--color-border-default);\n  --input: var(--color-border-default);\n  --ring: var(--color-primary);\n\n  --radius: var(--radius-md);\n}\n";
-function DesignTokens({ primaryColor, primaryColorHover }) {
+function DesignTokens({
+  primaryColor,
+  primaryColorHover
+}) {
   const overrideCSS = primaryColor ? `:root{--color-primary:${primaryColor};--color-primary-hover:${primaryColorHover ?? primaryColor};}` : "";
   return /* @__PURE__ */ jsxs(Fragment, { children: [
     /* @__PURE__ */ jsx("style", { dangerouslySetInnerHTML: { __html: TOKENS_CSS } }),
@@ -3113,7 +3145,14 @@ function EmptyState({
           description && /* @__PURE__ */ jsx("p", { className: "max-w-sm text-sm text-muted-foreground", children: description })
         ] }),
         (action || secondaryAction) && /* @__PURE__ */ jsxs("div", { className: "flex flex-wrap items-center justify-center gap-2", children: [
-          action && /* @__PURE__ */ jsx(Button, { variant: action.variant ?? "default", onClick: action.onClick, children: action.label }),
+          action && /* @__PURE__ */ jsx(
+            Button,
+            {
+              variant: action.variant ?? "default",
+              onClick: action.onClick,
+              children: action.label
+            }
+          ),
           secondaryAction && /* @__PURE__ */ jsx(Button, { variant: "outline", onClick: secondaryAction.onClick, children: secondaryAction.label })
         ] })
       ]
@@ -3342,7 +3381,9 @@ function FileUpload({
       if (rejected.length > 0) {
         const err = rejected[0].errors[0];
         if (err.code === "file-too-large") {
-          setError(`\u30D5\u30A1\u30A4\u30EB\u30B5\u30A4\u30BA\u304C\u5927\u304D\u3059\u304E\u307E\u3059\uFF08\u6700\u5927 ${Math.round(maxSize / 1024 / 1024)}MB\uFF09`);
+          setError(
+            `\u30D5\u30A1\u30A4\u30EB\u30B5\u30A4\u30BA\u304C\u5927\u304D\u3059\u304E\u307E\u3059\uFF08\u6700\u5927 ${Math.round(maxSize / 1024 / 1024)}MB\uFF09`
+          );
         } else if (err.code === "too-many-files") {
           setError(`\u30D5\u30A1\u30A4\u30EB\u306F\u6700\u5927 ${maxFiles} \u500B\u307E\u3067\u3067\u3059`);
         } else {
@@ -3398,8 +3439,8 @@ function FileUpload({
                 accept === "image" && "\u753B\u50CF\u30D5\u30A1\u30A4\u30EB",
                 accept === "video" && "\u52D5\u753B\u30D5\u30A1\u30A4\u30EB",
                 accept === "image-or-video" && "\u753B\u50CF\u30FB\u52D5\u753B\u30D5\u30A1\u30A4\u30EB",
+                " \uFF08\u6700\u5927",
                 " ",
-                "\uFF08\u6700\u5927 ",
                 Math.round(maxSize / 1024 / 1024),
                 "MB\uFF09"
               ] })
@@ -3409,32 +3450,39 @@ function FileUpload({
       }
     ),
     error && /* @__PURE__ */ jsx(Alert, { variant: "destructive", children: /* @__PURE__ */ jsx(AlertDescription, { children: error }) }),
-    previews.length > 0 && /* @__PURE__ */ jsx("div", { className: "flex flex-wrap gap-3", children: previews.map((preview, i) => /* @__PURE__ */ jsxs("div", { className: "relative size-24 overflow-hidden rounded-md border border-border", children: [
-      preview.type === "image" ? (
-        // eslint-disable-next-line @next/next/no-img-element
-        /* @__PURE__ */ jsx(
-          "img",
-          {
-            src: preview.url,
-            alt: preview.file.name,
-            className: "size-full object-cover"
-          }
-        )
-      ) : /* @__PURE__ */ jsxs("div", { className: "flex size-full flex-col items-center justify-center gap-1 bg-surface-subtle", children: [
-        /* @__PURE__ */ jsx(FileVideo, { className: "size-6 text-muted-foreground" }),
-        /* @__PURE__ */ jsx("span", { className: "max-w-full truncate px-1 text-xs text-muted-foreground", children: preview.file.name })
-      ] }),
-      /* @__PURE__ */ jsx(
-        "button",
-        {
-          type: "button",
-          "aria-label": "\u524A\u9664",
-          onClick: () => removePreview(i),
-          className: "absolute right-1 top-1 flex size-5 items-center justify-center rounded-full bg-foreground/70 text-background hover:bg-foreground",
-          children: /* @__PURE__ */ jsx(X, { className: "size-3" })
-        }
-      )
-    ] }, i)) })
+    previews.length > 0 && /* @__PURE__ */ jsx("div", { className: "flex flex-wrap gap-3", children: previews.map((preview, i) => /* @__PURE__ */ jsxs(
+      "div",
+      {
+        className: "relative size-24 overflow-hidden rounded-md border border-border",
+        children: [
+          preview.type === "image" ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            /* @__PURE__ */ jsx(
+              "img",
+              {
+                src: preview.url,
+                alt: preview.file.name,
+                className: "size-full object-cover"
+              }
+            )
+          ) : /* @__PURE__ */ jsxs("div", { className: "flex size-full flex-col items-center justify-center gap-1 bg-surface-subtle", children: [
+            /* @__PURE__ */ jsx(FileVideo, { className: "size-6 text-muted-foreground" }),
+            /* @__PURE__ */ jsx("span", { className: "max-w-full truncate px-1 text-xs text-muted-foreground", children: preview.file.name })
+          ] }),
+          /* @__PURE__ */ jsx(
+            "button",
+            {
+              type: "button",
+              "aria-label": "\u524A\u9664",
+              onClick: () => removePreview(i),
+              className: "absolute right-1 top-1 flex size-5 items-center justify-center rounded-full bg-foreground/70 text-background hover:bg-foreground",
+              children: /* @__PURE__ */ jsx(X, { className: "size-3" })
+            }
+          )
+        ]
+      },
+      i
+    )) })
   ] });
 }
 function useControlledState(controlledValue, defaultValue) {
@@ -3461,7 +3509,10 @@ var NumberInput = React19.forwardRef(
     className,
     onChange
   }, ref) {
-    const [value, setInternalValue] = useControlledState(controlledValue, defaultValue);
+    const [value, setInternalValue] = useControlledState(
+      controlledValue,
+      defaultValue
+    );
     function update(next) {
       const clamped = Math.min(max, Math.max(min, next));
       setInternalValue(clamped);
@@ -3532,7 +3583,10 @@ var SearchInput = React19.forwardRef(
     containerClassName,
     ...props
   }, ref) {
-    const [value, setInternalValue] = useControlledState(controlledValue, defaultValue);
+    const [value, setInternalValue] = useControlledState(
+      controlledValue,
+      defaultValue
+    );
     function handleChange(e) {
       setInternalValue(e.target.value);
       onValueChange?.(e.target.value);
@@ -3581,7 +3635,10 @@ function MultiSelect({
   className,
   onChange
 }) {
-  const [selected, setInternalSelected] = useControlledState(controlledValue, defaultValue);
+  const [selected, setInternalSelected] = useControlledState(
+    controlledValue,
+    defaultValue
+  );
   const [open, setOpen] = React19.useState(false);
   const containerRef = React19.useRef(null);
   function toggle(optionValue) {
@@ -3683,7 +3740,25 @@ function MultiSelect({
                         "flex size-3.5 items-center justify-center rounded-sm border border-border",
                         isSelected && "border-primary bg-primary"
                       ),
-                      children: isSelected && /* @__PURE__ */ jsx("svg", { viewBox: "0 0 10 10", className: "size-2.5 text-white", fill: "currentColor", children: /* @__PURE__ */ jsx("path", { d: "M1.5 5l2.5 2.5 4.5-4.5", stroke: "currentColor", strokeWidth: "1.5", fill: "none", strokeLinecap: "round", strokeLinejoin: "round" }) })
+                      children: isSelected && /* @__PURE__ */ jsx(
+                        "svg",
+                        {
+                          viewBox: "0 0 10 10",
+                          className: "size-2.5 text-white",
+                          fill: "currentColor",
+                          children: /* @__PURE__ */ jsx(
+                            "path",
+                            {
+                              d: "M1.5 5l2.5 2.5 4.5-4.5",
+                              stroke: "currentColor",
+                              strokeWidth: "1.5",
+                              fill: "none",
+                              strokeLinecap: "round",
+                              strokeLinejoin: "round"
+                            }
+                          )
+                        }
+                      )
                     }
                   ),
                   o.label
@@ -3779,7 +3854,13 @@ var headingStyles = {
   5: "scroll-m-20 text-lg font-semibold",
   6: "scroll-m-20 text-base font-semibold"
 };
-function Heading({ level = 2, as, className, children, ...props }) {
+function Heading({
+  level = 2,
+  as,
+  className,
+  children,
+  ...props
+}) {
   const Tag2 = as ?? `h${level}`;
   return /* @__PURE__ */ jsx(
     Tag2,
@@ -3824,7 +3905,12 @@ function Text({
   return /* @__PURE__ */ jsx(
     El,
     {
-      className: cn(textSizes[size], textWeights[weight], textColors[color], className),
+      className: cn(
+        textSizes[size],
+        textWeights[weight],
+        textColors[color],
+        className
+      ),
       ...props,
       children
     }
@@ -3835,7 +3921,14 @@ var metricSizes = {
   md: { value: "text-3xl", unit: "text-base", trend: "text-sm" },
   lg: { value: "text-5xl", unit: "text-xl", trend: "text-base" }
 };
-function MetricText({ value, unit, trend, size = "md", className, ...props }) {
+function MetricText({
+  value,
+  unit,
+  trend,
+  size = "md",
+  className,
+  ...props
+}) {
   const s = metricSizes[size];
   let trendColor = "text-muted-foreground";
   if (trend) {
@@ -3885,71 +3978,85 @@ function ProgressCircular({
   const center = px / 2;
   const strokeColor = colorMap[color];
   const fontSize = px * 0.22;
-  return /* @__PURE__ */ jsxs("div", { className: "relative inline-flex items-center justify-center", style: { width: px, height: px }, children: [
-    /* @__PURE__ */ jsxs(
-      "svg",
-      {
-        width: px,
-        height: px,
-        viewBox: `0 0 ${px} ${px}`,
-        role: "progressbar",
-        "aria-valuenow": clampedValue,
-        "aria-valuemin": 0,
-        "aria-valuemax": 100,
-        className: cn("rotate-[-90deg]", className),
-        ...props,
-        children: [
-          /* @__PURE__ */ jsx(
-            "circle",
-            {
-              cx: center,
-              cy: center,
-              r: radius,
-              fill: "none",
-              stroke: "var(--color-border-default)",
-              strokeWidth: sw
-            }
-          ),
-          /* @__PURE__ */ jsx(
-            "circle",
-            {
-              cx: center,
-              cy: center,
-              r: radius,
-              fill: "none",
-              stroke: strokeColor,
-              strokeWidth: sw,
-              strokeLinecap: "round",
-              strokeDasharray: circumference,
-              strokeDashoffset: offset,
-              style: { transition: "stroke-dashoffset 0.35s ease" }
-            }
-          )
-        ]
-      }
-    ),
-    showLabel && /* @__PURE__ */ jsxs(
-      "span",
-      {
-        className: "absolute font-medium tabular-nums text-foreground",
-        style: { fontSize },
-        "aria-hidden": true,
-        children: [
-          clampedValue,
-          "%"
-        ]
-      }
-    )
-  ] });
+  return /* @__PURE__ */ jsxs(
+    "div",
+    {
+      className: "relative inline-flex items-center justify-center",
+      style: { width: px, height: px },
+      children: [
+        /* @__PURE__ */ jsxs(
+          "svg",
+          {
+            width: px,
+            height: px,
+            viewBox: `0 0 ${px} ${px}`,
+            role: "progressbar",
+            "aria-valuenow": clampedValue,
+            "aria-valuemin": 0,
+            "aria-valuemax": 100,
+            className: cn("rotate-[-90deg]", className),
+            ...props,
+            children: [
+              /* @__PURE__ */ jsx(
+                "circle",
+                {
+                  cx: center,
+                  cy: center,
+                  r: radius,
+                  fill: "none",
+                  stroke: "var(--color-border-default)",
+                  strokeWidth: sw
+                }
+              ),
+              /* @__PURE__ */ jsx(
+                "circle",
+                {
+                  cx: center,
+                  cy: center,
+                  r: radius,
+                  fill: "none",
+                  stroke: strokeColor,
+                  strokeWidth: sw,
+                  strokeLinecap: "round",
+                  strokeDasharray: circumference,
+                  strokeDashoffset: offset,
+                  style: { transition: "stroke-dashoffset 0.35s ease" }
+                }
+              )
+            ]
+          }
+        ),
+        showLabel && /* @__PURE__ */ jsxs(
+          "span",
+          {
+            className: "absolute font-medium tabular-nums text-foreground",
+            style: { fontSize },
+            "aria-hidden": true,
+            children: [
+              clampedValue,
+              "%"
+            ]
+          }
+        )
+      ]
+    }
+  );
 }
-function Stepper({ steps, currentStep, orientation = "horizontal", className }) {
-  const resolvedSteps = steps.map((step, i) => {
-    if (step.status) return { ...step, status: step.status };
-    const idx = currentStep ?? 0;
-    if (i < idx) return { ...step, status: "completed" };
-    if (i === idx) return { ...step, status: "current" };
-    return { ...step, status: "upcoming" };
-  });
+function Stepper({
+  steps,
+  currentStep,
+  orientation = "horizontal",
+  className
+}) {
+  const resolvedSteps = steps.map(
+    (step, i) => {
+      if (step.status) return { ...step, status: step.status };
+      const idx = currentStep ?? 0;
+      if (i < idx) return { ...step, status: "completed" };
+      if (i === idx) return { ...step, status: "current" };
+      return { ...step, status: "upcoming" };
+    }
+  );
   if (orientation === "vertical") {
     return /* @__PURE__ */ jsx("ol", { className: cn("flex flex-col", className), children: resolvedSteps.map((step, i) => /* @__PURE__ */ jsxs("li", { className: "flex gap-4", children: [
       /* @__PURE__ */ jsxs("div", { className: "flex flex-col items-center", children: [
@@ -3996,20 +4103,32 @@ function StepIndicator({
   }
   return /* @__PURE__ */ jsx("div", { className: "flex size-8 shrink-0 items-center justify-center rounded-full border-2 border-border bg-background text-muted-foreground", children: /* @__PURE__ */ jsx("span", { className: "text-sm font-semibold", children: index + 1 }) });
 }
-function StepLabel({ step, centered }) {
-  return /* @__PURE__ */ jsxs("div", { className: cn("flex flex-col gap-0.5", centered && "items-center text-center"), children: [
-    /* @__PURE__ */ jsx(
-      "p",
-      {
-        className: cn(
-          "text-sm font-medium",
-          step.status === "upcoming" ? "text-muted-foreground" : "text-foreground"
+function StepLabel({
+  step,
+  centered
+}) {
+  return /* @__PURE__ */ jsxs(
+    "div",
+    {
+      className: cn(
+        "flex flex-col gap-0.5",
+        centered && "items-center text-center"
+      ),
+      children: [
+        /* @__PURE__ */ jsx(
+          "p",
+          {
+            className: cn(
+              "text-sm font-medium",
+              step.status === "upcoming" ? "text-muted-foreground" : "text-foreground"
+            ),
+            children: step.title
+          }
         ),
-        children: step.title
-      }
-    ),
-    step.description && /* @__PURE__ */ jsx("p", { className: "text-xs text-muted-foreground", children: step.description })
-  ] });
+        step.description && /* @__PURE__ */ jsx("p", { className: "text-xs text-muted-foreground", children: step.description })
+      ]
+    }
+  );
 }
 function Section({
   title,
@@ -4091,7 +4210,12 @@ function Tag({
     }
   );
 }
-function TagGroup({ wrap = true, className, children, ...props }) {
+function TagGroup({
+  wrap = true,
+  className,
+  children,
+  ...props
+}) {
   return /* @__PURE__ */ jsx(
     "div",
     {
@@ -4128,40 +4252,53 @@ function Combobox({
         disabled,
         className: cn("w-full justify-between font-normal", className),
         children: [
-          /* @__PURE__ */ jsx("span", { className: cn("truncate", !selected && "text-muted-foreground"), children: selected ? selected.label : placeholder }),
+          /* @__PURE__ */ jsx(
+            "span",
+            {
+              className: cn("truncate", !selected && "text-muted-foreground"),
+              children: selected ? selected.label : placeholder
+            }
+          ),
           /* @__PURE__ */ jsx(ChevronsUpDown, { className: "ml-2 size-4 shrink-0 opacity-50" })
         ]
       }
     ) }),
-    /* @__PURE__ */ jsx(PopoverContent, { className: "w-[var(--radix-popover-trigger-width)] p-0", align: "start", children: /* @__PURE__ */ jsxs(Command, { children: [
-      /* @__PURE__ */ jsx(CommandInput, { placeholder: searchPlaceholder }),
-      /* @__PURE__ */ jsxs(CommandList, { children: [
-        /* @__PURE__ */ jsx(CommandEmpty, { children: emptyText }),
-        /* @__PURE__ */ jsx(CommandGroup, { children: options.map((opt) => /* @__PURE__ */ jsxs(
-          CommandItem,
-          {
-            value: opt.value,
-            onSelect: (current) => {
-              onValueChange?.(current === value ? "" : current);
-              setOpen(false);
-            },
-            children: [
-              /* @__PURE__ */ jsx(
-                Check,
-                {
-                  className: cn(
-                    "mr-2 size-4",
-                    value === opt.value ? "opacity-100" : "opacity-0"
-                  )
-                }
-              ),
-              opt.label
-            ]
-          },
-          opt.value
-        )) })
-      ] })
-    ] }) })
+    /* @__PURE__ */ jsx(
+      PopoverContent,
+      {
+        className: "w-[var(--radix-popover-trigger-width)] p-0",
+        align: "start",
+        children: /* @__PURE__ */ jsxs(Command, { children: [
+          /* @__PURE__ */ jsx(CommandInput, { placeholder: searchPlaceholder }),
+          /* @__PURE__ */ jsxs(CommandList, { children: [
+            /* @__PURE__ */ jsx(CommandEmpty, { children: emptyText }),
+            /* @__PURE__ */ jsx(CommandGroup, { children: options.map((opt) => /* @__PURE__ */ jsxs(
+              CommandItem,
+              {
+                value: opt.value,
+                onSelect: (current) => {
+                  onValueChange?.(current === value ? "" : current);
+                  setOpen(false);
+                },
+                children: [
+                  /* @__PURE__ */ jsx(
+                    Check,
+                    {
+                      className: cn(
+                        "mr-2 size-4",
+                        value === opt.value ? "opacity-100" : "opacity-0"
+                      )
+                    }
+                  ),
+                  opt.label
+                ]
+              },
+              opt.value
+            )) })
+          ] })
+        ] })
+      }
+    )
   ] });
 }
 var variantDotClass = {
@@ -4215,7 +4352,15 @@ function DndProvider({ items, onReorder, children }) {
     next.splice(newIndex, 0, String(active.id));
     onReorder(next);
   }
-  return /* @__PURE__ */ jsx(DndContext, { sensors, collisionDetection: closestCenter, onDragEnd: handleDragEnd, children: /* @__PURE__ */ jsx(SortableContext, { items, strategy: verticalListSortingStrategy, children }) });
+  return /* @__PURE__ */ jsx(
+    DndContext,
+    {
+      sensors,
+      collisionDetection: closestCenter,
+      onDragEnd: handleDragEnd,
+      children: /* @__PURE__ */ jsx(SortableContext, { items, strategy: verticalListSortingStrategy, children })
+    }
+  );
 }
 function SortableItem({ id, children, className }) {
   const {
@@ -4393,45 +4538,55 @@ function TrendBadge({ trend }) {
   );
 }
 function SectionCards({ cards, className }) {
-  return /* @__PURE__ */ jsx("div", { className: `*:data-[slot=card]:shadow-xs @xl/main:grid-cols-2 @5xl/main:grid-cols-4 grid grid-cols-1 gap-3 *:data-[slot=card]:bg-gradient-to-t *:data-[slot=card]:from-primary/5 *:data-[slot=card]:to-card dark:*:data-[slot=card]:bg-card ${className ?? ""}`, children: cards.map((card, i) => {
-    const rawProgress = card.progress;
-    const achieved = rawProgress !== void 0 && rawProgress >= 100;
-    const displayProgress = rawProgress !== void 0 ? Math.min(rawProgress, 100) : void 0;
-    const successColor = "var(--color-success)";
-    const progressIndicatorStyle = achieved ? { backgroundColor: successColor } : void 0;
-    const progressTrackStyle = achieved ? { backgroundColor: `color-mix(in srgb, ${successColor} 20%, transparent)` } : void 0;
-    return /* @__PURE__ */ jsxs(
-      Card,
-      {
-        className: "@container/card relative",
-        style: achieved ? { borderColor: `color-mix(in srgb, ${successColor} 40%, transparent)` } : void 0,
-        children: [
-          card.actions && /* @__PURE__ */ jsx("div", { className: "absolute top-2 right-2 z-10", children: card.actions }),
-          /* @__PURE__ */ jsxs(CardHeader, { className: "pb-2", children: [
-            /* @__PURE__ */ jsx(CardDescription, { children: card.title }),
-            /* @__PURE__ */ jsx(CardTitle, { className: "@[250px]/card:text-3xl text-2xl font-semibold tabular-nums", children: card.value })
-          ] }),
-          (card.description || rawProgress !== void 0 || card.trend || card.icon) && /* @__PURE__ */ jsxs(CardFooter, { className: "flex-col items-start gap-2 text-sm pt-0", children: [
-            (card.trend || card.description || card.icon) && /* @__PURE__ */ jsxs("div", { className: "flex w-full items-center justify-between gap-2", children: [
-              card.description && /* @__PURE__ */ jsx("span", { className: "text-muted-foreground line-clamp-1", children: card.description }),
-              card.trend && /* @__PURE__ */ jsx(TrendBadge, { trend: card.trend }),
-              card.icon && !card.trend && /* @__PURE__ */ jsx("span", { className: "text-muted-foreground", children: card.icon })
-            ] }),
-            displayProgress !== void 0 && /* @__PURE__ */ jsx(
-              Progress,
-              {
-                value: displayProgress,
-                className: "h-1.5 w-full",
-                style: progressTrackStyle,
-                indicatorStyle: progressIndicatorStyle
-              }
-            )
-          ] })
-        ]
-      },
-      i
-    );
-  }) });
+  return /* @__PURE__ */ jsx(
+    "div",
+    {
+      className: `*:data-[slot=card]:shadow-xs @xl/main:grid-cols-2 @5xl/main:grid-cols-4 grid grid-cols-1 gap-3 *:data-[slot=card]:bg-gradient-to-t *:data-[slot=card]:from-primary/5 *:data-[slot=card]:to-card dark:*:data-[slot=card]:bg-card ${className ?? ""}`,
+      children: cards.map((card, i) => {
+        const rawProgress = card.progress;
+        const achieved = rawProgress !== void 0 && rawProgress >= 100;
+        const displayProgress = rawProgress !== void 0 ? Math.min(rawProgress, 100) : void 0;
+        const successColor = "var(--color-success)";
+        const progressIndicatorStyle = achieved ? { backgroundColor: successColor } : void 0;
+        const progressTrackStyle = achieved ? {
+          backgroundColor: `color-mix(in srgb, ${successColor} 20%, transparent)`
+        } : void 0;
+        return /* @__PURE__ */ jsxs(
+          Card,
+          {
+            className: "@container/card relative",
+            style: achieved ? {
+              borderColor: `color-mix(in srgb, ${successColor} 40%, transparent)`
+            } : void 0,
+            children: [
+              card.actions && /* @__PURE__ */ jsx("div", { className: "absolute top-2 right-2 z-10", children: card.actions }),
+              /* @__PURE__ */ jsxs(CardHeader, { className: "pb-2", children: [
+                /* @__PURE__ */ jsx(CardDescription, { children: card.title }),
+                /* @__PURE__ */ jsx(CardTitle, { className: "@[250px]/card:text-3xl text-2xl font-semibold tabular-nums", children: card.value })
+              ] }),
+              (card.description || rawProgress !== void 0 || card.trend || card.icon) && /* @__PURE__ */ jsxs(CardFooter, { className: "flex-col items-start gap-2 text-sm pt-0", children: [
+                (card.trend || card.description || card.icon) && /* @__PURE__ */ jsxs("div", { className: "flex w-full items-center justify-between gap-2", children: [
+                  card.description && /* @__PURE__ */ jsx("span", { className: "text-muted-foreground line-clamp-1", children: card.description }),
+                  card.trend && /* @__PURE__ */ jsx(TrendBadge, { trend: card.trend }),
+                  card.icon && !card.trend && /* @__PURE__ */ jsx("span", { className: "text-muted-foreground", children: card.icon })
+                ] }),
+                displayProgress !== void 0 && /* @__PURE__ */ jsx(
+                  Progress,
+                  {
+                    value: displayProgress,
+                    className: "h-1.5 w-full",
+                    style: progressTrackStyle,
+                    indicatorStyle: progressIndicatorStyle
+                  }
+                )
+              ] })
+            ]
+          },
+          i
+        );
+      })
+    }
+  );
 }
 var DEFAULT_TIME_RANGES = [
   { label: "\u904E\u53BB90\u65E5", value: "90d", daysBack: 90 },
@@ -4483,7 +4638,15 @@ function ChartArea({
             onValueChange: (v) => v && setTimeRange(v),
             variant: "outline",
             className: "@[767px]/card:flex hidden",
-            children: timeRanges.map((r) => /* @__PURE__ */ jsx(ToggleGroupItem, { value: r.value, className: "h-8 px-2.5", children: r.label }, r.value))
+            children: timeRanges.map((r) => /* @__PURE__ */ jsx(
+              ToggleGroupItem,
+              {
+                value: r.value,
+                className: "h-8 px-2.5",
+                children: r.label
+              },
+              r.value
+            ))
           }
         ),
         /* @__PURE__ */ jsxs(Select, { value: timeRange, onValueChange: setTimeRange, children: [
@@ -4495,63 +4658,92 @@ function ChartArea({
               children: /* @__PURE__ */ jsx(SelectValue, {})
             }
           ),
-          /* @__PURE__ */ jsx(SelectContent, { className: "rounded-xl", children: timeRanges.map((r) => /* @__PURE__ */ jsx(SelectItem, { value: r.value, className: "rounded-lg", children: r.label }, r.value)) })
+          /* @__PURE__ */ jsx(SelectContent, { className: "rounded-xl", children: timeRanges.map((r) => /* @__PURE__ */ jsx(
+            SelectItem,
+            {
+              value: r.value,
+              className: "rounded-lg",
+              children: r.label
+            },
+            r.value
+          )) })
         ] })
       ] })
     ] }),
-    /* @__PURE__ */ jsx(CardContent, { className: "px-2 pt-4 sm:px-6 sm:pt-6", children: /* @__PURE__ */ jsx(ChartContainer, { config, className: "aspect-auto h-[250px] w-full", children: /* @__PURE__ */ jsxs(AreaChart, { data: filteredData, children: [
-      /* @__PURE__ */ jsx("defs", { children: yKeys.map((key) => /* @__PURE__ */ jsxs(
-        "linearGradient",
-        {
-          id: `${uid}-fill-${key}`,
-          x1: "0",
-          y1: "0",
-          x2: "0",
-          y2: "1",
-          children: [
-            /* @__PURE__ */ jsx("stop", { offset: "5%", stopColor: `var(--color-${key})`, stopOpacity: 0.8 }),
-            /* @__PURE__ */ jsx("stop", { offset: "95%", stopColor: `var(--color-${key})`, stopOpacity: 0.1 })
-          ]
-        },
-        key
-      )) }),
-      /* @__PURE__ */ jsx(CartesianGrid, { vertical: false }),
-      /* @__PURE__ */ jsx(
-        XAxis,
-        {
-          dataKey: xKey,
-          tickLine: false,
-          axisLine: false,
-          tickMargin: 8,
-          minTickGap: 32,
-          tickFormatter: xTickFormatter
-        }
-      ),
-      /* @__PURE__ */ jsx(
-        ChartTooltip,
-        {
-          cursor: false,
-          content: /* @__PURE__ */ jsx(
-            ChartTooltipContent,
+    /* @__PURE__ */ jsx(CardContent, { className: "px-2 pt-4 sm:px-6 sm:pt-6", children: /* @__PURE__ */ jsx(
+      ChartContainer,
+      {
+        config,
+        className: "aspect-auto h-[250px] w-full",
+        children: /* @__PURE__ */ jsxs(AreaChart, { data: filteredData, children: [
+          /* @__PURE__ */ jsx("defs", { children: yKeys.map((key) => /* @__PURE__ */ jsxs(
+            "linearGradient",
             {
-              labelFormatter: tooltipLabelFormatter ? tooltipLabelFormatter : (v) => xTickFormatter(v),
-              indicator: "dot"
+              id: `${uid}-fill-${key}`,
+              x1: "0",
+              y1: "0",
+              x2: "0",
+              y2: "1",
+              children: [
+                /* @__PURE__ */ jsx(
+                  "stop",
+                  {
+                    offset: "5%",
+                    stopColor: `var(--color-${key})`,
+                    stopOpacity: 0.8
+                  }
+                ),
+                /* @__PURE__ */ jsx(
+                  "stop",
+                  {
+                    offset: "95%",
+                    stopColor: `var(--color-${key})`,
+                    stopOpacity: 0.1
+                  }
+                )
+              ]
+            },
+            key
+          )) }),
+          /* @__PURE__ */ jsx(CartesianGrid, { vertical: false }),
+          /* @__PURE__ */ jsx(
+            XAxis,
+            {
+              dataKey: xKey,
+              tickLine: false,
+              axisLine: false,
+              tickMargin: 8,
+              minTickGap: 32,
+              tickFormatter: xTickFormatter
             }
-          )
-        }
-      ),
-      yKeys.map((key) => /* @__PURE__ */ jsx(
-        Area,
-        {
-          dataKey: key,
-          type: "natural",
-          fill: `url(#${uid}-fill-${key})`,
-          stroke: `var(--color-${key})`,
-          stackId: "a"
-        },
-        key
-      ))
-    ] }) }) })
+          ),
+          /* @__PURE__ */ jsx(
+            ChartTooltip,
+            {
+              cursor: false,
+              content: /* @__PURE__ */ jsx(
+                ChartTooltipContent,
+                {
+                  labelFormatter: tooltipLabelFormatter ? tooltipLabelFormatter : (v) => xTickFormatter(v),
+                  indicator: "dot"
+                }
+              )
+            }
+          ),
+          yKeys.map((key) => /* @__PURE__ */ jsx(
+            Area,
+            {
+              dataKey: key,
+              type: "natural",
+              fill: `url(#${uid}-fill-${key})`,
+              stroke: `var(--color-${key})`,
+              stackId: "a"
+            },
+            key
+          ))
+        ] })
+      }
+    ) })
   ] });
 }
 function DataTable({
@@ -4564,7 +4756,9 @@ function DataTable({
   onRowClick
 }) {
   const [sorting, setSorting] = React19.useState([]);
-  const [columnFilters, setColumnFilters] = React19.useState([]);
+  const [columnFilters, setColumnFilters] = React19.useState(
+    []
+  );
   const [columnVisibility, setColumnVisibility] = React19.useState({});
   const [pagination, setPagination] = React19.useState({
     pageIndex: 0,
@@ -4612,7 +4806,10 @@ function DataTable({
           "data-state": row.getIsSelected() ? "selected" : void 0,
           onClick: onRowClick ? () => onRowClick(row.original) : void 0,
           className: onRowClick ? "cursor-pointer hover:bg-muted/50 active:bg-muted transition-colors" : void 0,
-          children: row.getVisibleCells().map((cell) => /* @__PURE__ */ jsx(TableCell, { children: flexRender(cell.column.columnDef.cell, cell.getContext()) }, cell.id))
+          children: row.getVisibleCells().map((cell) => /* @__PURE__ */ jsx(TableCell, { children: flexRender(
+            cell.column.columnDef.cell,
+            cell.getContext()
+          ) }, cell.id))
         },
         row.id
       )) : /* @__PURE__ */ jsx(TableRow, { children: /* @__PURE__ */ jsx(
@@ -4640,7 +4837,14 @@ function DataTable({
       ] }),
       /* @__PURE__ */ jsxs("div", { className: "ml-auto flex items-center gap-4", children: [
         /* @__PURE__ */ jsxs("div", { className: "hidden items-center gap-2 lg:flex", children: [
-          /* @__PURE__ */ jsx(Label2, { htmlFor: "page-size", className: "text-sm font-medium whitespace-nowrap", children: "\u8868\u793A\u4EF6\u6570" }),
+          /* @__PURE__ */ jsx(
+            Label2,
+            {
+              htmlFor: "page-size",
+              className: "text-sm font-medium whitespace-nowrap",
+              children: "\u8868\u793A\u4EF6\u6570"
+            }
+          ),
           /* @__PURE__ */ jsxs(
             Select,
             {
@@ -4848,11 +5052,19 @@ function LoginPage({
     ] })
   ] }) });
 }
-function Section2({ title, description, children, className }) {
+function Section2({
+  title,
+  description,
+  children,
+  className
+}) {
   return /* @__PURE__ */ jsxs(
     "section",
     {
-      className: cn("flex flex-col gap-4 border-t border-border pt-8", className),
+      className: cn(
+        "flex flex-col gap-4 border-t border-border pt-8",
+        className
+      ),
       children: [
         /* @__PURE__ */ jsxs("div", { className: "flex flex-col gap-1", children: [
           /* @__PURE__ */ jsx(
@@ -4870,7 +5082,10 @@ function Section2({ title, description, children, className }) {
             "p",
             {
               className: "text-muted-foreground",
-              style: { fontSize: "var(--text-sm)", color: "var(--color-text-secondary)" },
+              style: {
+                fontSize: "var(--text-sm)",
+                color: "var(--color-text-secondary)"
+              },
               children: description
             }
           )
@@ -4897,9 +5112,7 @@ function ScopeItem({ text, type }) {
     /* @__PURE__ */ jsx(
       "span",
       {
-        className: cn(
-          isSolve ? "text-foreground" : "text-muted-foreground"
-        ),
+        className: cn(isSolve ? "text-foreground" : "text-muted-foreground"),
         style: {
           fontSize: "var(--text-sm)",
           color: isSolve ? "var(--color-text-primary)" : "var(--color-text-subtle)"
@@ -4964,7 +5177,10 @@ function StepCard({
         "p",
         {
           className: "text-muted-foreground leading-relaxed",
-          style: { fontSize: "var(--text-xs)", color: "var(--color-text-secondary)" },
+          style: {
+            fontSize: "var(--text-xs)",
+            color: "var(--color-text-secondary)"
+          },
           children: step.description
         }
       )
@@ -5003,7 +5219,12 @@ function ProductLogicFlow({ steps, outcome }) {
     ] })
   ] });
 }
-function MetricCard({ title, description, isPrimary = false, className }) {
+function MetricCard({
+  title,
+  description,
+  isPrimary = false,
+  className
+}) {
   return /* @__PURE__ */ jsxs(
     Card,
     {
@@ -5059,91 +5280,156 @@ function ConceptPage({
   behaviorMetrics,
   className
 }) {
-  return /* @__PURE__ */ jsx("div", { className: cn("mx-auto w-full max-w-4xl px-4 py-10 md:px-8 md:py-14", className), children: /* @__PURE__ */ jsxs("div", { className: "flex flex-col gap-10", children: [
-    /* @__PURE__ */ jsxs("header", { className: "flex flex-col gap-4", children: [
-      /* @__PURE__ */ jsxs("div", { className: "flex items-center gap-3", children: [
-        productLogo && /* @__PURE__ */ jsx(
-          "div",
+  return /* @__PURE__ */ jsx(
+    "div",
+    {
+      className: cn(
+        "mx-auto w-full max-w-4xl px-4 py-10 md:px-8 md:py-14",
+        className
+      ),
+      children: /* @__PURE__ */ jsxs("div", { className: "flex flex-col gap-10", children: [
+        /* @__PURE__ */ jsxs("header", { className: "flex flex-col gap-4", children: [
+          /* @__PURE__ */ jsxs("div", { className: "flex items-center gap-3", children: [
+            productLogo && /* @__PURE__ */ jsx(
+              "div",
+              {
+                className: "flex size-10 shrink-0 items-center justify-center rounded-lg border border-border bg-surface-subtle",
+                "aria-hidden": true,
+                children: productLogo
+              }
+            ),
+            /* @__PURE__ */ jsx(
+              "h1",
+              {
+                className: "font-bold text-foreground",
+                style: {
+                  fontSize: "var(--text-3xl)",
+                  fontWeight: "var(--font-weight-bold)"
+                },
+                children: productName
+              }
+            )
+          ] }),
+          /* @__PURE__ */ jsx(
+            "p",
+            {
+              className: "text-muted-foreground",
+              style: {
+                fontSize: "var(--text-base)",
+                color: "var(--color-text-secondary)"
+              },
+              children: tagline
+            }
+          ),
+          /* @__PURE__ */ jsx(
+            "p",
+            {
+              className: "max-w-2xl leading-relaxed text-foreground",
+              style: {
+                fontSize: "var(--text-xl)",
+                fontWeight: "var(--font-weight-medium)",
+                color: "var(--color-text-primary)"
+              },
+              children: coreMessage
+            }
+          )
+        ] }),
+        /* @__PURE__ */ jsx(Section2, { title: "\u30B3\u30A2\u30D0\u30EA\u30E5\u30FC", children: /* @__PURE__ */ jsx(
+          "p",
           {
-            className: "flex size-10 shrink-0 items-center justify-center rounded-lg border border-border bg-surface-subtle",
-            "aria-hidden": true,
-            children: productLogo
+            className: "max-w-2xl leading-relaxed text-foreground",
+            style: {
+              fontSize: "var(--text-base)",
+              color: "var(--color-text-primary)"
+            },
+            children: coreValue
+          }
+        ) }),
+        /* @__PURE__ */ jsx(
+          Section2,
+          {
+            title: "\u30B9\u30B3\u30FC\u30D7",
+            description: "\u3053\u306E\u30D7\u30ED\u30C0\u30AF\u30C8\u304C\u5BFE\u8C61\u3068\u3059\u308B\u8AB2\u984C\u306E\u7BC4\u56F2",
+            children: /* @__PURE__ */ jsxs("div", { className: "grid grid-cols-1 gap-4 sm:grid-cols-2", children: [
+              /* @__PURE__ */ jsx(
+                ScopeColumn,
+                {
+                  title: "\u89E3\u6C7A\u3059\u308B\u3053\u3068",
+                  items: scope.solve,
+                  type: "solve"
+                }
+              ),
+              /* @__PURE__ */ jsx(
+                ScopeColumn,
+                {
+                  title: "\u89E3\u6C7A\u3057\u306A\u3044\u3053\u3068",
+                  items: scope.notSolve,
+                  type: "notSolve"
+                }
+              )
+            ] })
           }
         ),
         /* @__PURE__ */ jsx(
-          "h1",
+          Section2,
           {
-            className: "font-bold text-foreground",
-            style: {
-              fontSize: "var(--text-3xl)",
-              fontWeight: "var(--font-weight-bold)"
-            },
-            children: productName
+            title: "\u30D7\u30ED\u30C0\u30AF\u30C8\u30ED\u30B8\u30C3\u30AF",
+            description: "\u30E6\u30FC\u30B6\u30FC\u306E\u884C\u52D5\u304C\u3069\u306E\u3088\u3046\u306B\u4FA1\u5024\u306B\u3064\u306A\u304C\u308B\u304B",
+            children: /* @__PURE__ */ jsx(
+              ProductLogicFlow,
+              {
+                steps: productLogic.steps,
+                outcome: productLogic.outcome
+              }
+            )
+          }
+        ),
+        /* @__PURE__ */ jsx(Section2, { title: "\u7D50\u679C\u6307\u6A19\uFF08KGI\uFF09", description: "\u6700\u7D42\u7684\u306B\u9054\u6210\u3059\u3079\u304D\u6210\u679C", children: /* @__PURE__ */ jsx(
+          MetricCard,
+          {
+            title: resultMetric.title,
+            description: resultMetric.description,
+            isPrimary: true
+          }
+        ) }),
+        /* @__PURE__ */ jsx(
+          Section2,
+          {
+            title: "\u884C\u52D5\u6307\u6A19\uFF08KPI\uFF09",
+            description: "KGI \u306B\u3064\u306A\u304C\u308B\u4E2D\u9593\u7684\u306A\u884C\u52D5\u306E\u6307\u6A19",
+            children: /* @__PURE__ */ jsx("div", { className: "grid grid-cols-1 gap-3 sm:grid-cols-2", children: behaviorMetrics.map((m, i) => /* @__PURE__ */ jsx(MetricCard, { title: m.title, description: m.description }, i)) })
           }
         )
-      ] }),
-      /* @__PURE__ */ jsx(
-        "p",
-        {
-          className: "text-muted-foreground",
-          style: { fontSize: "var(--text-base)", color: "var(--color-text-secondary)" },
-          children: tagline
-        }
-      ),
-      /* @__PURE__ */ jsx(
-        "p",
-        {
-          className: "max-w-2xl leading-relaxed text-foreground",
-          style: {
-            fontSize: "var(--text-xl)",
-            fontWeight: "var(--font-weight-medium)",
-            color: "var(--color-text-primary)"
-          },
-          children: coreMessage
-        }
-      )
-    ] }),
-    /* @__PURE__ */ jsx(Section2, { title: "\u30B3\u30A2\u30D0\u30EA\u30E5\u30FC", children: /* @__PURE__ */ jsx(
-      "p",
-      {
-        className: "max-w-2xl leading-relaxed text-foreground",
-        style: { fontSize: "var(--text-base)", color: "var(--color-text-primary)" },
-        children: coreValue
-      }
-    ) }),
-    /* @__PURE__ */ jsx(Section2, { title: "\u30B9\u30B3\u30FC\u30D7", description: "\u3053\u306E\u30D7\u30ED\u30C0\u30AF\u30C8\u304C\u5BFE\u8C61\u3068\u3059\u308B\u8AB2\u984C\u306E\u7BC4\u56F2", children: /* @__PURE__ */ jsxs("div", { className: "grid grid-cols-1 gap-4 sm:grid-cols-2", children: [
-      /* @__PURE__ */ jsx(ScopeColumn, { title: "\u89E3\u6C7A\u3059\u308B\u3053\u3068", items: scope.solve, type: "solve" }),
-      /* @__PURE__ */ jsx(ScopeColumn, { title: "\u89E3\u6C7A\u3057\u306A\u3044\u3053\u3068", items: scope.notSolve, type: "notSolve" })
-    ] }) }),
-    /* @__PURE__ */ jsx(
-      Section2,
-      {
-        title: "\u30D7\u30ED\u30C0\u30AF\u30C8\u30ED\u30B8\u30C3\u30AF",
-        description: "\u30E6\u30FC\u30B6\u30FC\u306E\u884C\u52D5\u304C\u3069\u306E\u3088\u3046\u306B\u4FA1\u5024\u306B\u3064\u306A\u304C\u308B\u304B",
-        children: /* @__PURE__ */ jsx(ProductLogicFlow, { steps: productLogic.steps, outcome: productLogic.outcome })
-      }
-    ),
-    /* @__PURE__ */ jsx(Section2, { title: "\u7D50\u679C\u6307\u6A19\uFF08KGI\uFF09", description: "\u6700\u7D42\u7684\u306B\u9054\u6210\u3059\u3079\u304D\u6210\u679C", children: /* @__PURE__ */ jsx(
-      MetricCard,
-      {
-        title: resultMetric.title,
-        description: resultMetric.description,
-        isPrimary: true
-      }
-    ) }),
-    /* @__PURE__ */ jsx(Section2, { title: "\u884C\u52D5\u6307\u6A19\uFF08KPI\uFF09", description: "KGI \u306B\u3064\u306A\u304C\u308B\u4E2D\u9593\u7684\u306A\u884C\u52D5\u306E\u6307\u6A19", children: /* @__PURE__ */ jsx("div", { className: "grid grid-cols-1 gap-3 sm:grid-cols-2", children: behaviorMetrics.map((m, i) => /* @__PURE__ */ jsx(MetricCard, { title: m.title, description: m.description }, i)) }) })
-  ] }) });
+      ] })
+    }
+  );
 }
-function SettingsItem({ label, description, control, className }) {
-  return /* @__PURE__ */ jsxs("div", { className: cn("flex items-center justify-between gap-4 py-4", className), children: [
-    /* @__PURE__ */ jsxs("div", { className: "flex flex-col gap-0.5", children: [
-      /* @__PURE__ */ jsx("p", { className: "text-sm font-medium text-foreground", children: label }),
-      description && /* @__PURE__ */ jsx("p", { className: "text-xs text-muted-foreground", children: description })
-    ] }),
-    /* @__PURE__ */ jsx("div", { className: "shrink-0", children: control })
-  ] });
+function SettingsItem({
+  label,
+  description,
+  control,
+  className
+}) {
+  return /* @__PURE__ */ jsxs(
+    "div",
+    {
+      className: cn("flex items-center justify-between gap-4 py-4", className),
+      children: [
+        /* @__PURE__ */ jsxs("div", { className: "flex flex-col gap-0.5", children: [
+          /* @__PURE__ */ jsx("p", { className: "text-sm font-medium text-foreground", children: label }),
+          description && /* @__PURE__ */ jsx("p", { className: "text-xs text-muted-foreground", children: description })
+        ] }),
+        /* @__PURE__ */ jsx("div", { className: "shrink-0", children: control })
+      ]
+    }
+  );
 }
-function SettingsGroup({ title, description, children, className }) {
+function SettingsGroup({
+  title,
+  description,
+  children,
+  className
+}) {
   return /* @__PURE__ */ jsxs("div", { className: cn("flex flex-col", className), children: [
     /* @__PURE__ */ jsxs("div", { className: "mb-2", children: [
       /* @__PURE__ */ jsx("h3", { className: "text-sm font-semibold text-foreground", children: title }),
@@ -5162,44 +5448,50 @@ function SettingsPage({
     defaultSection ?? sections[0]?.id
   );
   const activeSection = sections.find((s) => s.id === activeId) ?? sections[0];
-  return /* @__PURE__ */ jsxs("div", { className: cn("mx-auto w-full max-w-5xl px-4 py-8 md:px-8", className), children: [
-    /* @__PURE__ */ jsx("h1", { className: "mb-6 text-2xl font-bold text-foreground", children: title }),
-    /* @__PURE__ */ jsxs("div", { className: "flex gap-8", children: [
-      /* @__PURE__ */ jsx("nav", { className: "hidden w-48 shrink-0 md:block", children: /* @__PURE__ */ jsx("ul", { className: "flex flex-col gap-1", children: sections.map((s) => /* @__PURE__ */ jsx("li", { children: /* @__PURE__ */ jsxs(
-        "button",
-        {
-          type: "button",
-          onClick: () => setActiveId(s.id),
-          className: cn(
-            "flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm transition-colors",
-            activeId === s.id ? "bg-surface-subtle font-medium text-foreground" : "text-muted-foreground hover:bg-surface-subtle hover:text-foreground"
-          ),
-          children: [
-            s.icon && /* @__PURE__ */ jsx("span", { className: "shrink-0", children: s.icon }),
-            s.label
-          ]
-        }
-      ) }, s.id)) }) }),
-      /* @__PURE__ */ jsx("div", { className: "mb-4 flex gap-1 overflow-x-auto md:hidden", children: sections.map((s) => /* @__PURE__ */ jsxs(
-        "button",
-        {
-          type: "button",
-          onClick: () => setActiveId(s.id),
-          className: cn(
-            "flex shrink-0 items-center gap-1.5 rounded-md px-3 py-1.5 text-sm transition-colors",
-            activeId === s.id ? "bg-surface-subtle font-medium text-foreground" : "text-muted-foreground hover:bg-surface-subtle"
-          ),
-          children: [
-            s.icon,
-            s.label
-          ]
-        },
-        s.id
-      )) }),
-      /* @__PURE__ */ jsx(Separator2, { orientation: "vertical", className: "hidden h-auto md:block" }),
-      /* @__PURE__ */ jsx("div", { className: "min-w-0 flex-1", children: activeSection && /* @__PURE__ */ jsx("div", { className: "flex flex-col gap-6", children: activeSection.content }) })
-    ] })
-  ] });
+  return /* @__PURE__ */ jsxs(
+    "div",
+    {
+      className: cn("mx-auto w-full max-w-5xl px-4 py-8 md:px-8", className),
+      children: [
+        /* @__PURE__ */ jsx("h1", { className: "mb-6 text-2xl font-bold text-foreground", children: title }),
+        /* @__PURE__ */ jsxs("div", { className: "flex gap-8", children: [
+          /* @__PURE__ */ jsx("nav", { className: "hidden w-48 shrink-0 md:block", children: /* @__PURE__ */ jsx("ul", { className: "flex flex-col gap-1", children: sections.map((s) => /* @__PURE__ */ jsx("li", { children: /* @__PURE__ */ jsxs(
+            "button",
+            {
+              type: "button",
+              onClick: () => setActiveId(s.id),
+              className: cn(
+                "flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm transition-colors",
+                activeId === s.id ? "bg-surface-subtle font-medium text-foreground" : "text-muted-foreground hover:bg-surface-subtle hover:text-foreground"
+              ),
+              children: [
+                s.icon && /* @__PURE__ */ jsx("span", { className: "shrink-0", children: s.icon }),
+                s.label
+              ]
+            }
+          ) }, s.id)) }) }),
+          /* @__PURE__ */ jsx("div", { className: "mb-4 flex gap-1 overflow-x-auto md:hidden", children: sections.map((s) => /* @__PURE__ */ jsxs(
+            "button",
+            {
+              type: "button",
+              onClick: () => setActiveId(s.id),
+              className: cn(
+                "flex shrink-0 items-center gap-1.5 rounded-md px-3 py-1.5 text-sm transition-colors",
+                activeId === s.id ? "bg-surface-subtle font-medium text-foreground" : "text-muted-foreground hover:bg-surface-subtle"
+              ),
+              children: [
+                s.icon,
+                s.label
+              ]
+            },
+            s.id
+          )) }),
+          /* @__PURE__ */ jsx(Separator2, { orientation: "vertical", className: "hidden h-auto md:block" }),
+          /* @__PURE__ */ jsx("div", { className: "min-w-0 flex-1", children: activeSection && /* @__PURE__ */ jsx("div", { className: "flex flex-col gap-6", children: activeSection.content }) })
+        ] })
+      ]
+    }
+  );
 }
 function AppLayout({
   sidebar,
@@ -5218,7 +5510,16 @@ function AppLayout({
           /* @__PURE__ */ jsx("div", { className: "flex flex-1 items-center", children: header })
         ] })
       ] }),
-      /* @__PURE__ */ jsx("main", { className: cn("@container/main flex flex-1 flex-col", mainClassName ?? "gap-4 p-4"), children })
+      /* @__PURE__ */ jsx(
+        "main",
+        {
+          className: cn(
+            "@container/main flex flex-1 flex-col",
+            mainClassName ?? "gap-4 p-4"
+          ),
+          children
+        }
+      )
     ] })
   ] });
 }
@@ -5242,7 +5543,10 @@ function PageHeader({
           "h1",
           {
             className: "text-2xl font-semibold leading-tight text-foreground truncate",
-            style: { fontSize: "var(--text-2xl)", fontWeight: "var(--font-weight-semibold)" },
+            style: {
+              fontSize: "var(--text-2xl)",
+              fontWeight: "var(--font-weight-semibold)"
+            },
             children: title
           }
         ),
