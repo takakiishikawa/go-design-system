@@ -613,7 +613,7 @@ interface DesignTokensProps {
  * 使い方（app/layout.tsx の <head> 内）:
  *   <DesignTokens primaryColor="#0052CC" primaryColorHover="#0747A6" />
  */
-declare function DesignTokens({ primaryColor, primaryColorHover }: DesignTokensProps): react_jsx_runtime.JSX.Element;
+declare function DesignTokens({ primaryColor, primaryColorHover, }: DesignTokensProps): react_jsx_runtime.JSX.Element;
 
 declare const sizeMap$1: {
     readonly sm: 16;
@@ -868,7 +868,7 @@ interface StepperProps {
     orientation?: "horizontal" | "vertical";
     className?: string;
 }
-declare function Stepper({ steps, currentStep, orientation, className }: StepperProps): react_jsx_runtime.JSX.Element;
+declare function Stepper({ steps, currentStep, orientation, className, }: StepperProps): react_jsx_runtime.JSX.Element;
 
 interface SectionProps extends React$1.HTMLAttributes<HTMLElement> {
     title?: string;
@@ -1107,7 +1107,7 @@ interface MetricCardProps {
     isPrimary?: boolean;
     className?: string;
 }
-declare function MetricCard({ title, description, isPrimary, className }: MetricCardProps): react_jsx_runtime.JSX.Element;
+declare function MetricCard({ title, description, isPrimary, className, }: MetricCardProps): react_jsx_runtime.JSX.Element;
 
 interface ConceptPageProps {
     productName: string;
@@ -1155,14 +1155,14 @@ interface SettingsItemProps {
     control: React$1.ReactNode;
     className?: string;
 }
-declare function SettingsItem({ label, description, control, className }: SettingsItemProps): react_jsx_runtime.JSX.Element;
+declare function SettingsItem({ label, description, control, className, }: SettingsItemProps): react_jsx_runtime.JSX.Element;
 interface SettingsGroupProps {
     title: string;
     description?: string;
     children: React$1.ReactNode;
     className?: string;
 }
-declare function SettingsGroup({ title, description, children, className }: SettingsGroupProps): react_jsx_runtime.JSX.Element;
+declare function SettingsGroup({ title, description, children, className, }: SettingsGroupProps): react_jsx_runtime.JSX.Element;
 interface SettingsSection {
     id: string;
     label: string;
