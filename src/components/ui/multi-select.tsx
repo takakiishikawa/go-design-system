@@ -116,7 +116,7 @@ export function MultiSelect({
         <ul
           role="listbox"
           aria-multiselectable="true"
-          className="absolute z-50 mt-1 max-h-56 w-full overflow-auto rounded-md border border-border bg-background py-1 shadow-md"
+          className="absolute z-50 mt-1 max-h-56 w-full overflow-auto rounded-md border border-border bg-background py-1 border border-border"
         >
           {options.map((o) => {
             const isSelected = selected.includes(o.value);

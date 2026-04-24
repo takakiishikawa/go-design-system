@@ -41,7 +41,7 @@ export default function HomePage() {
       <div className="flex flex-col gap-3">
         <div className="flex items-center gap-2">
           <Layers className="size-6 text-primary" />
-          <h1 className="text-2xl font-bold text-foreground">
+          <h1 className="text-2xl font-semibold text-foreground">
             Go Design System
           </h1>
         </div>

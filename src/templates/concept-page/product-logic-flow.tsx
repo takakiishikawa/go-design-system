@@ -25,7 +25,7 @@ function StepCard({
   return (
     <>
       {/* カード */}
-      <div className="flex flex-col gap-1.5 rounded-lg border border-border bg-card p-4 shadow-sm min-w-0">
+      <div className="flex flex-col gap-1.5 rounded-lg border border-border bg-card p-4 border border-border min-w-0">
         <div className="flex items-center gap-2">
           <span
             className="flex size-5 shrink-0 items-center justify-center rounded-full text-xs font-semibold text-primary-foreground"

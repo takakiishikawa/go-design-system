@@ -29,7 +29,7 @@ export function Section({
       className={cn(
         "flex flex-col gap-4",
         variant === "bordered" && "rounded-lg border border-border p-6",
-        variant === "elevated" && "rounded-lg bg-card p-6 shadow-sm",
+        variant === "elevated" && "rounded-lg bg-card p-6 border border-border",
         className,
       )}
       {...props}

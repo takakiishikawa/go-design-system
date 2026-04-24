@@ -141,7 +141,7 @@ export function ChartArea({
               >
                 <SelectValue />
               </SelectTrigger>
-              <SelectContent className="rounded-xl">
+              <SelectContent className="rounded-lg">
                 {timeRanges.map((r) => (
                   <SelectItem
                     key={r.value}

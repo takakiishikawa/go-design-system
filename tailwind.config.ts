@@ -105,9 +105,9 @@ const config: Config = {
         sans: ["var(--font-sans)"],
       },
       boxShadow: {
-        sm: "var(--shadow-sm)",
-        md: "var(--shadow-md)",
-        lg: "var(--shadow-lg)",
+        sm: "var(--border border-border)",
+        md: "var(--border border-border)",
+        lg: "var(--border border-border)",
       },
       keyframes: {
         "accordion-down": {
