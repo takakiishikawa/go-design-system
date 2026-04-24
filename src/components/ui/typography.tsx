@@ -146,7 +146,9 @@ export function MetricText({
   return (
     <div className={cn("flex flex-col gap-1", className)} {...props}>
       <div className="flex items-baseline gap-1">
-        <span className={cn(s.value, "font-semibold tabular-nums text-foreground")}>
+        <span
+          className={cn(s.value, "font-semibold tabular-nums text-foreground")}
+        >
           {value}
         </span>
         {unit && (

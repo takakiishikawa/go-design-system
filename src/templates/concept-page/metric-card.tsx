@@ -27,7 +27,8 @@ export function MetricCard({
         isPrimary
           ? {
               borderColor: "var(--color-primary)",
-              boxShadow: "0 0 0 1px var(--color-primary), var(--border border-border)",
+              boxShadow:
+                "0 0 0 1px var(--color-primary), var(--border border-border)",
             }
           : undefined
       }
