@@ -172,7 +172,7 @@ var SelectContent = React19.forwardRef(({ className, children, position = "poppe
   {
     ref,
     className: cn(
-      "relative z-50 max-h-[var(--radix-select-content-available-height)] min-w-[8rem] overflow-y-auto overflow-x-hidden rounded-md border border-border bg-popover text-popover-foreground shadow-sm data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 origin-[var(--radix-select-content-transform-origin)]",
+      "relative z-50 max-h-[var(--radix-select-content-available-height)] min-w-[8rem] overflow-y-auto overflow-x-hidden rounded-md border border-border bg-popover text-popover-foreground border border-border data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 origin-[var(--radix-select-content-transform-origin)]",
       position === "popper" && "data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1",
       className
     ),
@@ -650,7 +650,7 @@ var SheetOverlay = React19.forwardRef(({ className, ...props }, ref) => /* @__PU
 ));
 SheetOverlay.displayName = SheetPrimitive.Overlay.displayName;
 var sheetVariants = cva(
-  "fixed z-50 gap-4 bg-background p-6 shadow-lg transition ease-in-out data-[state=closed]:duration-300 data-[state=open]:duration-500 data-[state=open]:animate-in data-[state=closed]:animate-out",
+  "fixed z-50 gap-4 bg-background p-6 border border-border transition ease-in-out data-[state=closed]:duration-300 data-[state=open]:duration-500 data-[state=open]:animate-in data-[state=closed]:animate-out",
   {
     variants: {
       side: {
@@ -988,7 +988,7 @@ var SidebarInset = React19.forwardRef(({ className, ...props }, ref) => {
       ref,
       className: cn(
         "relative flex w-full flex-1 flex-col bg-background",
-        "md:peer-data-[variant=inset]:m-2 md:peer-data-[state=collapsed]:peer-data-[variant=inset]:ml-2 md:peer-data-[variant=inset]:ml-0 md:peer-data-[variant=inset]:rounded-xl md:peer-data-[variant=inset]:shadow",
+        "md:peer-data-[variant=inset]:m-2 md:peer-data-[state=collapsed]:peer-data-[variant=inset]:ml-2 md:peer-data-[variant=inset]:ml-0 md:peer-data-[variant=inset]:rounded-lg md:peer-data-[variant=inset]:shadow",
         className
       ),
       ...props
@@ -1517,7 +1517,7 @@ var NavigationMenuIndicator = React19.forwardRef(({ className, ...props }, ref) 
       className
     ),
     ...props,
-    children: /* @__PURE__ */ jsx("div", { className: "relative top-[60%] h-2 w-2 rotate-45 rounded-tl-sm bg-border shadow-md" })
+    children: /* @__PURE__ */ jsx("div", { className: "relative top-[60%] h-2 w-2 rotate-45 rounded-tl-sm bg-border border border-border" })
   }
 ));
 NavigationMenuIndicator.displayName = NavigationMenuPrimitive.Indicator.displayName;
@@ -1549,7 +1549,7 @@ var DropdownMenuSubContent = React19.forwardRef(({ className, ...props }, ref) =
   {
     ref,
     className: cn(
-      "z-50 min-w-[8rem] overflow-hidden rounded-md border border-border bg-popover p-1 text-popover-foreground shadow-sm data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 origin-[var(--radix-dropdown-menu-content-transform-origin)]",
+      "z-50 min-w-[8rem] overflow-hidden rounded-md border border-border bg-popover p-1 text-popover-foreground border border-border data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 origin-[var(--radix-dropdown-menu-content-transform-origin)]",
       className
     ),
     ...props
@@ -1562,7 +1562,7 @@ var DropdownMenuContent = React19.forwardRef(({ className, sideOffset = 4, ...pr
     ref,
     sideOffset,
     className: cn(
-      "z-50 max-h-[var(--radix-dropdown-menu-content-available-height)] min-w-[8rem] overflow-y-auto overflow-x-hidden rounded-md border border-border bg-popover p-1 text-popover-foreground shadow-sm",
+      "z-50 max-h-[var(--radix-dropdown-menu-content-available-height)] min-w-[8rem] overflow-y-auto overflow-x-hidden rounded-md border border-border bg-popover p-1 text-popover-foreground border border-border",
       "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 origin-[var(--radix-dropdown-menu-content-transform-origin)]",
       className
     ),
@@ -1722,7 +1722,7 @@ var MenubarSubContent = React19.forwardRef(({ className, ...props }, ref) => /* 
   {
     ref,
     className: cn(
-      "z-50 min-w-[8rem] overflow-hidden rounded-md border border-border bg-popover p-1 text-popover-foreground shadow-sm data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 origin-[var(--radix-menubar-content-transform-origin)]",
+      "z-50 min-w-[8rem] overflow-hidden rounded-md border border-border bg-popover p-1 text-popover-foreground border border-border data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 origin-[var(--radix-menubar-content-transform-origin)]",
       className
     ),
     ...props
@@ -1738,7 +1738,7 @@ var MenubarContent = React19.forwardRef(
       alignOffset,
       sideOffset,
       className: cn(
-        "z-50 min-w-[12rem] overflow-hidden rounded-md border border-border bg-popover p-1 text-popover-foreground shadow-sm data-[state=open]:animate-in data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 origin-[var(--radix-menubar-content-transform-origin)]",
+        "z-50 min-w-[12rem] overflow-hidden rounded-md border border-border bg-popover p-1 text-popover-foreground border border-border data-[state=open]:animate-in data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 origin-[var(--radix-menubar-content-transform-origin)]",
         className
       ),
       ...props
@@ -1853,7 +1853,7 @@ var DialogContent = React19.forwardRef(({ className, children, ...props }, ref) 
     {
       ref,
       className: cn(
-        "fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border border-border bg-background p-6 shadow-md duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-lg",
+        "fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border border-border bg-background p-6 border border-border duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-lg",
         className
       ),
       ...props,
@@ -2207,7 +2207,7 @@ var PopoverContent = React19.forwardRef(({ className, align = "center", sideOffs
     align,
     sideOffset,
     className: cn(
-      "z-50 w-72 rounded-md border border-border bg-popover p-4 text-popover-foreground shadow-md outline-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 origin-[var(--radix-popover-content-transform-origin)]",
+      "z-50 w-72 rounded-md border border-border bg-popover p-4 text-popover-foreground border border-border outline-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 origin-[var(--radix-popover-content-transform-origin)]",
       className
     ),
     ...props
@@ -2223,7 +2223,7 @@ var HoverCardContent = React19.forwardRef(({ className, align = "center", sideOf
     align,
     sideOffset,
     className: cn(
-      "z-50 w-64 rounded-md border border-border bg-popover p-4 text-popover-foreground shadow-sm outline-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 origin-[var(--radix-hover-card-content-transform-origin)]",
+      "z-50 w-64 rounded-md border border-border bg-popover p-4 text-popover-foreground border border-border outline-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 origin-[var(--radix-hover-card-content-transform-origin)]",
       className
     ),
     ...props
@@ -2252,7 +2252,7 @@ var AlertDialogContent = React19.forwardRef(({ className, ...props }, ref) => /*
     {
       ref,
       className: cn(
-        "fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border bg-background p-6 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-lg",
+        "fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border bg-background p-6 border border-border duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-lg",
         className
       ),
       ...props
@@ -2337,7 +2337,7 @@ var Toaster = ({ ...props }) => {
       className: "toaster group",
       toastOptions: {
         classNames: {
-          toast: "group toast group-[.toaster]:bg-background group-[.toaster]:text-foreground group-[.toaster]:border-border group-[.toaster]:shadow-lg",
+          toast: "group toast group-[.toaster]:bg-background group-[.toaster]:text-foreground group-[.toaster]:border-border group-[.toaster]:border border-border",
           description: "group-[.toast]:text-muted-foreground",
           actionButton: "group-[.toast]:bg-primary group-[.toast]:text-primary-foreground",
           cancelButton: "group-[.toast]:bg-muted group-[.toast]:text-muted-foreground"
@@ -2713,7 +2713,7 @@ var ChartTooltipContent = React19.forwardRef(
       {
         ref,
         className: cn(
-          "grid min-w-[8rem] items-start gap-1.5 rounded-lg border border-border bg-background px-2.5 py-1.5 text-xs shadow-sm",
+          "grid min-w-[8rem] items-start gap-1.5 rounded-lg border border-border bg-background px-2.5 py-1.5 text-xs border border-border",
           className
         ),
         children: [
@@ -3718,7 +3718,7 @@ function MultiSelect({
       {
         role: "listbox",
         "aria-multiselectable": "true",
-        className: "absolute z-50 mt-1 max-h-56 w-full overflow-auto rounded-md border border-border bg-background py-1 shadow-md",
+        className: "absolute z-50 mt-1 max-h-56 w-full overflow-auto rounded-md border border-border bg-background py-1 border border-border",
         children: [
           options.map((o) => {
             const isSelected = selected.includes(o.value);
@@ -3847,7 +3847,7 @@ function LoadingOverlay({
 }
 LoadingOverlay.displayName = "LoadingOverlay";
 var headingStyles = {
-  1: "scroll-m-20 text-4xl font-bold tracking-tight",
+  1: "scroll-m-20 text-4xl font-semibold tracking-tight",
   2: "scroll-m-20 text-3xl font-semibold tracking-tight",
   3: "scroll-m-20 text-2xl font-semibold tracking-tight",
   4: "scroll-m-20 text-xl font-semibold tracking-tight",
@@ -3882,7 +3882,7 @@ var textWeights = {
   normal: "font-normal",
   medium: "font-medium",
   semibold: "font-semibold",
-  bold: "font-bold"
+  bold: "font-semibold"
 };
 var textColors = {
   default: "text-foreground",
@@ -3938,7 +3938,7 @@ function MetricText({
   }
   return /* @__PURE__ */ jsxs("div", { className: cn("flex flex-col gap-1", className), ...props, children: [
     /* @__PURE__ */ jsxs("div", { className: "flex items-baseline gap-1", children: [
-      /* @__PURE__ */ jsx("span", { className: cn(s.value, "font-bold tabular-nums text-foreground"), children: value }),
+      /* @__PURE__ */ jsx("span", { className: cn(s.value, "font-semibold tabular-nums text-foreground"), children: value }),
       unit && /* @__PURE__ */ jsx("span", { className: cn(s.unit, "text-muted-foreground"), children: unit })
     ] }),
     trend && /* @__PURE__ */ jsxs("div", { className: cn("flex items-center gap-1", trendColor), children: [
@@ -4148,7 +4148,7 @@ function Section({
       className: cn(
         "flex flex-col gap-4",
         variant === "bordered" && "rounded-lg border border-border p-6",
-        variant === "elevated" && "rounded-lg bg-card p-6 shadow-sm",
+        variant === "elevated" && "rounded-lg bg-card p-6 border border-border",
         className
       ),
       ...props,
@@ -4658,7 +4658,7 @@ function ChartArea({
               children: /* @__PURE__ */ jsx(SelectValue, {})
             }
           ),
-          /* @__PURE__ */ jsx(SelectContent, { className: "rounded-xl", children: timeRanges.map((r) => /* @__PURE__ */ jsx(
+          /* @__PURE__ */ jsx(SelectContent, { className: "rounded-lg", children: timeRanges.map((r) => /* @__PURE__ */ jsx(
             SelectItem,
             {
               value: r.value,
@@ -4996,9 +4996,9 @@ function LoginPage({
     }
   }
   const loading = isLoading || pending;
-  return /* @__PURE__ */ jsx("div", { className: "flex min-h-screen items-center justify-center bg-background p-4", children: /* @__PURE__ */ jsxs(Card, { className: "w-full max-w-sm shadow-md", children: [
+  return /* @__PURE__ */ jsx("div", { className: "flex min-h-screen items-center justify-center bg-background p-4", children: /* @__PURE__ */ jsxs(Card, { className: "w-full max-w-sm border border-border", children: [
     /* @__PURE__ */ jsxs(CardHeader, { className: "flex flex-col items-center gap-3 pb-2 pt-8", children: [
-      productLogo && /* @__PURE__ */ jsx("div", { className: "flex size-14 items-center justify-center rounded-xl border border-border bg-surface-subtle text-foreground", children: productLogo }),
+      productLogo && /* @__PURE__ */ jsx("div", { className: "flex size-14 items-center justify-center rounded-lg border border-border bg-surface-subtle text-foreground", children: productLogo }),
       /* @__PURE__ */ jsx(
         CardTitle,
         {
@@ -5147,7 +5147,7 @@ function StepCard({
 }) {
   const isLast = index === total - 1;
   return /* @__PURE__ */ jsxs(Fragment, { children: [
-    /* @__PURE__ */ jsxs("div", { className: "flex flex-col gap-1.5 rounded-lg border border-border bg-card p-4 shadow-sm min-w-0", children: [
+    /* @__PURE__ */ jsxs("div", { className: "flex flex-col gap-1.5 rounded-lg border border-border bg-card p-4 border border-border min-w-0", children: [
       /* @__PURE__ */ jsxs("div", { className: "flex items-center gap-2", children: [
         /* @__PURE__ */ jsx(
           "span",
@@ -5230,12 +5230,12 @@ function MetricCard({
     {
       className: cn(
         "transition-shadow",
-        isPrimary && "border-primary shadow-md",
+        isPrimary && "border-primary border border-border",
         className
       ),
       style: isPrimary ? {
         borderColor: "var(--color-primary)",
-        boxShadow: "0 0 0 1px var(--color-primary), var(--shadow-sm)"
+        boxShadow: "0 0 0 1px var(--color-primary), var(--border border-border)"
       } : void 0,
       children: [
         /* @__PURE__ */ jsx(CardHeader, { className: "pb-1", children: /* @__PURE__ */ jsx(
@@ -5301,7 +5301,7 @@ function ConceptPage({
             /* @__PURE__ */ jsx(
               "h1",
               {
-                className: "font-bold text-foreground",
+                className: "font-semibold text-foreground",
                 style: {
                   fontSize: "var(--text-3xl)",
                   fontWeight: "var(--font-weight-bold)"
@@ -5453,7 +5453,7 @@ function SettingsPage({
     {
       className: cn("mx-auto w-full max-w-5xl px-4 py-8 md:px-8", className),
       children: [
-        /* @__PURE__ */ jsx("h1", { className: "mb-6 text-2xl font-bold text-foreground", children: title }),
+        /* @__PURE__ */ jsx("h1", { className: "mb-6 text-2xl font-semibold text-foreground", children: title }),
         /* @__PURE__ */ jsxs("div", { className: "flex gap-8", children: [
           /* @__PURE__ */ jsx("nav", { className: "hidden w-48 shrink-0 md:block", children: /* @__PURE__ */ jsx("ul", { className: "flex flex-col gap-1", children: sections.map((s) => /* @__PURE__ */ jsx("li", { children: /* @__PURE__ */ jsxs(
             "button",

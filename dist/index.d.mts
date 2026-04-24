@@ -807,7 +807,7 @@ declare const textWeights: {
     readonly normal: "font-normal";
     readonly medium: "font-medium";
     readonly semibold: "font-semibold";
-    readonly bold: "font-bold";
+    readonly bold: "font-semibold";
 };
 declare const textColors: {
     readonly default: "text-foreground";
