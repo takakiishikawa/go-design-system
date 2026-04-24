@@ -111,7 +111,7 @@ export default function CardPage() {
                 <item.icon className="size-4 text-muted-foreground" />
               </CardHeader>
               <CardContent>
-                <p className="text-2xl font-bold text-foreground">
+                <p className="text-2xl font-semibold text-foreground">
                   {item.value}
                 </p>
                 <Trend value={item.trend} up={item.up} />
@@ -509,7 +509,7 @@ export default function CardPage() {
                 style={{ backgroundColor: plan.color, color: plan.fg }}
               >
                 <p className="text-xs font-semibold opacity-80">{plan.name}</p>
-                <p className="mt-1 text-2xl font-bold">{plan.price}</p>
+                <p className="mt-1 text-2xl font-semibold">{plan.price}</p>
               </div>
               <CardContent className="flex flex-1 flex-col gap-3 pt-4">
                 <ul className="flex flex-col gap-1.5">

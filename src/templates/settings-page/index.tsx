@@ -105,7 +105,7 @@ export function SettingsPage({
     <div
       className={cn("mx-auto w-full max-w-5xl px-4 py-8 md:px-8", className)}
     >
-      <h1 className="mb-6 text-2xl font-bold text-foreground">{title}</h1>
+      <h1 className="mb-6 text-2xl font-semibold text-foreground">{title}</h1>
       <div className="flex gap-8">
         {/* Sidebar nav */}
         <nav className="hidden w-48 shrink-0 md:block">

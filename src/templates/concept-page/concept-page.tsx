@@ -80,7 +80,7 @@ export function ConceptPage({
               </div>
             )}
             <h1
-              className="font-bold text-foreground"
+              className="font-semibold text-foreground"
               style={{
                 fontSize: "var(--text-3xl)",
                 fontWeight: "var(--font-weight-bold)",

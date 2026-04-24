@@ -7,7 +7,7 @@ import { TrendingDown, TrendingUp } from "lucide-react";
 // ---------------------------------------------------------------------------
 
 const headingStyles = {
-  1: "scroll-m-20 text-4xl font-bold tracking-tight",
+  1: "scroll-m-20 text-4xl font-semibold tracking-tight",
   2: "scroll-m-20 text-3xl font-semibold tracking-tight",
   3: "scroll-m-20 text-2xl font-semibold tracking-tight",
   4: "scroll-m-20 text-xl font-semibold tracking-tight",
@@ -55,7 +55,7 @@ const textWeights = {
   normal: "font-normal",
   medium: "font-medium",
   semibold: "font-semibold",
-  bold: "font-bold",
+  bold: "font-semibold",
 } as const;
 
 const textColors = {
@@ -146,7 +146,7 @@ export function MetricText({
   return (
     <div className={cn("flex flex-col gap-1", className)} {...props}>
       <div className="flex items-baseline gap-1">
-        <span className={cn(s.value, "font-bold tabular-nums text-foreground")}>
+        <span className={cn(s.value, "font-semibold tabular-nums text-foreground")}>
           {value}
         </span>
         {unit && (

@@ -38,7 +38,7 @@ export function PageHeader({
 }: PageHeaderProps) {
   return (
     <div className="flex flex-col gap-2 pb-2">
-      <h1 className="text-xl font-bold text-foreground">{title}</h1>
+      <h1 className="text-xl font-semibold text-foreground">{title}</h1>
       <p className="text-sm text-muted-foreground">{description}</p>
       {importStr && (
         <pre className="inline-flex w-fit rounded bg-surface-subtle px-3 py-1.5 text-xs font-mono text-foreground border border-border">

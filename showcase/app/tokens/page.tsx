@@ -57,7 +57,7 @@ export default function TokensPage() {
   return (
     <div className="flex flex-col gap-8 py-4">
       <div>
-        <h1 className="text-xl font-bold text-foreground">デザイントークン</h1>
+        <h1 className="text-xl font-semibold text-foreground">デザイントークン</h1>
         <p className="mt-1 text-sm text-muted-foreground">
           Goシリーズ共通の CSS カスタムプロパティ一覧。
           <code className="rounded bg-surface-subtle px-1 font-mono text-xs">

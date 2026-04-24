@@ -75,11 +75,11 @@ export function LoginPage({
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background p-4">
-      <Card className="w-full max-w-sm shadow-md">
+      <Card className="w-full max-w-sm border border-border">
         <CardHeader className="flex flex-col items-center gap-3 pb-2 pt-8">
           {/* ロゴ */}
           {productLogo && (
-            <div className="flex size-14 items-center justify-center rounded-xl border border-border bg-surface-subtle text-foreground">
+            <div className="flex size-14 items-center justify-center rounded-lg border border-border bg-surface-subtle text-foreground">
               {productLogo}
             </div>
           )}

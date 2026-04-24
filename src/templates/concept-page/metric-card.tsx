@@ -20,14 +20,14 @@ export function MetricCard({
     <Card
       className={cn(
         "transition-shadow",
-        isPrimary && "border-primary shadow-md",
+        isPrimary && "border-primary border border-border",
         className,
       )}
       style={
         isPrimary
           ? {
               borderColor: "var(--color-primary)",
-              boxShadow: "0 0 0 1px var(--color-primary), var(--shadow-sm)",
+              boxShadow: "0 0 0 1px var(--color-primary), var(--border border-border)",
             }
           : undefined
       }
