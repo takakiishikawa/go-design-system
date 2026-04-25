@@ -1,30 +1,7 @@
 "use client";
 
 import * as React from "react";
-import dynamic from "next/dynamic";
-
-const AreaChart = dynamic(
-  () => import("recharts").then((m) => ({ default: m.AreaChart })),
-  {
-    ssr: false,
-    loading: () => <div className="animate-pulse h-40 bg-muted rounded" />,
-  },
-);
-const Area = dynamic(
-  () => import("recharts").then((m) => ({ default: m.Area })),
-  {
-    ssr: false,
-    loading: () => <div className="animate-pulse h-40 bg-muted rounded" />,
-  },
-);
-const CartesianGrid = dynamic(
-  () => import("recharts").then((m) => ({ default: m.CartesianGrid })),
-  { ssr: false },
-);
-const XAxis = dynamic(
-  () => import("recharts").then((m) => ({ default: m.XAxis })),
-  { ssr: false },
-);
+import { Area, AreaChart, CartesianGrid, XAxis } from "recharts";
 
 import {
   Card,
