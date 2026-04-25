@@ -130,6 +130,11 @@ export type {
   NavItem,
   NavSubItem,
 } from "./templates/sidebar-01/app-sidebar";
+export { UserMenu } from "./templates/sidebar-01/user-menu";
+export type {
+  UserMenuProps,
+  UserMenuItem,
+} from "./templates/sidebar-01/user-menu";
 
 // dashboard-01
 export { SectionCards } from "./templates/dashboard-01/section-cards";
