@@ -1,4 +1,11 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
   "buildCommand": "cd showcase && npm install && npm run build",
-  "outputDirectory": "showcase/out"
+  "outputDirectory": "showcase/out",
+  "git": {
+    "deploymentEnabled": {
+      "main": true,
+      "*": false
+    }
+  }
 }
