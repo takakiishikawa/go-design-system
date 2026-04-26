@@ -48,7 +48,6 @@ export function ColorProvider({ children }: { children: React.ReactNode }) {
     PRODUCT_COLORS[0],
   );
 
-  // Read from localStorage after mount (avoids SSR mismatch)
   React.useEffect(() => {
     setSelectedState(getSavedColor());
   }, []);
@@ -60,10 +59,10 @@ export function ColorProvider({ children }: { children: React.ReactNode }) {
     } catch {}
   }, []);
 
-  return (
-    <ColorContext.Provider value={{ selected, setSelected }}>
-      {children}
-    </ColorContext.Provider>
+  return React.createElement(
+    ColorContext.Provider,
+    { value: { selected, setSelected } },
+    children,
   );
 }
 
