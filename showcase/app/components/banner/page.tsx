@@ -1,7 +1,6 @@
 "use client";
 
-import { Banner } from "@takaki/go-design-system";
-import { PageHeader, DemoSection } from "@/app/ui/demo-section";
+import { Banner, PageHeader, Section } from "@takaki/go-design-system";
 
 export default function BannerPage() {
   return (
@@ -9,10 +8,9 @@ export default function BannerPage() {
       <PageHeader
         title="Banner"
         description="情報・警告・成功・エラーをページ上部に表示するバナー。dismissible・action ボタンをサポート。"
-        import="import { Banner } from '@takaki/go-design-system'"
       />
 
-      <DemoSection title="variant">
+      <Section title="variant">
         <div className="flex w-full flex-col gap-2">
           <Banner
             variant="default"
@@ -40,9 +38,9 @@ export default function BannerPage() {
             description="認証に失敗しました。再度ログインしてください。"
           />
         </div>
-      </DemoSection>
+      </Section>
 
-      <DemoSection title="dismissible">
+      <Section title="dismissible">
         <div className="flex w-full flex-col gap-2">
           <Banner
             variant="info"
@@ -58,7 +56,7 @@ export default function BannerPage() {
             action={{ label: "更新する", onClick: () => {} }}
           />
         </div>
-      </DemoSection>
+      </Section>
     </div>
   );
 }
