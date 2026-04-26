@@ -1,3 +1,4 @@
+"use client";
 import * as React19 from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import { cva } from 'class-variance-authority';
@@ -5791,16 +5792,22 @@ function useChart() {
   }
   return context;
 }
-var ChartContainer = React19.forwardRef(({ id, className, children, config, ...props }, ref) => {
+function ChartContainer({
+  id,
+  className,
+  children,
+  config,
+  ...props
+}) {
   const uniqueId = React19.useId();
   const chartId = `chart-${id || uniqueId.replace(/:/g, "")}`;
   return /* @__PURE__ */ jsx(ChartContext.Provider, { value: { config }, children: /* @__PURE__ */ jsxs(
     "div",
     {
+      "data-slot": "chart",
       "data-chart": chartId,
-      ref,
       className: cn(
-        "flex aspect-video justify-center text-xs [&_.recharts-cartesian-axis-tick_text]:fill-muted-foreground [&_.recharts-cartesian-grid_line[stroke='#ccc']]:stroke-border/50 [&_.recharts-curve.recharts-tooltip-cursor]:stroke-border [&_.recharts-dot[stroke='#fff']]:stroke-transparent [&_.recharts-layer]:outline-none [&_.recharts-polar-grid_[stroke='#ccc']]:stroke-border [&_.recharts-radial-bar-background-sector]:fill-muted [&_.recharts-rectangle.recharts-tooltip-cursor]:fill-muted [&_.recharts-reference-line_[stroke='#ccc']]:stroke-border [&_.recharts-sector[stroke='#fff']]:stroke-transparent [&_.recharts-sector]:outline-none [&_.recharts-surface]:outline-none",
+        "[&_.recharts-cartesian-axis-tick_text]:fill-muted-foreground [&_.recharts-cartesian-grid_line[stroke='#ccc']]:stroke-border/50 [&_.recharts-curve.recharts-tooltip-cursor]:stroke-border [&_.recharts-polar-grid_[stroke='#ccc']]:stroke-border [&_.recharts-radial-bar-background-sector]:fill-muted [&_.recharts-rectangle.recharts-tooltip-cursor]:fill-muted [&_.recharts-reference-line_[stroke='#333']]:stroke-border flex aspect-video justify-center text-xs [&_.recharts-dot[stroke='#fff']]:stroke-transparent [&_.recharts-layer]:outline-none [&_.recharts-sector]:outline-none [&_.recharts-sector[stroke='#fff']]:stroke-transparent [&_.recharts-surface]:outline-none",
         className
       ),
       ...props,
@@ -5810,9 +5817,8 @@ var ChartContainer = React19.forwardRef(({ id, className, children, config, ...p
       ]
     }
   ) });
-});
-ChartContainer.displayName = "Chart";
-var ChartStyle = ({ id, config }) => {
+}
+function ChartStyle({ id, config }) {
   const colorConfig = Object.entries(config).filter(
     ([, config2]) => config2.theme || config2.color
   );
@@ -5836,7 +5842,7 @@ ${colorConfig.map(([key, itemConfig]) => {
       }
     }
   );
-};
+}
 var ChartTooltip = RechartsPrimitive.Tooltip;
 var ChartTooltipContent = React19.forwardRef(
   ({
@@ -5893,57 +5899,72 @@ var ChartTooltipContent = React19.forwardRef(
         ),
         children: [
           !nestLabel ? tooltipLabel : null,
-          /* @__PURE__ */ jsx("div", { className: "grid gap-1.5", children: payload.filter((item) => item.type !== "none").map((item, index) => {
-            const key = `${nameKey || item.name || item.dataKey || "value"}`;
-            const itemConfig = getPayloadConfigFromPayload(config, item, key);
-            const indicatorColor = color || item.payload.fill || item.color;
-            return /* @__PURE__ */ jsx(
-              "div",
-              {
-                className: cn(
-                  "flex w-full flex-wrap items-stretch gap-2 [&>svg]:h-2.5 [&>svg]:w-2.5 [&>svg]:text-muted-foreground",
-                  indicator === "dot" && "items-center"
-                ),
-                children: formatter && item?.value !== void 0 && item.name ? formatter(item.value, item.name, item, index, item.payload) : /* @__PURE__ */ jsxs(Fragment, { children: [
-                  itemConfig?.icon ? /* @__PURE__ */ jsx(itemConfig.icon, {}) : !hideIndicator && /* @__PURE__ */ jsx(
-                    "div",
-                    {
-                      className: cn(
-                        "shrink-0 rounded-[2px] border-[var(--color-border)] bg-[var(--color-bg)]",
-                        {
-                          "h-2.5 w-2.5": indicator === "dot",
-                          "w-1": indicator === "line",
-                          "w-0 border-[1.5px] border-dashed bg-transparent": indicator === "dashed",
-                          "my-0.5": nestLabel && indicator === "dashed"
-                        }
-                      ),
-                      style: {
-                        "--color-bg": indicatorColor,
-                        "--color-border": indicatorColor
-                      }
-                    }
+          /* @__PURE__ */ jsx("div", { className: "grid gap-1.5", children: payload.filter(
+            (item) => item.type !== "none"
+          ).map(
+            (item, index) => {
+              const key = `${nameKey || item.name || item.dataKey || "value"}`;
+              const itemConfig = getPayloadConfigFromPayload(
+                config,
+                item,
+                key
+              );
+              const indicatorColor = color || item.payload?.fill || item.color;
+              return /* @__PURE__ */ jsx(
+                "div",
+                {
+                  className: cn(
+                    "flex w-full flex-wrap items-stretch gap-2 [&>svg]:h-2.5 [&>svg]:w-2.5 [&>svg]:text-muted-foreground",
+                    indicator === "dot" && "items-center"
                   ),
-                  /* @__PURE__ */ jsxs(
-                    "div",
-                    {
-                      className: cn(
-                        "flex flex-1 justify-between leading-none",
-                        nestLabel ? "items-end" : "items-center"
-                      ),
-                      children: [
-                        /* @__PURE__ */ jsxs("div", { className: "grid gap-1.5", children: [
-                          nestLabel ? tooltipLabel : null,
-                          /* @__PURE__ */ jsx("span", { className: "text-muted-foreground", children: itemConfig?.label || item.name })
-                        ] }),
-                        item.value && /* @__PURE__ */ jsx("span", { className: "font-mono font-medium tabular-nums text-foreground", children: item.value.toLocaleString() })
-                      ]
-                    }
-                  )
-                ] })
-              },
-              item.dataKey
-            );
-          }) })
+                  children: formatter && item?.value !== void 0 && item.name ? formatter(
+                    item.value,
+                    item.name,
+                    item,
+                    index,
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                    item.payload
+                  ) : /* @__PURE__ */ jsxs(Fragment, { children: [
+                    itemConfig?.icon ? /* @__PURE__ */ jsx(itemConfig.icon, {}) : !hideIndicator && /* @__PURE__ */ jsx(
+                      "div",
+                      {
+                        className: cn(
+                          "shrink-0 rounded-[2px] border-[var(--color-border)] bg-[var(--color-bg)]",
+                          {
+                            "h-2.5 w-2.5": indicator === "dot",
+                            "w-1": indicator === "line",
+                            "w-0 border-[1.5px] border-dashed bg-transparent": indicator === "dashed",
+                            "my-0.5": nestLabel && indicator === "dashed"
+                          }
+                        ),
+                        style: {
+                          "--color-bg": indicatorColor,
+                          "--color-border": indicatorColor
+                        }
+                      }
+                    ),
+                    /* @__PURE__ */ jsxs(
+                      "div",
+                      {
+                        className: cn(
+                          "flex flex-1 justify-between leading-none",
+                          nestLabel ? "items-end" : "items-center"
+                        ),
+                        children: [
+                          /* @__PURE__ */ jsxs("div", { className: "grid gap-1.5", children: [
+                            nestLabel ? tooltipLabel : null,
+                            /* @__PURE__ */ jsx("span", { className: "text-muted-foreground", children: itemConfig?.label || item.name })
+                          ] }),
+                          item.value && /* @__PURE__ */ jsx("span", { className: "font-mono font-medium tabular-nums text-foreground", children: item.value.toLocaleString() })
+                        ]
+                      }
+                    )
+                  ] })
+                },
+                item.dataKey
+              );
+            }
+          ) })
         ]
       }
     );
@@ -5952,7 +5973,13 @@ var ChartTooltipContent = React19.forwardRef(
 ChartTooltipContent.displayName = "ChartTooltip";
 var ChartLegend = RechartsPrimitive.Legend;
 var ChartLegendContent = React19.forwardRef(
-  ({ className, hideIcon = false, payload, verticalAlign = "bottom", nameKey }, ref) => {
+  ({
+    className,
+    hideIcon = false,
+    payload,
+    verticalAlign = "bottom",
+    nameKey
+  }, ref) => {
     const { config } = useChart();
     if (!payload?.length) {
       return null;
@@ -5966,7 +5993,9 @@ var ChartLegendContent = React19.forwardRef(
           verticalAlign === "top" ? "pb-3" : "pt-3",
           className
         ),
-        children: payload.filter((item) => item.type !== "none").map((item) => {
+        children: payload.filter(
+          (item) => item.type !== "none"
+        ).map((item) => {
           const key = `${nameKey || item.dataKey || "value"}`;
           const itemConfig = getPayloadConfigFromPayload(config, item, key);
           return /* @__PURE__ */ jsxs(
@@ -6000,10 +6029,11 @@ function getPayloadConfigFromPayload(config, payload, key) {
   if (typeof payload !== "object" || payload === null) {
     return void 0;
   }
-  const payloadPayload = "payload" in payload && typeof payload.payload === "object" && payload.payload !== null ? payload.payload : void 0;
+  const payloadRecord = payload;
+  const payloadPayload = "payload" in payloadRecord && typeof payloadRecord.payload === "object" && payloadRecord.payload !== null ? payloadRecord.payload : void 0;
   let configLabelKey = key;
-  if (key in payload && typeof payload[key] === "string") {
-    configLabelKey = payload[key];
+  if (key in payloadRecord && typeof payloadRecord[key] === "string") {
+    configLabelKey = payloadRecord[key];
   } else if (payloadPayload && key in payloadPayload && typeof payloadPayload[key] === "string") {
     configLabelKey = payloadPayload[key];
   }
@@ -7984,7 +8014,7 @@ function ChartArea({
               content: /* @__PURE__ */ jsx(
                 ChartTooltipContent,
                 {
-                  labelFormatter: tooltipLabelFormatter ? tooltipLabelFormatter : (v) => xTickFormatter(v),
+                  labelFormatter: tooltipLabelFormatter ? (v) => tooltipLabelFormatter(v) : (v) => xTickFormatter(v),
                   indicator: "dot"
                 }
               )
@@ -8824,6 +8854,6 @@ function PageHeader({
   ] });
 }
 
-export { Accordion, AccordionContent, AccordionItem, AccordionTrigger, Alert, AlertDescription, AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogOverlay, AlertDialogPortal, AlertDialogTitle, AlertDialogTrigger, AlertTitle, AppLayout, AppSidebar, AppSwitcher, AspectRatio, Avatar, AvatarFallback, AvatarImage, Badge, Banner, Breadcrumb, BreadcrumbEllipsis, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator, Button, Calendar, CalendarDayButton, Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle, ChartArea, ChartContainer, ChartLegend, ChartLegendContent, ChartStyle, ChartTooltip, ChartTooltipContent, Checkbox, Collapsible, CollapsibleContent2 as CollapsibleContent, CollapsibleTrigger2 as CollapsibleTrigger, Combobox, Command, CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList, CommandSeparator, CommandShortcut, ConceptPage, ConfirmDialog, DashboardPage, DataTable, DatePicker, DateRangePicker, DesignTokens, Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogOverlay, DialogPortal, DialogTitle, DialogTrigger, DndProvider, DragHandle, Drawer, DrawerClose, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, DrawerOverlay, DrawerPortal, DrawerTitle, DrawerTrigger, DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuPortal, DropdownMenuRadioGroup, DropdownMenuRadioItem, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuSub, DropdownMenuSubContent, DropdownMenuSubTrigger, DropdownMenuTrigger, EmptyState, FileUpload, Form, FormActions, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage, Heading, HoverCard, HoverCardContent, HoverCardTrigger, InlineEdit, Input, Label2 as Label, LoadingOverlay, LoginPage, Menubar, MenubarCheckboxItem, MenubarContent, MenubarGroup, MenubarItem, MenubarLabel, MenubarMenu, MenubarPortal, MenubarRadioGroup, MenubarRadioItem, MenubarSeparator, MenubarShortcut, MenubarSub, MenubarSubContent, MenubarSubTrigger, MenubarTrigger, MetricCard, MetricText, MultiSelect, NavigationMenu, NavigationMenuContent, NavigationMenuIndicator, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger, NavigationMenuViewport, NumberInput, PageHeader, Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious, Popover, PopoverAnchor, PopoverContent, PopoverTrigger, ProductLogicFlow, Progress, ProgressCircular, RadioGroup, RadioGroupItem, ResizableHandle, ResizablePanel, ResizablePanelGroup, ScopeColumn, ScrollArea, ScrollBar, SearchInput, Section, SectionCards, Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectScrollDownButton, SelectScrollUpButton, SelectSeparator, SelectTrigger, SelectValue, Separator2 as Separator, SettingsGroup, SettingsItem, SettingsPage, Sheet, SheetClose, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetOverlay, SheetPortal, SheetTitle, SheetTrigger, Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupAction, SidebarGroupContent, SidebarGroupLabel, SidebarHeader, SidebarInput, SidebarInset, SidebarMenu, SidebarMenuAction, SidebarMenuBadge, SidebarMenuButton, SidebarMenuItem, SidebarMenuSkeleton, SidebarMenuSub, SidebarMenuSubButton, SidebarMenuSubItem, SidebarProvider, SidebarRail, SidebarSeparator, SidebarTrigger, Skeleton, Slider, SortableItem, Spinner, Stepper, Switch, Table, TableBody, TableCaption, TableCell, TableFooter, TableHead, TableHeader, TableRow, Tabs, TabsContent, TabsList, TabsTrigger, Tag, TagGroup, Text, Textarea, Timeline, Toaster, Toggle, ToggleGroup, ToggleGroupItem, Tooltip, TooltipContent, TooltipProvider, TooltipTrigger, UserMenu, badgeVariants, buttonVariants, cn, navigationMenuTriggerStyle, toggleVariants, useFormField, useIsMobile, useSidebar };
+export { Accordion, AccordionContent, AccordionItem, AccordionTrigger, Alert, AlertDescription, AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogOverlay, AlertDialogPortal, AlertDialogTitle, AlertDialogTrigger, AlertTitle, AppLayout, AppSidebar, AppSwitcher, AspectRatio, Avatar, AvatarFallback, AvatarImage, Badge, Banner, Breadcrumb, BreadcrumbEllipsis, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator, Button, Calendar, CalendarDayButton, Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle, ChartArea, ChartContainer, ChartLegend, ChartLegendContent, ChartTooltip, ChartTooltipContent, Checkbox, Collapsible, CollapsibleContent2 as CollapsibleContent, CollapsibleTrigger2 as CollapsibleTrigger, Combobox, Command, CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList, CommandSeparator, CommandShortcut, ConceptPage, ConfirmDialog, DashboardPage, DataTable, DatePicker, DateRangePicker, DesignTokens, Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogOverlay, DialogPortal, DialogTitle, DialogTrigger, DndProvider, DragHandle, Drawer, DrawerClose, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, DrawerOverlay, DrawerPortal, DrawerTitle, DrawerTrigger, DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuPortal, DropdownMenuRadioGroup, DropdownMenuRadioItem, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuSub, DropdownMenuSubContent, DropdownMenuSubTrigger, DropdownMenuTrigger, EmptyState, FileUpload, Form, FormActions, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage, Heading, HoverCard, HoverCardContent, HoverCardTrigger, InlineEdit, Input, Label2 as Label, LoadingOverlay, LoginPage, Menubar, MenubarCheckboxItem, MenubarContent, MenubarGroup, MenubarItem, MenubarLabel, MenubarMenu, MenubarPortal, MenubarRadioGroup, MenubarRadioItem, MenubarSeparator, MenubarShortcut, MenubarSub, MenubarSubContent, MenubarSubTrigger, MenubarTrigger, MetricCard, MetricText, MultiSelect, NavigationMenu, NavigationMenuContent, NavigationMenuIndicator, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger, NavigationMenuViewport, NumberInput, PageHeader, Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious, Popover, PopoverAnchor, PopoverContent, PopoverTrigger, ProductLogicFlow, Progress, ProgressCircular, RadioGroup, RadioGroupItem, ResizableHandle, ResizablePanel, ResizablePanelGroup, ScopeColumn, ScrollArea, ScrollBar, SearchInput, Section, SectionCards, Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectScrollDownButton, SelectScrollUpButton, SelectSeparator, SelectTrigger, SelectValue, Separator2 as Separator, SettingsGroup, SettingsItem, SettingsPage, Sheet, SheetClose, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetOverlay, SheetPortal, SheetTitle, SheetTrigger, Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupAction, SidebarGroupContent, SidebarGroupLabel, SidebarHeader, SidebarInput, SidebarInset, SidebarMenu, SidebarMenuAction, SidebarMenuBadge, SidebarMenuButton, SidebarMenuItem, SidebarMenuSkeleton, SidebarMenuSub, SidebarMenuSubButton, SidebarMenuSubItem, SidebarProvider, SidebarRail, SidebarSeparator, SidebarTrigger, Skeleton, Slider, SortableItem, Spinner, Stepper, Switch, Table, TableBody, TableCaption, TableCell, TableFooter, TableHead, TableHeader, TableRow, Tabs, TabsContent, TabsList, TabsTrigger, Tag, TagGroup, Text, Textarea, Timeline, Toaster, Toggle, ToggleGroup, ToggleGroupItem, Tooltip, TooltipContent, TooltipProvider, TooltipTrigger, UserMenu, badgeVariants, buttonVariants, cn, navigationMenuTriggerStyle, toggleVariants, useChart, useFormField, useIsMobile, useSidebar };
 //# sourceMappingURL=index.mjs.map
 //# sourceMappingURL=index.mjs.map

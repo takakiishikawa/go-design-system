@@ -202,7 +202,7 @@ export function ChartArea({
                 <ChartTooltipContent
                   labelFormatter={
                     tooltipLabelFormatter
-                      ? tooltipLabelFormatter
+                      ? (v) => tooltipLabelFormatter(v as string)
                       : (v) => xTickFormatter(v as string)
                   }
                   indicator="dot"
