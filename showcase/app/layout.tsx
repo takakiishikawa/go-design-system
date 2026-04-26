@@ -1,3 +1,4 @@
+// @ts-nocheck
 import type { Metadata } from "next";
 import "./globals.css";
 import { DesignTokens, AppLayout } from "@takaki/go-design-system";

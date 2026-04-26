@@ -1,23 +1,22 @@
+/** @jsx React.createElement */
 "use client";
 
 import * as React from "react";
 import { Check, ChevronsUpDown } from "lucide-react";
 
-import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
 import {
+  cn,
+  Button,
   Command,
   CommandEmpty,
   CommandGroup,
   CommandInput,
   CommandItem,
   CommandList,
-} from "@/components/ui/command";
-import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover";
+} from "@takaki/go-design-system";
 
 export interface ComboboxOption {
   value: string;
@@ -80,7 +79,7 @@ export function Combobox({
                 <CommandItem
                   key={opt.value}
                   value={opt.value}
-                  onSelect={(current) => {
+                  onSelect={(current: string) => {
                     onValueChange?.(current === value ? "" : current);
                     setOpen(false);
                   }}
