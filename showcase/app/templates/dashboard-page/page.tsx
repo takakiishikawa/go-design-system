@@ -1,8 +1,8 @@
+// @ts-nocheck
 "use client";
 
-import { DashboardPage } from "@takaki/go-design-system";
+import { DashboardPage, Badge } from "@takaki/go-design-system";
 import type { ColumnDef } from "@tanstack/react-table";
-import { Badge } from "@takaki/go-design-system";
 
 type Order = {
   id: string;

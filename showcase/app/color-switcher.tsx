@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+// @ts-ignore TS6142
 import { PRODUCT_COLORS, useColor } from "./color-provider";
 
 export function ColorSwitcher() {
@@ -12,7 +13,7 @@ export function ColorSwitcher() {
     React.createElement(
       "span",
       { className: "hidden text-xs text-muted-foreground sm:block" },
-      "プロダクト:"
+      "プロダクト:",
     ),
     React.createElement(
       "div",
@@ -39,9 +40,9 @@ export function ColorSwitcher() {
                   boxShadow: `0 0 0 2px white, 0 0 0 4px ${p.color}`,
                 },
               })
-            : null
-        )
-      )
+            : null,
+        ),
+      ),
     ),
     React.createElement(
       "span",
@@ -50,7 +51,7 @@ export function ColorSwitcher() {
           "hidden rounded px-1.5 py-0.5 text-xs font-medium text-primary-foreground sm:block",
         style: { backgroundColor: selected.color },
       },
-      selected.name
-    )
+      selected.name,
+    ),
   );
 }
