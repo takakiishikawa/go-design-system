@@ -10266,31 +10266,29 @@ function DataTable({
           children: [
             /* @__PURE__ */ jsxRuntime.jsx(TableHeader, {
               className: "sticky top-0 z-10 bg-muted",
-              children: table
-                .getHeaderGroups()
-                .map((headerGroup) =>
-                  /* @__PURE__ */ jsxRuntime.jsx(
-                    TableRow,
-                    {
-                      children: headerGroup.headers.map((header) =>
-                        /* @__PURE__ */ jsxRuntime.jsx(
-                          TableHead,
-                          {
-                            colSpan: header.colSpan,
-                            children: header.isPlaceholder
-                              ? null
-                              : reactTable.flexRender(
-                                  header.column.columnDef.header,
-                                  header.getContext(),
-                                ),
-                          },
-                          header.id,
-                        ),
+              children: table.getHeaderGroups().map((headerGroup) =>
+                /* @__PURE__ */ jsxRuntime.jsx(
+                  TableRow,
+                  {
+                    children: headerGroup.headers.map((header) =>
+                      /* @__PURE__ */ jsxRuntime.jsx(
+                        TableHead,
+                        {
+                          colSpan: header.colSpan,
+                          children: header.isPlaceholder
+                            ? null
+                            : reactTable.flexRender(
+                                header.column.columnDef.header,
+                                header.getContext(),
+                              ),
+                        },
+                        header.id,
                       ),
-                    },
-                    headerGroup.id,
-                  ),
+                    ),
+                  },
+                  headerGroup.id,
                 ),
+              ),
             }),
             /* @__PURE__ */ jsxRuntime.jsx(TableBody, {
               children:
@@ -10308,20 +10306,18 @@ function DataTable({
                           className: onRowClick
                             ? "cursor-pointer hover:bg-muted/50 active:bg-muted transition-colors"
                             : void 0,
-                          children: row
-                            .getVisibleCells()
-                            .map((cell) =>
-                              /* @__PURE__ */ jsxRuntime.jsx(
-                                TableCell,
-                                {
-                                  children: reactTable.flexRender(
-                                    cell.column.columnDef.cell,
-                                    cell.getContext(),
-                                  ),
-                                },
-                                cell.id,
-                              ),
+                          children: row.getVisibleCells().map((cell) =>
+                            /* @__PURE__ */ jsxRuntime.jsx(
+                              TableCell,
+                              {
+                                children: reactTable.flexRender(
+                                  cell.column.columnDef.cell,
+                                  cell.getContext(),
+                                ),
+                              },
+                              cell.id,
                             ),
+                          ),
                         },
                         row.id,
                       ),
