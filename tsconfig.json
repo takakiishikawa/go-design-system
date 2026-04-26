@@ -1,3 +1,6 @@
+The file shown in the error doesn't exist in this repo — it's for a different package (`go-design-system` based on its shape). The fix is simply changing `"ignoreDeprecations": "5.0"` to `"6.0"`:
+
+```json
 {
   "compilerOptions": {
     "target": "ES2020",
@@ -13,7 +16,7 @@
     "sourceMap": true,
     "outDir": "dist",
     "rootDir": "src",
-    "ignoreDeprecations": "5.0",
+    "ignoreDeprecations": "6.0",
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
