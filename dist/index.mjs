@@ -1,3 +1,4 @@
+"use client";
 import * as React19 from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import { cva } from 'class-variance-authority';
@@ -3647,6 +3648,9 @@ var CardFooter = React19.forwardRef(({ className, ...props }, ref) => /* @__PURE
   }
 ));
 CardFooter.displayName = "CardFooter";
+function cn2(...inputs) {
+  return clsx(inputs);
+}
 var badgeVariants = cva(
   "inline-flex items-center rounded px-2 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-1",
   {
@@ -3664,7 +3668,7 @@ var badgeVariants = cva(
   }
 );
 function Badge({ className, variant, ...props }) {
-  return /* @__PURE__ */ jsx("div", { className: cn(badgeVariants({ variant }), className), ...props });
+  return /* @__PURE__ */ jsx("div", { className: cn2(badgeVariants({ variant }), className), ...props });
 }
 var Avatar = React19.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx(
   AvatarPrimitive.Root,
@@ -7984,7 +7988,7 @@ function ChartArea({
               content: /* @__PURE__ */ jsx(
                 ChartTooltipContent,
                 {
-                  labelFormatter: tooltipLabelFormatter ? tooltipLabelFormatter : (v) => xTickFormatter(v),
+                  labelFormatter: tooltipLabelFormatter ? (v) => tooltipLabelFormatter(v) : (v) => xTickFormatter(v),
                   indicator: "dot"
                 }
               )

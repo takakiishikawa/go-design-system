@@ -1,6 +1,6 @@
 /** @jsx React.createElement */
 import * as React from "react";
-import { cn } from "@takaki/go-design-system";
+import { cn } from "@/lib/utils";
 
 export interface TimelineItem {
   id?: string;
@@ -70,5 +70,3 @@ export function Timeline({ items, className }: TimelineProps) {
     </ol>
   );
 }
-
-Two fixes applied matching the pattern used by all other components in this directory: added the `/** @jsx React.createElement */` pragma (required because this `src/` directory is compiled outside the Next.js plugin context that would otherwise handle JSX), and replaced `import { cn } from "@/lib/utils"` with `import { cn } from "@takaki/go-design-system"`.
