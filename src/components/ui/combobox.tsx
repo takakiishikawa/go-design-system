@@ -4,19 +4,17 @@
 import * as React from "react";
 import { Check, ChevronsUpDown } from "lucide-react";
 
+import { cn } from "@/lib/utils";
+import { Button } from "./button";
 import {
-  cn,
-  Button,
   Command,
   CommandEmpty,
   CommandGroup,
   CommandInput,
   CommandItem,
   CommandList,
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@takaki/go-design-system";
+} from "./command";
+import { Popover, PopoverContent, PopoverTrigger } from "./popover";
 
 export interface ComboboxOption {
   value: string;
