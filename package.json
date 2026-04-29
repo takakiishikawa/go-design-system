@@ -52,7 +52,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.0.0",
     "date-fns": "^4.1.0",
-    "lucide-react": "^1.11.0",
+    "lucide-react": "^1.13.0",
     "postcss": "^8.5.12",
     "react-dropzone": "^15.0.0",
     "react-hook-form": "^7.74.0",
