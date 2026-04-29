@@ -1,21 +1,5 @@
-"use client";
-
-import { Input, Textarea, Label, PageHeader } from "@takaki/go-design-system";
-
-function DemoSection({
-  title,
-  children,
-}: {
-  title: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <section className="flex flex-col gap-3">
-      <h2 className="text-sm font-semibold text-foreground">{title}</h2>
-      <div className="flex flex-wrap items-start gap-4">{children}</div>
-    </section>
-  );
-}
+import { Input, Textarea, Label } from "@takaki/go-design-system";
+import { PageHeader, DemoSection } from "@/app/ui/demo-section";
 
 export default function InputPage() {
   return (

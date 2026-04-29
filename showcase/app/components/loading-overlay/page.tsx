@@ -8,23 +8,8 @@ import {
   CardContent,
   CardHeader,
   CardTitle,
-  PageHeader,
 } from "@takaki/go-design-system";
-
-function DemoSection({
-  title,
-  children,
-}: {
-  title: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <section className="flex flex-col gap-3">
-      <h2 className="text-sm font-semibold text-foreground">{title}</h2>
-      <div className="flex flex-wrap items-center gap-2">{children}</div>
-    </section>
-  );
-}
+import { PageHeader, DemoSection } from "@/app/ui/demo-section";
 
 export default function LoadingOverlayPage() {
   const [loading, setLoading] = useState(false);
@@ -41,9 +26,53 @@ export default function LoadingOverlayPage() {
         description="セクション単位のローディング表示。children の上にスピナーをオーバーレイする。"
         import="import { LoadingOverlay } from '@takaki/go-design-system'"
       />
-      ...
+
+      <DemoSection title="カードに適用">
+        <div className="flex flex-col gap-3">
+          <LoadingOverlay loading={loading} className="w-72 rounded-lg">
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-sm">データ一覧</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground">
+                  コンテンツがここに表示されます。
+                </p>
+                <p className="text-sm text-muted-foreground">
+                  コンテンツがここに表示されます。
+                </p>
+                <p className="text-sm text-muted-foreground">
+                  コンテンツがここに表示されます。
+                </p>
+              </CardContent>
+            </Card>
+          </LoadingOverlay>
+          <Button
+            size="sm"
+            variant="outline"
+            onClick={simulate}
+            className="w-fit"
+          >
+            2秒間ローディング
+          </Button>
+        </div>
+      </DemoSection>
+
+      <DemoSection title="loading=true（静的）">
+        <LoadingOverlay
+          loading={true}
+          label="データを取得中"
+          className="w-72 rounded-lg"
+        >
+          <Card>
+            <CardContent className="py-8">
+              <p className="text-center text-sm text-muted-foreground">
+                コンテンツ
+              </p>
+            </CardContent>
+          </Card>
+        </LoadingOverlay>
+      </DemoSection>
     </div>
   );
 }
-
-Two changes made: `PageHeader` moved into the `@takaki/go-design-system` import (removing the nonexistent `@/app/ui/demo-section` import), and `DemoSection` defined inline following the same pattern all other showcase pages use.

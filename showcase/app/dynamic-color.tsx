@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { useColor } from "./color-provider.js";
+import { useColor } from "./color-provider";
 
 export function DynamicColor() {
   const { selected } = useColor();
