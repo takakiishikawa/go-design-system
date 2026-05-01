@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { Check, ChevronsUpDown } from "lucide-react";
+import { Check, ChevronsUpDown, AppWindow } from "lucide-react";
 
 import {
   DropdownMenu,
@@ -33,6 +33,8 @@ export interface AppInfo {
   name: string;
   url: string;
   color: string;
+  /** lucide-react などのアイコンコンポーネント。未指定時は AppWindow をフォールバック */
+  icon?: React.ElementType;
 }
 
 export interface NavSubItem {
@@ -67,14 +69,22 @@ export interface AppSidebarProps extends React.ComponentProps<typeof Sidebar> {
 }
 
 // ---------------------------------------------------------------------------
-// ColorDot — インラインで色を指定するため Tailwind クラスは使わない
+// AppIcon — 各アプリのブランドアイコン。color を文字色として適用
 // ---------------------------------------------------------------------------
 
-function ColorDot({ color, size = 8 }: { color: string; size?: number }) {
+function AppIcon({
+  icon: Icon = AppWindow,
+  color,
+  className,
+}: {
+  icon?: React.ElementType;
+  color?: string;
+  className?: string;
+}) {
   return (
-    <span
-      className="shrink-0 rounded-full"
-      style={{ width: size, height: size, backgroundColor: color }}
+    <Icon
+      className={cn("size-4 shrink-0", className)}
+      style={color ? { color } : undefined}
       aria-hidden
     />
   );
@@ -110,13 +120,10 @@ export function AppSwitcher({
               className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
               aria-label="アプリを切り替え"
             >
-              <ColorDot color={current?.color ?? "#888"} size={10} />
-              <div className="flex flex-col gap-0.5 leading-none min-w-0">
-                <span className="text-xs text-muted-foreground">App</span>
-                <span className="font-semibold truncate">
-                  {current?.name ?? currentApp}
-                </span>
-              </div>
+              <AppIcon icon={current?.icon} color={current?.color} />
+              <span className="font-semibold truncate">
+                {current?.name ?? currentApp}
+              </span>
               <ChevronsUpDown className="ml-auto shrink-0 opacity-50" />
             </SidebarMenuButton>
           </DropdownMenuTrigger>
@@ -137,7 +144,7 @@ export function AppSwitcher({
                 onSelect={() => handleSelect(app.url)}
                 className="gap-2"
               >
-                <ColorDot color={app.color} size={8} />
+                <AppIcon icon={app.icon} color={app.color} />
                 <span className="flex-1">{app.name}</span>
                 {app.name === currentApp && (
                   <Check className="size-4 shrink-0 opacity-70" />

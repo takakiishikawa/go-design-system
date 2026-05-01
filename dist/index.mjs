@@ -5,7 +5,7 @@ import { cva } from 'class-variance-authority';
 import { clsx } from 'clsx';
 import { jsx, jsxs, Fragment } from 'react/jsx-runtime';
 import * as SelectPrimitive from '@radix-ui/react-select';
-import { ChevronDown, ChevronUp, Check, Circle, X, PanelLeft, ChevronRight, Search, Minus, Plus, MoreHorizontal, ChevronLeft, ChevronLeftIcon, ChevronRightIcon, ChevronDownIcon, GripVertical, Loader2, CalendarIcon, Upload, FileVideo, TrendingUp, TrendingDown, ChevronsUpDown, LogOut, SearchIcon, ChevronsLeftIcon, ChevronsRightIcon, ArrowRight, AlertCircle, AlertTriangle, CheckCircle2, Info, CheckIcon, XIcon, ArrowRightIcon, ArrowDownIcon, TrendingUpIcon, TrendingDownIcon, MinusIcon } from 'lucide-react';
+import { ChevronDown, ChevronUp, Check, Circle, X, PanelLeft, ChevronRight, Search, Minus, Plus, MoreHorizontal, ChevronLeft, ChevronLeftIcon, ChevronRightIcon, ChevronDownIcon, GripVertical, Loader2, CalendarIcon, Upload, FileVideo, TrendingUp, TrendingDown, ChevronsUpDown, LogOut, SearchIcon, ChevronsLeftIcon, ChevronsRightIcon, ArrowRight, AlertCircle, AlertTriangle, CheckCircle2, Info, AppWindow, CheckIcon, XIcon, ArrowRightIcon, ArrowDownIcon, TrendingUpIcon, TrendingDownIcon, MinusIcon } from 'lucide-react';
 export { FileImage, FileVideo } from 'lucide-react';
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
 import * as RadioGroupPrimitive from '@radix-ui/react-radio-group';
@@ -7588,12 +7588,16 @@ function DragHandle({ className, ...props }) {
     }
   );
 }
-function ColorDot({ color, size = 8 }) {
+function AppIcon({
+  icon: Icon2 = AppWindow,
+  color,
+  className
+}) {
   return /* @__PURE__ */ jsx(
-    "span",
+    Icon2,
     {
-      className: "shrink-0 rounded-full",
-      style: { width: size, height: size, backgroundColor: color },
+      className: cn("size-4 shrink-0", className),
+      style: color ? { color } : void 0,
       "aria-hidden": true
     }
   );
@@ -7620,11 +7624,8 @@ function AppSwitcher({
         className: "data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground",
         "aria-label": "\u30A2\u30D7\u30EA\u3092\u5207\u308A\u66FF\u3048",
         children: [
-          /* @__PURE__ */ jsx(ColorDot, { color: current?.color ?? "#888", size: 10 }),
-          /* @__PURE__ */ jsxs("div", { className: "flex flex-col gap-0.5 leading-none min-w-0", children: [
-            /* @__PURE__ */ jsx("span", { className: "text-xs text-muted-foreground", children: "App" }),
-            /* @__PURE__ */ jsx("span", { className: "font-semibold truncate", children: current?.name ?? currentApp })
-          ] }),
+          /* @__PURE__ */ jsx(AppIcon, { icon: current?.icon, color: current?.color }),
+          /* @__PURE__ */ jsx("span", { className: "font-semibold truncate", children: current?.name ?? currentApp }),
           /* @__PURE__ */ jsx(ChevronsUpDown, { className: "ml-auto shrink-0 opacity-50" })
         ]
       }
@@ -7645,7 +7646,7 @@ function AppSwitcher({
               onSelect: () => handleSelect(app.url),
               className: "gap-2",
               children: [
-                /* @__PURE__ */ jsx(ColorDot, { color: app.color, size: 8 }),
+                /* @__PURE__ */ jsx(AppIcon, { icon: app.icon, color: app.color }),
                 /* @__PURE__ */ jsx("span", { className: "flex-1", children: app.name }),
                 app.name === currentApp && /* @__PURE__ */ jsx(Check, { className: "size-4 shrink-0 opacity-70" })
               ]

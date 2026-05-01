@@ -962,6 +962,8 @@ interface AppInfo {
     name: string;
     url: string;
     color: string;
+    /** lucide-react などのアイコンコンポーネント。未指定時は AppWindow をフォールバック */
+    icon?: React$1.ElementType;
 }
 interface NavSubItem {
     title: string;
