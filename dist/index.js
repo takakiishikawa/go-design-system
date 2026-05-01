@@ -7632,6 +7632,32 @@ function DragHandle({ className, ...props }) {
     }
   );
 }
+var GO_APPS = [
+  {
+    name: "NativeGo",
+    url: "https://native-go.vercel.app",
+    color: "#0052CC",
+    icon: lucideReact.Languages
+  },
+  {
+    name: "KenyakuGo",
+    url: "https://kenyaku-go.vercel.app",
+    color: "#F5A623",
+    icon: lucideReact.Wallet
+  },
+  {
+    name: "TaskGo",
+    url: "https://taskgo-dun.vercel.app",
+    color: "#5E6AD2",
+    icon: lucideReact.Zap
+  },
+  {
+    name: "CookGo",
+    url: "https://cook-go-lovat.vercel.app",
+    color: "#16A34A",
+    icon: lucideReact.ChefHat
+  }
+];
 function AppIcon({
   icon: Icon2 = lucideReact.AppWindow,
   color,
@@ -9003,6 +9029,7 @@ exports.FormField = FormField;
 exports.FormItem = FormItem;
 exports.FormLabel = FormLabel;
 exports.FormMessage = FormMessage;
+exports.GO_APPS = GO_APPS;
 exports.Heading = Heading;
 exports.HoverCard = HoverCard;
 exports.HoverCardContent = HoverCardContent;

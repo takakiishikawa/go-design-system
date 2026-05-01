@@ -122,7 +122,11 @@ export type {
 // ============================================
 
 // sidebar-01
-export { AppSidebar, AppSwitcher } from "./templates/sidebar-01/app-sidebar";
+export {
+  AppSidebar,
+  AppSwitcher,
+  GO_APPS,
+} from "./templates/sidebar-01/app-sidebar";
 export type {
   AppSidebarProps,
   AppSwitcherProps,

@@ -1,7 +1,15 @@
 "use client";
 
 import * as React from "react";
-import { Check, ChevronsUpDown, AppWindow } from "lucide-react";
+import {
+  Check,
+  ChevronsUpDown,
+  AppWindow,
+  Languages,
+  Wallet,
+  ChefHat,
+  Zap,
+} from "lucide-react";
 
 import {
   DropdownMenu,
@@ -67,6 +75,38 @@ export interface AppSidebarProps extends React.ComponentProps<typeof Sidebar> {
   logo?: React.ReactNode;
   onNavigate?: (url: string) => void;
 }
+
+// ---------------------------------------------------------------------------
+// GO_APPS — Goシリーズ全プロダクト共通の app switcher エントリ
+//   各プロダクトの sidebar から `apps={GO_APPS}` で渡す
+// ---------------------------------------------------------------------------
+
+export const GO_APPS: AppInfo[] = [
+  {
+    name: "NativeGo",
+    url: "https://native-go.vercel.app",
+    color: "#0052CC",
+    icon: Languages,
+  },
+  {
+    name: "KenyakuGo",
+    url: "https://kenyaku-go.vercel.app",
+    color: "#F5A623",
+    icon: Wallet,
+  },
+  {
+    name: "TaskGo",
+    url: "https://taskgo-dun.vercel.app",
+    color: "#5E6AD2",
+    icon: Zap,
+  },
+  {
+    name: "CookGo",
+    url: "https://cook-go-lovat.vercel.app",
+    color: "#16A34A",
+    icon: ChefHat,
+  },
+];
 
 // ---------------------------------------------------------------------------
 // AppIcon — 各アプリのブランドアイコン。color を文字色として適用
