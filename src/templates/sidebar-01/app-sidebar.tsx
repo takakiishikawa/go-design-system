@@ -6,7 +6,7 @@ import {
   ChevronsUpDown,
   AppWindow,
   Languages,
-  Wallet,
+  JapaneseYen,
   ChefHat,
   Zap,
 } from "lucide-react";
@@ -92,7 +92,7 @@ export const GO_APPS: AppInfo[] = [
     name: "KenyakuGo",
     url: "https://kenyaku-go.vercel.app",
     color: "#F5A623",
-    icon: Wallet,
+    icon: JapaneseYen,
   },
   {
     name: "TaskGo",
