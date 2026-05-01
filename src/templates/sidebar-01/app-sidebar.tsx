@@ -156,7 +156,7 @@ export function AppSwitcher({
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <SidebarMenuButton
-              size="lg"
+              tooltip={current?.name ?? currentApp}
               className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
               aria-label="アプリを切り替え"
             >
@@ -164,7 +164,7 @@ export function AppSwitcher({
               <span className="font-semibold truncate">
                 {current?.name ?? currentApp}
               </span>
-              <ChevronsUpDown className="ml-auto shrink-0 opacity-50" />
+              <ChevronsUpDown className="ml-auto shrink-0 opacity-50 group-data-[collapsible=icon]:hidden" />
             </SidebarMenuButton>
           </DropdownMenuTrigger>
 

@@ -7646,13 +7646,13 @@ function AppSwitcher({
     /* @__PURE__ */ jsx(DropdownMenuTrigger, { asChild: true, children: /* @__PURE__ */ jsxs(
       SidebarMenuButton,
       {
-        size: "lg",
+        tooltip: current?.name ?? currentApp,
         className: "data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground",
         "aria-label": "\u30A2\u30D7\u30EA\u3092\u5207\u308A\u66FF\u3048",
         children: [
           /* @__PURE__ */ jsx(AppIcon, { icon: current?.icon, color: current?.color }),
           /* @__PURE__ */ jsx("span", { className: "font-semibold truncate", children: current?.name ?? currentApp }),
-          /* @__PURE__ */ jsx(ChevronsUpDown, { className: "ml-auto shrink-0 opacity-50" })
+          /* @__PURE__ */ jsx(ChevronsUpDown, { className: "ml-auto shrink-0 opacity-50 group-data-[collapsible=icon]:hidden" })
         ]
       }
     ) }),

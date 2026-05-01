@@ -7690,13 +7690,13 @@ function AppSwitcher({
     /* @__PURE__ */ jsxRuntime.jsx(DropdownMenuTrigger, { asChild: true, children: /* @__PURE__ */ jsxRuntime.jsxs(
       SidebarMenuButton,
       {
-        size: "lg",
+        tooltip: current?.name ?? currentApp,
         className: "data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground",
         "aria-label": "\u30A2\u30D7\u30EA\u3092\u5207\u308A\u66FF\u3048",
         children: [
           /* @__PURE__ */ jsxRuntime.jsx(AppIcon, { icon: current?.icon, color: current?.color }),
           /* @__PURE__ */ jsxRuntime.jsx("span", { className: "font-semibold truncate", children: current?.name ?? currentApp }),
-          /* @__PURE__ */ jsxRuntime.jsx(lucideReact.ChevronsUpDown, { className: "ml-auto shrink-0 opacity-50" })
+          /* @__PURE__ */ jsxRuntime.jsx(lucideReact.ChevronsUpDown, { className: "ml-auto shrink-0 opacity-50 group-data-[collapsible=icon]:hidden" })
         ]
       }
     ) }),
