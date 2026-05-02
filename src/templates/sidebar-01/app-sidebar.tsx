@@ -9,6 +9,7 @@ import {
   JapaneseYen,
   ChefHat,
   Zap,
+  Compass,
 } from "lucide-react";
 
 import {
@@ -105,6 +106,12 @@ export const GO_APPS: AppInfo[] = [
     url: "https://cook-go-lovat.vercel.app",
     color: "#16A34A",
     icon: ChefHat,
+  },
+  {
+    name: "CultureGo",
+    url: "https://culture-go.vercel.app",
+    color: "#1F2937",
+    icon: Compass,
   },
 ];
 

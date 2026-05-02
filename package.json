@@ -1,7 +1,7 @@
 {
   "name": "@takaki/go-design-system",
-  "version": "0.1.1",
-  "description": "Goシリーズ共通デザインシステム（NativeGo, CareGo, KenyakuGo, TaskGo, CookGo, PhysicalGo など）",
+  "version": "0.1.2",
+  "description": "Goシリーズ共通デザインシステム（NativeGo, CareGo, KenyakuGo, TaskGo, CookGo, CultureGo, PhysicalGo など）",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",

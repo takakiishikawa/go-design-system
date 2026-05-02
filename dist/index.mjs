@@ -5,7 +5,7 @@ import { cva } from 'class-variance-authority';
 import { clsx } from 'clsx';
 import { jsx, jsxs, Fragment } from 'react/jsx-runtime';
 import * as SelectPrimitive from '@radix-ui/react-select';
-import { ChevronDown, ChevronUp, Check, Circle, X, PanelLeft, ChevronRight, Search, Minus, Plus, Languages, Wallet, Zap, ChefHat, MoreHorizontal, ChevronLeft, ChevronLeftIcon, ChevronRightIcon, ChevronDownIcon, GripVertical, Loader2, CalendarIcon, Upload, FileVideo, TrendingUp, TrendingDown, ChevronsUpDown, LogOut, SearchIcon, ChevronsLeftIcon, ChevronsRightIcon, ArrowRight, AlertCircle, AlertTriangle, CheckCircle2, Info, AppWindow, CheckIcon, XIcon, ArrowRightIcon, ArrowDownIcon, TrendingUpIcon, TrendingDownIcon, MinusIcon } from 'lucide-react';
+import { ChevronDown, ChevronUp, Check, Circle, X, PanelLeft, ChevronRight, Search, Minus, Plus, Languages, JapaneseYen, Zap, ChefHat, Compass, MoreHorizontal, ChevronLeft, ChevronLeftIcon, ChevronRightIcon, ChevronDownIcon, GripVertical, Loader2, CalendarIcon, Upload, FileVideo, TrendingUp, TrendingDown, ChevronsUpDown, LogOut, SearchIcon, ChevronsLeftIcon, ChevronsRightIcon, ArrowRight, AlertCircle, AlertTriangle, CheckCircle2, Info, AppWindow, CheckIcon, XIcon, ArrowRightIcon, ArrowDownIcon, TrendingUpIcon, TrendingDownIcon, MinusIcon } from 'lucide-react';
 export { FileImage, FileVideo } from 'lucide-react';
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
 import * as RadioGroupPrimitive from '@radix-ui/react-radio-group';
@@ -7599,7 +7599,7 @@ var GO_APPS = [
     name: "KenyakuGo",
     url: "https://kenyaku-go.vercel.app",
     color: "#F5A623",
-    icon: Wallet
+    icon: JapaneseYen
   },
   {
     name: "TaskGo",
@@ -7612,6 +7612,12 @@ var GO_APPS = [
     url: "https://cook-go-lovat.vercel.app",
     color: "#16A34A",
     icon: ChefHat
+  },
+  {
+    name: "CultureGo",
+    url: "https://culture-go.vercel.app",
+    color: "#1F2937",
+    icon: Compass
   }
 ];
 function AppIcon({

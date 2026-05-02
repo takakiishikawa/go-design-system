@@ -7643,7 +7643,7 @@ var GO_APPS = [
     name: "KenyakuGo",
     url: "https://kenyaku-go.vercel.app",
     color: "#F5A623",
-    icon: lucideReact.Wallet
+    icon: lucideReact.JapaneseYen
   },
   {
     name: "TaskGo",
@@ -7656,6 +7656,12 @@ var GO_APPS = [
     url: "https://cook-go-lovat.vercel.app",
     color: "#16A34A",
     icon: lucideReact.ChefHat
+  },
+  {
+    name: "CultureGo",
+    url: "https://culture-go.vercel.app",
+    color: "#1F2937",
+    icon: lucideReact.Compass
   }
 ];
 function AppIcon({
