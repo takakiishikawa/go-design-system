@@ -7565,7 +7565,9 @@ function Timeline({ items, className }) {
 }
 function DndProvider({ items, onReorder, children }) {
   const sensors = core.useSensors(
-    core.useSensor(core.PointerSensor),
+    core.useSensor(core.PointerSensor, {
+      activationConstraint: { distance: 5 }
+    }),
     core.useSensor(core.KeyboardSensor, {
       coordinateGetter: sortable.sortableKeyboardCoordinates
     })

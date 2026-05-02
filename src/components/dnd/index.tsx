@@ -31,8 +31,13 @@ export interface DndProviderProps {
 }
 
 export function DndProvider({ items, onReorder, children }: DndProviderProps) {
+  // activationConstraint: 5px 動かすまで drag を発火させない。
+  // これが無いと SortableItem 内の click 系 UI（ボタン / InlineEdit / Radix Trigger 等）が
+  // 常に drag に奪われて無反応になる。
   const sensors = useSensors(
-    useSensor(PointerSensor),
+    useSensor(PointerSensor, {
+      activationConstraint: { distance: 5 },
+    }),
     useSensor(KeyboardSensor, {
       coordinateGetter: sortableKeyboardCoordinates,
     }),
