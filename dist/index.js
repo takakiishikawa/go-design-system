@@ -7644,7 +7644,7 @@ var GO_APPS = [
   {
     name: "KenyakuGo",
     url: "https://kenyaku-go.vercel.app",
-    color: "#F5A623",
+    color: "#047857",
     icon: lucideReact.JapaneseYen
   },
   {

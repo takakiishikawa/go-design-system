@@ -92,7 +92,7 @@ export const GO_APPS: AppInfo[] = [
   {
     name: "KenyakuGo",
     url: "https://kenyaku-go.vercel.app",
-    color: "#F5A623",
+    color: "#047857",
     icon: JapaneseYen,
   },
   {
