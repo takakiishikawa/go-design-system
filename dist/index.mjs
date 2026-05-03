@@ -7617,7 +7617,7 @@ var GO_APPS = [
   },
   {
     name: "CultureGo",
-    url: "https://culture-go.vercel.app",
+    url: "https://culture-go-gamma.vercel.app",
     color: "#1F2937",
     icon: Compass
   }
